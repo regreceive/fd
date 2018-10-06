@@ -1,0 +1,11 @@
+{
+  "pack": "en",
+  "pack_icon": "uk.svg",
+  "pack_label": "English",
+  "pack_active": true,
+
+  "homepage": "首页",
+  "exchange": "电力交易",
+  "gains": "收益明细",
+  "personal": "我的"
+}

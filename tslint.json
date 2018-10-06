@@ -15,6 +15,11 @@
       "options": ["single", "jsx-double"]
     },
     "ordered-imports": false,
-    "no-consecutive-blank-lines": true
+    // 不提示错误，用prettier自动修复
+    "no-consecutive-blank-lines": false,
+    "object-literal-sort-keys": false,
+    "no-console": false,
+    // override tslint-react rules here
+    "jsx-boolean-value": ["never"]
   }
 }
