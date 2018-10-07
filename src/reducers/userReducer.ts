@@ -3,9 +3,9 @@ import { IAction, IUser } from '../types';
 const lang = process.env.REACT_APP_DEFAULT_LANGUAGE || 'en';
 
 const initState: IUser = {
-  token: '123', // ''
+  token: '', // ''
   username: '',
-  type: 0, // -1
+  type: -1, // -1
   role: 0, // -1
   config: {
     lang,

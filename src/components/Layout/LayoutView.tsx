@@ -17,7 +17,7 @@ const basePath = process.env.REACT_APP_BASE_PATH;
 const splashEnable = process.env.REACT_APP_SPLASH === 'on';
 
 interface IProps {
-  token: string;
+  isLogin: boolean;
   type: -1 | 0 | 1;
   replace: (path: string) => void;
 }
@@ -26,10 +26,12 @@ export default class LayoutView extends React.Component<IProps> {
   // 避免react-localize-redux初始化操作
   public shouldComponentUpdate(nextProps: Readonly<IProps>) {
     return (
-      nextProps.type !== this.props.type || nextProps.token !== this.props.token
+      nextProps.type !== this.props.type ||
+      nextProps.isLogin !== this.props.isLogin
     );
   }
 
+  // 登录状态失效PrivateRoute负责重定向。type实时变化，以下路由负责重定向。
   public render() {
     const defaultPath = ['/choose-role', '/producer', '/consumer'][
       this.props.type + 1
@@ -43,7 +45,7 @@ export default class LayoutView extends React.Component<IProps> {
               <Route path={basePath + '/splash'} component={Splash} />
             )}
 
-            {this.props.token.length === 0 && (
+            {!this.props.isLogin && (
               <Route path={basePath + '/login'} component={Login} />
             )}
 
