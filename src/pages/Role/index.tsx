@@ -8,7 +8,7 @@ export default class extends Component {
     return (
       <div>
         <Translate id="pack">hello world</Translate>
-        <Button>login</Button>
+        <Button>role</Button>
       </div>
     );
   }

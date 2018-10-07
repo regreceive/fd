@@ -18,8 +18,9 @@ import { IStoreState } from '../../types';
 import LayoutView from './LayoutView';
 
 interface IStateProps {
+  token: string;
   lang: string;
-  type: 0 | 1;
+  type: -1 | 0 | 1;
 }
 
 interface IDispatchProps {
@@ -30,6 +31,7 @@ const basePath = process.env.REACT_APP_BASE_PATH;
 const splashEnable = process.env.REACT_APP_SPLASH === 'on';
 
 const mapStateToProps = (state: IStoreState) => ({
+  token: state.user.token,
   lang: state.user.config.lang,
   type: state.user.type,
 });
@@ -83,7 +85,11 @@ export default class Layout extends React.Component {
   public render() {
     return (
       <LocaleProvider locale={enUS}>
-        <LayoutView type={this.injected.type} />
+        <LayoutView
+          token={this.injected.token}
+          type={this.injected.type}
+          replace={this.injected.replace}
+        />
       </LocaleProvider>
     );
   }

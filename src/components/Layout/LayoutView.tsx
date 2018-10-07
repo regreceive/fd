@@ -17,12 +17,17 @@ const basePath = process.env.REACT_APP_BASE_PATH;
 const splashEnable = process.env.REACT_APP_SPLASH === 'on';
 
 interface IProps {
+  token: string;
   type: -1 | 0 | 1;
+  replace: (path: string) => void;
 }
 
 export default class LayoutView extends React.Component<IProps> {
-  public shouldComponentUpdate() {
-    return false;
+  // 避免react-localize-redux初始化操作
+  public shouldComponentUpdate(nextProps: Readonly<IProps>) {
+    return (
+      nextProps.type !== this.props.type || nextProps.token !== this.props.token
+    );
   }
 
   public render() {
@@ -37,18 +42,29 @@ export default class LayoutView extends React.Component<IProps> {
             {splashEnable && (
               <Route path={basePath + '/splash'} component={Splash} />
             )}
-            <Route path={basePath + '/login'} component={Login} />
-            <Route path={basePath + '/choose-role'} component={Role} />
-            <PrivateRoute
-              producer
-              path={basePath + '/producer'}
-              component={Producer}
-            />
-            <PrivateRoute
-              consumer
-              path={basePath + '/consumer'}
-              component={Consumer}
-            />
+
+            {this.props.token.length === 0 && (
+              <Route path={basePath + '/login'} component={Login} />
+            )}
+
+            {this.props.type < 0 && (
+              <PrivateRoute path={basePath + '/choose-role'} component={Role} />
+            )}
+
+            {this.props.type === 0 && (
+              <PrivateRoute
+                path={basePath + '/producer'}
+                component={Producer}
+              />
+            )}
+
+            {this.props.type === 1 && (
+              <PrivateRoute
+                path={basePath + '/consumer'}
+                component={Consumer}
+              />
+            )}
+
             <Redirect to={basePath + defaultPath} />
           </Switch>
         </ConnectedRouter>

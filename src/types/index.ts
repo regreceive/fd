@@ -24,7 +24,7 @@ export interface IUserConfig {
 export interface IUser {
   token: string;
   username: string;
-  type: 0 | 1,
+  type: -1 | 0 | 1;
   role: number;
   config: IUserConfig;
 }
