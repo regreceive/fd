@@ -1,17 +1,25 @@
-import * as constants from '../constants';
+import { IUser } from '../types';
 
-export interface IUserDataComplete {
-  type: constants.USER_DATA_COMPLETE;
-  payload: IUserData;
+export interface ILogin {
+  username: string;
+  password: string;
 }
-
-interface IUserData {
-  role: string;
-}
-
-export function userDataComplete(data: IUserData): IUserDataComplete {
+export function login(data: ILogin) {
   return {
-    type: constants.USER_DATA_COMPLETE,
+    type: 'LOGIN',
+    payload: data,
+  };
+}
+
+export interface ILoginComplete {
+  token: IUser['token'];
+  username: IUser['username'];
+  type: IUser['type'];
+  role: IUser['role'];
+}
+export function loginComplete(data: ILoginComplete) {
+  return {
+    type: 'LOGIN_COMPLETE',
     payload: data,
   };
 }

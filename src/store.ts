@@ -4,7 +4,7 @@ import { persistStore } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from './reducers/index';
-import rootSaga from './sagas';
+import rootSaga from './sagas/index';
 import history from './history';
 
 const initialState = {};

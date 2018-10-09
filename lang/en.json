@@ -7,5 +7,16 @@
   "homepage": "首页",
   "exchange": "电力交易",
   "gains": "收益明细",
-  "personal": "我的"
+  "personal": "我的",
+  "hello": "您好！",
+
+  "login": {
+    "button": "登录",
+    "email": {
+      "placeholder": "邮箱"
+    },
+    "password": {
+      "placeholder": "密码"
+    }
+  }
 }

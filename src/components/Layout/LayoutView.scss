@@ -29,4 +29,15 @@ li {
     //max-width: 750px;
     height: 100%;
   }
+
+  .am-button-ghost {
+    background-color: rgb(255, 222, 208);
+    &::before {
+      border-width: 0 !important;
+    }
+  }
+
+  .am-button-disabled {
+    color: rgb(255, 255, 255) !important;
+  }
 }

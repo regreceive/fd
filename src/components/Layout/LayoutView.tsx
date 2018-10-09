@@ -10,6 +10,7 @@ import Consumer from '../../pages/Consumer';
 import Role from '../../pages/Role';
 import Splash from '../../pages/Splash';
 import Login from '../../pages/Login';
+import { IUser } from '../../types';
 
 import './LayoutView.css';
 
@@ -18,7 +19,7 @@ const splashEnable = process.env.REACT_APP_SPLASH === 'on';
 
 interface IProps {
   isLogin: boolean;
-  type: -1 | 0 | 1;
+  type: IUser['type'];
   replace: (path: string) => void;
 }
 

@@ -14,13 +14,13 @@ import { replace } from 'connected-react-router';
 import autobind from 'autobind-decorator';
 
 import en from 'lang/en.json';
-import { IStoreState } from '../../types';
+import { IStoreState, IUser } from '../../types';
 import LayoutView from './LayoutView';
 
 interface IStateProps {
   isLogin: boolean;
   lang: string;
-  type: -1 | 0 | 1;
+  type: IUser['type'];
 }
 
 interface IDispatchProps {
@@ -41,7 +41,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 });
 
 @(withLocalize as any)
-@(connect<IStateProps, IDispatchProps>(
+@(connect(
   mapStateToProps,
   mapDispatchToProps,
 ) as any)
@@ -70,8 +70,11 @@ export default class Layout extends React.Component {
     return this.props as LocalizeContextProps & IStateProps & IDispatchProps;
   }
 
-  public shouldComponentUpdate() {
-    return false;
+  public shouldComponentUpdate(nextProps: IStateProps) {
+    return (
+      nextProps.type !== this.injected.type ||
+      nextProps.isLogin !== this.injected.isLogin
+    );
   }
 
   @autobind
