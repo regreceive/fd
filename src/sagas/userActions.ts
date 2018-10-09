@@ -5,6 +5,7 @@ import { loginComplete } from '../actions/userActions';
 
 const API = process.env.REACT_APP_API;
 
+// fetch基础上包装了一层
 export function* request(
   uri: string,
   credentials?: RequestInit['credentials'],

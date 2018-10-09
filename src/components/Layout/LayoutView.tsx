@@ -10,9 +10,11 @@ import Consumer from '../../pages/Consumer';
 import Role from '../../pages/Role';
 import Splash from '../../pages/Splash';
 import Login from '../../pages/Login';
-import { IUser } from '../../types';
+import toast from '../../utils/toast';
 
 import './LayoutView.css';
+import { IUser } from '../../reducers/userReducer';
+import { IGlobal } from '../../reducers/globalReducer';
 
 const basePath = process.env.REACT_APP_BASE_PATH;
 const splashEnable = process.env.REACT_APP_SPLASH === 'on';
@@ -20,12 +22,21 @@ const splashEnable = process.env.REACT_APP_SPLASH === 'on';
 interface IProps {
   isLogin: boolean;
   type: IUser['type'];
+  toast: IGlobal['toast'];
   replace: (path: string) => void;
 }
 
 export default class LayoutView extends React.Component<IProps> {
+  public toastId: string;
+
   // 避免react-localize-redux初始化操作
   public shouldComponentUpdate(nextProps: Readonly<IProps>) {
+    // 全局信息提示
+    if (nextProps.toast !== '' && nextProps.toast !== this.toastId) {
+      this.toastId = nextProps.toast;
+      toast(this.toastId);
+    }
+
     return (
       nextProps.type !== this.props.type ||
       nextProps.isLogin !== this.props.isLogin

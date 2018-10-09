@@ -1,3 +1,6 @@
+import { IGlobal } from '../reducers/globalReducer';
+import { IUser } from '../reducers/userReducer';
+
 declare module 'react' {
   // tslint:disable-next-line: interface-name
   interface HTMLAttributes<T> {
@@ -17,18 +20,7 @@ export interface IAction {
   payload?: any;
 }
 
-export interface IUserConfig {
-  lang: string;
-}
-
-export interface IUser {
-  token: string;
-  username: string;
-  type: -1 | 0 | 1;
-  role: number;
-  config: IUserConfig;
-}
-
 export interface IStoreState {
+  global: IGlobal;
   user: IUser;
 }

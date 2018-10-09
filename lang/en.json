@@ -18,5 +18,22 @@
     "password": {
       "placeholder": "密码"
     }
+  },
+
+  "role": {
+    "title": "选择角色"
+  },
+
+  "toast": {
+    "loading": {
+      "login": "登录中"
+    },
+    "success": {
+      "login": "登录成功"
+    },
+    "fail": {
+      "account_not_found": "账户不存在",
+      "password_incorrect": "密码错误"
+    }
   }
 }

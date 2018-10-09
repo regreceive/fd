@@ -6,8 +6,8 @@ exports.login = ctx => {
     data: {
       token: '123',
       username,
-      type: -1,
-      role: 0,
+      role: 1,
+      toast: 'success.login',
     },
   };
 };

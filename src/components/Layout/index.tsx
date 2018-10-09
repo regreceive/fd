@@ -14,13 +14,16 @@ import { replace } from 'connected-react-router';
 import autobind from 'autobind-decorator';
 
 import en from 'lang/en.json';
-import { IStoreState, IUser } from '../../types';
+import { IStoreState } from '../../types';
 import LayoutView from './LayoutView';
+import { IUser } from '../../reducers/userReducer';
+import { IGlobal } from '../../reducers/globalReducer';
 
 interface IStateProps {
   isLogin: boolean;
   lang: string;
   type: IUser['type'];
+  toast: IGlobal['toast'];
 }
 
 interface IDispatchProps {
@@ -34,6 +37,7 @@ const mapStateToProps = (state: IStoreState) => ({
   isLogin: state.user.token.length > 0,
   lang: state.user.config.lang,
   type: state.user.type,
+  toast: state.global.toast,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
@@ -91,6 +95,7 @@ export default class Layout extends React.Component {
         <LayoutView
           isLogin={this.injected.isLogin}
           type={this.injected.type}
+          toast={this.injected.toast}
           replace={this.injected.replace}
         />
       </LocaleProvider>

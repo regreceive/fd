@@ -1,4 +1,5 @@
-import { IUser } from '../types';
+import { IUser } from '../reducers/userReducer';
+import { IGlobal } from '../reducers/globalReducer';
 
 export interface ILogin {
   username: string;
@@ -16,6 +17,7 @@ export interface ILoginComplete {
   username: IUser['username'];
   type: IUser['type'];
   role: IUser['role'];
+  toast: IGlobal['toast'];
 }
 export function loginComplete(data: ILoginComplete) {
   return {
