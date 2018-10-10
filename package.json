@@ -65,7 +65,8 @@
     "build-js": "node scripts/build.js",
     "build": "npm-run-all build-css build-js",
     "build:release": "cross-env yarn build-css && GENERATE_SOURCEMAP=false node scripts/build.js --release",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "fix": "prettier --write \"src/**/*.{ts,tsx}\""
   },
   "devDependencies": {
     "@types/jest": "^23.3.2",

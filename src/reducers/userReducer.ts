@@ -1,5 +1,5 @@
 import { IAction } from '../types';
-import { ILoginComplete } from '../actions/userActions';
+import { ILoginComplete, IRole } from '../actions/userActions';
 
 export interface IUser {
   token: string;
@@ -23,7 +23,7 @@ const initState: IUser = {
   },
 };
 
-function getType(role: number) {
+export function getType(role: number) {
   if (role === 0) {
     return -1;
   } else if (role <= 4) {
@@ -44,6 +44,15 @@ const user = (state = initState, action: IAction): IUser => {
       }
       delete data.toast;
       return { ...state, ...(data as IUser) };
+    }
+    case 'CHOOSE_ROLE': {
+      const role = action.payload as number;
+      return { ...state, role };
+    }
+    case 'UPDATE_ROLE_COMPLETE': {
+      const data = action.payload as IRole;
+      const type = getType(data.role);
+      return { ...state, type, ...data };
     }
     default:
       return state;

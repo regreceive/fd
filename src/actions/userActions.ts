@@ -25,3 +25,38 @@ export function loginComplete(data: ILoginComplete) {
     payload: data,
   };
 }
+
+export function chooseRole(role: number) {
+  return {
+    type: 'CHOOSE_ROLE',
+    payload: role,
+  };
+}
+
+export function updateType() {
+  return {
+    type: 'UPDATE_TYPE',
+  };
+}
+
+export interface IRole {
+  role: number;
+}
+
+export function updateRole(role: IRole) {
+  return {
+    type: 'UPDATE_ROLE',
+    payload: role,
+  };
+}
+
+export interface IRoleComplete {
+  role: IUser['role'];
+  toast: IGlobal['toast'];
+}
+export function updateRoleComplete(role: IRoleComplete) {
+  return {
+    type: 'UPDATE_ROLE_COMPLETE',
+    payload: role,
+  };
+}

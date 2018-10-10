@@ -12,7 +12,9 @@
       "options": [120]
     },
     "quotemark": {
-      "options": ["single", "jsx-double"]
+      "options": [
+        "single",
+        "jsx-double"]
     },
     "ordered-imports": false,
     // 不提示错误，用prettier自动修复

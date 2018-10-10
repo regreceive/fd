@@ -7,7 +7,7 @@
     "lib": ["es6", "dom"],
     "sourceMap": true,
     "allowJs": true,
-    "jsx": "preserve", // css-modules需要babel插件，所以这里不设置，保留jsx格式用babel去转
+    "jsx": "preserve", // css-modules需要babel的react转换插件，所以这里不设置，保留jsx格式用babel去转
     "moduleResolution": "node",
     "rootDir": "src",
     "forceConsistentCasingInFileNames": true,

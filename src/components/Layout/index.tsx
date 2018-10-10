@@ -18,6 +18,7 @@ import { IStoreState } from '../../types';
 import LayoutView from './LayoutView';
 import { IUser } from '../../reducers/userReducer';
 import { IGlobal } from '../../reducers/globalReducer';
+import { clearToast } from '../../actions/globalActions';
 
 interface IStateProps {
   isLogin: boolean;
@@ -28,6 +29,7 @@ interface IStateProps {
 
 interface IDispatchProps {
   replace: (path: string) => void;
+  clearToast: () => void;
 }
 
 const basePath = process.env.REACT_APP_BASE_PATH;
@@ -42,6 +44,7 @@ const mapStateToProps = (state: IStoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   replace: (path: string) => dispatch(replace(path)),
+  clearToast: () => dispatch(clearToast()),
 });
 
 @(withLocalize as any)
@@ -77,7 +80,8 @@ export default class Layout extends React.Component {
   public shouldComponentUpdate(nextProps: IStateProps) {
     return (
       nextProps.type !== this.injected.type ||
-      nextProps.isLogin !== this.injected.isLogin
+      nextProps.isLogin !== this.injected.isLogin ||
+      nextProps.toast !== ''
     );
   }
 
@@ -96,6 +100,7 @@ export default class Layout extends React.Component {
           isLogin={this.injected.isLogin}
           type={this.injected.type}
           toast={this.injected.toast}
+          clearToast={this.injected.clearToast}
           replace={this.injected.replace}
         />
       </LocaleProvider>

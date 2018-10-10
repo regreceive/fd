@@ -9,7 +9,7 @@ export function getQueryStringByName(name: string, url?: string): string {
     return '';
   }
   const lang = decodeURIComponent(results[2]).replace(/\+/g, '');
-  if(!/^(en|cn)$/.test(lang)) {
+  if (!/^(en|cn)$/.test(lang)) {
     return '';
   }
   return lang;
