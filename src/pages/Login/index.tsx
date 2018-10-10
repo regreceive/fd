@@ -8,21 +8,30 @@ import { ILogin, login } from '../../actions/userActions';
 import { testEmail } from '../../utils/validator';
 
 import './index.css';
+import { IStoreState } from '../../types';
 
 interface IState {
   submitDisabled: boolean;
+}
+
+interface IStateProps {
+  waiting: boolean;
 }
 
 interface IDispatchProps {
   login: (data: ILogin) => void;
 }
 
+const mapStateToProps = (state: IStoreState) => ({
+  waiting: state.user.status.login === 1,
+});
+
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   login: (data: ILogin) => dispatch(login(data)),
 });
 
 @(connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 ) as any)
 export default class extends Component<{}, IState> {
@@ -31,7 +40,7 @@ export default class extends Component<{}, IState> {
   public password = React.createRef<HTMLInputElement>();
 
   get injected() {
-    return this.props as IDispatchProps;
+    return this.props as IStateProps & IDispatchProps;
   }
 
   public changeHandle = () => {
@@ -77,7 +86,7 @@ export default class extends Component<{}, IState> {
           </Translate>
           <Button
             type="ghost"
-            disabled={this.state.submitDisabled}
+            disabled={this.state.submitDisabled || this.injected.waiting}
             onClick={this.loginHandle}
           >
             <Translate id="login.button" />

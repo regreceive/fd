@@ -9,6 +9,9 @@ export interface IUser {
   config: {
     lang: string;
   };
+  status: {
+    login: number;
+  };
 }
 
 const lang = process.env.REACT_APP_DEFAULT_LANGUAGE || 'en';
@@ -20,6 +23,9 @@ const initState: IUser = {
   role: 0, // -1
   config: {
     lang,
+  },
+  status: {
+    login: 0,
   },
 };
 
@@ -33,8 +39,24 @@ export function getType(role: number) {
   }
 }
 
+function freeze(state: IUser): IUser['status'] {
+  const status = { ...state.status };
+  status.login = 1;
+  return status;
+}
+
+function release(state: IUser): IUser['status'] {
+  const status = { ...state.status };
+  status.login = 0;
+  return status;
+}
+
 const user = (state = initState, action: IAction): IUser => {
   switch (action.type) {
+    case 'LOGIN': {
+      const status = freeze(state);
+      return { ...state, status };
+    }
     case 'LOGIN_COMPLETE': {
       let data = action.payload as ILoginComplete & IUser;
       if (data.token === '') {
@@ -43,7 +65,8 @@ const user = (state = initState, action: IAction): IUser => {
         data = { ...data, type: getType(data.role) };
       }
       delete data.toast;
-      return { ...state, ...(data as IUser) };
+      const status = release(state);
+      return { ...state, ...(data as IUser), status };
     }
     case 'CHOOSE_ROLE': {
       const role = action.payload as number;

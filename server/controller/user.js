@@ -1,4 +1,4 @@
-exports.login = ctx => {
+exports.login = async ctx => {
   const json = ctx.request.body;
   const { username } = json;
   let data;
@@ -7,8 +7,16 @@ exports.login = ctx => {
   } else {
     data = {token: '123', username, role: 1, toast: 'success.login'};
   }
+
+  await sleep();
   ctx.body = {
     status: 'ok',
     data
   };
 };
+
+function sleep() {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(), 1000)
+  })
+}

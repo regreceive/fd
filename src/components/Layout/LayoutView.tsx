@@ -24,7 +24,6 @@ interface IProps {
   isLogin: boolean;
   type: IUser['type'];
   toast: IGlobal['toast'];
-  replace: (path: string) => void;
   clearToast: () => void;
 }
 

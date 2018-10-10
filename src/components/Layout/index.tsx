@@ -81,7 +81,7 @@ export default class Layout extends React.Component {
     return (
       nextProps.type !== this.injected.type ||
       nextProps.isLogin !== this.injected.isLogin ||
-      nextProps.toast !== ''
+      nextProps.toast !== this.injected.toast
     );
   }
 
@@ -101,7 +101,6 @@ export default class Layout extends React.Component {
           type={this.injected.type}
           toast={this.injected.toast}
           clearToast={this.injected.clearToast}
-          replace={this.injected.replace}
         />
       </LocaleProvider>
     );
