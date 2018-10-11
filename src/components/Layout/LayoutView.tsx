@@ -14,6 +14,7 @@ import Login from '../../pages/Login';
 import toast from '../../utils/toast';
 import { IUser } from '../../reducers/userReducer';
 import { IGlobal } from '../../reducers/globalReducer';
+import { clearToast } from '../../actions/globalActions';
 import './LayoutView.css';
 
 import Home from '../../pages/Producer/Home';
@@ -24,8 +25,9 @@ const splashEnable = process.env.REACT_APP_SPLASH === 'on';
 interface IProps {
   isLogin: boolean;
   side: IUser['side'];
+  role: IUser['role'];
   toast: IGlobal['toast'];
-  clearToast: () => void;
+  clearToast: typeof clearToast;
 }
 
 function getDefaultPath(side: IUser['side']) {
@@ -50,11 +52,12 @@ export default class LayoutView extends React.Component<IProps> {
 
     return (
       nextProps.side !== this.props.side ||
+      nextProps.role !== this.props.role ||
       nextProps.isLogin !== this.props.isLogin
     );
   }
 
-  // 登录状态失效PrivateRoute负责重定向。type实时变化，以下路由负责重定向。
+  // 登录状态失效PrivateRoute负责重定向。side实时变化，以下路由负责重定向。
   public render() {
     const defaultPath = getDefaultPath(this.props.side);
 
@@ -76,12 +79,13 @@ export default class LayoutView extends React.Component<IProps> {
               <PrivateRoute path={basePath + '/choose-role'} component={Role} />
             )}
 
-            {this.props.side === '' && (
-              <PrivateRoute
-                path={basePath + '/agreement'}
-                component={Agreement}
-              />
-            )}
+            {this.props.side === '' &&
+              this.props.role !== '' && (
+                <PrivateRoute
+                  path={basePath + '/agreement'}
+                  component={Agreement}
+                />
+              )}
 
             {this.props.side === 'SELL' && (
               <PrivateRoute

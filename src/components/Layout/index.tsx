@@ -24,12 +24,13 @@ interface IStateProps {
   isLogin: boolean;
   lang: string;
   side: IUser['side'];
+  role: IUser['role'];
   toast: IGlobal['toast'];
 }
 
 interface IDispatchProps {
-  replace: (path: string) => void;
-  clearToast: () => void;
+  replace: typeof replace;
+  clearToast: typeof clearToast;
 }
 
 const basePath = process.env.REACT_APP_BASE_PATH;
@@ -39,6 +40,7 @@ const mapStateToProps = (state: IStoreState) => ({
   isLogin: state.user.token.length > 0,
   lang: state.user.config.lang,
   side: state.user.side,
+  role: state.user.role,
   toast: state.global.toast,
 });
 
@@ -80,6 +82,7 @@ export default class Layout extends React.Component {
   public shouldComponentUpdate(nextProps: IStateProps) {
     return (
       nextProps.side !== this.injected.side ||
+      nextProps.role !== this.injected.role ||
       nextProps.isLogin !== this.injected.isLogin ||
       nextProps.toast !== this.injected.toast
     );
@@ -99,6 +102,7 @@ export default class Layout extends React.Component {
         <LayoutView
           isLogin={this.injected.isLogin}
           side={this.injected.side}
+          role={this.injected.role}
           toast={this.injected.toast}
           clearToast={this.injected.clearToast}
         />
