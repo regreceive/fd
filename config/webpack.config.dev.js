@@ -146,21 +146,21 @@ module.exports = {
             },
           },
 
-          {
-            test: /\.svg$/,
-            use: [
-              'babel-loader',
-              {
-                loader: 'react-svg-loader',
-                options: {
-                  svgo: {
-                    plugins: [{ removeTitle: true }],
-                    floatPrecision: 2,
-                  },
-                },
-              },
-            ],
-          },
+          // {
+          //   test: /\.svg$/,
+          //   use: [
+          //     'babel-loader',
+          //     {
+          //       loader: 'react-svg-loader',
+          //       options: {
+          //         svgo: {
+          //           plugins: [{ removeTitle: true }],
+          //           floatPrecision: 2,
+          //         },
+          //       },
+          //     },
+          //   ],
+          // },
 
           {
             test: /\.(js|jsx|mjs)$/,

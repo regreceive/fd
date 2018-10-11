@@ -15,7 +15,7 @@ export function login(data: ILogin) {
 export interface ILoginComplete {
   token: IUser['token'];
   username: IUser['username'];
-  type: IUser['type'];
+  side: IUser['side'];
   role: IUser['role'];
   toast: IGlobal['toast'];
 }
@@ -26,21 +26,15 @@ export function loginComplete(data: ILoginComplete) {
   };
 }
 
-export function chooseRole(role: number) {
+export function chooseRole(role: string) {
   return {
     type: 'CHOOSE_ROLE',
     payload: role,
   };
 }
 
-export function updateType() {
-  return {
-    type: 'UPDATE_TYPE',
-  };
-}
-
 export interface IRole {
-  role: number;
+  role: string;
 }
 
 export function updateRole(role: IRole) {

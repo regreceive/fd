@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { LocalizeContextProps, Translate } from 'react-localize-redux';
+import { Translate } from 'react-localize-redux';
 import { connect } from 'react-redux';
 import { Button, Icon, NavBar } from 'antd-mobile';
-import { goBack, push } from 'connected-react-router';
 import { Dispatch } from 'redux';
+import { RouteComponentProps } from 'react-router';
+
 import { IStoreState } from '../../types';
-import { getType, IUser } from '../../reducers/userReducer';
+import { IUser } from '../../reducers/userReducer';
 import { updateRole } from '../../actions/userActions';
 
 import './index.css';
@@ -18,15 +19,11 @@ interface IStateProps {
   lang: IUser['config']['lang'];
 }
 interface IDispatchProps {
-  push: (path: string) => void;
-  goBack: () => void;
-  updateRole: (role: number) => void;
+  updateRole: (role: string) => void;
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  push: (path: string) => dispatch(push(path)),
-  goBack: () => dispatch(goBack()),
-  updateRole: (role: number) => dispatch(updateRole({ role })),
+  updateRole: (role: string) => dispatch(updateRole({ role })),
 });
 
 const mapStateToProps = (state: IStoreState) => ({
@@ -46,16 +43,15 @@ export default class extends Component<{}, IState> {
   public state = { agreement: '' };
 
   get injected() {
-    return this.props as LocalizeContextProps & IStateProps & IDispatchProps;
+    return this.props as IStateProps & IDispatchProps & RouteComponentProps;
   }
 
   public componentDidMount() {
     const lang = this.injected.lang;
-    const type = getType(this.injected.role);
-    const key = ['producer', 'consumer'][type];
+    const side = this.injected.location.state.side;
 
     getAgreement(lang).then(data => {
-      this.setState({ agreement: data[key] });
+      this.setState({ agreement: data[side] });
     });
   }
 
@@ -69,7 +65,7 @@ export default class extends Component<{}, IState> {
         <NavBar
           mode="light"
           icon={<Icon type="left" />}
-          onLeftClick={this.injected.goBack}
+          onLeftClick={this.injected.history.goBack}
         >
           <Translate id="login.agreement" />
         </NavBar>

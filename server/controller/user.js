@@ -3,9 +3,9 @@ exports.login = async ctx => {
   const { username } = json;
   let data;
   if (username === 'a@s.com') {
-    data = {token: '', role: 0, toast: 'fail.account_not_found'};
+    data = {token: '', role: '', side: '', toast: 'fail.account_not_found'};
   } else {
-    data = {token: '123', username, role: 1, toast: 'success.login'};
+    data = {token: '123', username, role: '', side: '', toast: 'success.login'};
   }
 
   await sleep();

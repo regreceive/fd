@@ -12,19 +12,31 @@ import Agreement from '../../pages/Agreement';
 import Splash from '../../pages/Splash';
 import Login from '../../pages/Login';
 import toast from '../../utils/toast';
-
-import './LayoutView.css';
 import { IUser } from '../../reducers/userReducer';
 import { IGlobal } from '../../reducers/globalReducer';
+import './LayoutView.css';
+
+import Home from '../../pages/Producer/Home';
 
 const basePath = process.env.REACT_APP_BASE_PATH;
 const splashEnable = process.env.REACT_APP_SPLASH === 'on';
 
 interface IProps {
   isLogin: boolean;
-  type: IUser['type'];
+  side: IUser['side'];
   toast: IGlobal['toast'];
   clearToast: () => void;
+}
+
+function getDefaultPath(side: IUser['side']) {
+  switch (side) {
+    case 'BUY':
+      return '/consumer';
+    case 'SELL':
+      return '/producer';
+    default:
+      return '/choose-role';
+  }
 }
 
 export default class LayoutView extends React.Component<IProps> {
@@ -37,21 +49,21 @@ export default class LayoutView extends React.Component<IProps> {
     }
 
     return (
-      nextProps.type !== this.props.type ||
+      nextProps.side !== this.props.side ||
       nextProps.isLogin !== this.props.isLogin
     );
   }
 
   // 登录状态失效PrivateRoute负责重定向。type实时变化，以下路由负责重定向。
   public render() {
-    const defaultPath = ['/choose-role', '/producer', '/consumer'][
-      this.props.type + 1
-    ];
+    const defaultPath = getDefaultPath(this.props.side);
 
     return (
       <div className="full-screen">
         <ConnectedRouter history={history}>
           <Switch>
+            <Route path="/a" component={Home} />
+
             {splashEnable && (
               <Route path={basePath + '/splash'} component={Splash} />
             )}
@@ -60,25 +72,25 @@ export default class LayoutView extends React.Component<IProps> {
               <Route path={basePath + '/login'} component={Login} />
             )}
 
-            {this.props.type < 0 && (
+            {this.props.side === '' && (
               <PrivateRoute path={basePath + '/choose-role'} component={Role} />
             )}
 
-            {this.props.type < 0 && (
+            {this.props.side === '' && (
               <PrivateRoute
                 path={basePath + '/agreement'}
                 component={Agreement}
               />
             )}
 
-            {this.props.type === 0 && (
+            {this.props.side === 'SELL' && (
               <PrivateRoute
                 path={basePath + '/producer'}
                 component={Producer}
               />
             )}
 
-            {this.props.type === 1 && (
+            {this.props.side === 'BUY' && (
               <PrivateRoute
                 path={basePath + '/consumer'}
                 component={Consumer}

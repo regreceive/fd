@@ -23,7 +23,7 @@ import { clearToast } from '../../actions/globalActions';
 interface IStateProps {
   isLogin: boolean;
   lang: string;
-  type: IUser['type'];
+  side: IUser['side'];
   toast: IGlobal['toast'];
 }
 
@@ -38,7 +38,7 @@ const splashEnable = process.env.REACT_APP_SPLASH === 'on';
 const mapStateToProps = (state: IStoreState) => ({
   isLogin: state.user.token.length > 0,
   lang: state.user.config.lang,
-  type: state.user.type,
+  side: state.user.side,
   toast: state.global.toast,
 });
 
@@ -79,7 +79,7 @@ export default class Layout extends React.Component {
 
   public shouldComponentUpdate(nextProps: IStateProps) {
     return (
-      nextProps.type !== this.injected.type ||
+      nextProps.side !== this.injected.side ||
       nextProps.isLogin !== this.injected.isLogin ||
       nextProps.toast !== this.injected.toast
     );
@@ -98,7 +98,7 @@ export default class Layout extends React.Component {
       <LocaleProvider locale={enUS}>
         <LayoutView
           isLogin={this.injected.isLogin}
-          type={this.injected.type}
+          side={this.injected.side}
           toast={this.injected.toast}
           clearToast={this.injected.clearToast}
         />

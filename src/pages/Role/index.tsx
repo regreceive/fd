@@ -1,46 +1,68 @@
 import React, { Component } from 'react';
-import { Translate } from 'react-localize-redux';
+import { LocalizeContextProps, withLocalize } from 'react-localize-redux';
 import { connect } from 'react-redux';
-import { Button } from 'antd-mobile';
-import { push } from 'connected-react-router';
+import { Modal } from 'antd-mobile';
 import { Dispatch } from 'redux';
-
+import { RouteComponentProps } from 'react-router';
 import { chooseRole } from '../../actions/userActions';
+import { IUser } from '../../reducers/userReducer';
+import Brand from './Brand';
 
 import './index.css';
 
+interface IState {
+  role: IUser['role'];
+}
+
 interface IDispatchProps {
-  push: (path: string) => void;
-  chooseRole: (role: number) => void;
+  chooseRole: typeof chooseRole;
 }
 
 const basePath = process.env.REACT_APP_BASE_PATH;
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  push: (path: string) => dispatch(push(path)),
-  chooseRole: (role: number) => dispatch(chooseRole(role)),
+  chooseRole: (role: string) => dispatch(chooseRole(role)),
 });
 
+@(withLocalize as any)
 @(connect(
   null,
   mapDispatchToProps,
 ) as any)
-export default class extends Component {
+export default class extends Component<{}, IState> {
+  public state = {
+    role: '',
+  };
+
   get injected() {
-    return this.props as IDispatchProps;
+    return this.props as IDispatchProps &
+      RouteComponentProps &
+      LocalizeContextProps;
   }
 
   public clickHandle = () => {
-    this.injected.chooseRole(1);
-    this.injected.push(basePath + '/agreement');
+    const translate = this.injected.translate;
+    const desc = translate('modal.role.' + this.state.role);
+    Modal.alert(translate('modal.role.title'), desc, [
+      {
+        text: 'Cancel',
+      },
+      {
+        text: 'Ok',
+        onPress: this.pressHandle,
+      },
+    ]);
+  };
+
+  public pressHandle = () => {
+    this.injected.chooseRole('WIND');
+    this.injected.history.push(basePath + '/agreement', { side: 'SELL' });
   };
 
   public render() {
     return (
       <div styleName="container">
-        <Button type="primary" onClick={this.clickHandle}>
-          <Translate id="login.next" />
-        </Button>
+        <Brand />
       </div>
     );
   }

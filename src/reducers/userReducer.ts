@@ -1,81 +1,75 @@
 import { IAction } from '../types';
-import { ILoginComplete, IRole } from '../actions/userActions';
+import { ILoginComplete, IRoleComplete } from '../actions/userActions';
 
 export interface IUser {
   token: string;
   username: string;
-  type: -1 | 0 | 1;
-  role: number;
+  side: '' | 'BUY' | 'SELL';
+  role: string;
   config: {
     lang: string;
   };
   status: {
     login: number;
+    role: number;
   };
 }
 
 const lang = process.env.REACT_APP_DEFAULT_LANGUAGE || 'en';
 
 const initState: IUser = {
-  token: '', // ''
+  token: '',
   username: '',
-  type: 0, // -1
-  role: 0, // -1
+  side: '',
+  role: '',
   config: {
     lang,
   },
   status: {
     login: 0,
+    role: 0,
   },
 };
 
-export function getType(role: number) {
-  if (role === 0) {
-    return -1;
-  } else if (role <= 4) {
-    return 0;
-  } else {
-    return 1;
-  }
-}
-
-function freeze(state: IUser): IUser['status'] {
+function freeze(state: IUser, key: keyof IUser['status']): IUser['status'] {
   const status = { ...state.status };
-  status.login = 1;
+  status[key] = 1;
   return status;
 }
 
-function release(state: IUser): IUser['status'] {
+function release(state: IUser, key: keyof IUser['status']): IUser['status'] {
   const status = { ...state.status };
-  status.login = 0;
+  status[key] = 0;
   return status;
 }
 
 const user = (state = initState, action: IAction): IUser => {
   switch (action.type) {
     case 'LOGIN': {
-      const status = freeze(state);
+      const status = freeze(state, 'login');
       return { ...state, status };
     }
     case 'LOGIN_COMPLETE': {
       let data = action.payload as ILoginComplete & IUser;
-      if (data.token === '') {
-        data = { ...data, type: -1, role: 0, username: '' };
-      } else {
-        data = { ...data, type: getType(data.role) };
-      }
+      data = { ...data };
       delete data.toast;
-      const status = release(state);
+      const status = release(state, 'login');
       return { ...state, ...(data as IUser), status };
     }
     case 'CHOOSE_ROLE': {
-      const role = action.payload as number;
+      const role = action.payload as IUser['role'];
       return { ...state, role };
     }
+
+    case 'UPDATE_ROLE': {
+      const status = freeze(state, 'role');
+      return { ...state, status };
+    }
     case 'UPDATE_ROLE_COMPLETE': {
-      const data = action.payload as IRole;
-      const type = getType(data.role);
-      return { ...state, type, ...data };
+      const data = action.payload as IRoleComplete & IUser;
+      delete data.toast;
+      const status = release(state, 'role');
+      return { ...state, ...(data as IUser), status };
     }
     default:
       return state;

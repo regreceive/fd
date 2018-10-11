@@ -1,5 +1,6 @@
 import { IGlobal } from '../reducers/globalReducer';
 import { IUser } from '../reducers/userReducer';
+import { History } from 'history';
 
 declare module 'react' {
   // tslint:disable-next-line: interface-name
@@ -23,4 +24,8 @@ export interface IAction {
 export interface IStoreState {
   global: IGlobal;
   user: IUser;
+}
+
+export interface IHistory {
+  history: History;
 }

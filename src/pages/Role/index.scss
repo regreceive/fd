@@ -1,5 +1,8 @@
 @import '../common.scss';
 
 .container {
+  height: 100%;
   @extend %padding;
+  background: url(./assets/bg.png) no-repeat 0;
+  background-size: 100%;
 }
