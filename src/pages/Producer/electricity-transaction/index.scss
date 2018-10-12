@@ -1,0 +1,48 @@
+@import '../../common.scss';
+.container {
+  @extend %scroll;
+  @extend %padding;
+  padding: 0;
+  background: #f6f6f6;
+}
+
+.trend {
+  width: 100%;
+  height: 335px;
+  background-color: #ff764e;
+}
+.attribute {
+  width: 100%;
+  height: 270px;
+  background-color: #fff;
+
+  .attribute-inset {
+    padding: 0 26px 0 24px;
+    dl {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      dt {
+        display: block;
+        color: #737b91;
+      }
+      dd {
+        display: block;
+      }
+    }
+  }
+  .fixed {
+    height: 33px;
+    font-family: PingFangSC;
+    font-size: 24px;
+    padding-top: 25px;
+  }
+}
+.line {
+  height: 1px;
+  background-color: #f4f6f8;
+  margin-top: 22px;
+}
+.condition {
+  margin-top: 15px;
+}
