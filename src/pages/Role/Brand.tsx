@@ -1,22 +1,31 @@
 import React from 'react';
+import { Translate } from 'react-localize-redux';
+import cs from 'classnames';
+import './index.css';
 
-const Brand = () => {
+interface IProps {
+  id: string;
+  selected?: boolean;
+  onClick?: () => void;
+}
+
+const Brand = (props: IProps) => {
+  const id = props.id;
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 315 359">
-      <g id="图层_2">
-        <g id="图层_1-2">
-          <polygon
-            points="315 347 301 359 14 0 315 174 315 347"
-            style={{ fill: '#d83d1e' }}
-          />
-          <polygon
-            points="0 12 14 0 315 174 301 186 0 12"
-            style={{ fill: '#ff7d55' }}
-          />
-          <polygon
-            points="301 359 0 185 0 12 301 186 301 359"
-            style={{ fill: '#ff5f1d' }}
-          />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 150 170"
+      styleName={cs(id, { selected: props.selected })}
+      onClick={props.onClick}
+    >
+      <g>
+        <g>
+          <polygon points="150 164.32 143.33 170 6.67 0 150 82.4 150 164.32" />
+          <polygon points="0 5.68 6.67 0 150 82.4 143.33 88.08 0 5.68" />
+          <polygon points="143.33 170 0 87.6 0 5.68 143.33 88.08 143.33 170" />
+          <text x="48%" y="50%">
+            <Translate id={'role.' + id} />
+          </text>
         </g>
       </g>
     </svg>

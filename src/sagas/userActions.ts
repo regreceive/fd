@@ -1,7 +1,11 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects';
 
 import { IAction } from '../types';
-import { loginComplete, updateRoleComplete } from '../actions/userActions';
+import {
+  getAvailableRolesComplete,
+  loginComplete,
+  updateRoleComplete,
+} from '../actions/userActions';
 
 const API = process.env.REACT_APP_API;
 
@@ -40,6 +44,17 @@ function* login(action: IAction) {
   }
 }
 
+function* getAvailableRoles() {
+  try {
+    const response = yield call(request, '/get-available-roles', 'include');
+
+    const json = yield call([response, 'json']);
+    yield put(getAvailableRolesComplete(json.data));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 function* updateRole(action: IAction) {
   try {
     const response = yield call(
@@ -58,5 +73,6 @@ function* updateRole(action: IAction) {
 
 export function* watchUser() {
   yield takeEvery('LOGIN', login);
+  yield takeEvery('GET_AVAILABLE_ROLES', getAvailableRoles);
   yield takeEvery('UPDATE_ROLE', updateRole);
 }

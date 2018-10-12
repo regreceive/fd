@@ -53,8 +53,63 @@ POST /api/login
 - role (0 初始状态。>0 各种角色，1 ～ 4 发电用户，4 ～ 8 用电用户。)
 - toast 客户端显示的提示信息，可以是空字符串，也可以是以下几种：
 
-| 码                      | 说明       |
+| toast                   | 说明       |
 | ----------------------- | ---------- |
 | success.login           | 登录成功   |
 | fail.account_not_found  | 账户不存在 |
 | fail.password_incorrect | 密码不对   |
+
+### 获得可用角色
+
+GET /api/get-available-roles
+
+响应
+
+```js
+{
+  status: 'ok',
+  data: {
+    token: '123',
+    toast: 'fail.none_of_available_roles',
+    roles: [
+      { name: 'SCHOOL', available: true, side: 'SELL' },
+      { name: 'FACTORY', available: true, side: 'SELL' },
+      { name: 'MALL', available: true, side: 'SELL' },
+      { name: 'COMMUNITY', available: true, side: 'SELL' },
+      { name: 'PHOTOVOLTAIC', available: true, side: 'BUY' },
+      { name: 'WIND', available: true, side: 'BUY' },
+      { name: 'BATTERY', available: true, side: 'BUY' },
+      { name: 'GAS', available: true, side: 'BUY' }
+    ]
+  }
+}
+```
+
+- roles: Array<{ role: string; available: boolean; side: 'SEEL' | 'BUY' }>
+
+| toast                        | 说明           |
+| ---------------------------- | -------------- |
+| fail.none_of_available_roles | 没有可用的角色 |
+
+### 更新角色
+
+POST /api/update-role
+
+响应
+
+```js
+{
+  status: 'ok',
+  data: {
+    token: '123',
+    toast: '',
+    side: 'SELL',
+    role: 'SCHOOL'
+  },
+}
+```
+
+| toast             | 说明                   |
+| ----------------- | ---------------------- |
+| fail.login_again  | 重新登录               |
+| fail.role_in_used | 角色已占用，请重新选择 |

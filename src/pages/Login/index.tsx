@@ -23,7 +23,7 @@ interface IDispatchProps {
 }
 
 const mapStateToProps = (state: IStoreState) => ({
-  waiting: state.user.status.login === 1,
+  waiting: state.freeze.login === 1,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

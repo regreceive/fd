@@ -79,13 +79,12 @@ export default class LayoutView extends React.Component<IProps> {
               <PrivateRoute path={basePath + '/choose-role'} component={Role} />
             )}
 
-            {this.props.side === '' &&
-              this.props.role !== '' && (
-                <PrivateRoute
-                  path={basePath + '/agreement'}
-                  component={Agreement}
-                />
-              )}
+            {this.props.side === '' && (
+              <PrivateRoute
+                path={basePath + '/agreement'}
+                component={Agreement}
+              />
+            )}
 
             {this.props.side === 'SELL' && (
               <PrivateRoute

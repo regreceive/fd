@@ -7,7 +7,7 @@ import { RouteComponentProps } from 'react-router';
 
 import { IStoreState } from '../../types';
 import { IUser } from '../../reducers/userReducer';
-import { updateRole } from '../../actions/userActions';
+import { IRole, updateRole } from '../../actions/userActions';
 
 import './index.css';
 
@@ -15,20 +15,20 @@ interface IState {
   agreement: string;
 }
 interface IStateProps {
-  role: IUser['role'];
   lang: IUser['config']['lang'];
+  waiting: boolean;
 }
 interface IDispatchProps {
-  updateRole: (role: string) => void;
+  updateRole: typeof updateRole;
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  updateRole: (role: string) => dispatch(updateRole({ role })),
+  updateRole: (role: IRole) => dispatch(updateRole(role)),
 });
 
 const mapStateToProps = (state: IStoreState) => ({
-  role: state.user.role,
   lang: state.user.config.lang,
+  waiting: state.freeze.role === 1,
 });
 
 function getAgreement(code: string): Promise<{}> {
@@ -47,6 +47,11 @@ export default class extends Component<{}, IState> {
   }
 
   public componentDidMount() {
+    if (typeof this.injected.location.state !== 'object') {
+      this.injected.history.goBack();
+      return;
+    }
+
     const lang = this.injected.lang;
     const side = this.injected.location.state.side;
 
@@ -56,7 +61,7 @@ export default class extends Component<{}, IState> {
   }
 
   public clickHandle = () => {
-    this.injected.updateRole(this.injected.role);
+    this.injected.updateRole({ role: this.injected.location.state.role });
   };
 
   public render() {
@@ -74,7 +79,11 @@ export default class extends Component<{}, IState> {
             styleName="agreement"
             dangerouslySetInnerHTML={{ __html: this.state.agreement }}
           />
-          <Button type="primary" onClick={this.clickHandle}>
+          <Button
+            type="primary"
+            onClick={this.clickHandle}
+            disabled={this.injected.waiting}
+          >
             <Translate id="login.agree" />
           </Button>
         </div>

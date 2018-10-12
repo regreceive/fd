@@ -26,7 +26,15 @@
   },
 
   "role": {
-    "title": "选择角色"
+    "title": "选择角色",
+    "school": "学校",
+    "factory": "工厂",
+    "mall": "商场",
+    "community": "住宅小区",
+    "photovoltaic": "光伏发电",
+    "wind": "风能发电",
+    "battery": "储能电池",
+    "gas": "燃气轮机"
   },
 
   "toast": {
@@ -38,7 +46,10 @@
     },
     "fail": {
       "account_not_found": "账户不存在",
-      "password_incorrect": "密码错误"
+      "password_incorrect": "密码错误",
+      "none_of_available_roles": "没有可用的角色",
+      "login_again": "重新登录",
+      "role_in_used": "角色已占用，请重新选择"
     }
   },
 

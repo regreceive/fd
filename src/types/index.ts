@@ -1,10 +1,18 @@
+import * as React from 'react';
 import { IGlobal } from '../reducers/globalReducer';
 import { IUser } from '../reducers/userReducer';
-import { History } from 'history';
+import { IFreeze } from '../reducers/freezeReducer';
 
 declare module 'react' {
   // tslint:disable-next-line: interface-name
   interface HTMLAttributes<T> {
+    styleName?: string;
+  }
+
+  // tslint:disable-next-line: interface-name
+  interface SVGProps<T>
+    extends React.SVGAttributes<T>,
+      React.ClassAttributes<T> {
     styleName?: string;
   }
 }
@@ -23,9 +31,6 @@ export interface IAction {
 
 export interface IStoreState {
   global: IGlobal;
+  freeze: IFreeze;
   user: IUser;
-}
-
-export interface IHistory {
-  history: History;
 }
