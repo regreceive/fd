@@ -56,6 +56,9 @@ POST /api/login
 request = { username: 'aaa@sina.com', password: '111' };
 ```
 
+- username 用户名
+- password 密码
+
 响应
 
 ```js
@@ -107,7 +110,7 @@ roles
 
 - role 角色名称
 - available 是否可用
-- 发/用电
+- side 发/用电
 
 | toast                        | 说明           |
 | ---------------------------- | -------------- |
@@ -121,6 +124,8 @@ POST /api/update-role
 request = { role: 'community' };
 ```
 
+- role 角色名称
+
 响应
 
 ```js
@@ -131,6 +136,9 @@ response = {
   data: { side: 'SELL', role: 'SCHOOL' },
 };
 ```
+
+- role 角色名称
+- side 发/用电
 
 | toast             | 说明                   |
 | ----------------- | ---------------------- |
@@ -218,6 +226,9 @@ POST /api/get-offer
 ```js
 request = { power: 12, price: 1.21 };
 ```
+
+- power 发电量
+- price 电价
 
 响应
 
