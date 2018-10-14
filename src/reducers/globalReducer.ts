@@ -24,8 +24,8 @@ const global = (state = initState, action: IAction): IGlobal => {
       const { token, toast } = action.payload;
       return {
         ...state,
-        token,
-        toast,
+        token: token || '',
+        toast: toast || '',
       };
     }
     default:

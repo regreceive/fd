@@ -19,11 +19,11 @@ const Earns = (props: IProps) => {
         </div>
         <div styleName="second">
           <span>{price} EDF/度</span>
-          <span>共售卖</span>
+          <span>电价均值</span>
         </div>
         <div styleName="third">
           <span>{amount} EDF</span>
-          <span>共售卖</span>
+          <span>总费用</span>
         </div>
       </div>
     </div>
