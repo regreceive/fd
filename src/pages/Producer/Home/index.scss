@@ -1,0 +1,100 @@
+@import '../../common.scss';
+
+.container {
+  @extend %scroll;
+  background: #f6f6f6;
+
+  h2 {
+    margin: 30px 0 20px;
+    font-size: 24px;
+    color: #4a4a4a;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  @extend %padding;
+  background: #fff;
+  overflow: hidden;
+
+  > div > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f4f6f8;
+
+    &:first-child,
+    &:last-child {
+      border-bottom-width: 0;
+    }
+
+    > span:first-child {
+      padding: 26px 0;
+      color: #737b91;
+    }
+
+    > a {
+      padding: 26px 0;
+      color: #328ae3;
+    }
+  }
+
+  .button {
+    margin: 10px 0 30px;
+  }
+
+  :global {
+    .am-input-item {
+      background: #ebedf2;
+      border-radius: 4px;
+    }
+  }
+}
+
+.earns {
+  @extend %padding;
+  margin: 20px 0;
+  background: #fff;
+  overflow: hidden;
+
+  .box {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+
+    > div {
+      border-radius: 5px;
+      width: 30%;
+      height: 85px;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .first {
+    background: linear-gradient(to top right, #0792ff, #0057ff);
+  }
+
+  .second {
+    background: linear-gradient(to top right, #f76b1c, #fad961);
+  }
+
+  .third {
+    background: linear-gradient(to top right, #9965f7, #8435fe, #8230ff);
+  }
+
+  span {
+    color: #fff;
+    display: block;
+
+    &:first-child {
+      padding: 16px 0 0 10px;
+    }
+
+    &:last-child {
+      padding: 22px 0 10px 10px;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+  }
+}

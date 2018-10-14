@@ -2,15 +2,29 @@ import { IAction } from '../types';
 import {
   IAvailableRolesComplete,
   ILoginComplete,
+  IProducerSummaryResponse,
   IRoleComplete,
 } from '../actions/userActions';
 
 export interface IUser {
-  token: string;
   username: string;
   side: '' | 'BUY' | 'SELL';
   role: string;
   roles: Array<{ role: string; available: boolean; side: 'SELL' | 'BUY' }>;
+  currentState: {
+    power: number;
+    cost: number;
+    efficiency: number;
+  };
+  earns: {
+    vol: number;
+    price: number;
+    amount: number;
+  };
+  offer: {
+    price: number;
+    timestamp: number;
+  };
   config: {
     lang: string;
   };
@@ -19,11 +33,24 @@ export interface IUser {
 const lang = process.env.REACT_APP_DEFAULT_LANGUAGE || 'en';
 
 const initState: IUser = {
-  token: '',
   username: '',
   side: '',
   role: '',
   roles: [],
+  currentState: {
+    power: 0,
+    cost: 0,
+    efficiency: 0,
+  },
+  earns: {
+    vol: 0,
+    price: 0,
+    amount: 0,
+  },
+  offer: {
+    price: 0,
+    timestamp: 0,
+  },
   config: {
     lang,
   },
@@ -32,20 +59,20 @@ const initState: IUser = {
 const user = (state = initState, action: IAction): IUser => {
   switch (action.type) {
     case 'LOGIN_COMPLETE': {
-      let data = action.payload as ILoginComplete & IUser;
-      data = { ...data };
-      delete data.toast;
-      return { ...state, ...(data as IUser) };
+      const { data } = action.payload as ILoginComplete;
+      return { ...state, ...data };
     }
     case 'AVAILABLE_ROLES_COMPLETE': {
-      const data = action.payload as IAvailableRolesComplete & IUser;
-      delete data.toast;
-      return { ...state, ...(data as IUser) };
+      const { data } = action.payload as IAvailableRolesComplete;
+      return { ...state, ...data };
     }
     case 'UPDATE_ROLE_COMPLETE': {
-      const data = action.payload as IRoleComplete & IUser;
-      delete data.toast;
-      return { ...state, ...(data as IUser) };
+      const { data } = action.payload as IRoleComplete;
+      return { ...state, ...data };
+    }
+    case 'PRODUCER_SUMMARY_COMPLETE': {
+      const { data } = action.payload as IProducerSummaryResponse;
+      return { ...state, ...data };
     }
     default:
       return state;

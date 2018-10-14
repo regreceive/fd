@@ -1,9 +1,11 @@
 import { IUser } from '../reducers/userReducer';
 import { IGlobal } from '../reducers/globalReducer';
 
-interface IRequestSchema {
-  token: IUser['token'];
+export interface IResponseSchema {
+  status: string;
+  token?: string;
   toast: IGlobal['toast'];
+  data: {};
 }
 
 export interface ILogin {
@@ -18,10 +20,12 @@ export function login(data: ILogin) {
   };
 }
 
-export interface ILoginComplete extends IRequestSchema {
-  username: IUser['username'];
-  side: IUser['side'];
-  role: IUser['role'];
+export interface ILoginComplete extends IResponseSchema {
+  data: {
+    username: IUser['username'];
+    side: IUser['side'];
+    role: IUser['role'];
+  };
 }
 
 export function loginComplete(data: ILoginComplete) {
@@ -37,21 +41,16 @@ export function getAvailableRoles() {
   };
 }
 
-export interface IAvailableRolesComplete extends IRequestSchema {
-  roles: IUser['roles'];
+export interface IAvailableRolesComplete extends IResponseSchema {
+  data: {
+    roles: IUser['roles'];
+  };
 }
 
 export function getAvailableRolesComplete(data: IAvailableRolesComplete) {
   return {
     type: 'AVAILABLE_ROLES_COMPLETE',
     payload: data,
-  };
-}
-
-export function chooseRole(role: string) {
-  return {
-    type: 'CHOOSE_ROLE',
-    payload: role,
   };
 }
 
@@ -66,14 +65,55 @@ export function updateRole(role: IRole) {
   };
 }
 
-export interface IRoleComplete extends IRequestSchema {
-  role: IUser['role'];
-  side: IUser['side'];
+export interface IRoleComplete extends IResponseSchema {
+  data: {
+    role: IUser['role'];
+    side: IUser['side'];
+  };
 }
 
 export function updateRoleComplete(data: IRoleComplete) {
   return {
     type: 'UPDATE_ROLE_COMPLETE',
+    payload: data,
+  };
+}
+
+export function getProducerSummary() {
+  return {
+    type: 'GET_PRODUCER_SUMMARY',
+  };
+}
+
+export interface IProducerSummaryResponse extends IResponseSchema {
+  data: {
+    currentState: IUser['currentState'];
+    earns: IUser['earns'];
+    offer: IUser['offer'];
+  };
+}
+
+export function producerSummaryComplete(data: IProducerSummaryResponse) {
+  return {
+    type: 'PRODUCER_SUMMARY_COMPLETE',
+    payload: data,
+  };
+}
+
+export function postOffer(power: number, price: number) {
+  return {
+    type: 'POST_OFFER',
+    payload: { power, price },
+  };
+}
+
+export interface IResponseJSON extends IResponseSchema {
+  data: object;
+}
+
+export function postOfferComplete(data: IResponseJSON) {
+  return {
+    type: 'POST_OFFER_COMPLETE',
     payload: data,
   };
 }

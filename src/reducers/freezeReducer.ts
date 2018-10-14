@@ -4,12 +4,14 @@ export interface IFreeze {
   login: number;
   role: number;
   roles: number;
+  postOffer: number;
 }
 
 const initState: IFreeze = {
   login: 0,
   role: 0,
   roles: 0,
+  postOffer: 0,
 };
 
 function freeze(state: IFreeze, key: keyof IFreeze): IFreeze {
@@ -33,6 +35,9 @@ const freezeReducer = (state = initState, action: IAction): IFreeze => {
     case 'UPDATE_ROLE': {
       return freeze(state, 'role');
     }
+    case 'POST_OFFER': {
+      return freeze(state, 'postOffer');
+    }
     case 'LOGIN_COMPLETE': {
       return release(state, 'login');
     }
@@ -41,6 +46,9 @@ const freezeReducer = (state = initState, action: IAction): IFreeze => {
     }
     case 'UPDATE_ROLE_COMPLETE': {
       return release(state, 'role');
+    }
+    case 'POST_OFFER_COMPLETE': {
+      return release(state, 'postOffer');
     }
     default:
       return state;

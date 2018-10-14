@@ -15,7 +15,7 @@ interface IStateProps extends IProps {
 }
 
 const mapStateToProps = (state: IStoreState) => ({
-  isLogin: state.user.token.length > 0,
+  isLogin: state.global.token.length > 0,
 });
 
 @(connect(mapStateToProps) as any)

@@ -4,7 +4,6 @@ import { TabBar } from 'antd-mobile';
 
 import Home from './Home';
 import Exchange from './Exchange';
-import Gains from './Gains';
 import Personal from './Personal';
 
 import './TabBarView.css';
@@ -26,7 +25,6 @@ const SelectedIcon = ({ name }: IconProps) => (
 const items = [
   { id: 'home', component: Home },
   { id: 'exchange', component: Exchange },
-  { id: 'gains', component: Gains },
   { id: 'personal', component: Personal },
 ];
 

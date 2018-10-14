@@ -62,10 +62,10 @@ export default class extends Component<{}, IState> {
     const desc = translate('modal.role.' + role);
     Modal.alert(translate('modal.role.title'), desc, [
       {
-        text: 'Cancel',
+        text: translate('modal.button.cancel') as string,
       },
       {
-        text: 'Ok',
+        text: translate('modal.button.ok') as string,
         onPress: this.pressHandle,
       },
     ]);

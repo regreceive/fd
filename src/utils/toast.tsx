@@ -3,27 +3,42 @@ import { Toast } from 'antd-mobile';
 import { Translate } from 'react-localize-redux';
 import { renderToString } from 'react-dom/server';
 
-export default function(id: string) {
-  const type = id.substring(0, id.indexOf('.'));
-  const content = renderToString(<Translate id={'toast.' + id} />);
-
-  switch (type) {
-    case 'info':
-      Toast.info(content);
-      break;
-    case 'success':
-      Toast.success(content);
-      break;
-    case 'fail':
-      Toast.fail(content);
-      break;
-    case 'offline':
-      Toast.offline(content);
-      break;
-    case 'loading':
-      Toast.loading(content);
-      break;
-    default:
-      Toast.info(content, 2, undefined, false);
+export default async function toast(id: string[] | string) {
+  if (typeof id === 'string') {
+    id = [id];
   }
+
+  const translated = id.map(value => {
+    const type = value.substring(0, value.indexOf('.'));
+    const content = renderToString(<Translate id={'toast.' + value} />);
+    return { type, content };
+  });
+
+  for (const row of translated) {
+    await show(row.type, row.content);
+  }
+}
+
+function show(type: string, content: string): Promise<any> {
+  return new Promise(resolve => {
+    switch (type) {
+      case 'info':
+        Toast.info(content, undefined, resolve);
+        break;
+      case 'success':
+        Toast.success(content, undefined, resolve);
+        break;
+      case 'fail':
+        Toast.fail(content, undefined, resolve);
+        break;
+      case 'offline':
+        Toast.offline(content, undefined, resolve);
+        break;
+      case 'loading':
+        Toast.loading(content, undefined, resolve);
+        break;
+      default:
+        Toast.info(content, undefined, resolve, false);
+    }
+  });
 }

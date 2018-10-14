@@ -8,8 +8,14 @@ import global from './globalReducer';
 import freeze from './freezeReducer';
 
 const appReducer = combineReducers({
-  global,
   freeze,
+  global: persistReducer(
+    {
+      key: 'global',
+      storage: session,
+    },
+    global,
+  ),
   user: persistReducer(
     {
       key: 'user',

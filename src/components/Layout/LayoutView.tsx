@@ -17,8 +17,6 @@ import { IGlobal } from '../../reducers/globalReducer';
 import { clearToast } from '../../actions/globalActions';
 import './LayoutView.css';
 
-import Home from '../../pages/Producer/Home';
-
 const basePath = process.env.REACT_APP_BASE_PATH;
 const splashEnable = process.env.REACT_APP_SPLASH === 'on';
 
@@ -45,7 +43,7 @@ export default class LayoutView extends React.Component<IProps> {
   // 避免react-localize-redux初始化操作
   public shouldComponentUpdate(nextProps: Readonly<IProps>) {
     // 全局信息提示
-    if (nextProps.toast !== '') {
+    if (nextProps.toast !== '' || nextProps.toast.length > 0) {
       toast(nextProps.toast);
       this.props.clearToast();
     }
@@ -65,8 +63,6 @@ export default class LayoutView extends React.Component<IProps> {
       <div className="full-screen">
         <ConnectedRouter history={history}>
           <Switch>
-            <Route path="/a" component={Home} />
-
             {splashEnable && (
               <Route path={basePath + '/splash'} component={Splash} />
             )}

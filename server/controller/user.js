@@ -8,21 +8,26 @@ exports.login = async ctx => {
   const json = ctx.request.body;
   const { username } = json;
   let data;
+  let toast = 'success.login';
+  let token = '123';
+
   if (username === 'a@s.com') {
-    data = { token: '', role: '', side: '', toast: 'fail.account_not_found' };
+    data = { role: '', side: '' };
+    toast = 'fail.account_not_found';
+    token = '';
   } else {
     data = {
-      token: '123',
       username,
       role: '',
       side: '',
-      toast: 'success.login',
     };
   }
 
   await sleep();
   ctx.body = {
     status: 'ok',
+    token,
+    toast,
     data,
   };
 };
@@ -31,18 +36,18 @@ exports.availableRoles = async ctx => {
   await sleep();
   ctx.body = {
     status: 'ok',
+    token: '123',
+    toast: '',
     data: {
-      token: '123',
-      toast: '',
       roles: [
         { role: 'SCHOOL', available: false, side: 'BUY' },
         { role: 'FACTORY', available: true, side: 'BUY' },
         { role: 'MALL', available: true, side: 'BUY' },
         { role: 'COMMUNITY', available: true, side: 'BUY' },
-        { role: 'PHOTOVOLTAIC', available: true, side: "SELL" },
-        { role: 'WIND', available: true, side: "SELL" },
-        { role: 'BATTERY', available: true, side: "SELL" },
-        { role: 'GAS', available: true, side: "SELL" },
+        { role: 'PHOTOVOLTAIC', available: true, side: 'SELL' },
+        { role: 'WIND', available: true, side: 'SELL' },
+        { role: 'BATTERY', available: true, side: 'SELL' },
+        { role: 'GAS', available: true, side: 'SELL' },
       ],
     },
   };
@@ -52,11 +57,67 @@ exports.updateRole = async ctx => {
   await sleep();
   ctx.body = {
     status: 'ok',
+    token: '123',
+    toast: '',
     data: {
-      token: '123',
-      toast: '',
       side: 'SELL',
-      role: 'SCHOOL'
+      role: 'SCHOOL',
     },
   };
+};
+
+exports.currentState = async ctx => {
+  await sleep();
+  ctx.body = {
+    status: 'ok',
+    token: '123',
+    toast: '',
+    data: {
+      currentState: {
+        power: 10,
+        cost: 0.36,
+        efficiency: 1,
+      },
+    },
+  };
+};
+
+exports.earns = async ctx => {
+  await sleep();
+  ctx.body = {
+    status: 'ok',
+    token: '123',
+    toast: '',
+    data: {
+      earns: {
+        vol: 12,
+        price: 0.31,
+        amount: 12500,
+      },
+    },
+  };
+};
+
+exports.offer = async ctx => {
+  await sleep();
+  ctx.body = {
+    status: 'ok',
+    token: '123',
+    toast: '',
+    data: {
+      offer: {
+        price: 0.23,
+        timestamp: Date.now(),
+      },
+    },
+  };
+};
+
+exports.postOffer = async ctx => {
+  await sleep();
+  ctx.body = {
+    status: 'ok',
+    token: '123',
+    toast: 'success.offer'
+  }
 };

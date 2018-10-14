@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { Translate } from 'react-localize-redux';
+import { Route, Redirect, Switch } from 'react-router';
 
-import { Button } from 'antd-mobile';
+import TabBarView from './TabBarView';
+
+const basePath = process.env.REACT_APP_BASE_PATH;
 
 export default class extends Component {
   public render() {
     return (
-      <div>
-        <Translate id="pack">hello world</Translate>
-        <Button>consumer</Button>
-      </div>
+      <Switch>
+        <Route exact path={basePath + '/consumer'} component={TabBarView} />
+        <Redirect to="/consumer" />
+      </Switch>
     );
   }
 }

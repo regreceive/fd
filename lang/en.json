@@ -4,7 +4,7 @@
   "pack_label": "English",
   "pack_active": true,
 
-  "homepage": "首页",
+  "home": "首页",
   "exchange": "电力交易",
   "gains": "收益明细",
   "personal": "我的",
@@ -42,7 +42,8 @@
       "login": "登录中"
     },
     "success": {
-      "login": "登录成功"
+      "login": "登录成功",
+      "offer": "报价单已通过审核"
     },
     "fail": {
       "account_not_found": "账户不存在",
@@ -64,6 +65,11 @@
       "factory": "园区的主要负荷，确定选择工厂角色吗？",
       "mall": "周六日出现用电高峰，确定选择商场角色吗？",
       "community": "早晚是其用电高峰，确定选择住宅小区角色吗？"
+    },
+
+    "button": {
+      "ok": "确定",
+      "cancel": "取消"
     }
   }
 }

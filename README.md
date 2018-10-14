@@ -45,12 +45,22 @@ POST /api/login
 响应
 
 ```js
-{"status":"ok","data":{"token":"123","username":"aaa@sina.com","role":1,"toast":"success.login"}}
+{
+  "status":"ok",
+  "data":{
+     token: '123',
+     username: '',
+     role: '',
+     side: '',
+     toast: 'success.login',
+   }
+}
 ```
 
 - token 登录身份，用于之后受保护的数据交互
 - username 回传用户名
-- role (0 初始状态。>0 各种角色，1 ～ 4 发电用户，4 ～ 8 用电用户。)
+- role 角色
+- side 角色性质
 - toast 客户端显示的提示信息，可以是空字符串，也可以是以下几种：
 
 | toast                   | 说明       |

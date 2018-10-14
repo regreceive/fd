@@ -37,7 +37,7 @@ const basePath = process.env.REACT_APP_BASE_PATH;
 const splashEnable = process.env.REACT_APP_SPLASH === 'on';
 
 const mapStateToProps = (state: IStoreState) => ({
-  isLogin: state.user.token.length > 0,
+  isLogin: state.global.token.length > 0,
   lang: state.user.config.lang,
   side: state.user.side,
   role: state.user.role,
