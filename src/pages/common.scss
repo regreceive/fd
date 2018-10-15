@@ -44,8 +44,9 @@
     }
 
     > span:first-child {
-      padding: 26px 0;
+      padding: 26px 10px 26px 0;
       color: #737b91;
+      white-space: nowrap;
     }
 
     > a {

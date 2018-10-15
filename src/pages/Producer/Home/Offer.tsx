@@ -2,6 +2,8 @@ import React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Button, InputItem } from 'antd-mobile';
+import { Link } from 'react-router-dom';
+
 import { timeFormat } from '../../../utils/timeFormat';
 import { IUser } from '../../../reducers/userReducer';
 import { postOffer } from '../../../actions/userActions';
@@ -72,7 +74,7 @@ export default class extends React.Component<{}, IState> {
         <div>
           <div>
             <h2>报价信息</h2>
-            <a href="#">历史报价</a>
+            <Link to="/producer/quote">历史报价</Link>
           </div>
           <div>
             <span>大电网实时电价</span>

@@ -1,0 +1,62 @@
+@import '../../common.scss';
+
+.container {
+  @extend %scroll;
+  @extend %padding;
+  padding: 0;
+  background: #f6f6f6;
+}
+
+.card {
+  height: 120px;
+  margin: 0 12px 12px 12px;
+  background-color: #ffffff;
+  box-shadow: 0 0 6px grey;
+  border-radius: 5px;
+
+  .card-top {
+    height: 68px;
+    margin: 0 20px 0 20px;
+    border-bottom: 1px solid #f4f6f8;
+    padding-top: 16px;
+
+    li {
+      width: 33.3%;
+      display: inline-block;
+
+      span {
+        display: block;
+
+        &:nth-child(1) {
+          font-size: 12px;
+          color: #abb3b8;
+        }
+
+        &:nth-child(2) {
+          margin-top: 16px;
+          font-size: 16px;
+          color: #171f24;
+        }
+      }
+
+      .blue {
+        color: #1308fe !important;
+        font-size: 14px;
+      }
+
+      &:nth-child(2) {
+        text-align: center;
+      }
+
+      &:nth-child(3) {
+        text-align: right;
+      }
+    }
+  }
+
+  p {
+    font-size: 11px;
+    color: #aab2b7;
+    margin: 12px 20px 0 20px;
+  }
+}
