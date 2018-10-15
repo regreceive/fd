@@ -16,6 +16,7 @@ const global = (state = initState, action: IAction): IGlobal => {
       return { ...state, toast: '' };
     }
     case 'LOGIN_COMPLETE':
+    case 'LOGOUT_COMPLETE':
     case 'AVAILABLE_ROLES_COMPLETE':
     case 'UPDATE_ROLE_COMPLETE':
     case 'CURRENT_STATE_COMPLETE':

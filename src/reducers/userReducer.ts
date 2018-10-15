@@ -2,6 +2,7 @@ import { IAction } from '../types';
 import {
   IAvailableRolesComplete,
   ILoginComplete,
+  ILogoutResponse,
   IProducerSummaryResponse,
   IRoleComplete,
 } from '../actions/userActions';
@@ -24,6 +25,9 @@ export interface IUser {
   offer: {
     price: number;
     timestamp: number;
+  };
+  wallet: {
+    balance: number;
   };
   config: {
     lang: string;
@@ -51,6 +55,9 @@ const initState: IUser = {
     price: 0,
     timestamp: 0,
   },
+  wallet: {
+    balance: 0,
+  },
   config: {
     lang,
   },
@@ -60,6 +67,10 @@ const user = (state = initState, action: IAction): IUser => {
   switch (action.type) {
     case 'LOGIN_COMPLETE': {
       const { data } = action.payload as ILoginComplete;
+      return { ...state, ...data };
+    }
+    case 'LOGOUT_COMPLETE': {
+      const { data } = action.payload as ILogoutResponse;
       return { ...state, ...data };
     }
     case 'AVAILABLE_ROLES_COMPLETE': {

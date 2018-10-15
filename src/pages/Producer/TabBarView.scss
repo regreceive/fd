@@ -1,37 +1,5 @@
-.icon {
-  width: 22px;
-  height: 22px;
-  background: center center / 21px 21px no-repeat;
+@import '../common.scss';
 
-  &.home {
-    background-image: url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg);
-  }
-
-  &.home-selected {
-    background-image: url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg);
-  }
-
-  &.exchange {
-    background-image: url(https://zos.alipayobjects.com/rmsportal/BTSsmHkPsQSPTktcXyTV.svg);
-  }
-
-  &.exchange-selected {
-    background-image: url(https://zos.alipayobjects.com/rmsportal/ekLecvKBnRazVLXbWOnE.svg);
-  }
-
-  &.gains {
-    background-image: url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg);
-  }
-
-  &.gains-selected {
-    background-image: url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg);
-  }
-
-  &.personal {
-    background-image: url(https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg);
-  }
-
-  &.personal-selected {
-    background-image: url(https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg);
-  }
+.selected {
+  @extend %tabBar-selected;
 }

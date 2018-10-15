@@ -6,6 +6,7 @@ import {
   ILoginComplete,
   IResponseSchema,
   loginComplete,
+  logoutComplete,
   postOfferComplete,
   producerSummaryComplete,
   updateRoleComplete,
@@ -43,6 +44,17 @@ function* login(action: IAction) {
 
     const json: ILoginComplete = yield call([response, 'json']);
     yield put(loginComplete(json));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* logout() {
+  try {
+    const response = yield call(request, '/logout', 'include');
+
+    const json = yield call([response, 'json']);
+    yield put(logoutComplete(json));
   } catch (e) {
     console.log(e);
   }
@@ -130,6 +142,7 @@ function* postOffer(action: IAction) {
 
 export function* watchUser() {
   yield takeEvery('LOGIN', login);
+  yield takeEvery('LOGOUT', logout);
   yield takeEvery('GET_AVAILABLE_ROLES', getAvailableRoles);
   yield takeEvery('UPDATE_ROLE', updateRole);
   yield takeEvery('GET_PRODUCER_SUMMARY', getProducerSummary);

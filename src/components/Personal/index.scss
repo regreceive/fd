@@ -1,0 +1,52 @@
+@import '../../pages/common.scss';
+
+.container {
+  @extend %scroll;
+}
+
+.section {
+  @extend %section;
+  min-height: calc(100% - 8rem);
+  justify-content: space-between;
+
+  > div > div {
+    &:first-child,
+    &:last-child {
+      border-bottom-width: 1px;
+    }
+  }
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 4.9rem;
+  padding: 0.8rem;
+  background-color: rgb(249, 108, 64);
+
+  .user {
+    color: #fff;
+    font-size: 0.53rem;
+
+    > p:last-child {
+      margin: 0;
+      font-size: 0.37rem;
+
+      span {
+        margin-right: 5px;
+        padding: 0.1rem 0.2rem;
+        background-color: #ea5c2f;
+        border-radius: 19px;
+        color: #ffddd2;
+      }
+    }
+  }
+
+  .avatar {
+    width: 1.73rem;
+    height: 1.73rem;
+    border-radius: 50%;
+    background-color: #fff;
+  }
+}

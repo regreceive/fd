@@ -32,6 +32,17 @@ exports.login = async ctx => {
   };
 };
 
+exports.logout = async ctx => {
+  await sleep();
+  ctx.body = {
+    status: 'ok',
+    token: '',
+    toast: 'success.logout',
+    role: '',
+    side: '',
+  }
+};
+
 exports.availableRoles = async ctx => {
   await sleep();
   ctx.body = {

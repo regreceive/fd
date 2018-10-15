@@ -1,33 +1,28 @@
 import React from 'react';
 import { Translate } from 'react-localize-redux';
 import { TabBar } from 'antd-mobile';
+import ReactSVG from 'react-svg';
 
 import Home from './Home';
 import Exchange from './Exchange';
 import Gains from './Gains';
-import Personal from './Personal';
+import Personal from '../../components/Personal';
+import homeIcon from '../../components/assets/home.svg';
+import exchangeIcon from '../../components/assets/exchange.svg';
+import earnsIcon from '../../components/assets/earns.svg';
+import personalIcon from '../../components/assets/personal.svg';
 
 import './TabBarView.css';
-
-interface IconProps {
-  name: string; // 样式名称
-}
 
 interface IState {
   selectedTab: string;
 }
 
-const Icon = ({ name }: IconProps) => <div styleName={`icon ${name}`} />;
-
-const SelectedIcon = ({ name }: IconProps) => (
-  <div styleName={`icon ${name}-selected`} />
-);
-
 const items = [
-  { id: 'home', component: Home },
-  { id: 'exchange', component: Exchange },
-  { id: 'gains', component: Gains },
-  { id: 'personal', component: Personal },
+  { id: 'home', component: Home, svg: homeIcon },
+  { id: 'exchange', component: Exchange, svg: exchangeIcon },
+  { id: 'gains', component: Gains, svg: earnsIcon },
+  { id: 'personal', component: Personal, svg: personalIcon },
 ];
 
 export default class TabBarView extends React.Component<{}, IState> {
@@ -43,13 +38,13 @@ export default class TabBarView extends React.Component<{}, IState> {
     return (
       <Translate>
         {({ translate }) => (
-          <TabBar>
-            {items.map(({ id, component: Component }) => (
+          <TabBar tintColor="#FE5816">
+            {items.map(({ id, component: Component, svg }) => (
               <TabBar.Item
                 key={id}
                 title={translate(id) as string}
-                icon={<Icon name={id} />}
-                selectedIcon={<SelectedIcon name={id} />}
+                icon={<ReactSVG src={svg} />}
+                selectedIcon={<ReactSVG src={svg} styleName="selected" />}
                 selected={this.state.selectedTab === id}
                 onPress={this.pressHandle(id)}
               >

@@ -35,6 +35,26 @@ export function loginComplete(data: ILoginComplete) {
   };
 }
 
+export function logout() {
+  return {
+    type: 'LOGOUT',
+  };
+}
+
+export interface ILogoutResponse extends IResponseSchema {
+  data: {
+    side: IUser['side'];
+    role: IUser['role'];
+  };
+}
+
+export function logoutComplete(data: ILogoutResponse) {
+  return {
+    type: 'LOGOUT_COMPLETE',
+    payload: data,
+  };
+}
+
 export function getAvailableRoles() {
   return {
     type: 'GET_AVAILABLE_ROLES',

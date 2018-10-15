@@ -23,43 +23,39 @@ export default class extends Component {
   public render() {
     return (
       <div styleName="container">
-        <div styleName="trend">66</div>
-        <div styleName="attribute">
-          <div styleName="inset">
-            <div styleName="fixed"> 当前电价组成 </div>
-            <dl>
-              <dt>今日用电总量</dt>
-              <dd>10度</dd>
-            </dl>
-            <div styleName="line">&nbsp;</div>
-            <dl>
-              <dt>当前用电价</dt>
-              <dd>0.25 EDF/度</dd>
-            </dl>
-            <div styleName="line">&nbsp;</div>
-            <dl>
-              <dt>当前大电网电价</dt>
-              <dd>0.25 EDF/度</dd>
-            </dl>
+        <div styleName="section">
+          <div>
+            <h2>当前电价组成</h2>
+            <div>
+              <span>今日用电总量</span>
+              <span>0 度</span>
+            </div>
+            <div>
+              <span>当前用电价</span>
+              <span>1 EDF/度</span>
+            </div>
+            <div>
+              <span>当前大电网电价</span>
+              <span>1 EDF/度</span>
+            </div>
           </div>
         </div>
-        <div styleName="attribute condition">
-          <div styleName="inset">
-            <div styleName="fixed"> 我的账单 </div>
-            <dl>
-              <dt>当前已用电量</dt>
-              <dd>10度</dd>
-            </dl>
-            <div styleName="line">&nbsp;</div>
-            <dl>
-              <dt>用电花费</dt>
-              <dd>0.25 EDF/度</dd>
-            </dl>
-            <div styleName="line">&nbsp;</div>
-            <dl>
-              <dt>已省</dt>
-              <dd>0.25 EDF/度</dd>
-            </dl>
+
+        <div styleName="section">
+          <div>
+            <h2>我的账单</h2>
+            <div>
+              <span>当前已用电量</span>
+              <span>0 度</span>
+            </div>
+            <div>
+              <span>用电花费</span>
+              <span>1 EDF</span>
+            </div>
+            <div>
+              <span>已省</span>
+              <span>1000 EDF</span>
+            </div>
           </div>
         </div>
       </div>

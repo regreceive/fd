@@ -2,6 +2,7 @@ import { IAction } from '../types';
 
 export interface IFreeze {
   login: number;
+  logout: number;
   role: number;
   roles: number;
   postOffer: number;
@@ -9,6 +10,7 @@ export interface IFreeze {
 
 const initState: IFreeze = {
   login: 0,
+  logout: 0,
   role: 0,
   roles: 0,
   postOffer: 0,
@@ -29,6 +31,9 @@ const freezeReducer = (state = initState, action: IAction): IFreeze => {
     case 'LOGIN': {
       return freeze(state, 'login');
     }
+    case 'LOGOUT': {
+      return freeze(state, 'logout');
+    }
     case 'GET_AVAILABLE_ROLES': {
       return freeze(state, 'roles');
     }
@@ -40,6 +45,9 @@ const freezeReducer = (state = initState, action: IAction): IFreeze => {
     }
     case 'LOGIN_COMPLETE': {
       return release(state, 'login');
+    }
+    case 'LOGOUT_COMPLETE': {
+      return release(state, 'logout');
     }
     case 'AVAILABLE_ROLES_COMPLETE': {
       return release(state, 'roles');
