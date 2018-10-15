@@ -137,3 +137,20 @@ export function postOfferComplete(data: IResponseJSON) {
     payload: data,
   };
 }
+
+export function getQuotePrice() {
+  return {
+    type: 'GET_QUOTE_PRICE',
+  };
+}
+
+export interface IQuotePriceResponse extends IResponseSchema {
+  data: IUser['quotePrice'];
+}
+
+export default function quotePriceComplete(data: IQuotePriceResponse) {
+  return {
+    type: 'QUOTE_PRICE_COMPLETE',
+    payload: data,
+  };
+}

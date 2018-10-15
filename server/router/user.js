@@ -10,5 +10,6 @@ router.get('/get-current-state', api.currentState);
 router.get('/get-earns', api.earns);
 router.get('/get-offer', api.offer);
 router.post('/post-offer', api.postOffer);
+router.get('/quotePrice', api.quotePrice);
 
 module.exports = router;

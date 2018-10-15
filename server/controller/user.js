@@ -40,7 +40,7 @@ exports.logout = async ctx => {
     toast: 'success.logout',
     role: '',
     side: '',
-  }
+  };
 };
 
 exports.availableRoles = async ctx => {
@@ -129,6 +129,29 @@ exports.postOffer = async ctx => {
   ctx.body = {
     status: 'ok',
     token: '123',
-    toast: 'success.offer'
-  }
+    toast: 'success.offer',
+  };
+};
+
+exports.quotePrice = async ctx => {
+  await sleep();
+  ctx.body = {
+    status: 'ok',
+    token: '123',
+    toast: '',
+    data: [
+      {
+        amount: 5000,
+        earning: 3000,
+        status: 0,
+        time: Date.now(),
+      },
+      {
+        amount: 5000,
+        earning: 3000,
+        status: 0,
+        time: Date.now(),
+      },
+    ],
+  };
 };

@@ -1,28 +1,47 @@
 import React, { Component } from 'react';
+import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { RouteComponentProps } from 'react-router';
 import { Translate } from 'react-localize-redux';
 import { Icon, NavBar } from 'antd-mobile';
-import { RouteComponentProps } from 'react-router';
+
+import { getQuotePrice } from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
 
 import './index.css';
 
 interface IStateProps {
-  lang: IUser['config']['lang'];
+  quotePrice: IUser['quotePrice'];
 }
 
-const mapStateToProps = (state: IStoreState) => ({
-  lang: state.user.config.lang,
+interface IDispatchProps {
+  getQuotePrice: typeof getQuotePrice;
+}
+
+const mapStateToProps = (state: IStoreState): IStateProps => ({
+  quotePrice: state.user.quotePrice,
 });
 
-@(connect(mapStateToProps) as any)
+const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
+  getQuotePrice: () => dispatch(getQuotePrice()),
+});
+
+@(connect(
+  mapStateToProps,
+  mapDispatchToProps,
+) as any)
 export default class extends Component {
   get injected() {
-    return this.props as IStateProps & RouteComponentProps;
+    return this.props as IStateProps & IDispatchProps & RouteComponentProps;
+  }
+
+  public componentDidMount() {
+    this.injected.getQuotePrice();
   }
 
   public render() {
+    console.log(this.injected.quotePrice);
     return (
       <div styleName="container">
         <NavBar

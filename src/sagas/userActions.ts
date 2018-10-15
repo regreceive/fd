@@ -4,11 +4,13 @@ import {
   getAvailableRolesComplete,
   IAvailableRolesComplete,
   ILoginComplete,
+  IQuotePriceResponse,
   IResponseSchema,
   loginComplete,
   logoutComplete,
   postOfferComplete,
   producerSummaryComplete,
+  default as quotePriceComplete,
   updateRoleComplete,
 } from '../actions/userActions';
 
@@ -140,6 +142,17 @@ function* postOffer(action: IAction) {
   }
 }
 
+function* getQuotePrice() {
+  try {
+    const response = yield call(request, '/quotePrice', 'include');
+
+    const json: IQuotePriceResponse = yield call([response, 'json']);
+    yield put(quotePriceComplete(json));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export function* watchUser() {
   yield takeEvery('LOGIN', login);
   yield takeEvery('LOGOUT', logout);
@@ -147,4 +160,5 @@ export function* watchUser() {
   yield takeEvery('UPDATE_ROLE', updateRole);
   yield takeEvery('GET_PRODUCER_SUMMARY', getProducerSummary);
   yield takeEvery('POST_OFFER', postOffer);
+  yield takeEvery('GET_QUOTE_PRICE', getQuotePrice);
 }

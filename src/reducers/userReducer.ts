@@ -4,6 +4,7 @@ import {
   ILoginComplete,
   ILogoutResponse,
   IProducerSummaryResponse,
+  IQuotePriceResponse,
   IRoleComplete,
 } from '../actions/userActions';
 
@@ -29,6 +30,12 @@ export interface IUser {
   wallet: {
     balance: number;
   };
+  quotePrice: Array<{
+    amount: number;
+    earning: number;
+    status: 0 | 1 | 2;
+    time: number;
+  }>;
   config: {
     lang: string;
   };
@@ -58,6 +65,7 @@ const initState: IUser = {
   wallet: {
     balance: 0,
   },
+  quotePrice: [],
   config: {
     lang,
   },
@@ -84,6 +92,10 @@ const user = (state = initState, action: IAction): IUser => {
     case 'PRODUCER_SUMMARY_COMPLETE': {
       const { data } = action.payload as IProducerSummaryResponse;
       return { ...state, ...data };
+    }
+    case 'QUOTE_PRICE_COMPLETE': {
+      const { data } = action.payload as IQuotePriceResponse;
+      return { ...state, quotePrice: data };
     }
     default:
       return state;
