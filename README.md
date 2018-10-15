@@ -113,18 +113,16 @@ response = {
   status: 'ok',
   token: '123',
   toast: '',
-  data: {
-    roles: [
-      { role: 'SCHOOL', available: false, side: 'BUY' },
-      { role: 'FACTORY', available: true, side: 'BUY' },
-      { role: 'MALL', available: true, side: 'BUY' },
-      { role: 'COMMUNITY', available: true, side: 'BUY' },
-      { role: 'PHOTOVOLTAIC', available: true, side: 'SELL' },
-      { role: 'WIND', available: true, side: 'SELL' },
-      { role: 'BATTERY', available: true, side: 'SELL' },
-      { role: 'GAS', available: true, side: 'SELL' },
-    ],
-  },
+  data: [
+    { role: 'SCHOOL', available: false, side: 'BUY' },
+    { role: 'FACTORY', available: true, side: 'BUY' },
+    { role: 'MALL', available: true, side: 'BUY' },
+    { role: 'COMMUNITY', available: true, side: 'BUY' },
+    { role: 'PHOTOVOLTAIC', available: true, side: 'SELL' },
+    { role: 'WIND', available: true, side: 'SELL' },
+    { role: 'BATTERY', available: true, side: 'SELL' },
+    { role: 'GAS', available: true, side: 'SELL' },
+  ],
 };
 ```
 
@@ -178,7 +176,7 @@ response = {
   status: 'ok',
   token: '123',
   toast: '',
-  data: { currentState: { power: 10, cost: 0.36, efficiency: 1 } },
+  data: { power: 10, cost: 0.36, efficiency: 1 },
 };
 ```
 
@@ -203,7 +201,7 @@ response = {
   status: 'ok',
   token: '123',
   toast: '',
-  data: { earns: { vol: 12, price: 0.31, amount: 12500 } },
+  data: { vol: 12, price: 0.31, amount: 12500 },
 };
 ```
 
@@ -228,7 +226,7 @@ response = {
   status: 'ok',
   token: '123',
   toast: '',
-  data: { offer: { price: 0.23, timestamp: 1539526393793 } },
+  data: { price: 0.23, timestamp: 1539526393793 },
 };
 ```
 

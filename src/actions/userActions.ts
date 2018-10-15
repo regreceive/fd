@@ -62,9 +62,7 @@ export function getAvailableRoles() {
 }
 
 export interface IAvailableRolesComplete extends IResponseSchema {
-  data: {
-    roles: IUser['roles'];
-  };
+  data: IUser['roles'];
 }
 
 export function getAvailableRolesComplete(data: IAvailableRolesComplete) {
@@ -127,11 +125,7 @@ export function postOffer(power: number, price: number) {
   };
 }
 
-export interface IResponseJSON extends IResponseSchema {
-  data: object;
-}
-
-export function postOfferComplete(data: IResponseJSON) {
+export function postOfferComplete(data: IResponseSchema) {
   return {
     type: 'POST_OFFER_COMPLETE',
     payload: data,

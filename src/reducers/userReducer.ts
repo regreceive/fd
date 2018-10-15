@@ -83,7 +83,7 @@ const user = (state = initState, action: IAction): IUser => {
     }
     case 'AVAILABLE_ROLES_COMPLETE': {
       const { data } = action.payload as IAvailableRolesComplete;
-      return { ...state, ...data };
+      return { ...state, roles: data };
     }
     case 'UPDATE_ROLE_COMPLETE': {
       const { data } = action.payload as IRoleComplete;

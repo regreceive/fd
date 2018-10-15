@@ -111,7 +111,11 @@ function* getProducerSummary() {
         return prev;
       }, {}),
     );
-    const data = { ...json[0].data, ...json[1].data, ...json[2].data };
+    const data = {
+      currentState: json[0].data,
+      earns: json[1].data,
+      offer: json[2].data,
+    };
 
     yield put(
       producerSummaryComplete({
