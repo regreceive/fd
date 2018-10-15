@@ -80,6 +80,28 @@ response = {
 | fail.account_not_found  | 账户不存在 |
 | fail.password_incorrect | 密码不对   |
 
+### 退出登录
+
+GET /api/logout
+
+响应
+
+```js
+response = {
+  status: 'ok',
+  token: '123',
+  toast: '',
+  data: { role: '', side: '' },
+};
+```
+
+- role 角色
+- side 角色性质
+
+| toast          | 说明       |
+| -------------- | ---------- |
+| success.logout | 已退出登录 |
+
 ### 获得可用角色
 
 GET /api/get-available-roles
