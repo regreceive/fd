@@ -1,0 +1,28 @@
+@import '../common.scss';
+
+.container {
+  @extend %scroll;
+
+  .content {
+    @extend %padding;
+  }
+
+  h2 {
+    font-size: 24px;
+    color: #4a4a4a;
+  }
+
+  :global {
+    .am-accordion-header {
+      font-size: 18px;
+      color: #4a4a4a;
+      padding-left: 0 !important;
+    }
+
+    .am-accordion-content-box {
+      padding: 10px 0;
+      font-size: 12px !important;
+      color: #3f4963;
+    }
+  }
+}
