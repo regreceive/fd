@@ -1,8 +1,13 @@
 import React from 'react';
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
 import { Translate } from 'react-localize-redux';
 import { TabBar } from 'antd-mobile';
 import ReactSVG from 'react-svg';
 
+import { changeBar } from '../../actions/globalActions';
+import { IStoreState } from '../../types';
+import { IUi } from '../../reducers/uiReducer';
 import Home from './Home';
 import Exchange from './Exchange';
 import Personal from '../../components/Personal';
@@ -12,9 +17,21 @@ import personalIcon from '../../components/assets/personal.svg';
 
 import './TabBarView.css';
 
-interface IState {
-  selectedTab: string;
+interface IStateToProps {
+  tabId: IUi['tabId'];
 }
+
+interface IDispatchToProps {
+  changeBar: typeof changeBar;
+}
+
+const stateToProps = (state: IStoreState) => ({
+  tabId: state.ui.tabId,
+});
+
+const dispatchToProps = (dispatch: Dispatch): IDispatchToProps => ({
+  changeBar: (id: string) => dispatch(changeBar(id)),
+});
 
 const items = [
   { id: 'home', component: Home, svg: homeIcon },
@@ -22,13 +39,17 @@ const items = [
   { id: 'personal', component: Personal, svg: personalIcon },
 ];
 
-export default class TabBarView extends React.Component<{}, IState> {
-  public state = {
-    selectedTab: 'home',
-  };
+@(connect(
+  stateToProps,
+  dispatchToProps,
+) as any)
+export default class TabBarView extends React.Component {
+  get injected() {
+    return this.props as IStateToProps & IDispatchToProps;
+  }
 
   public pressHandle = (selectedTab: string) => () => {
-    this.setState({ selectedTab });
+    this.injected.changeBar(selectedTab);
   };
 
   public render() {
@@ -42,7 +63,7 @@ export default class TabBarView extends React.Component<{}, IState> {
                 title={translate(id) as string}
                 icon={<ReactSVG src={svg} />}
                 selectedIcon={<ReactSVG src={svg} styleName="selected" />}
-                selected={this.state.selectedTab === id}
+                selected={this.injected.tabId === id}
                 onPress={this.pressHandle(id)}
               >
                 <Component />

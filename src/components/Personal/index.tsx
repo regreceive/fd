@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { ActionSheet, Button } from 'antd-mobile';
+import { Path } from 'history';
+import { push, RouterAction } from 'connected-react-router';
 
 import { IStoreState } from '../../types';
 import { IUser } from '../../reducers/userReducer';
 import { logout } from '../../actions/userActions';
 
 import './index.css';
+
+const basePath = process.env.REACT_APP_BASE_PATH;
 
 interface IStateProps {
   wallet: IUser['wallet']['balance'];
@@ -16,15 +20,17 @@ interface IStateProps {
 
 interface IDispatchToState {
   logout: typeof logout;
+  push: (path: Path) => RouterAction;
 }
 
 const mapStateToProps = (state: IStoreState): IStateProps => ({
   wallet: state.user.wallet.balance,
-  waiting: state.freeze.logout === 1,
+  waiting: state.ui.freeze.logout === 1,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchToState => ({
   logout: () => dispatch(logout()),
+  push: (path: Path) => dispatch(push(path)),
 });
 
 @(connect(
@@ -55,7 +61,7 @@ export default class extends Component {
               <span>EDF电力钱包</span>
               <span>0 EDF</span>
             </div>
-            <div>
+            <div onClick={this.helpHandle}>
               <span>帮助中心</span>
             </div>
             <div>
@@ -73,6 +79,10 @@ export default class extends Component {
       </div>
     );
   }
+
+  private helpHandle = () => {
+    this.injected.push(basePath + '/help-center');
+  };
 
   private exitHandle = () => {
     this.injected.logout();

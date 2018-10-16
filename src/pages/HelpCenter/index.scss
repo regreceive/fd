@@ -1,9 +1,11 @@
+@import '../common.scss';
+
 .container {
-  display: flex;
-  flex-direction: column;
-  padding: 0px 25px;
-  background: #fff;
-  height: 100%;
+  @extend %scroll;
+
+  .content {
+    @extend %padding;
+  }
 
   h2 {
     font-size: 24px;
@@ -14,11 +16,11 @@
     .am-accordion-header {
       font-size: 18px;
       color: #4a4a4a;
-      padding-left: 0px !important;
+      padding-left: 0 !important;
     }
 
     .am-accordion-content-box {
-      padding: 10px 0px;
+      padding: 10px 0;
       font-size: 12px !important;
       color: #3f4963;
     }

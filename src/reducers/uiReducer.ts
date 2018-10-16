@@ -1,33 +1,43 @@
 import { IAction } from '../types';
 
-export interface IFreeze {
-  login: number;
-  logout: number;
-  role: number;
-  roles: number;
-  postOffer: number;
+export interface IUi {
+  tabId: string;
+  freeze: {
+    login: number;
+    logout: number;
+    role: number;
+    roles: number;
+    postOffer: number;
+  };
 }
 
-const initState: IFreeze = {
-  login: 0,
-  logout: 0,
-  role: 0,
-  roles: 0,
-  postOffer: 0,
+const initState: IUi = {
+  tabId: 'home',
+  freeze: {
+    login: 0,
+    logout: 0,
+    role: 0,
+    roles: 0,
+    postOffer: 0,
+  },
 };
 
-function freeze(state: IFreeze, key: keyof IFreeze): IFreeze {
-  state[key] = 1;
+function freeze(state: IUi, key: keyof IUi['freeze']): IUi {
+  state.freeze[key] = 1;
   return state;
 }
 
-function release(state: IFreeze, key: keyof IFreeze): IFreeze {
-  state[key] = 0;
+function release(state: IUi, key: keyof IUi['freeze']): IUi {
+  state.freeze[key] = 0;
   return state;
 }
 
-const freezeReducer = (state = initState, action: IAction): IFreeze => {
+const global = (state = initState, action: IAction): IUi => {
   switch (action.type) {
+    case 'CHANGE_BAR': {
+      const tabId = action.payload;
+      return { ...state, tabId };
+    }
     case 'LOGIN': {
       return freeze(state, 'login');
     }
@@ -63,4 +73,4 @@ const freezeReducer = (state = initState, action: IAction): IFreeze => {
   }
 };
 
-export default freezeReducer;
+export default global;
