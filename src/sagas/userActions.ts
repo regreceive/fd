@@ -45,6 +45,7 @@ function* login(action: IAction) {
     const response = yield call(request, '/login', 'omit', action.payload);
 
     const json: ILoginComplete = yield call([response, 'json']);
+    json.token = json.data.token;
     yield put(loginComplete(json));
   } catch (e) {
     console.log(e);

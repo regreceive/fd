@@ -12,11 +12,12 @@ exports.login = async ctx => {
   let token = '123';
 
   if (username === 'a@s.com') {
-    data = { role: '', side: '' };
+    data = { role: '', side: '', token: '' };
     toast = 'fail.account_not_found';
     token = '';
   } else {
     data = {
+      token: '123',
       username,
       role: '',
       side: '',

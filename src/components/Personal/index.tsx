@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { ActionSheet, Button } from 'antd-mobile';
+import { push } from 'connected-react-router';
 
 import { IStoreState } from '../../types';
 import { IUser } from '../../reducers/userReducer';
 import { logout } from '../../actions/userActions';
 
 import './index.css';
+
+const basePath = process.env.REACT_APP_BASE_PATH;
 
 interface IStateProps {
   wallet: IUser['wallet']['balance'];
@@ -55,7 +58,7 @@ export default class extends Component {
               <span>EDF电力钱包</span>
               <span>0 EDF</span>
             </div>
-            <div>
+            <div onClick={this.helpHandle}>
               <span>帮助中心</span>
             </div>
             <div>
@@ -73,6 +76,10 @@ export default class extends Component {
       </div>
     );
   }
+
+  private helpHandle = () => {
+    push(basePath + '/help-center');
+  };
 
   private exitHandle = () => {
     this.injected.logout();

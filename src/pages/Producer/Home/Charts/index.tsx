@@ -22,7 +22,7 @@ export default class Curved extends React.Component {
     };
     return (
       <div>
-        <Chart data={dv} scale={scale} forceFit padding="auto" height={300}>
+        <Chart data={dv} scale={scale} forceFit height={300}>
           <Legend />
           <Axis name="time" />
           <Axis

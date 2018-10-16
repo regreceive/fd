@@ -75,7 +75,8 @@ const user = (state = initState, action: IAction): IUser => {
   switch (action.type) {
     case 'LOGIN_COMPLETE': {
       const { data } = action.payload as ILoginComplete;
-      return { ...state, ...data };
+      const { username, role, side } = data;
+      return { ...state, username, role, side };
     }
     case 'LOGOUT_COMPLETE': {
       const { data } = action.payload as ILogoutResponse;

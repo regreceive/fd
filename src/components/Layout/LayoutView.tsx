@@ -95,6 +95,7 @@ export default class LayoutView extends React.Component<IProps> {
                 component={Consumer}
               />
             )}
+            <Route path={basePath + '/help-center'} />
 
             <Redirect to={basePath + defaultPath} />
           </Switch>

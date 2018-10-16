@@ -18,16 +18,12 @@ const Brand = (props: IProps) => {
       styleName={cs(id, { selected: props.selected })}
       onClick={props.onClick}
     >
-      <g>
-        <g>
-          <polygon points="150 164.32 143.33 170 6.67 0 150 82.4 150 164.32" />
-          <polygon points="0 5.68 6.67 0 150 82.4 143.33 88.08 0 5.68" />
-          <polygon points="143.33 170 0 87.6 0 5.68 143.33 88.08 143.33 170" />
-          <text x="48%" y="50%">
-            <Translate id={'role.' + id} />
-          </text>
-        </g>
-      </g>
+      <polygon points="150 164.32 143.33 170 6.67 0 150 82.4 150 164.32" />
+      <polygon points="0 5.68 6.67 0 150 82.4 143.33 88.08 0 5.68" />
+      <polygon points="143.33 170 0 87.6 0 5.68 143.33 88.08 143.33 170" />
+      <text x="48%" y="50%">
+        <Translate id={'role.' + id} />
+      </text>
     </svg>
   );
 };

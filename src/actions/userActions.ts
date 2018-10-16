@@ -25,6 +25,7 @@ export interface ILoginComplete extends IResponseSchema {
     username: IUser['username'];
     side: IUser['side'];
     role: IUser['role'];
+    token: string;
   };
 }
 

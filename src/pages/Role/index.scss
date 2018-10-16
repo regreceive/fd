@@ -11,8 +11,7 @@
     position: absolute;
 
     text {
-      transform-origin: 50% 50%;
-      transform: matrix(0.76, 0.49, 0.02, 1, 0, 0);
+      transform: matrix(0.76, 0.49, 0.02, 1, 15, -38);
       text-anchor: middle;
       dominant-baseline: mathematical;
       font-size: 34px;
