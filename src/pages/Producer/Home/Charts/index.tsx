@@ -17,12 +17,36 @@ export default class Curved extends React.Component {
     });
     const scale = {
       time: {
+        ticks: [
+          '8:00',
+          '10:00',
+          '12:00',
+          '14:00',
+          '16:00',
+          '18:00',
+          '20:00',
+          '22:00',
+          '0:00',
+          '2:00',
+          '4:00',
+          '6:00',
+        ],
         tickCount: 12, // 定义坐标轴刻度线的条数，默认为 5
       },
     };
+    const bg = {
+      fill: '#fff',
+    };
     return (
       <div>
-        <Chart data={dv} scale={scale} forceFit padding="auto" height={300}>
+        <Chart
+          data={dv}
+          scale={scale}
+          forceFit
+          height={300}
+          background={bg}
+          padding="auto"
+        >
           <Legend />
           <Axis name="time" />
           <Axis
