@@ -11,6 +11,7 @@ import Role from '../../pages/Role';
 import Agreement from '../../pages/Agreement';
 import Splash from '../../pages/Splash';
 import Login from '../../pages/Login';
+import HelpCenter from '../../pages/HelpCenter';
 import toast from '../../utils/toast';
 import { IUser } from '../../reducers/userReducer';
 import { IGlobal } from '../../reducers/globalReducer';
@@ -95,7 +96,7 @@ export default class LayoutView extends React.Component<IProps> {
                 component={Consumer}
               />
             )}
-            <Route path={basePath + '/help-center'} />
+            <Route path={basePath + '/help-center'} component={HelpCenter} />
 
             <Redirect to={basePath + defaultPath} />
           </Switch>

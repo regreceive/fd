@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 
 const mapStateToProps = (state: IStoreState) => ({
   lang: state.user.config.lang,
-  waiting: state.freeze.role === 1,
+  waiting: state.ui.freeze.role === 1,
 });
 
 function getAgreement(code: string): Promise<{}> {

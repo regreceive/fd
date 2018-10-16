@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import Curved from './Charts';
+import Curved from '../../../components/Charts';
 
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';

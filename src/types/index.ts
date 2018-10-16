@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IGlobal } from '../reducers/globalReducer';
 import { IUser } from '../reducers/userReducer';
-import { IFreeze } from '../reducers/freezeReducer';
+import { IUi } from '../reducers/uiReducer';
 
 declare module 'react' {
   // tslint:disable-next-line: interface-name
@@ -31,6 +31,6 @@ export interface IAction {
 
 export interface IStoreState {
   global: IGlobal;
-  freeze: IFreeze;
+  ui: IUi;
   user: IUser;
 }

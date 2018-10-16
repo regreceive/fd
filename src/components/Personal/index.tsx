@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { ActionSheet, Button } from 'antd-mobile';
-import { push } from 'connected-react-router';
+import { Path } from 'history';
+import { push, RouterAction } from 'connected-react-router';
 
 import { IStoreState } from '../../types';
 import { IUser } from '../../reducers/userReducer';
@@ -19,15 +20,17 @@ interface IStateProps {
 
 interface IDispatchToState {
   logout: typeof logout;
+  push: (path: Path) => RouterAction;
 }
 
 const mapStateToProps = (state: IStoreState): IStateProps => ({
   wallet: state.user.wallet.balance,
-  waiting: state.freeze.logout === 1,
+  waiting: state.ui.freeze.logout === 1,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchToState => ({
   logout: () => dispatch(logout()),
+  push: (path: Path) => dispatch(push(path)),
 });
 
 @(connect(
@@ -78,7 +81,7 @@ export default class extends Component {
   }
 
   private helpHandle = () => {
-    push(basePath + '/help-center');
+    this.injected.push(basePath + '/help-center');
   };
 
   private exitHandle = () => {

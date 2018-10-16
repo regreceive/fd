@@ -29,7 +29,7 @@ const interval = Number(process.env.REACT_APP_OFFER_INTERVAL);
 const mapStateToProps = (state: IStoreState): IStateProps => ({
   price: state.user.offer.price,
   timestamp: state.user.offer.timestamp,
-  waiting: state.freeze.postOffer === 1,
+  waiting: state.ui.freeze.postOffer === 1,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchToState => ({
