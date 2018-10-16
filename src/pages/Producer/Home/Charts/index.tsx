@@ -1,20 +1,20 @@
 import React from 'react';
 import { Axis, Chart, Geom, Legend, Tooltip } from 'bizcharts';
-import DataSet from '@antv/data-set';
+// import DataSet from '@antv/data-set';
 import { data } from './mock/photovoltaic';
 
 export default class Curved extends React.Component {
   public render() {
-    const ds = new DataSet();
-    const dv = ds.createView().source(data);
-    dv.transform({
-      type: 'fold',
-      fields: ['PV', 'Direct', 'Diffuse', 'Temperature'],
-      // 展开字段集
-      key: 'city',
-      // key字段
-      value: 'temp', // value字段
-    });
+    // const ds = new DataSet();
+    // const dv = ds.createView().source(data);
+    // dv.transform({
+    //   type: 'fold',
+    //   fields: ['PV', 'Direct', 'Diffuse', 'Temperature'],
+    //   // 展开字段集
+    //   key: 'city',
+    //   // key字段
+    //   value: 'temp', // value字段
+    // });
     const scale = {
       time: {
         ticks: [
@@ -40,7 +40,7 @@ export default class Curved extends React.Component {
     return (
       <div>
         <Chart
-          data={dv}
+          data={data}
           scale={scale}
           forceFit
           height={300}
@@ -62,11 +62,14 @@ export default class Curved extends React.Component {
           />
           <Geom
             type="line"
-            position="time*temp"
+            position="time*PV"
             size={2}
-            color={'city'}
             shape={'smooth'}
+            style={{
+              lineDash: [4, 4],
+            }}
           />
+          <Geom type="line" position="time*Diffuse" size={2} shape={'smooth'} />
         </Chart>
       </div>
     );
