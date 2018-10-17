@@ -17,33 +17,37 @@
 %container {
   @extend %scroll;
   background: #f6f6f6;
+}
+
+%section {
+  @extend %padding;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  overflow: hidden;
+
+  &.spacer {
+    margin-top: 10px;
+  }
 
   h2 {
     margin: 30px 0 20px;
     font-size: 24px;
     color: #4a4a4a;
   }
-}
 
-%section {
-  display: flex;
-  flex-direction: column;
-  @extend %padding;
-  background: #fff;
-  overflow: hidden;
-
-  > div > div {
+  .head-area,
+  dl {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #f4f6f8;
 
-    &:first-child,
-    &:last-child {
+    &.no-border {
       border-bottom-width: 0;
     }
 
-    > span:first-child {
+    > dt {
       padding: 26px 10px 26px 0;
       color: #737b91;
       white-space: nowrap;

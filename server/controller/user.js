@@ -71,7 +71,7 @@ exports.updateRole = async ctx => {
     toast: '',
     data: {
       side: 'SELL',
-      role: 'SCHOOL',
+      role: 'PHOTOVOLTAIC',
     },
   };
 };
@@ -146,5 +146,15 @@ exports.quotePrice = async ctx => {
         time: Date.now(),
       },
     ],
+  };
+};
+
+exports.balance = async ctx => {
+  await sleep();
+  ctx.body = {
+    status: 'ok',
+    token: '123',
+    toast: '',
+    data: 10
   };
 };

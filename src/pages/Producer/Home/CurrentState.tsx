@@ -1,6 +1,8 @@
 import React from 'react';
-// import { Translate } from 'react-localize-redux';
+import { Translate } from 'react-localize-redux';
+import { Link } from 'react-router-dom';
 import { IUser } from '../../../reducers/userReducer';
+
 import './index.css';
 
 interface IProps {
@@ -9,19 +11,33 @@ interface IProps {
 }
 
 const CurrentState = (props: IProps) => {
+  console.log(111);
   return (
     <div styleName="section">
-      <div>
-        <h2>当前状态</h2>
-        <div>
-          <span>当前天气状况的发电量</span>
-          <span>{props.data.power} 度</span>
-        </div>
-        <div>
-          <span>发电综合成本(单位:*/kwh)</span>
-          <span>{props.data.cost} EDF/度</span>
-        </div>
+      <div styleName="head-area">
+        <h2>
+          <Translate id="producer.home.state" />
+        </h2>
+        <Link to="/producer/detail">
+          <Translate id="more" />
+        </Link>
       </div>
+      <dl>
+        <dt>
+          <Translate id="producer.home.power" />
+        </dt>
+        <dd>
+          <Translate id="kw" data={{ kw: props.data.power }} />
+        </dd>
+      </dl>
+      <dl>
+        <dt>
+          <Translate id="producer.home.cost" />
+        </dt>
+        <dd>
+          <Translate id="edf-per-kw" data={{ edf: props.data.cost }} />
+        </dd>
+      </dl>
     </div>
   );
 };

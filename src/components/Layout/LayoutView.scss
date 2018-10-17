@@ -13,6 +13,14 @@ li {
   list-style: none;
 }
 
+dl {
+  margin: 0;
+}
+
+a {
+  color: #328ae3;
+}
+
 :global {
   .color-up {
     color: #589065;

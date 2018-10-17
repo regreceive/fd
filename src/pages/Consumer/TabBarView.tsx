@@ -5,7 +5,7 @@ import { Translate } from 'react-localize-redux';
 import { TabBar } from 'antd-mobile';
 import ReactSVG from 'react-svg';
 
-import { changeBar } from '../../actions/globalActions';
+import { changeBar } from '../../actions/uiActions';
 import { IStoreState } from '../../types';
 import { IUi } from '../../reducers/uiReducer';
 import Home from './Home';

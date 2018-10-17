@@ -6,18 +6,21 @@ import {
   ILoginComplete,
   IQuotePriceResponse,
   IResponseSchema,
+  IWalletBalanceResponse,
   loginComplete,
   logoutComplete,
   postOfferComplete,
   producerSummaryComplete,
-  default as quotePriceComplete,
+  quotePriceComplete,
   updateRoleComplete,
+  walletBalanceComplete,
 } from '../actions/userActions';
+import { realTimeImmutableData, realTimeMutableData } from '../pages/data';
 
 const API = process.env.REACT_APP_API;
 
 // fetch基础上包装了一层
-export function* request(
+function* request(
   uri: string,
   credentials?: RequestInit['credentials'],
   body?: {},
@@ -26,7 +29,7 @@ export function* request(
   init.headers = new Headers();
   if (credentials === 'include') {
     const {
-      user: { token },
+      global: { token },
     } = yield select();
     init.headers.append('token', token);
   }
@@ -38,6 +41,31 @@ export function* request(
   }
 
   return yield fetch(API + uri, init);
+}
+
+function mockResponse(json: object) {
+  return new Response(
+    new Blob([JSON.stringify(json)], { type: 'application/json' }),
+    { status: 200 },
+  );
+}
+
+function* mockCurrentState() {
+  const {
+    user: { role },
+  } = yield select();
+  const [power] = realTimeMutableData(role);
+  const [, , cost] = realTimeImmutableData(role);
+
+  return mockResponse({
+    status: 'ok',
+    token: '123',
+    toast: '',
+    data: {
+      power,
+      cost,
+    },
+  });
 }
 
 function* login(action: IAction) {
@@ -54,7 +82,7 @@ function* login(action: IAction) {
 
 function* logout() {
   try {
-    const response = yield call(request, '/logout', 'include');
+    const response = yield call(request, '/api/logout', 'include');
 
     const json = yield call([response, 'json']);
     yield put(logoutComplete(json));
@@ -65,7 +93,7 @@ function* logout() {
 
 function* getAvailableRoles() {
   try {
-    const response = yield call(request, '/get-available-roles', 'include');
+    const response = yield call(request, '/config/role', 'include');
 
     const json: IAvailableRolesComplete = yield call([response, 'json']);
     yield put(getAvailableRolesComplete(json));
@@ -78,7 +106,7 @@ function* updateRole(action: IAction) {
   try {
     const response = yield call(
       request,
-      '/update-role',
+      '/api/update-role',
       'include',
       action.payload,
     );
@@ -93,7 +121,8 @@ function* updateRole(action: IAction) {
 function* getProducerSummary() {
   try {
     const response = yield all([
-      call(request, '/get-current-state', 'include'),
+      // call(request, '/get-current-state', 'include'),
+      call(mockCurrentState),
       call(request, '/get-earns', 'include'),
       call(request, '/get-offer', 'include'),
     ]);
@@ -158,6 +187,17 @@ function* getQuotePrice() {
   }
 }
 
+function* getWalletBalance() {
+  try {
+    const response = yield call(request, '/balance', 'include');
+
+    const json: IWalletBalanceResponse = yield call([response, 'json']);
+    yield put(walletBalanceComplete(json));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export function* watchUser() {
   yield takeEvery('LOGIN', login);
   yield takeEvery('LOGOUT', logout);
@@ -166,4 +206,5 @@ export function* watchUser() {
   yield takeEvery('GET_PRODUCER_SUMMARY', getProducerSummary);
   yield takeEvery('POST_OFFER', postOffer);
   yield takeEvery('GET_QUOTE_PRICE', getQuotePrice);
+  yield takeEvery('GET_WALLET_BALANCE', getWalletBalance);
 }

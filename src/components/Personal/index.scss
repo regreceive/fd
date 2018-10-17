@@ -8,13 +8,6 @@
   @extend %section;
   min-height: calc(100% - 8rem);
   justify-content: space-between;
-
-  > div > div {
-    &:first-child,
-    &:last-child {
-      border-bottom-width: 1px;
-    }
-  }
 }
 
 .banner {

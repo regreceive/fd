@@ -4,10 +4,3 @@ export function clearToast() {
     payload: { toast: '' },
   };
 }
-
-export function changeBar(id: string) {
-  return {
-    type: 'CHANGE_BAR',
-    payload: id,
-  };
-}

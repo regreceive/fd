@@ -8,6 +8,8 @@ import { timeFormat } from '../../../utils/timeFormat';
 import { IUser } from '../../../reducers/userReducer';
 import { postOffer } from '../../../actions/userActions';
 import { IStoreState } from '../../../types';
+import { realTimePrice } from '../../data';
+
 import css from './index.css';
 
 interface IState {
@@ -68,41 +70,43 @@ export default class extends React.Component<{}, IState> {
   }
 
   public render() {
-    const { price, waiting } = this.injected;
+    const { waiting } = this.injected;
     return (
       <div styleName="section">
         <div>
-          <div>
+          <div styleName="head-area">
             <h2>报价信息</h2>
             <Link to="/producer/quote">历史报价</Link>
           </div>
-          <div>
-            <span>大电网实时电价</span>
-            <span>{price} 元/度</span>
-          </div>
-          <div>
-            <span>距离下次提交报价</span>
-            <span>{timeFormat(this.state.countdown)}</span>
-          </div>
-          <div>
-            <span>请输入发电量</span>
+          <dl>
+            <dt>大电网实时电价</dt>
+            <dd>{realTimePrice()} 元/度</dd>
+          </dl>
+          <dl>
+            <dt>距离下次提交报价</dt>
+            <dd>{timeFormat(this.state.countdown)}</dd>
+          </dl>
+          <dl>
+            <dt>请输入发电量</dt>
             <InputItem
               extra="度"
               type="digit"
               onChange={this.powerChangeHandle}
             />
-          </div>
-          <div>
-            <span>请输入电价</span>
+          </dl>
+          <dl>
+            <dt>请输入电价</dt>
             <InputItem
               extra="EDF/度"
               type="digit"
               onChange={this.priceChangeHandle}
             />
-          </div>
-          <div>
-            <a>报价须知(含惩罚措施)</a>
-          </div>
+          </dl>
+          <dl styleName="no-border">
+            <dt>
+              <a>报价须知(含惩罚措施)</a>
+            </dt>
+          </dl>
         </div>
         <Button
           type="ghost"

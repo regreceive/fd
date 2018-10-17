@@ -5,7 +5,6 @@ import { Translate } from 'react-localize-redux';
 import { Button } from 'antd-mobile';
 
 import { ILogin, login } from '../../actions/userActions';
-import { testEmail } from '../../utils/validator';
 
 import './index.css';
 import { IStoreState } from '../../types';
@@ -46,7 +45,7 @@ export default class extends Component<{}, IState> {
   public changeHandle = () => {
     const username = this.username.current as HTMLInputElement;
     const password = this.password.current as HTMLInputElement;
-    const submitEnabled = testEmail(username.value) && password.value !== '';
+    const submitEnabled = username.value !== '' && password.value !== '';
     this.setState({ submitDisabled: !submitEnabled });
   };
 

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import Curved from '../../../components/Charts';
 
+import { getChartsData } from '../../data';
+import Curved from '../../../components/Charts';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
 import { getProducerSummary } from '../../../actions/userActions';
@@ -47,9 +48,10 @@ export default class extends Component {
 
   public render() {
     const { role, currentState, earns } = this.injected;
+    const data = getChartsData(role);
     return (
       <div styleName="container">
-        <Curved />
+        <Curved data={data} />
         <CurrentState role={role} data={currentState} />
         <Earns role={role} data={earns} />
         <Offer />

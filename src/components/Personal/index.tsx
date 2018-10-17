@@ -7,30 +7,32 @@ import { push, RouterAction } from 'connected-react-router';
 
 import { IStoreState } from '../../types';
 import { IUser } from '../../reducers/userReducer';
-import { logout } from '../../actions/userActions';
+import { logout, getWalletBalance } from '../../actions/userActions';
 
 import './index.css';
 
 const basePath = process.env.REACT_APP_BASE_PATH;
 
 interface IStateProps {
-  wallet: IUser['wallet']['balance'];
+  balance: IUser['wallet']['balance'];
   waiting: boolean;
 }
 
 interface IDispatchToState {
   logout: typeof logout;
   push: (path: Path) => RouterAction;
+  getWalletBalance: typeof getWalletBalance;
 }
 
 const mapStateToProps = (state: IStoreState): IStateProps => ({
-  wallet: state.user.wallet.balance,
+  balance: state.user.wallet.balance,
   waiting: state.ui.freeze.logout === 1,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchToState => ({
   logout: () => dispatch(logout()),
   push: (path: Path) => dispatch(push(path)),
+  getWalletBalance: () => dispatch(getWalletBalance()),
 });
 
 @(connect(
@@ -40,6 +42,10 @@ const mapDispatchToProps = (dispatch: Dispatch): IDispatchToState => ({
 export default class extends Component {
   get injected() {
     return this.props as IStateProps & IDispatchToState;
+  }
+
+  public componentDidMount() {
+    this.injected.getWalletBalance();
   }
 
   public render() {
@@ -57,24 +63,26 @@ export default class extends Component {
         </div>
         <div styleName="section">
           <div>
-            <div>
-              <span>EDF电力钱包</span>
-              <span>0 EDF</span>
-            </div>
-            <div onClick={this.helpHandle}>
-              <span>帮助中心</span>
-            </div>
-            <div>
-              <span>语言设置</span>
-            </div>
+            <dl>
+              <dt>EDF电力钱包</dt>
+              <dd>{this.injected.balance} EDF</dd>
+            </dl>
+            <dl onClick={this.helpHandle}>
+              <dt>帮助中心</dt>
+            </dl>
+            <dl>
+              <dt>语言设置</dt>
+            </dl>
           </div>
-          <Button
-            type="primary"
-            onClick={this.actionSheet}
-            disabled={this.injected.waiting}
-          >
-            退出登录
-          </Button>
+          <div styleName="button">
+            <Button
+              type="primary"
+              onClick={this.actionSheet}
+              disabled={this.injected.waiting}
+            >
+              退出登录
+            </Button>
+          </div>
         </div>
       </div>
     );

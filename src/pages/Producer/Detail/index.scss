@@ -1,7 +1,8 @@
 @import '../../common.scss';
 
 .container {
-  @extend %container;
+  @extend %scroll;
+  background: #f6f6f6;
 }
 
 .section {

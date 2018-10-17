@@ -143,9 +143,26 @@ export interface IQuotePriceResponse extends IResponseSchema {
   data: IUser['quotePrice'];
 }
 
-export default function quotePriceComplete(data: IQuotePriceResponse) {
+export function quotePriceComplete(data: IQuotePriceResponse) {
   return {
     type: 'QUOTE_PRICE_COMPLETE',
+    payload: data,
+  };
+}
+
+export function getWalletBalance() {
+  return {
+    type: 'GET_WALLET_BALANCE',
+  };
+}
+
+export interface IWalletBalanceResponse extends IResponseSchema {
+  data: IUser['wallet']['balance'];
+}
+
+export function walletBalanceComplete(data: IWalletBalanceResponse) {
+  return {
+    type: 'WALLET_BALANCE_COMPLETE',
     payload: data,
   };
 }

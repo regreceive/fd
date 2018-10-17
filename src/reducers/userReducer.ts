@@ -6,6 +6,7 @@ import {
   IProducerSummaryResponse,
   IQuotePriceResponse,
   IRoleComplete,
+  IWalletBalanceResponse,
 } from '../actions/userActions';
 
 export interface IUser {
@@ -16,7 +17,6 @@ export interface IUser {
   currentState: {
     power: number;
     cost: number;
-    efficiency: number;
   };
   earns: {
     vol: number;
@@ -51,7 +51,6 @@ const initState: IUser = {
   currentState: {
     power: 0,
     cost: 0,
-    efficiency: 0,
   },
   earns: {
     vol: 0,
@@ -97,6 +96,11 @@ const user = (state = initState, action: IAction): IUser => {
     case 'QUOTE_PRICE_COMPLETE': {
       const { data } = action.payload as IQuotePriceResponse;
       return { ...state, quotePrice: data };
+    }
+    case 'WALLET_BALANCE_COMPLETE': {
+      const { data } = action.payload as IWalletBalanceResponse;
+      const wallet = { balance: data };
+      return { ...state, wallet };
     }
     default:
       return state;

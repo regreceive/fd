@@ -26,36 +26,36 @@ export default class extends Component {
         <div styleName="section">
           <div>
             <h2>当前电价组成</h2>
-            <div>
-              <span>今日用电总量</span>
-              <span>0 度</span>
-            </div>
-            <div>
-              <span>当前用电价</span>
-              <span>1 EDF/度</span>
-            </div>
-            <div>
-              <span>当前大电网电价</span>
-              <span>1 EDF/度</span>
-            </div>
+            <dl>
+              <dt>今日用电总量</dt>
+              <dd>0 度</dd>
+            </dl>
+            <dl>
+              <dt>当前用电价</dt>
+              <dd>1 EDF/度</dd>
+            </dl>
+            <dl>
+              <dt>当前大电网电价</dt>
+              <dd>1 EDF/度</dd>
+            </dl>
           </div>
         </div>
 
-        <div styleName="section">
+        <div styleName="section spacer">
           <div>
-            <h2>我的账单</h2>
-            <div>
-              <span>当前已用电量</span>
-              <span>0 度</span>
-            </div>
-            <div>
-              <span>用电花费</span>
-              <span>1 EDF</span>
-            </div>
-            <div>
-              <span>已省</span>
-              <span>1000 EDF</span>
-            </div>
+            <h2 styleName="spacer">我的账单</h2>
+            <dl>
+              <dt>当前已用电量</dt>
+              <dd>0 度</dd>
+            </dl>
+            <dl>
+              <dt>用电花费</dt>
+              <dd>1 EDF</dd>
+            </dl>
+            <dl>
+              <dt>已省</dt>
+              <dd>1000 EDF</dd>
+            </dl>
           </div>
         </div>
       </div>

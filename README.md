@@ -259,3 +259,26 @@ response = { status: 'ok', token: '123', toast: 'success.offer' };
 | toast | 说明 |
 | ----- | ---- |
 
+
+
+
+
+
+### 钱包余额
+
+GET /api/balance
+
+响应
+
+```js
+response = {
+  status: 'ok',
+  token: '123',
+  toast: '',
+  data: 10,
+};
+```
+
+
+| toast | 说明 |
+| ----- | ---- |
