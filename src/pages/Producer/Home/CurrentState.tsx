@@ -11,7 +11,6 @@ interface IProps {
 }
 
 const CurrentState = (props: IProps) => {
-  console.log(111);
   return (
     <div styleName="section">
       <div styleName="head-area">
