@@ -30,7 +30,7 @@
   flex-direction: column;
   @extend %padding;
   background: #fff;
-  overflow: hidden;
+  // overflow: hidden;
 
   > div > div {
     display: flex;

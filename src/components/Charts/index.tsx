@@ -50,11 +50,12 @@ export default class Curved extends React.Component {
           <Legend />
           <Axis name="time" />
           <Axis
-            name="temp"
+            name="pv"
             label={{
               formatter: val => `${val}`,
             }}
           />
+          <Axis name="Diffuse" visible={false} />
           <Tooltip
             crosshairs={{
               type: 'y',
