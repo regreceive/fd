@@ -3,6 +3,19 @@ export function timeFormat(timeStamp: number) {
   return `${hour}:${minute}:${second}`;
 }
 
+export function dateTimeFormat(timestamp: number) {
+  const date = new Date(timestamp);
+  const YYYY = date.getFullYear();
+  const MM = fill(date.getMonth() + 1);
+  const DD = fill(date.getDate());
+
+  const hh = fill(date.getHours());
+  const mm = fill(date.getMinutes());
+  const ss = fill(date.getSeconds());
+
+  return `${YYYY}-${MM}-${DD} ${hh}:${mm}:${ss}`;
+}
+
 export function timeParse(timeStamp: number) {
   if (timeStamp <= 0) {
     return { day: '00', hour: '00', minute: '00', second: '00' };
