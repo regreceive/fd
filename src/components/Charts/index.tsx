@@ -1,22 +1,13 @@
 import React from 'react';
 import { Axis, Chart, Geom, Legend, Tooltip } from 'bizcharts';
-import DataSet from '@antv/data-set';
+// import DataSet from '@antv/data-set';
+import { data } from './mock/photovoltaic';
 
 interface IProps {
   data: object[];
 }
 
 const Curved = (props: IProps) => {
-  const ds = new DataSet();
-  const dv = ds.createView().source(props.data);
-  dv.transform({
-    type: 'fold',
-    fields: ['PV', 'Direct', 'Diffuse', 'Temperature'],
-    // 展开字段集
-    key: 'city',
-    // key字段
-    value: 'temp', // value字段
-  });
   const scale = {
     time: {
       ticks: [
@@ -41,7 +32,7 @@ const Curved = (props: IProps) => {
   };
   return (
     <Chart
-      data={dv}
+      data={props.data}
       scale={scale}
       forceFit
       height={300}
@@ -51,11 +42,12 @@ const Curved = (props: IProps) => {
       <Legend />
       <Axis name="time" />
       <Axis
-        name="temp"
+        name="pv"
         label={{
           formatter: val => `${val}`,
         }}
       />
+      <Axis name="Diffuse" visible={false} />
       <Tooltip
         crosshairs={{
           type: 'y',
@@ -67,7 +59,11 @@ const Curved = (props: IProps) => {
         size={2}
         color={'city'}
         shape={'smooth'}
+        style={{
+          lineDash: [4, 4],
+        }}
       />
+      <Geom type="line" position="time*Diffuse" size={2} shape={'smooth'} />
     </Chart>
   );
 };
