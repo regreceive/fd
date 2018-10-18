@@ -64,6 +64,13 @@ export interface IUser {
     before: number;
     after: number;
   };
+  getChartData: Array<{
+    uid: string;
+    electric: number;
+    price: number;
+    creatime: string;
+    index: number;
+  }>;
 }
 
 const lang = process.env.REACT_APP_DEFAULT_LANGUAGE || 'en';
@@ -111,6 +118,7 @@ const initState: IUser = {
     before: 0,
     after: 0,
   },
+  getChartData: [],
 };
 
 const user = (state = initState, action: IAction): IUser => {
@@ -147,7 +155,7 @@ const user = (state = initState, action: IAction): IUser => {
     }
     case 'CURRENT_COAST_COMPLETE': {
       const { data } = action.payload as ICurrentResponse;
-      return { ...state, currentCoast: data };
+      return { ...state, ...data };
     }
     case 'GAINS_DETAIL_COMPLETE': {
       const { data } = action.payload as IGainsDetailResponse;

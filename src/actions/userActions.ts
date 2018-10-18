@@ -173,7 +173,10 @@ export function getCurrentCoast() {
 }
 
 export interface ICurrentResponse extends IResponseSchema {
-  data: IUser['currentCoast'];
+  data: {
+    currentCoast: IUser['currentCoast'];
+    getChartData: IUser['getChartData'];
+  };
 }
 
 export function currentCoastComplete(data: ICurrentResponse) {
@@ -219,3 +222,20 @@ export function gainsDetailComplete(data: IGainsDetailResponse) {
     payload: data,
   };
 }
+
+// export function getChartData() {
+//   return {
+//     type:'GET_CHART_DATA',
+//   }
+// }
+
+// export interface IGetChartResponse extends IResponseSchema {
+//   data:IUser['getChartData'];
+// }
+
+// export function getChartComplete(data: IGetChartResponse) {
+//   return {
+//     type: 'GET_CHART_COMPLETE',
+//     playload: data,
+//   }
+// }
