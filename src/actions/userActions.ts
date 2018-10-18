@@ -166,3 +166,23 @@ export function walletBalanceComplete(data: IWalletBalanceResponse) {
     payload: data,
   };
 }
+
+export function getGainsDetail() {
+  return {
+    type: 'GET_GAINS_DETAIL',
+  };
+}
+
+export interface IGainsDetailResponse extends IResponseSchema {
+  data: {
+    gainsDetail: IUser['gainsDetail'];
+    gainsCard: IUser['gainsCard'];
+  };
+}
+
+export function gainsDetailComplete(data: IGainsDetailResponse) {
+  return {
+    type: 'GAINS_DETAIL_COMPLETE',
+    payload: data,
+  };
+}

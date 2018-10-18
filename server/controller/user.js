@@ -142,7 +142,7 @@ exports.quotePrice = async ctx => {
       {
         amount: 5000,
         earning: 3000,
-        status: 0,
+        status: 1,
         time: Date.now(),
       },
     ],
@@ -157,4 +157,46 @@ exports.balance = async ctx => {
     toast: '',
     data: 10
   };
+};
+
+
+exports.gainsDetail = async ctx => {
+  await sleep();
+  ctx.body = {
+    status: 'ok',
+    token: '123',
+    toast: '',
+    data: {
+      count: 50000,
+      earning: 5000,
+      netEarning: 24000,
+    }
+
+  };
+};
+
+exports.gainsCard = async ctx => {
+  await sleep();
+  ctx.body = {
+    status: 'ok',
+    token: '123',
+    toast: '',
+    data: 
+     [
+        {
+          count: 50000,
+          earning: 3000,
+          netEarning: 100,
+          time: Date.now(),
+        },
+        {
+          count: 50000,
+          earning: 3000,
+          netEarning: 0,
+          time: Date.now(),
+        },
+      ]
+    
+
+  }
 };

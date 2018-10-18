@@ -12,5 +12,6 @@ router.get('get-offer', api.offer);
 router.post('post-offer', api.postOffer);
 router.get('quotePrice', api.quotePrice);
 router.get('balance', api.balance);
-
+router.get('gainsDetail', api.gainsDetail);
+router.get('gainsCard', api.gainsCard);
 module.exports = router;

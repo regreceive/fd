@@ -7,6 +7,7 @@ import {
   IQuotePriceResponse,
   IRoleComplete,
   IWalletBalanceResponse,
+  IGainsDetailResponse,
 } from '../actions/userActions';
 
 export interface IUser {
@@ -34,6 +35,17 @@ export interface IUser {
     amount: number;
     earning: number;
     status: 0 | 1 | 2;
+    time: number;
+  }>;
+  gainsDetail: {
+    count: number;
+    earning: number;
+    netEarning: number;
+  };
+  gainsCard: Array<{
+    count: number;
+    earning: number;
+    netEarning: number;
     time: number;
   }>;
   config: {
@@ -65,6 +77,12 @@ const initState: IUser = {
     balance: 0,
   },
   quotePrice: [],
+  gainsDetail: {
+    count: 0,
+    earning: 0,
+    netEarning: 0,
+  },
+  gainsCard: [],
   config: {
     lang,
   },
@@ -101,6 +119,10 @@ const user = (state = initState, action: IAction): IUser => {
       const { data } = action.payload as IWalletBalanceResponse;
       const wallet = { balance: data };
       return { ...state, wallet };
+    }
+    case 'GAINS_DETAIL_COMPLETE': {
+      const { data } = action.payload as IGainsDetailResponse;
+      return { ...state, ...data };
     }
     default:
       return state;

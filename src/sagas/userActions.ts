@@ -14,6 +14,7 @@ import {
   quotePriceComplete,
   updateRoleComplete,
   walletBalanceComplete,
+  gainsDetailComplete,
 } from '../actions/userActions';
 import { realTimeImmutableData, realTimeMutableData } from '../pages/data';
 
@@ -198,6 +199,39 @@ function* getWalletBalance() {
   }
 }
 
+function* getGainsDetail() {
+  try {
+    const response = yield all([
+      call(request, '/gainsDetail', 'include'),
+      call(request, '/gainsCard', 'include'),
+    ]);
+
+    const json = yield all([
+      call([response[0], 'json']),
+      call([response[1], 'json']),
+    ]);
+    const toast = Object.keys(
+      json.reduce((prev: {}, curr: IResponseSchema) => {
+        if (curr.toast !== '') {
+          prev[curr.toast as 'imNotEmpty'] = 1;
+        }
+        return prev;
+      }, {}),
+    );
+    const data = { gainsDetail: json[0].data, gainsCard: json[1].data };
+    yield put(
+      gainsDetailComplete({
+        status: 'ok',
+        token: json[0].token,
+        toast,
+        data,
+      }),
+    );
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export function* watchUser() {
   yield takeEvery('LOGIN', login);
   yield takeEvery('LOGOUT', logout);
@@ -207,4 +241,5 @@ export function* watchUser() {
   yield takeEvery('POST_OFFER', postOffer);
   yield takeEvery('GET_QUOTE_PRICE', getQuotePrice);
   yield takeEvery('GET_WALLET_BALANCE', getWalletBalance);
+  yield takeEvery('GET_GAINS_DETAIL', getGainsDetail);
 }

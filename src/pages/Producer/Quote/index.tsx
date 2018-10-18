@@ -8,7 +8,7 @@ import { Icon, NavBar } from 'antd-mobile';
 import { getQuotePrice } from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
-
+import { dateTimeFormat } from '../../../utils/timeFormat';
 import './index.css';
 
 interface IStateProps {
@@ -51,26 +51,28 @@ export default class extends Component {
         >
           <Translate id="historical-quote" />
         </NavBar>
-
-        <div styleName="card">
-          <div styleName="card-top">
-            <ul>
-              <li>
-                <span>发电量</span>
-                <span>50000</span>
-              </li>
-              <li>
-                <span>用户收益</span>
-                <span>5000</span>
-              </li>
-              <li>
-                <span>状态</span>
-                <span styleName="blue">待审核</span>
-              </li>
-            </ul>
+        {this.injected.quotePrice.map((item, index) => (
+          <div styleName="card" key={index}>
+            <div styleName="card-top">
+              <ul>
+                <li>
+                  <span>发电量</span>
+                  <span>{item.amount}</span>
+                </li>
+                <li>
+                  <span>用户收益</span>
+                  <span>{item.earning}</span>
+                </li>
+                <li>
+                  <span>状态</span>
+                  {item.status === 0 && <span styleName="blue">待审核</span>}
+                  {item.status === 1 && <span styleName="lose">审核失败</span>}
+                </li>
+              </ul>
+            </div>
+            <p>发电时间 {dateTimeFormat(item.time)}</p>
           </div>
-          <p>发电时间 2018-09-09 12:1</p>
-        </div>
+        ))}
       </div>
     );
   }
