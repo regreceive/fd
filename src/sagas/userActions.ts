@@ -11,6 +11,7 @@ import {
   logoutComplete,
   postOfferComplete,
   producerSummaryComplete,
+  currentCoastComplete,
   quotePriceComplete,
   updateRoleComplete,
   walletBalanceComplete,
@@ -198,6 +199,17 @@ function* getWalletBalance() {
   }
 }
 
+function* getCurrentCoast() {
+  try {
+    const response = yield call(request, '/get-current-coast', 'include');
+
+    const json = yield call([response, 'json']);
+    yield put(currentCoastComplete(json));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export function* watchUser() {
   yield takeEvery('LOGIN', login);
   yield takeEvery('LOGOUT', logout);
@@ -207,4 +219,5 @@ export function* watchUser() {
   yield takeEvery('POST_OFFER', postOffer);
   yield takeEvery('GET_QUOTE_PRICE', getQuotePrice);
   yield takeEvery('GET_WALLET_BALANCE', getWalletBalance);
+  yield takeEvery('GET_CURRENT_COAST', getCurrentCoast);
 }

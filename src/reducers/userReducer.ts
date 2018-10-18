@@ -7,6 +7,7 @@ import {
   IQuotePriceResponse,
   IRoleComplete,
   IWalletBalanceResponse,
+  ICurrentResponse,
 } from '../actions/userActions';
 
 export interface IUser {
@@ -39,6 +40,11 @@ export interface IUser {
   config: {
     lang: string;
   };
+  currentCoast: {
+    currentpower: number;
+    before: number;
+    after: number;
+  };
 }
 
 const lang = process.env.REACT_APP_DEFAULT_LANGUAGE || 'en';
@@ -67,6 +73,11 @@ const initState: IUser = {
   quotePrice: [],
   config: {
     lang,
+  },
+  currentCoast: {
+    currentpower: 0,
+    before: 0,
+    after: 0,
   },
 };
 
@@ -101,6 +112,10 @@ const user = (state = initState, action: IAction): IUser => {
       const { data } = action.payload as IWalletBalanceResponse;
       const wallet = { balance: data };
       return { ...state, wallet };
+    }
+    case 'CURRENT_COAST_COMPLETE': {
+      const { data } = action.payload as ICurrentResponse;
+      return { ...state, currentCoast: data };
     }
     default:
       return state;

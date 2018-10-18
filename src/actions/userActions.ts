@@ -166,3 +166,19 @@ export function walletBalanceComplete(data: IWalletBalanceResponse) {
     payload: data,
   };
 }
+export function getCurrentCoast() {
+  return {
+    type: 'GET_CURRENT_COAST',
+  };
+}
+
+export interface ICurrentResponse extends IResponseSchema {
+  data: IUser['currentCoast'];
+}
+
+export function currentCoastComplete(data: ICurrentResponse) {
+  return {
+    type: 'CURRENT_COAST_COMPLETE',
+    payload: data,
+  };
+}

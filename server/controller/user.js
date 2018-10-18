@@ -158,3 +158,17 @@ exports.balance = async ctx => {
     data: 10
   };
 };
+
+exports.exchange = async ctx => {
+  await sleep();
+  ctx.body = {
+    status:'ok',
+    token:'123',
+    toast:'',
+    data: {
+      currentpower:10,
+      before:1540,
+      after:1200,
+    }
+  }
+}
