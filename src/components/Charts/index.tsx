@@ -35,7 +35,7 @@ const Curved = (props: IProps) => {
       forceFit
       height={300}
       background={bg}
-      padding="auto"
+      padding={[40, 20, 90, 40]}
     >
       <Legend />
       <Axis name="time" />

@@ -70,8 +70,8 @@ exports.updateRole = async ctx => {
     token: '123',
     toast: '',
     data: {
-      side: 'SELL',
-      role: 'PHOTOVOLTAIC',
+      side: 'BUY',
+      role: 'SCHOOL',
     },
   };
 };
@@ -155,6 +155,26 @@ exports.balance = async ctx => {
     status: 'ok',
     token: '123',
     toast: '',
-    data: 10
+    data: 10,
+  };
+};
+
+exports.priceConstitute = async ctx => {
+  await sleep();
+  ctx.set({
+    token: '123',
+  });
+
+  ctx.body = {
+    status: 'ok',
+    token: '123',
+    toast: '',
+    data: {
+      pv: 0.1,
+      cchp: 0.1,
+      storage: 0.1,
+      wind: 0.1,
+      grid: 0.6,
+    }
   };
 };

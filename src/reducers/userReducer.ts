@@ -36,6 +36,13 @@ export interface IUser {
     status: 0 | 1 | 2;
     time: number;
   }>;
+  priceConstitute: {
+    pv: number;
+    cchp: number;
+    storage: number;
+    wind: number;
+    grid: number;
+  };
   config: {
     lang: string;
   };
@@ -65,6 +72,13 @@ const initState: IUser = {
     balance: 0,
   },
   quotePrice: [],
+  priceConstitute: {
+    pv: 0.1,
+    cchp: 0.1,
+    storage: 0.1,
+    wind: 0.1,
+    grid: 0.6,
+  },
   config: {
     lang,
   },

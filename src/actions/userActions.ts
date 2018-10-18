@@ -166,3 +166,20 @@ export function walletBalanceComplete(data: IWalletBalanceResponse) {
     payload: data,
   };
 }
+
+export function getPriceConstitute() {
+  return {
+    type: 'GET_PRICE_CONSTITUTE',
+  };
+}
+
+export interface IPriceConstituteResponse extends IResponseSchema {
+  data: IUser['priceConstitute'];
+}
+
+export function priceConstituteComplete(data: IPriceConstituteResponse) {
+  return {
+    type: 'PRICE_CONSTITUTE_COMPLETE',
+    payload: data,
+  };
+}

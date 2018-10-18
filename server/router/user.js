@@ -9,8 +9,9 @@ router.post('api/update-role', api.updateRole);
 router.get('get-current-state', api.currentState);
 router.get('get-earns', api.earns);
 router.get('get-offer', api.offer);
-router.post('post-offer', api.postOffer);
+router.post('api/quotePrice', api.postOffer);
 router.get('quotePrice', api.quotePrice);
 router.get('balance', api.balance);
+router.get('api/price/detail', api.priceConstitute);
 
 module.exports = router;

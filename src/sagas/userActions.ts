@@ -4,12 +4,14 @@ import {
   getAvailableRolesComplete,
   IAvailableRolesComplete,
   ILoginComplete,
+  IPriceConstituteResponse,
   IQuotePriceResponse,
   IResponseSchema,
   IWalletBalanceResponse,
   loginComplete,
   logoutComplete,
   postOfferComplete,
+  priceConstituteComplete,
   producerSummaryComplete,
   quotePriceComplete,
   updateRoleComplete,
@@ -164,7 +166,7 @@ function* postOffer(action: IAction) {
   try {
     const response = yield call(
       request,
-      '/post-offer',
+      '/quotePrice',
       'include',
       action.payload,
     );
@@ -198,6 +200,17 @@ function* getWalletBalance() {
   }
 }
 
+function* getPriceConstitute() {
+  try {
+    const response = yield call(request, '/api/price/detail', 'include');
+
+    const json: IPriceConstituteResponse = yield call([response, 'json']);
+    yield put(priceConstituteComplete(json));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export function* watchUser() {
   yield takeEvery('LOGIN', login);
   yield takeEvery('LOGOUT', logout);
@@ -207,4 +220,5 @@ export function* watchUser() {
   yield takeEvery('POST_OFFER', postOffer);
   yield takeEvery('GET_QUOTE_PRICE', getQuotePrice);
   yield takeEvery('GET_WALLET_BALANCE', getWalletBalance);
+  yield takeEvery('GET_PRICE_CONSTITUTE', getPriceConstitute);
 }

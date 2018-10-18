@@ -260,10 +260,6 @@ response = { status: 'ok', token: '123', toast: 'success.offer' };
 | ----- | ---- |
 
 
-
-
-
-
 ### 钱包余额
 
 GET /api/balance
@@ -279,6 +275,6 @@ response = {
 };
 ```
 
-
 | toast | 说明 |
 | ----- | ---- |
+
