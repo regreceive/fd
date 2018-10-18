@@ -70,8 +70,8 @@ exports.updateRole = async ctx => {
     token: '123',
     toast: '',
     data: {
-      side: 'BUY',
-      role: 'SCHOOL',
+      side: 'SELL',
+      role: 'WIND',
     },
   };
 };
