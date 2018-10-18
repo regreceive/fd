@@ -1,7 +1,3 @@
-const COLOR_RAISE = '#589065';
-const COLOR_FALL = '#ae4e54';
+const basePath = process.env.REACT_APP_BASE_PATH;
 
-export default {
-  COLOR_RAISE,
-  COLOR_FALL,
-};
+export { basePath };

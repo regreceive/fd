@@ -44,34 +44,42 @@ exports.logout = async ctx => {
   };
 };
 
+const roles = [
+  { role: 'SCHOOL', available: false, side: 'BUY' },
+  { role: 'FACTORY', available: true, side: 'BUY' },
+  { role: 'MALL', available: true, side: 'BUY' },
+  { role: 'COMMUNITY', available: true, side: 'BUY' },
+  { role: 'PHOTOVOLTAIC', available: true, side: 'SELL' },
+  { role: 'WIND', available: true, side: 'SELL' },
+  { role: 'BATTERY', available: true, side: 'SELL' },
+  { role: 'GAS', available: true, side: 'SELL' },
+];
+
 exports.availableRoles = async ctx => {
   await sleep();
   ctx.body = {
     status: 'ok',
     token: '123',
     toast: '',
-    data: [
-      { role: 'SCHOOL', available: false, side: 'BUY' },
-      { role: 'FACTORY', available: true, side: 'BUY' },
-      { role: 'MALL', available: true, side: 'BUY' },
-      { role: 'COMMUNITY', available: true, side: 'BUY' },
-      { role: 'PHOTOVOLTAIC', available: true, side: 'SELL' },
-      { role: 'WIND', available: true, side: 'SELL' },
-      { role: 'BATTERY', available: true, side: 'SELL' },
-      { role: 'GAS', available: true, side: 'SELL' },
-    ],
+    data: roles,
   };
 };
 
 exports.updateRole = async ctx => {
   await sleep();
+  const { role } = ctx.request.body;
+
+  const { side } = roles.find(row => {
+    return row.role === role;
+  });
+
   ctx.body = {
     status: 'ok',
     token: '123',
     toast: '',
     data: {
-      side: 'SELL',
-      role: 'WIND',
+      side,
+      role,
     },
   };
 };
@@ -175,24 +183,23 @@ exports.priceConstitute = async ctx => {
       storage: 0.1,
       wind: 0.1,
       grid: 0.6,
-    }
+    },
   };
 };
 
 exports.exchange = async ctx => {
   await sleep();
   ctx.body = {
-    status:'ok',
-    token:'123',
-    toast:'',
+    status: 'ok',
+    token: '123',
+    toast: '',
     data: {
-      currentpower:10,
-      before:1540,
-      after:1200,
-    }
-  }
-}
-
+      currentpower: 10,
+      before: 1540,
+      after: 1200,
+    },
+  };
+};
 
 exports.gainsDetail = async ctx => {
   await sleep();
@@ -204,8 +211,7 @@ exports.gainsDetail = async ctx => {
       count: 50000,
       earning: 5000,
       netEarning: 24000,
-    }
-
+    },
   };
 };
 
@@ -215,22 +221,19 @@ exports.gainsCard = async ctx => {
     status: 'ok',
     token: '123',
     toast: '',
-    data:
-     [
-        {
-          count: 50000,
-          earning: 3000,
-          netEarning: 100,
-          time: Date.now(),
-        },
-        {
-          count: 50000,
-          earning: 3000,
-          netEarning: 0,
-          time: Date.now(),
-        },
-      ]
-
-
-  }
+    data: [
+      {
+        count: 50000,
+        earning: 3000,
+        netEarning: 100,
+        time: Date.now(),
+      },
+      {
+        count: 50000,
+        earning: 3000,
+        netEarning: 0,
+        time: Date.now(),
+      },
+    ],
+  };
 };

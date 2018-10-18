@@ -61,7 +61,9 @@ export default class extends Component<{}, IState> {
   }
 
   public clickHandle = () => {
-    this.injected.updateRole({ role: this.injected.location.state.role });
+    this.injected.updateRole({
+      role: (this.injected.location.state.role as string).toUpperCase(),
+    });
   };
 
   public render() {

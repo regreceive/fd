@@ -278,3 +278,28 @@ response = {
 | toast | 说明 |
 | ----- | ---- |
 
+
+### 用电方电价组成
+
+GET api/price/detail
+
+响应
+
+```js
+response = {
+  status: 'ok',
+  token: '123',
+  toast: '',
+  data: {
+    pv: 0.1,
+    cchp: 0.1,
+    storage: 0.1,
+    wind: 0.1,
+    grid: 0.6,
+  },
+};
+```
+
+| toast | 说明 |
+| ----- | ---- |
+

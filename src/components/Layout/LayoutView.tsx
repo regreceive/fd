@@ -18,6 +18,7 @@ import { IGlobal } from '../../reducers/globalReducer';
 import { clearToast } from '../../actions/globalActions';
 import './LayoutView.css';
 import TimeRefer from '../../pages/Producer/timeRefer';
+
 const basePath = process.env.REACT_APP_BASE_PATH;
 const splashEnable = process.env.REACT_APP_SPLASH === 'on';
 

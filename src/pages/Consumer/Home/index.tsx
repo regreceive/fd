@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-// import { Translate } from 'react-localize-redux';
+import { Translate } from 'react-localize-redux';
+import { push } from 'connected-react-router';
+import { LocationState, Path } from 'history';
+
+import { basePath } from '../../../services/constants';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
 import { getChartsData, realTimePrice } from '../../data';
@@ -8,7 +13,6 @@ import Curved from '../../../components/Charts';
 import { getPriceConstitute } from '../../../actions/userActions';
 
 import './index.css';
-import { Dispatch } from 'redux';
 
 interface IStateProps {
   role: IUser['role'];
@@ -17,6 +21,7 @@ interface IStateProps {
 
 interface IDispatchProps {
   getPriceConstitute: typeof getPriceConstitute;
+  push: (path: Path, state?: LocationState) => void;
 }
 
 const mapStateToProps = (state: IStoreState): IStateProps => ({
@@ -26,6 +31,7 @@ const mapStateToProps = (state: IStoreState): IStateProps => ({
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   getPriceConstitute: () => dispatch(getPriceConstitute()),
+  push: (path: Path, state?: LocationState) => dispatch(push(path, state)),
 });
 
 @(connect(
@@ -50,7 +56,12 @@ export default class extends Component {
         <Curved data={data} />
         <div styleName="section">
           <div>
-            <h2>当前电价组成</h2>
+            <div styleName="head-area">
+              <h2>当前电价组成</h2>
+              <a onClick={this.linkHandle}>
+                <Translate id="more" />
+              </a>
+            </div>
             <dl>
               <dt>今日用电总量</dt>
               <dd>0 度</dd>
@@ -86,4 +97,11 @@ export default class extends Component {
       </div>
     );
   }
+
+  private linkHandle = () => {
+    this.injected.push(
+      basePath + '/consumer/constitute',
+      this.injected.priceConstitute,
+    );
+  };
 }
