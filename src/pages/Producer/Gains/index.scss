@@ -1,0 +1,122 @@
+@import '../../common.scss';
+.container {
+  @extend %scroll;
+  @extend %padding;
+  padding: 0;
+  background: #f6f6f6;
+}
+.earnings {
+  height: 164px;
+  // background-color: #0792FF;
+  background: linear-gradient(to right, #0688ff, #0b76fe);
+  .earnings-inset {
+    margin: 0 auto;
+    text-align: center;
+    font-family: PingFangSC;
+    color: #ffffff;
+    font-size: 17px;
+    padding-top: 26px;
+    p {
+      text-align: left;
+      margin-top: 32px;
+      padding-left: 20px;
+    }
+  }
+}
+.earnings-bottom {
+  height: 50px;
+  width: 100%;
+  background: linear-gradient(to right, #0792ff, #0057ff);
+  li {
+    width: 33.3%;
+    height: 50px;
+    float: left;
+    line-height: 15px;
+    text-align: center;
+    padding-top: 10px;
+    &:nth-child(1) {
+      text-align: left;
+      padding-left: 25px;
+    }
+    position: relative;
+    &:after {
+      content: '|';
+      color: #4395ff;
+      font-size: 20px;
+      position: absolute;
+      left: -6px;
+      top: 20px;
+    }
+    span {
+      &:nth-child(1) {
+        font-size: 18px;
+        font-family: Avenir;
+        color: #ffffff;
+      }
+      &:nth-child(3) {
+        font-family: PingFangSC;
+        font-size: 12px;
+        color: #99bfeb;
+      }
+    }
+  }
+}
+.detail {
+  height: 58px;
+  padding: 18px 0 0 20px;
+  font-family: PingFangSC;
+  font-size: 18px;
+  color: #4a4a4a;
+}
+.detailSpan {
+  margin-left: -12px;
+}
+.card {
+  height: 120px;
+  margin: 0 12px 12px 12px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 6px grey;
+  border-radius: 5px;
+  .card-top {
+    height: 84px;
+    margin: 0 20px 0 20px;
+    border-bottom: 1px solid #f4f6f8;
+    padding-top: 16px;
+    padding-bottom: 17px;
+    ul {
+      li {
+        width: 33.3%;
+        float: left;
+        span {
+          &:nth-child(1) {
+            font-family: PingFangSC;
+            font-size: 12px;
+            color: #abb3b8;
+          }
+          &:nth-child(3) {
+            display: block;
+            margin-top: 16px;
+            font-family: PingFangSC;
+            font-size: 16px;
+            color: #171f24;
+          }
+        }
+        .blue {
+          color: #1308fe !important;
+          font-size: 14px !important;
+        }
+        &:nth-child(3) {
+          text-align: right !important;
+        }
+        &:nth-child(2) {
+          text-align: center;
+        }
+      }
+    }
+  }
+  p {
+    font-size: 11px;
+    color: #aab2b7;
+    margin: 12px 20px 0 20px;
+  }
+}

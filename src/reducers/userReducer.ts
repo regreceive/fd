@@ -8,6 +8,7 @@ import {
   IRoleComplete,
   IWalletBalanceResponse,
   ICurrentResponse,
+  IGainsDetailResponse,
 } from '../actions/userActions';
 
 export interface IUser {
@@ -35,6 +36,17 @@ export interface IUser {
     amount: number;
     earning: number;
     status: 0 | 1 | 2;
+    time: number;
+  }>;
+  gainsDetail: {
+    count: number;
+    earning: number;
+    netEarning: number;
+  };
+  gainsCard: Array<{
+    count: number;
+    earning: number;
+    netEarning: number;
     time: number;
   }>;
   priceConstitute: {
@@ -85,6 +97,12 @@ const initState: IUser = {
     wind: 0.1,
     grid: 0.6,
   },
+  gainsDetail: {
+    count: 0,
+    earning: 0,
+    netEarning: 0,
+  },
+  gainsCard: [],
   config: {
     lang,
   },
@@ -130,6 +148,10 @@ const user = (state = initState, action: IAction): IUser => {
     case 'CURRENT_COAST_COMPLETE': {
       const { data } = action.payload as ICurrentResponse;
       return { ...state, currentCoast: data };
+    }
+    case 'GAINS_DETAIL_COMPLETE': {
+      const { data } = action.payload as IGainsDetailResponse;
+      return { ...state, ...data };
     }
     default:
       return state;

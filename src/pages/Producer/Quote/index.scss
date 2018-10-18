@@ -5,6 +5,14 @@
   @extend %padding;
   padding: 0;
   background: #f6f6f6;
+  :global {
+    .am-navbar-light {
+      background-color: #f6f6f6;
+      color: #4a4a4a;
+      padding-bottom: 51px;
+      margin-top: 20px;
+    }
+  }
 }
 
 .card {
@@ -41,7 +49,11 @@
 
       .blue {
         color: #1308fe !important;
-        font-size: 14px;
+        font-size: 14px !important;
+      }
+      .lose {
+        color: #fe5816 !important;
+        font-size: 14px !important;
       }
 
       &:nth-child(2) {
