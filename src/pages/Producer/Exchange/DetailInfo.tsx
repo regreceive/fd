@@ -10,18 +10,18 @@ export default class extends Component {
     return (
       <div styleName="section">
         <div>
-          <div>
-            <span>截止到当前时刻</span>
-            <span> 10度</span>
-          </div>
-          <div>
-            <span>调整前用电花费</span>
-            <span> 1540EDF </span>
-          </div>
-          <div>
-            <span>调整后用电花费</span>
-            <span> 1200EDF </span>
-          </div>
+          <dl>
+            <dt>截止到当前时刻</dt>
+            <dd> 10度</dd>
+          </dl>
+          <dl>
+            <dt>调整前用电花费</dt>
+            <dd> 1540EDF </dd>
+          </dl>
+          <dl>
+            <dt>调整后用电花费</dt>
+            <dd> 1200EDF </dd>
+          </dl>
         </div>
       </div>
     );

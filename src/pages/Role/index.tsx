@@ -76,7 +76,6 @@ export default class extends Component<{}, IState> {
   };
 
   public render() {
-    console.log(this.injected.roles);
     return (
       <div styleName="container">
         {this.injected.roles.map(({ role, side, available }) => {

@@ -1,7 +1,5 @@
 import React from 'react';
 import { Axis, Chart, Geom, Legend, Tooltip } from 'bizcharts';
-// import DataSet from '@antv/data-set';
-import { data } from './mock/photovoltaic';
 
 interface IProps {
   data: object[];
@@ -55,7 +53,7 @@ const Curved = (props: IProps) => {
       />
       <Geom
         type="line"
-        position="time*temp"
+        position="time*PV"
         size={2}
         color={'city'}
         shape={'smooth'}

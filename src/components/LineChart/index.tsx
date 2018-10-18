@@ -71,7 +71,7 @@ export default class LineChart extends Component {
     return (
       <div>
         <h2>电价</h2>
-        <Chart height={400} data={data} scale={cols} forceFit padding="auto">
+        <Chart height={300} data={data} scale={cols} forceFit padding="auto">
           <Axis
             name="month"
             tickLine="null"

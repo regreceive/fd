@@ -21,7 +21,7 @@ export default class Barchart extends Component {
     return (
       <div>
         <h2>用电量</h2>
-        <Chart height={400} data={data} scale={cols} padding="auto" forceFit>
+        <Chart height={300} data={data} scale={cols} padding="auto" forceFit>
           <Axis name="genre" />
           <Axis name="sold" />
           <Tooltip />
