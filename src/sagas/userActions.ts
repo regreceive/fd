@@ -13,6 +13,7 @@ import {
   postOfferComplete,
   priceConstituteComplete,
   producerSummaryComplete,
+  currentCoastComplete,
   quotePriceComplete,
   updateRoleComplete,
   walletBalanceComplete,
@@ -166,7 +167,7 @@ function* postOffer(action: IAction) {
   try {
     const response = yield call(
       request,
-      '/quotePrice',
+      '/post-offer',
       'include',
       action.payload,
     );
@@ -200,6 +201,17 @@ function* getWalletBalance() {
   }
 }
 
+function* getCurrentCoast() {
+  try {
+    const response = yield call(request, '/get-current-coast', 'include');
+
+    const json = yield call([response, 'json']);
+    yield put(currentCoastComplete(json));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 function* getPriceConstitute() {
   try {
     const response = yield call(request, '/api/price/detail', 'include');
@@ -221,4 +233,5 @@ export function* watchUser() {
   yield takeEvery('GET_QUOTE_PRICE', getQuotePrice);
   yield takeEvery('GET_WALLET_BALANCE', getWalletBalance);
   yield takeEvery('GET_PRICE_CONSTITUTE', getPriceConstitute);
+  yield takeEvery('GET_CURRENT_COAST', getCurrentCoast);
 }

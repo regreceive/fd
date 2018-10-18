@@ -2,6 +2,7 @@ const Router = require('koa-router');
 const api = require('../controller/user');
 
 const router = new Router();
+
 router.post('login', api.login);
 router.get('api/logout', api.logout);
 router.get('config/role', api.availableRoles);
@@ -13,5 +14,6 @@ router.post('api/quotePrice', api.postOffer);
 router.get('quotePrice', api.quotePrice);
 router.get('balance', api.balance);
 router.get('api/price/detail', api.priceConstitute);
+router.get('get-current-coast',api.exchange)
 
 module.exports = router;
