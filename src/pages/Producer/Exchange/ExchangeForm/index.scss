@@ -1,4 +1,5 @@
-@import '../../common.scss';
+@import '../../../common.scss';
+
 .container {
   @extend %scroll;
   @extend %padding;
@@ -8,7 +9,6 @@
 .history {
   height: 24px;
   text-align: center;
-  font-family: PingFangSC;
   font-size: 17px;
   color: black;
   padding: 20px 0 50px 0;
@@ -38,14 +38,12 @@
         width: 100%;
         span {
           &:nth-child(1) {
-            font-family: PingFangSC;
             font-size: 12px;
             color: #abb3b8;
           }
           &:nth-child(3) {
             display: block;
             margin-top: 16px;
-            font-family: PingFangSC;
             font-size: 16px;
             color: #171f24;
           }
