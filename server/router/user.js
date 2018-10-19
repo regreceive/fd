@@ -18,4 +18,7 @@ router.get('get-current-coast',api.exchange)
 
 router.get('gainsDetail', api.gainsDetail);
 router.get('gainsCard', api.gainsCard);
+router.get('producer/exchangeFrom', api.exchangeForm);
+router.get('check', api.check);
+router.get('checkDetail', api.checkDetail);
 module.exports = router;

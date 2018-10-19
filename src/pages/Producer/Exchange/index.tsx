@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { getCurrentCoast } from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
-
+import { Link } from 'react-router-dom';
 import LineChart from '../../../components/LineChart';
 import BarChart from '../../../components/Barchart';
 import DetailInfo from './DetailInfo';
@@ -43,6 +43,12 @@ export default class extends Component {
     const { currentCoast } = this.injected;
     return (
       <div styleName="container">
+        <div styleName="history">
+          <h2>电力交易</h2>
+          <span>
+            <Link to="/producer/exchangeFrom">报表</Link>
+          </span>
+        </div>
         <LineChart />
         <BarChart />
         <DetailInfo currentCoast={currentCoast} />

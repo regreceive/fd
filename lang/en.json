@@ -16,7 +16,8 @@
   "more": "更多",
   "kw": "${kw} 度",
   "edf-per-kw": "${edf} EDF/度",
-
+  "check":"我的账单",
+  
   "login": {
     "button": "登录",
     "email": {

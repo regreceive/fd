@@ -17,7 +17,7 @@ import { IUser } from '../../reducers/userReducer';
 import { IGlobal } from '../../reducers/globalReducer';
 import { clearToast } from '../../actions/globalActions';
 import './LayoutView.css';
-import TimeRefer from '../../pages/Producer/timeRefer';
+// import TimeRefer from '../../pages/Consumer/check';
 const basePath = process.env.REACT_APP_BASE_PATH;
 const splashEnable = process.env.REACT_APP_SPLASH === 'on';
 
@@ -64,7 +64,7 @@ export default class LayoutView extends React.Component<IProps> {
       <div className="full-screen">
         <ConnectedRouter history={history}>
           <Switch>
-            <Route path={basePath + '/b'} component={TimeRefer} />
+            {/* <Route path={basePath + '/b'} component={TimeRefer} /> */}
             {splashEnable && (
               <Route path={basePath + '/splash'} component={Splash} />
             )}
