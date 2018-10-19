@@ -432,3 +432,66 @@ exports.getChartData = async ctx => {
     ],
   };
 };
+
+exports.exchangeForm = async ctx => {
+  await sleep();
+  ctx.body = {
+    status: 'ok',
+    token: '123',
+    toast: '',
+    data:
+     [
+        {
+          count: 50000,
+          price: 3000,
+          time: Date.now(),
+        },
+        {
+          count: 50000,
+          price: 3000,
+          time: Date.now(),
+        },
+      ]
+
+
+  }
+};
+exports.check = async ctx => {
+  await sleep();
+  ctx.body = {
+    status: 'ok',
+    token: '123',
+    toast: '',
+    data:
+     
+        {
+          count: 50000,
+          price: 3000,
+          time: Date.now(),
+        },
+  }
+};
+
+exports.checkDetail = async ctx => {
+  await sleep();
+  ctx.body = {
+    status: 'ok',
+    token: '123',
+    toast: '',
+    data:
+     [
+        {
+          count: 50000,
+          price: 0.23,
+          time: Date.now(),
+        },
+        {
+          count: 50000,
+          price: 0.55,
+          time: Date.now(),
+        },
+      ]
+
+
+  }
+};

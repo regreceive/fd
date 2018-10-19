@@ -7,6 +7,8 @@ import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
 
 import DoubleChart from './Charts';
+import { Link } from 'react-router-dom';
+
 import './index.css';
 
 interface IStateProps {
@@ -42,6 +44,12 @@ export default class extends Component {
     const { exChart } = this.injected;
     return (
       <div styleName="container">
+        <div styleName="history">
+          <h2>电力交易</h2>
+          <span>
+            <Link to="/producer/exchangeFrom">报表</Link>
+          </span>
+        </div>
         <DoubleChart exChart={exChart} />
       </div>
     );

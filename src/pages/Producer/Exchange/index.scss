@@ -18,3 +18,23 @@
     }
   }
 }
+.history {
+  height: 24px;
+  text-align: center;
+  padding: 20px 0 50px 0;
+  h2 {
+    font-size: 20px;
+    color: #121314;
+  }
+  span {
+    float: right;
+    margin-top: -39px;
+    margin-right: 4px;
+    font-size: 19px;
+    color: black;
+    font-weight: 600;
+    a {
+      color: #121314 !important;
+    }
+  }
+}

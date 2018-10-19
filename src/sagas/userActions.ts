@@ -6,7 +6,6 @@ import {
   gainsDetailComplete,
   getAvailableRolesComplete,
   IAvailableRolesComplete,
-  IElectricEXChartResponse,
   ILoginComplete,
   IPriceConstituteResponse,
   IQuotePriceResponse,
@@ -17,9 +16,14 @@ import {
   postOfferComplete,
   priceConstituteComplete,
   producerSummaryComplete,
+  currentCoastComplete,
   quotePriceComplete,
   updateRoleComplete,
   walletBalanceComplete,
+  gainsDetailComplete,
+  exchangeFormComplete,
+  IExchangeFormResponse,
+  checkComplete,
 } from '../actions/userActions';
 import { realTimeImmutableData, realTimeMutableData } from '../pages/data';
 
@@ -295,6 +299,50 @@ function* getPriceConstitute() {
   }
 }
 
+function* getExchangeForm() {
+  try {
+    const response = yield call(request, '/producer/exchangeFrom', 'include');
+
+    const json: IExchangeFormResponse = yield call([response, 'json']);
+    yield put(exchangeFormComplete(json));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* getCheck() {
+  try {
+    const response = yield all([
+      call(request, '/check', 'include'),
+      call(request, '/checkDetail', 'include'),
+    ]);
+
+    const json = yield all([
+      call([response[0], 'json']),
+      call([response[1], 'json']),
+    ]);
+    const toast = Object.keys(
+      json.reduce((prev: {}, curr: IResponseSchema) => {
+        if (curr.toast !== '') {
+          prev[curr.toast as 'imNotEmpty'] = 1;
+        }
+        return prev;
+      }, {}),
+    );
+    const data = { check: json[0].data, checkDetail: json[1].data };
+    yield put(
+      checkComplete({
+        status: 'ok',
+        token: json[0].token,
+        toast,
+        data,
+      }),
+    );
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export function* watchUser() {
   yield takeEvery('LOGIN', login);
   yield takeEvery('LOGOUT', logout);
@@ -308,4 +356,6 @@ export function* watchUser() {
   yield takeEvery('GET_PRICE_CONSTITUTE', getPriceConstitute);
   yield takeEvery('GET_CURRENT_COAST', getCurrentCoast);
   yield takeEvery('GET_ELECTRIC_EX_CHART', getElectricEXChart);
+  yield takeEvery('GET_EXCAHNGE_FORM', getExchangeForm);
+  yield takeEvery('GET_CHECK', getCheck);
 }

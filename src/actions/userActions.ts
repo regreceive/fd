@@ -239,3 +239,40 @@ export function electricChartComplete(data: IElectricEXChartResponse) {
     payload: data,
   };
 }
+
+export function getExchangeForm() {
+  return {
+    type: 'GET_EXCAHNGE_FORM',
+  };
+}
+
+export interface IExchangeFormResponse extends IResponseSchema {
+  data: IUser['exchangeForm'];
+}
+
+export function exchangeFormComplete(data: IExchangeFormResponse) {
+  return {
+    type: 'EXCHANGE_FORM_COMPLETE',
+    payload: data,
+  };
+}
+
+export function getCheck() {
+  return {
+    type: 'GET_CHECK',
+  };
+}
+
+export interface ICheckResponse extends IResponseSchema {
+  data: {
+    check: IUser['check'];
+    checkDetail: IUser['checkDetail'];
+  };
+}
+
+export function checkComplete(data: ICheckResponse) {
+  return {
+    type: 'CHECK_COMPLETE',
+    payload: data,
+  };
+}
