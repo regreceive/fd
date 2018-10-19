@@ -9,6 +9,7 @@ import {
   IWalletBalanceResponse,
   ICurrentResponse,
   IGainsDetailResponse,
+  IElectricEXChartResponse,
 } from '../actions/userActions';
 
 export interface IUser {
@@ -71,6 +72,12 @@ export interface IUser {
     creatime: string;
     index: number;
   }>;
+  exChart: Array<{
+    uid: number;
+    index: string;
+    eletric: number;
+    price: number;
+  }>;
 }
 
 const lang = process.env.REACT_APP_DEFAULT_LANGUAGE || 'en';
@@ -119,6 +126,7 @@ const initState: IUser = {
     after: 0,
   },
   getChartData: [],
+  exChart: [],
 };
 
 const user = (state = initState, action: IAction): IUser => {
@@ -160,6 +168,10 @@ const user = (state = initState, action: IAction): IUser => {
     case 'GAINS_DETAIL_COMPLETE': {
       const { data } = action.payload as IGainsDetailResponse;
       return { ...state, ...data };
+    }
+    case 'ELECTRIC_EX_CHART_COMPETE': {
+      const { data } = action.payload as IElectricEXChartResponse;
+      return { ...state, exChart: data };
     }
     default:
       return state;

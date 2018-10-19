@@ -3,13 +3,19 @@ import { Chart, Geom, Axis } from 'bizcharts';
 import { IUser } from 'src/reducers/userReducer';
 
 interface IProps {
-  exChart: IUser['exChart'];
+  getChartData: IUser['getChartData'];
 }
-
 export default class DoubleChart extends Component<IProps> {
   public render() {
-    const { exChart } = this.props;
-
+    const { getChartData } = this.props;
+    // const cols = {
+    //   month: {
+    //     alias: '月份',
+    //   },
+    //   acc: {
+    //     alias: '积累量',
+    //   },
+    // };
     const grid = {
       lineStyle: {
         stroke: '#E5E5E5',
@@ -18,7 +24,7 @@ export default class DoubleChart extends Component<IProps> {
       },
     };
     const scale = {
-      index: {
+      creatime: {
         ticks: [
           '0:00',
           '2:00',
@@ -33,7 +39,7 @@ export default class DoubleChart extends Component<IProps> {
           '20:00',
           '22:00',
         ],
-        tickCount: 12,
+        tickCount: 12, // 定义坐标轴刻度线的条数，默认为 5
       },
     };
     const color1 = 'l (270) 0:#A6CCEA 1:#0057FF';
@@ -43,13 +49,13 @@ export default class DoubleChart extends Component<IProps> {
         <h2>电价/用电量</h2>
         <Chart
           height={300}
-          data={exChart}
+          data={getChartData}
           scale={scale}
           forceFit
           padding="auto"
         >
           <Axis
-            name="index"
+            name="creatime"
             tickLine="null"
             line={{
               stroke: '#E5E5E5',
@@ -66,17 +72,17 @@ export default class DoubleChart extends Component<IProps> {
               lineWidth: 1,
             }}
           />
-          <Axis name="eletric" />
+          <Axis name="electric" />
           {/* <Tooltip /> */}
           <Geom
             type="interval"
-            position="index*eletric"
-            color={['index', [color1]]}
+            position="creatime*electric"
+            color={['creatime', [color1]]}
             size={5}
           />
           <Geom
             type="line"
-            position="index*price"
+            position="creatime*price"
             size={3}
             color="#FE5816"
             shape="smooth"

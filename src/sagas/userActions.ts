@@ -1,8 +1,12 @@
 import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 import { IAction } from '../types';
 import {
+  currentCoastComplete,
+  electricChartComplete,
+  gainsDetailComplete,
   getAvailableRolesComplete,
   IAvailableRolesComplete,
+  IElectricEXChartResponse,
   ILoginComplete,
   IPriceConstituteResponse,
   IQuotePriceResponse,
@@ -13,11 +17,9 @@ import {
   postOfferComplete,
   priceConstituteComplete,
   producerSummaryComplete,
-  currentCoastComplete,
   quotePriceComplete,
   updateRoleComplete,
   walletBalanceComplete,
-  gainsDetailComplete,
 } from '../actions/userActions';
 import { realTimeImmutableData, realTimeMutableData } from '../pages/data';
 
@@ -268,6 +270,20 @@ function* getCurrentCoast() {
   }
 }
 
+function* getElectricEXChart() {
+  try {
+    const response = yield call(request, '/api/eletric/ex/chart', 'include');
+
+    const json: IElectricEXChartResponse = yield call([response, 'json']);
+    json.data.forEach(row => {
+      row.index = row.index + ':00';
+    });
+    yield put(electricChartComplete(json));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 function* getPriceConstitute() {
   try {
     const response = yield call(request, '/api/price/detail', 'include');
@@ -291,4 +307,5 @@ export function* watchUser() {
   yield takeEvery('GET_GAINS_DETAIL', getGainsDetail);
   yield takeEvery('GET_PRICE_CONSTITUTE', getPriceConstitute);
   yield takeEvery('GET_CURRENT_COAST', getCurrentCoast);
+  yield takeEvery('GET_ELECTRIC_EX_CHART', getElectricEXChart);
 }

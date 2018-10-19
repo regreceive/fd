@@ -223,19 +223,19 @@ export function gainsDetailComplete(data: IGainsDetailResponse) {
   };
 }
 
-// export function getChartData() {
-//   return {
-//     type:'GET_CHART_DATA',
-//   }
-// }
+export function getElectricEXChart() {
+  return {
+    type: 'GET_ELECTRIC_EX_CHART',
+  };
+}
 
-// export interface IGetChartResponse extends IResponseSchema {
-//   data:IUser['getChartData'];
-// }
+export interface IElectricEXChartResponse extends IResponseSchema {
+  data: IUser['exChart'];
+}
 
-// export function getChartComplete(data: IGetChartResponse) {
-//   return {
-//     type: 'GET_CHART_COMPLETE',
-//     playload: data,
-//   }
-// }
+export function electricChartComplete(data: IElectricEXChartResponse) {
+  return {
+    type: 'ELECTRIC_EX_CHART_COMPETE',
+    payload: data,
+  };
+}
