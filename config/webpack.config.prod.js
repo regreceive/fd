@@ -9,11 +9,15 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const tsImportPluginFactory = require('ts-import-plugin');
+
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -29,6 +33,8 @@ const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 const publicUrl = publicPath.slice(0, -1);
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
+// antd自定义主题
+const customTheme = require('../antd-theme/loader');
 
 // Assert this just to be safe.
 // Development builds of React are slow and not intended for production.
@@ -36,8 +42,15 @@ if (env.stringified['process.env'].NODE_ENV !== '"production"') {
   throw new Error('Production builds must have NODE_ENV=production.');
 }
 
+const isDebug = !process.argv.includes('--release');
+
 // Note: defined here because it will be used more than once.
-const cssFilename = 'static/css/[name].[contenthash:8].css';
+const extractOwnCSS = new ExtractTextPlugin(
+  'static/css/[name].[contenthash:8].css',
+);
+const extractVendorCSS = new ExtractTextPlugin(
+  'static/css/vendor.[contenthash:8].css',
+);
 
 // ExtractTextPlugin expects the build output to be flat.
 // (See https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/27)
@@ -103,10 +116,12 @@ module.exports = {
       '.jsx',
     ],
     alias: {
-      
+
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
+      lang: paths.lang,
+      types: paths.types,
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
@@ -114,7 +129,7 @@ module.exports = {
       // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
       // please link the files into your node_modules/ and let module-resolution kick in.
       // Make sure your source files are compiled, as they will not be processed in any way.
-      new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
+      // new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
       new TsconfigPathsPlugin({ configFile: paths.appTsProdConfig }),
     ],
   },
@@ -150,7 +165,7 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              
+
               compact: true,
             },
           },
@@ -160,11 +175,33 @@ module.exports = {
             include: paths.appSrc,
             use: [
               {
+                loader: require.resolve('babel-loader'),
+                options: {
+                  cacheDirectory: true,
+                  plugins: [
+                    [
+                      'react-css-modules',
+                      {
+                        generateScopedName: '[name]-[local]-[hash:base64:5]',
+                      },
+                    ],
+                  ],
+                },
+              },
+              {
                 loader: require.resolve('ts-loader'),
                 options: {
                   // disable type checker - we will use it in fork plugin
                   transpileOnly: true,
                   configFile: paths.appTsProdConfig,
+                  getCustomTransformers: () => ({
+                    before: [
+                      tsImportPluginFactory({
+                        libraryName: 'antd-mobile',
+                        style: true,
+                      }),
+                    ],
+                  }),
                 },
               },
             ],
@@ -183,7 +220,8 @@ module.exports = {
           // in the main CSS file.
           {
             test: /\.css$/,
-            loader: ExtractTextPlugin.extract(
+            include: paths.appSrc,
+            loader: extractOwnCSS.extract(
               Object.assign(
                 {
                   fallback: {
@@ -199,6 +237,11 @@ module.exports = {
                         importLoaders: 1,
                         minimize: true,
                         sourceMap: shouldUseSourceMap,
+                        modules: true,
+                        localIdentName: isDebug
+                          ? '[name]-[local]-[hash:base64:5]'
+                          : '[hash:base64:5]',
+                        camelCase: true,
                       },
                     },
                     {
@@ -228,6 +271,36 @@ module.exports = {
             ),
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
           },
+
+          // 如果引入的是依赖库里的css，则不进行hash命名
+          {
+            test: /\.(css|less)$/,
+            use: extractVendorCSS.extract(
+              Object.assign(
+                {
+                  fallback: 'style-loader',
+                  use: [
+                    {
+                      loader: require.resolve('css-loader'),
+                      options: {
+                        minimize: true,
+                        sourceMap: shouldUseSourceMap,
+                      },
+                    },
+                    {
+                      loader: 'less-loader',
+                      options: {
+                        javascriptEnabled: true,
+                        modifyVars: customTheme,
+                      },
+                    },
+                  ],
+                },
+                extractTextPluginOptions,
+              ),
+            ),
+          },
+
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
           // This loader doesn't use a "test" so it will catch all modules
@@ -315,9 +388,8 @@ module.exports = {
       cache: true,
       sourceMap: shouldUseSourceMap,
     }), // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
-    new ExtractTextPlugin({
-      filename: cssFilename,
-    }),
+    extractVendorCSS,
+    extractOwnCSS,
     // Generate a manifest file which contains a mapping of all asset filenames
     // to their corresponding output file so that tools can pick it up without
     // having to parse `index.html`.
@@ -366,6 +438,7 @@ module.exports = {
       tsconfig: paths.appTsProdConfig,
       tslint: paths.appTsLint,
     }),
+    new BundleAnalyzerPlugin(),
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
