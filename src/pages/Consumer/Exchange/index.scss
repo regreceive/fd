@@ -1,5 +1,20 @@
 @import '../../common.scss';
 
 .container {
-  @extend %scroll;
+  @extend %container;
+  display: flex;
+  flex-direction: column;
+  @extend %padding;
+  background: #fff;
+  overflow-x: hidden;
+}
+
+.section {
+  @extend %section;
+  padding: 50px 0 0 0;
+  > div > div {
+    &:first-child {
+      border-bottom: 1px solid #f4f6f8;
+    }
+  }
 }

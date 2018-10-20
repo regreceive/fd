@@ -31,6 +31,6 @@ export function timeParse(timeStamp: number) {
   return { day, hour, minute, second };
 }
 
-function fill(num: number) {
+export function fill(num: number | string) {
   return num > 9 ? num.toString() : `0${num}`;
 }

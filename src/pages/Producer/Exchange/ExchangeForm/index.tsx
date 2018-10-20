@@ -3,37 +3,68 @@ import React, { Component } from 'react';
 import './index.css';
 import ReactSVG from 'react-svg';
 import trendIcon from './trend.svg';
+import { RouteComponentProps } from 'react-router';
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import { IUser } from '../../../../reducers/userReducer';
+import { IStoreState } from '../../../../types';
+import { dateTimeFormat } from '../../../../utils/timeFormat';
+import { getExchangeForm } from '../../../../actions/userActions';
+interface IStateProps {
+  exchangeForm: IUser['exchangeForm'];
+}
+
+interface IDispatchProps {
+  getExchangeForm: typeof getExchangeForm;
+}
+
+const mapStateToProps = (state: IStoreState): IStateProps => ({
+  exchangeForm: state.user.exchangeForm,
+});
+
+const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
+  getExchangeForm: () => dispatch(getExchangeForm()),
+});
+
+@(connect(
+  mapStateToProps,
+  mapDispatchToProps,
+) as any)
 export default class extends Component {
-  public shouldComponentUpdate() {
-    return false;
+  get injected() {
+    return this.props as IStateProps & IDispatchProps & RouteComponentProps;
   }
 
+  public componentDidMount() {
+    this.injected.getExchangeForm();
+  }
   public render() {
     return (
       <div styleName="container">
         <div styleName="history">
-          {' '}
-          电力交易
-          <ReactSVG src={trendIcon} />
-        </div>
+          <h2>电力交易</h2>
 
-        <div styleName="card-deal">
-          <div styleName="card-top">
-            <ul>
-              <li>
-                <span>发电量</span>
-                <br />
-                <span>5000</span>
-              </li>
-              <li>
-                <span>电价(元/度)</span>
-                <br />
-                <span>66</span>
-              </li>
-            </ul>
-          </div>
-          <p>用电时间段 2018-09-09 12:00:00-12:59:59 </p>
+          <ReactSVG src={trendIcon} onClick={this.injected.history.goBack} />
         </div>
+        {this.injected.exchangeForm.map((item, index) => (
+          <div styleName="card-deal" key={index}>
+            <div styleName="card-top">
+              <ul>
+                <li>
+                  <span>发电量</span>
+                  <br />
+                  <span>{item.count}</span>
+                </li>
+                <li>
+                  <span>电价(元/度)</span>
+                  <br />
+                  <span>{item.price}</span>
+                </li>
+              </ul>
+            </div>
+            <p>用电时间段 {dateTimeFormat(item.time)} </p>
+          </div>
+        ))}
       </div>
     );
   }

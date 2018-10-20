@@ -3,7 +3,17 @@
   @extend %scroll;
   @extend %padding;
   padding: 0;
-  background: #f6f6f6;
+  background: #ffffff;
+  :global {
+    .am-navbar-light {
+      color: #4a4a4a;
+      padding-bottom: 51px;
+      margin-top: 20px;
+    }
+    .am-navbar-title {
+      font-weight: bold;
+    }
+  }
 }
 .history {
   height: 24px;
@@ -11,71 +21,21 @@
   font-family: PingFangSC;
   font-size: 17px;
   color: black;
-  padding: 20px 0 25px 0;
-}
-.timeRefer {
-  height: 30px;
-  // background-color: red;
-  padding: 0 27px 30px 20px;
-  line-height: 30px;
-  display: flex;
-  justify-content: space-around;
-  span {
-    display: inline-block;
-    width: 110px;
-    height: 30px;
-    background-color: #ebedf2;
-    border-radius: 4px;
-    position: relative;
-    @media (max-width: 320px) {
-      width: 90px;
-    }
-    &:after {
-      left: 88px;
-      top: 10px;
-      position: absolute;
-      content: '';
-      width: 0;
-      height: 0;
-      border-top: 10px solid #d8dbe3;
-      border-left: 6px solid transparent;
-      border-bottom: 12px solid transparent;
-      border-right: 6px solid transparent;
-      @media (max-width: 320px) {
-        left: 74px;
-      }
-    }
-    ul {
-      width: 110px;
-      height: 122px;
-      background-color: #ebedf2;
-      position: absolute;
-      z-index: 999;
-      overflow: scroll;
-      margin-top: 2px;
-      @media (max-width: 320px) {
-        width: 90px;
-      }
-      li {
-        border-bottom: 1px solid #d8dbe3;
-        padding-left: 26px;
-        @media (max-width: 320px) {
-          padding-left: 18px;
-        }
-      }
-    }
+  margin: 20px 0 25px 0;
+  h2 {
+    font-size: 17px;
   }
 }
 .card-deal {
   height: 120px;
   margin: 0 12px 12px 12px;
-  background-color: #ffffff;
+  background: linear-gradient(to right, #ff764e, #e14609);
   box-shadow: 0px 0px 6px grey;
   border-radius: 5px;
   .card-top {
     height: 68px;
     margin: 0 20px 0 20px;
-    border-bottom: 1px solid #f4f6f8;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     padding-top: 16px;
     ul {
       display: flex;
@@ -88,14 +48,14 @@
           &:nth-child(1) {
             font-family: PingFangSC;
             font-size: 12px;
-            color: #abb3b8;
+            color: #f1f4f5;
           }
           &:nth-child(3) {
             display: block;
             margin-top: 16px;
             font-family: PingFangSC;
             font-size: 16px;
-            color: #171f24;
+            color: #fff;
           }
         }
         &:nth-child(3) {
@@ -120,7 +80,39 @@
   }
   p {
     font-size: 11px;
-    color: #aab2b7;
+    color: #ffffff;
     margin: 12px 20px 0 20px;
+    opacity: 0.5;
+  }
+}
+
+.detail {
+  margin: 50px 0 16px 25px;
+  font-size: 18px;
+  color: #4a4a4a;
+  font-weight: 600;
+}
+.count {
+  height: 21px;
+  padding: 0 20px 0 25px;
+  display: flex;
+  justify-content: space-between;
+  span {
+    color: #abb3b8;
+  }
+  .conuntSpan {
+    margin-left: -42px;
+  }
+}
+.number {
+  height: 55px;
+  padding: 0 20px 0 25px;
+  line-height: 55px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #f4f6f8;
+  span {
+    color: #171f24;
+    font-size: 16px;
   }
 }

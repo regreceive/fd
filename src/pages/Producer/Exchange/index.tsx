@@ -1,31 +1,30 @@
 import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-// import { Translate } from 'react-localize-redux';
-import { getCurrentCoast } from '../../../actions/userActions';
+
+import { getElectricEXChart } from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
 
 import DoubleChart from './Charts';
-import DetailInfo from './DetailInfo';
+import { Link } from 'react-router-dom';
+
 import './index.css';
 
 interface IStateProps {
-  currentCoast: IUser['currentCoast'];
-  getChartData: IUser['getChartData'];
+  exChart: IUser['exChart'];
 }
 
 interface IDispatchProps {
-  getCurrentCoast: typeof getCurrentCoast;
+  getElectricEXChart: typeof getElectricEXChart;
 }
 
 const mapStateToProps = (state: IStoreState): IStateProps => ({
-  currentCoast: state.user.currentCoast,
-  getChartData: state.user.getChartData,
+  exChart: state.user.exChart,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
-  getCurrentCoast: () => dispatch(getCurrentCoast()),
+  getElectricEXChart: () => dispatch(getElectricEXChart()),
 });
 
 @(connect(
@@ -38,14 +37,20 @@ export default class extends Component {
   }
 
   public componentDidMount() {
-    this.injected.getCurrentCoast();
+    this.injected.getElectricEXChart();
   }
+
   public render() {
-    const { currentCoast, getChartData } = this.injected;
+    const { exChart } = this.injected;
     return (
       <div styleName="container">
-        <DoubleChart getChartData={getChartData} />
-        <DetailInfo currentCoast={currentCoast} />
+        <div styleName="history">
+          <h2>电力交易</h2>
+          <span>
+            <Link to="/producer/exchangeFrom">报表</Link>
+          </span>
+        </div>
+        <DoubleChart exChart={exChart} />
       </div>
     );
   }

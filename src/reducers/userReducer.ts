@@ -10,6 +10,9 @@ import {
   ICurrentResponse,
   IGainsDetailResponse,
   IPriceConstituteResponse,
+  IElectricEXChartResponse,
+  IExchangeFormResponse,
+  ICheckResponse,
 } from '../actions/userActions';
 
 export interface IUser {
@@ -69,6 +72,27 @@ export interface IUser {
     creatime: string;
     index: number;
   }>;
+  exChart: Array<{
+    uid: number;
+    index: string;
+    eletric: number;
+    price: number;
+  }>;
+  exchangeForm: Array<{
+    count: number;
+    price: number;
+    time: number;
+  }>;
+  check: {
+    count: number;
+    price: number;
+    time: number;
+  };
+  checkDetail: Array<{
+    count: number;
+    price: number;
+    time: number;
+  }>;
 }
 
 const lang = process.env.REACT_APP_DEFAULT_LANGUAGE || 'en';
@@ -111,6 +135,14 @@ const initState: IUser = {
     after: 0,
   },
   getChartData: [],
+  exChart: [],
+  exchangeForm: [],
+  check: {
+    count: 0,
+    price: 0,
+    time: 0,
+  },
+  checkDetail: [],
 };
 
 const user = (state = initState, action: IAction): IUser => {
@@ -156,6 +188,18 @@ const user = (state = initState, action: IAction): IUser => {
     case 'PRICE_CONSTITUTE_COMPLETE': {
       const { data } = action.payload as IPriceConstituteResponse;
       return { ...state, priceConstitute: data };
+    }
+    case 'EXCHANGE_FORM_COMPLETE': {
+      const { data } = action.payload as IExchangeFormResponse;
+      return { ...state, exchangeForm: data };
+    }
+    case 'CHECK_COMPLETE': {
+      const { data } = action.payload as ICheckResponse;
+      return { ...state, ...data };
+    }
+    case 'ELECTRIC_EX_CHART_COMPETE': {
+      const { data } = action.payload as IElectricEXChartResponse;
+      return { ...state, exChart: data };
     }
     default:
       return state;
