@@ -9,6 +9,7 @@ import {
   IWalletBalanceResponse,
   ICurrentResponse,
   IGainsDetailResponse,
+  IPriceConstituteResponse,
 } from '../actions/userActions';
 
 export interface IUser {
@@ -49,13 +50,10 @@ export interface IUser {
     netEarning: number;
     time: number;
   }>;
-  priceConstitute: {
-    pv: number;
-    cchp: number;
-    storage: number;
-    wind: number;
-    grid: number;
-  };
+  priceConstitute: Array<{
+    item: string;
+    count: number;
+  }>;
   config: {
     lang: string;
   };
@@ -97,13 +95,7 @@ const initState: IUser = {
     balance: 0,
   },
   quotePrice: [],
-  priceConstitute: {
-    pv: 0.1,
-    cchp: 0.1,
-    storage: 0.1,
-    wind: 0.1,
-    grid: 0.6,
-  },
+  priceConstitute: [],
   gainsDetail: {
     count: 0,
     earning: 0,
@@ -160,6 +152,10 @@ const user = (state = initState, action: IAction): IUser => {
     case 'GAINS_DETAIL_COMPLETE': {
       const { data } = action.payload as IGainsDetailResponse;
       return { ...state, ...data };
+    }
+    case 'PRICE_CONSTITUTE_COMPLETE': {
+      const { data } = action.payload as IPriceConstituteResponse;
+      return { ...state, priceConstitute: data };
     }
     default:
       return state;

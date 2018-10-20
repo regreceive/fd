@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-// import { Translate } from 'react-localize-redux';
+import './index.css';
 
-export default class extends Component {
-  public shouldComponentUpdate() {
-    return false;
-  }
-
+export default class PieChart extends Component {
   public render() {
-    return <div>exchange</div>;
+    return <div>电力交易</div>;
   }
 }
