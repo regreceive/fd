@@ -14,10 +14,15 @@ router.post('api/quotePrice', api.postOffer);
 router.get('quotePrice', api.quotePrice);
 router.get('balance', api.balance);
 router.get('api/price/detail', api.priceConstitute);
-router.get('get-current-coast',api.exchange)
+router.get('get-current-coast', api.exchange);
 
 router.get('gainsDetail', api.gainsDetail);
 router.get('gainsCard', api.gainsCard);
-router.get('api/eletric/chart',api.getChartData);
-router.get('api/eletric/ex/chart',api.exChart);
+router.get('api/eletric/chart', api.getChartData);
+router.get('api/eletric/ex/chart', api.exChart);
+
+router.get('producer/exchangeFrom', api.exchangeForm);
+router.get('check', api.check);
+router.get('checkDetail', api.checkDetail);
+
 module.exports = router;

@@ -16,14 +16,13 @@ import {
   postOfferComplete,
   priceConstituteComplete,
   producerSummaryComplete,
-  currentCoastComplete,
   quotePriceComplete,
   updateRoleComplete,
   walletBalanceComplete,
-  gainsDetailComplete,
   exchangeFormComplete,
   IExchangeFormResponse,
   checkComplete,
+  IElectricEXChartResponse,
 } from '../actions/userActions';
 import { realTimeImmutableData, realTimeMutableData } from '../pages/data';
 
