@@ -23,6 +23,7 @@ import {
   IExchangeFormResponse,
   checkComplete,
   IElectricEXChartResponse,
+  ICurrentResponse,
 } from '../actions/userActions';
 import { realTimeImmutableData, realTimeMutableData } from '../pages/data';
 
@@ -242,32 +243,13 @@ function* getGainsDetail() {
 
 function* getCurrentCoast() {
   try {
-    const response = yield all([
-      call(request, '/get-current-coast', 'include'),
-      call(request, '/api/eletric/chart', 'include'),
-    ]);
+    const response = yield call(request, '/api/eletric/chart', 'include');
 
-    const json = yield all([
-      call([response[0], 'json']),
-      call([response[1], 'json']),
-    ]);
-    const toast = Object.keys(
-      json.reduce((prev: {}, curr: IResponseSchema) => {
-        if (curr.toast !== '') {
-          prev[curr.toast as 'imNotEmpty'] = 1;
-        }
-        return prev;
-      }, {}),
-    );
-    const data = { currentCoast: json[0].data, getChartData: json[1].data };
-    yield put(
-      currentCoastComplete({
-        status: 'ok',
-        token: json[0].token,
-        toast,
-        data,
-      }),
-    );
+    const json: ICurrentResponse = yield call([response, 'json']);
+    json.data.list.forEach(row => {
+      row.index = row.index + ':00';
+    });
+    yield put(currentCoastComplete(json));
   } catch (e) {
     console.log(e);
   }

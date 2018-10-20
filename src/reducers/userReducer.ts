@@ -61,9 +61,18 @@ export interface IUser {
     lang: string;
   };
   currentCoast: {
-    currentpower: number;
-    before: number;
-    after: number;
+    total: {
+      pre: number;
+      after: number;
+      eletric: number;
+    };
+    list: [
+      {
+        actual: number;
+        price: number;
+        index: string;
+      }
+    ];
   };
   getChartData: Array<{
     uid: string;
@@ -130,9 +139,18 @@ const initState: IUser = {
     lang,
   },
   currentCoast: {
-    currentpower: 0,
-    before: 0,
-    after: 0,
+    total: {
+      pre: 0,
+      after: 0,
+      eletric: 0,
+    },
+    list: [
+      {
+        actual: 0,
+        price: 0,
+        index: '0',
+      },
+    ],
   },
   getChartData: [],
   exChart: [],
@@ -179,7 +197,7 @@ const user = (state = initState, action: IAction): IUser => {
     }
     case 'CURRENT_COAST_COMPLETE': {
       const { data } = action.payload as ICurrentResponse;
-      return { ...state, ...data };
+      return { ...state, currentCoast: data };
     }
     case 'GAINS_DETAIL_COMPLETE': {
       const { data } = action.payload as IGainsDetailResponse;

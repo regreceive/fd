@@ -12,7 +12,6 @@ import './index.css';
 
 interface IStateProps {
   currentCoast: IUser['currentCoast'];
-  getChartData: IUser['getChartData'];
 }
 
 interface IDispatchProps {
@@ -21,7 +20,6 @@ interface IDispatchProps {
 
 const mapStateToProps = (state: IStoreState): IStateProps => ({
   currentCoast: state.user.currentCoast,
-  getChartData: state.user.getChartData,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
@@ -41,10 +39,10 @@ export default class extends Component {
     this.injected.getCurrentCoast();
   }
   public render() {
-    const { currentCoast, getChartData } = this.injected;
+    const { currentCoast } = this.injected;
     return (
       <div styleName="container">
-        <DoubleChart getChartData={getChartData} />
+        <DoubleChart currentCoast={currentCoast} />
         <DetailInfo currentCoast={currentCoast} />
       </div>
     );

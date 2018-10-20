@@ -14,7 +14,6 @@ router.post('api/quotePrice', api.postOffer);
 router.get('quotePrice', api.quotePrice);
 router.get('balance', api.balance);
 router.get('api/price/detail', api.priceConstitute);
-router.get('get-current-coast', api.exchange);
 
 router.get('gainsDetail', api.gainsDetail);
 router.get('gainsCard', api.gainsCard);
