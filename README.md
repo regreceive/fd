@@ -303,3 +303,21 @@ response = {
 | toast | 说明 |
 | ----- | ---- |
 
+
+### 用电方调整页面图表
+
+GET api/eletric/chart
+
+响应
+
+```js
+response = {
+  status: 'ok',
+  token: '123',
+  toast: '',
+  data:{"total":{"pre":100, "after":200,"eletric":100}, "list":[{"actual":100,"price":0.1,"index":0},{"actual":100,"price":0.1,"index":1}]}
+};
+```
+
+| toast | 说明 |
+| ----- | ---- |
