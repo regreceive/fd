@@ -190,30 +190,6 @@ earns
 | ----- | ---- |
 
 
-### 发电用户报价信息（无API接口）
-
-GET /api/get-offer
-
-响应
-
-```js
-response = {
-  status: 'ok',
-  token: '123',
-  toast: '',
-  data: { price: 0.23, timestamp: 1539526393793 },
-};
-```
-
-offer
-
-- price 实时电价
-- timestamp 上次报价时间戳
-
-| toast | 说明 |
-| ----- | ---- |
-
-
 ### 发电用户上传报价
 
 POST /api/quotePrice
@@ -342,6 +318,31 @@ response = {
     | toast | 说明 |
     | ----- | ---- |
 
+### 用电方调整页面图表
+
+GET api/eletric/chart
+
+响应
+
+```js
+response = {
+  status: 'ok',
+  token: '123',
+  toast: '',
+  data: {
+    total: { pre: 100, after: 200, eletric: 100 },
+    list: [
+      { actual: 100, price: 0.1, index: 0 },
+      { actual: 100, price: 0.1, index: 1 },
+    ],
+  },
+};
+```
+
+| toast | 说明 |
+| ----- | ---- |
+
+
 ### 卖家首页历史报价（无 API 接口）
 
 GET /quotePrice
@@ -403,9 +404,9 @@ response = {
 | ----- | ---- |
 
 
-### 用电方调整页面图表
+### 发电用户报价信息（无 API 接口）
 
-GET api/eletric/chart
+GET /api/get-offer
 
 响应
 
@@ -414,15 +415,14 @@ response = {
   status: 'ok',
   token: '123',
   toast: '',
-  data: {
-    total: { pre: 100, after: 200, eletric: 100 },
-    list: [
-      { actual: 100, price: 0.1, index: 0 },
-      { actual: 100, price: 0.1, index: 1 },
-    ],
-  },
+  data: { price: 0.23, timestamp: 1539526393793 },
 };
 ```
+
+offer
+
+- price 实时电价
+- timestamp 上次报价时间戳
 
 | toast | 说明 |
 | ----- | ---- |
