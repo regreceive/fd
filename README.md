@@ -303,6 +303,7 @@ response = {
 | toast | 说明 |
 | ----- | ---- |
 
+
 ### 收益明细列表
 
 GET /api/eletric/earn
@@ -310,33 +311,35 @@ GET /api/eletric/earn
 买家响应
 
 ```js
-response ={
-      status: 'ok',
-      token: '123',
-      toast: '',
-      data:{
-        total:{
-          uid: 123,
-          price: 100,
-          eletric: 100,
-        },
-        list:[{
-          uid: 123,
-          index: 10,
-          eletric: 100,
-          price: 100,
-        }]
-      } 
-    };
+response = {
+  status: 'ok',
+  token: '123',
+  toast: '',
+  data: {
+    total: {
+      uid: 123,
+      price: 100,
+      eletric: 100,
+    },
+    list: [
+      {
+        uid: 123,
+        index: 10,
+        eletric: 100,
+        price: 100,
+      },
+    ],
+  },
+};
 ```
-
 
 | toast | 说明 |
 | ----- | ---- |
 
+
 卖家响应
 
-```js
+````js
 response ={
       status: 'ok',
       token: '123',
@@ -355,11 +358,28 @@ response ={
           userTotal: 100,
           otherTotal:100
         }]
-      } 
+      }
     };
     ```
 
     | toast | 说明 |
     | ----- | ---- |
 
+### 用电方调整页面图表
+
+GET api/eletric/chart
+
+响应
+
+```js
+response = {
+  status: 'ok',
+  token: '123',
+  toast: '',
+  data:{"total":{"pre":100, "after":200,"eletric":100}, "list":[{"actual":100,"price":0.1,"index":0},{"actual":100,"price":0.1,"index":1}]}
+};
+````
+
+| toast | 说明 |
+| ----- | ---- |
 
