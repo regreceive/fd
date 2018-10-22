@@ -87,19 +87,6 @@ exports.updateRole = async ctx => {
   };
 };
 
-exports.currentState = async ctx => {
-  await sleep();
-  ctx.body = {
-    status: 'ok',
-    token: '123',
-    toast: '',
-    data: {
-      power: 10,
-      cost: 0.36,
-      efficiency: 1,
-    },
-  };
-};
 
 exports.earns = async ctx => {
   await sleep();

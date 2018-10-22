@@ -7,7 +7,6 @@ router.post('login', api.login);
 router.get('api/logout', api.logout);
 router.get('config/role', api.availableRoles);
 router.post('api/update-role', api.updateRole);
-router.get('get-current-state', api.currentState);
 router.get('api/user/sell/profit', api.earns);
 router.get('get-offer', api.offer);
 router.post('api/quotePrice', api.postOffer);

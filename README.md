@@ -165,31 +165,6 @@ response = {
 | fail.login_again  | 重新登录               |
 | fail.role_in_used | 角色已占用，请重新选择 |
 
-### 发电用户当前状态
-
-GET /api/get-current-state
-
-响应
-
-```js
-response = {
-  status: 'ok',
-  token: '123',
-  toast: '',
-  data: { power: 10, cost: 0.36, efficiency: 1 },
-};
-```
-
-currentState
-
-- power 发电量
-- cost 成本
-- efficiency 效率
-
-| toast | 说明 |
-| ----- | ---- |
-
-
 ### 发电用户收益
 
 GET /api/user/sell/profit
