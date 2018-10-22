@@ -152,6 +152,7 @@ const initState: IUser = {
     },
     list: [],
   },
+  gainsCard: [],
   config: {
     lang,
   },

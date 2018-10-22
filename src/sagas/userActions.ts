@@ -227,7 +227,6 @@ function* getCheck() {
     const json = yield call([response, 'json']);
 
     yield put(checkComplete(json));
-    console.log(json);
   } catch (e) {
     console.log(e);
   }

@@ -11,27 +11,33 @@ import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
 import { getChartsData, realTimePrice } from '../../data';
 import Curved from '../../../components/Charts';
-import { getPriceConstitute } from '../../../actions/userActions';
+import { getCheck, getPriceConstitute } from '../../../actions/userActions';
 import './index.css';
 
 interface IStateProps {
   role: IUser['role'];
   priceConstitute: IUser['priceConstitute'];
+  price: number;
+  eletric: number;
 }
 
 interface IDispatchProps {
   getPriceConstitute: typeof getPriceConstitute;
+  getCheck: typeof getCheck;
   push: (path: Path, state?: LocationState) => void;
 }
 
 const mapStateToProps = (state: IStoreState): IStateProps => ({
   role: state.user.role,
   priceConstitute: state.user.priceConstitute,
+  price: state.user.checkDetail.total.price,
+  eletric: state.user.checkDetail.total.eletric,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   getPriceConstitute: () => dispatch(getPriceConstitute()),
   push: (path: Path, state?: LocationState) => dispatch(push(path, state)),
+  getCheck: () => dispatch(getCheck()),
 });
 
 @(connect(
@@ -45,6 +51,7 @@ export default class extends Component {
 
   public componentDidMount() {
     this.injected.getPriceConstitute();
+    this.injected.getCheck();
   }
 
   public render() {
@@ -87,11 +94,11 @@ export default class extends Component {
             </div>
             <dl>
               <dt>当前已用电量</dt>
-              <dd>0 度</dd>
+              <dd>{this.injected.eletric} 度</dd>
             </dl>
             <dl>
               <dt>用电花费</dt>
-              <dd>1 EDF</dd>
+              <dd>{this.injected.price} EDF</dd>
             </dl>
             <dl>
               <dt>已省</dt>

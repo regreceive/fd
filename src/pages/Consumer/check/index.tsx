@@ -39,7 +39,6 @@ export default class extends Component {
     this.injected.getCheck();
   }
   public render() {
-    console.log(this.injected.checkDetail);
     return (
       <div styleName="container">
         <div styleName="history">
