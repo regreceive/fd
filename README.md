@@ -182,9 +182,8 @@ response = {
 
 earns
 
-- vol 售卖
-- price 电价
-- amount 总费用
+- eletric 总电量
+- price 总费用
 
 | toast | 说明 |
 | ----- | ---- |
