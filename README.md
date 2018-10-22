@@ -104,7 +104,7 @@ response = {
 
 ### 获得可用角色
 
-GET /api/get-available-roles
+GET /config/role
 
 响应
 
