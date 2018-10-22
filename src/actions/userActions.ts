@@ -172,10 +172,7 @@ export function getCurrentCoast() {
 }
 
 export interface ICurrentResponse extends IResponseSchema {
-  data: {
-    currentCoast: IUser['currentCoast'];
-    getChartData: IUser['getChartData'];
-  };
+  data: IUser['currentCoast'];
 }
 
 export function currentCoastComplete(data: ICurrentResponse) {

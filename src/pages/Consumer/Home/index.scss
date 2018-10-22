@@ -2,6 +2,16 @@
 
 .container {
   @extend %container;
+  background: #fff;
+  .title {
+    color: #121314;
+    padding: 25px 0px 26px 20px;
+  }
+  h2 {
+    color: #4a4a4a;
+    @extend %padding;
+    font-size: 18px;
+  }
 }
 
 .section {

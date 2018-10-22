@@ -7,29 +7,21 @@ interface IProps {
 }
 
 const DetailInfo = (props: IProps) => {
-  const { currentpower, before, after } = props.currentCoast;
+  const { total } = props.currentCoast;
   return (
     <div styleName="section">
       <div>
         <dl>
           <dt>截止到当前时刻</dt>
-          <dd> {currentpower}度</dd>
+          <dd> {total.eletric}度</dd>
         </dl>
         <dl>
           <dt>调整前用电花费</dt>
-          <dd>
-            {' '}
-            {before}
-            EDF{' '}
-          </dd>
+          <dd>{total.pre}</dd>
         </dl>
         <dl>
           <dt>调整后用电花费</dt>
-          <dd>
-            {' '}
-            {after}
-            EDF{' '}
-          </dd>
+          <dd>{total.after}</dd>
         </dl>
       </div>
     </div>

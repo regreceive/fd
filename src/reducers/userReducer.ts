@@ -9,6 +9,7 @@ import {
   IWalletBalanceResponse,
   ICurrentResponse,
   IGainsDetailResponse,
+  IPriceConstituteResponse,
   IElectricEXChartResponse,
   IExchangeFormResponse,
   ICheckResponse,
@@ -57,20 +58,32 @@ export interface IUser {
       otherTotal: number;
     }>;
   };
-  priceConstitute: {
-    pv: number;
-    cchp: number;
-    storage: number;
-    wind: number;
-    grid: number;
-  };
+  gainsCard: Array<{
+    count: number;
+    earning: number;
+    netEarning: number;
+    time: number;
+  }>;
+  priceConstitute: Array<{
+    item: string;
+    count: number;
+  }>;
   config: {
     lang: string;
   };
   currentCoast: {
-    currentpower: number;
-    before: number;
-    after: number;
+    total: {
+      pre: number;
+      after: number;
+      eletric: number;
+    };
+    list: [
+      {
+        actual: number;
+        price: number;
+        index: string;
+      }
+    ];
   };
   getChartData: Array<{
     uid: string;
@@ -129,13 +142,7 @@ const initState: IUser = {
     balance: 0,
   },
   quotePrice: [],
-  priceConstitute: {
-    pv: 0.1,
-    cchp: 0.1,
-    storage: 0.1,
-    wind: 0.1,
-    grid: 0.6,
-  },
+  priceConstitute: [],
   gainsDetail: {
     total: {
       uid: 0,
@@ -149,9 +156,18 @@ const initState: IUser = {
     lang,
   },
   currentCoast: {
-    currentpower: 0,
-    before: 0,
-    after: 0,
+    total: {
+      pre: 0,
+      after: 0,
+      eletric: 0,
+    },
+    list: [
+      {
+        actual: 0,
+        price: 0,
+        index: '0',
+      },
+    ],
   },
   getChartData: [],
   exChart: [],
@@ -200,20 +216,22 @@ const user = (state = initState, action: IAction): IUser => {
     }
     case 'CURRENT_COAST_COMPLETE': {
       const { data } = action.payload as ICurrentResponse;
-      return { ...state, ...data };
+      return { ...state, currentCoast: data };
     }
     case 'GAINS_DETAIL_COMPLETE': {
       const { data } = action.payload as IGainsDetailResponse;
       return { ...state, gainsDetail: data };
     }
+    case 'PRICE_CONSTITUTE_COMPLETE': {
+      const { data } = action.payload as IPriceConstituteResponse;
+      return { ...state, priceConstitute: data };
+    }
     case 'EXCHANGE_FORM_COMPLETE': {
       const { data } = action.payload as IExchangeFormResponse;
       return { ...state, exchangeForm: data };
     }
-
     case 'CHECK_COMPLETE': {
       const { data } = action.payload as ICheckResponse;
-
       return { ...state, checkDetail: data };
     }
     case 'ELECTRIC_EX_CHART_COMPETE': {

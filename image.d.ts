@@ -5,3 +5,4 @@ declare module '*.json'
 
 declare module 'react-decoration/lib/decorators/functions/autobind'
 declare module '@antv/data-set'
+
