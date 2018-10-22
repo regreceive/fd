@@ -25,9 +25,8 @@ export interface IUser {
     cost: number;
   };
   earns: {
-    vol: number;
+    eletric: number;
     price: number;
-    amount: number;
   };
   offer: {
     price: number;
@@ -130,9 +129,8 @@ const initState: IUser = {
     cost: 0,
   },
   earns: {
-    vol: 0,
+    eletric: 0,
     price: 0,
-    amount: 0,
   },
   offer: {
     price: 0,

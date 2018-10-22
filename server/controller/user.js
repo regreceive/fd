@@ -108,9 +108,8 @@ exports.earns = async ctx => {
     token: '123',
     toast: '',
     data: {
-      vol: 12,
-      price: 0.31,
-      amount: 12500,
+      eletric: 0,
+      price: 0,
     },
   };
 };
@@ -180,7 +179,7 @@ exports.priceConstitute = async ctx => {
     status: 'ok',
     token: '123',
     toast: '',
-    data:[
+    data: [
       {
         item: '光伏发电',
         count: 0.4,
@@ -221,48 +220,51 @@ exports.exchange = async ctx => {
 
 exports.gainsDetail = async ctx => {
   await sleep();
-  if(SIDE=='BUY'){
+  if (SIDE == 'BUY') {
     ctx.body = {
       status: 'ok',
       token: '123',
       toast: '',
-      data:{
-        total:{
+      data: {
+        total: {
           uid: 123,
           price: 100,
           eletric: 100,
         },
-        list:[{
-          uid: 123,
-          index: 10,
-          eletric: 100,
-          price: 100,
-        }]
-      } 
+        list: [
+          {
+            uid: 123,
+            index: 10,
+            eletric: 100,
+            price: 100,
+          },
+        ],
+      },
     };
-  }else{
+  } else {
     ctx.body = {
       status: 'ok',
       token: '123',
       toast: '',
-      data:{
-        total:{
+      data: {
+        total: {
           uid: 123,
           eletric: 1000,
           userTotal: 100,
-          otherTotal:100
+          otherTotal: 100,
         },
-        list:[{
-          uid: 123,
-          index: 10,
-          eletric: 100,
-          userTotal: 100,
-          otherTotal:100
-        }]
-      } 
+        list: [
+          {
+            uid: 123,
+            index: 10,
+            eletric: 100,
+            userTotal: 100,
+            otherTotal: 100,
+          },
+        ],
+      },
     };
   }
- 
 };
 
 exports.exChart = async ctx => {
@@ -287,10 +289,13 @@ exports.getChartData = async ctx => {
     status: 'ok',
     token: '123',
     toast: '',
-    data:{
-      "total":{"pre":100, "after":200,"eletric":100}, 
-      "list":[{"actual":100,"price":0.1,"index":0},{"actual":100,"price":0.1,"index":1}],
-      }
+    data: {
+      total: { pre: 100, after: 200, eletric: 100 },
+      list: [
+        { actual: 100, price: 0.1, index: 0 },
+        { actual: 100, price: 0.1, index: 1 },
+      ],
+    },
   };
 };
 
@@ -300,21 +305,17 @@ exports.exchangeForm = async ctx => {
     status: 'ok',
     token: '123',
     toast: '',
-    data:
-     [
-        {
-          count: 50000,
-          price: 3000,
-          time: Date.now(),
-        },
-        {
-          count: 50000,
-          price: 3000,
-          time: Date.now(),
-        },
-      ]
-
-
-  }
+    data: [
+      {
+        count: 50000,
+        price: 3000,
+        time: Date.now(),
+      },
+      {
+        count: 50000,
+        price: 3000,
+        time: Date.now(),
+      },
+    ],
+  };
 };
-

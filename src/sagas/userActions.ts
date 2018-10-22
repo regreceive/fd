@@ -133,7 +133,7 @@ function* getProducerSummary() {
     const response = yield all([
       // call(request, '/get-current-state', 'include'),
       call(mockCurrentState),
-      call(request, '/get-earns', 'include'),
+      call(request, '/api/user/sell/profit', 'include'),
       call(request, '/get-offer', 'include'),
     ]);
 

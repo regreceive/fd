@@ -192,7 +192,7 @@ currentState
 
 ### 发电用户收益
 
-GET /api/get-earns
+GET /api/user/sell/profit
 
 响应
 
@@ -201,7 +201,7 @@ response = {
   status: 'ok',
   token: '123',
   toast: '',
-  data: { vol: 12, price: 0.31, amount: 12500 },
+  data: { eletric: 0, price: 0 },
 };
 ```
 
