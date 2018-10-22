@@ -1,3 +1,4 @@
+let SIDE = '';
 function sleep() {
   return new Promise(resolve => {
     setTimeout(() => resolve(), 1000);
@@ -72,6 +73,8 @@ exports.updateRole = async ctx => {
   const { side } = roles.find(row => {
     return row.role === role;
   });
+
+  SIDE = side;
 
   ctx.body = {
     status: 'ok',
@@ -203,39 +206,48 @@ exports.exchange = async ctx => {
 
 exports.gainsDetail = async ctx => {
   await sleep();
-  ctx.body = {
-    status: 'ok',
-    token: '123',
-    toast: '',
-    data: {
-      count: 50000,
-      earning: 5000,
-      netEarning: 24000,
-    },
-  };
-};
-
-exports.gainsCard = async ctx => {
-  await sleep();
-  ctx.body = {
-    status: 'ok',
-    token: '123',
-    toast: '',
-    data: [
-      {
-        count: 50000,
-        earning: 3000,
-        netEarning: 100,
-        time: Date.now(),
-      },
-      {
-        count: 50000,
-        earning: 3000,
-        netEarning: 0,
-        time: Date.now(),
-      },
-    ],
-  };
+  if(SIDE=='BUY'){
+    ctx.body = {
+      status: 'ok',
+      token: '123',
+      toast: '',
+      data:{
+        total:{
+          uid: 123,
+          price: 100,
+          eletric: 100,
+        },
+        list:[{
+          uid: 123,
+          index: 10,
+          eletric: 100,
+          price: 100,
+        }]
+      } 
+    };
+  }else{
+    ctx.body = {
+      status: 'ok',
+      token: '123',
+      toast: '',
+      data:{
+        total:{
+          uid: 123,
+          eletric: 1000,
+          userTotal: 100,
+          otherTotal:100
+        },
+        list:[{
+          uid: 123,
+          index: 10,
+          eletric: 100,
+          userTotal: 100,
+          otherTotal:100
+        }]
+      } 
+    };
+  }
+ 
 };
 
 exports.exChart = async ctx => {

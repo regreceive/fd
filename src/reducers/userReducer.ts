@@ -41,17 +41,22 @@ export interface IUser {
     status: 0 | 1 | 2;
     time: number;
   }>;
+
   gainsDetail: {
-    count: number;
-    earning: number;
-    netEarning: number;
+    total: {
+      uid: number;
+      eletric: number;
+      userTotal: number;
+      otherTotal: number;
+    };
+    list: Array<{
+      uid: number;
+      index: number;
+      eletric: number;
+      userTotal: number;
+      otherTotal: number;
+    }>;
   };
-  gainsCard: Array<{
-    count: number;
-    earning: number;
-    netEarning: number;
-    time: number;
-  }>;
   priceConstitute: {
     pv: number;
     cchp: number;
@@ -85,16 +90,19 @@ export interface IUser {
     price: number;
     time: number;
   }>;
-  check: {
-    count: number;
-    price: number;
-    time: number;
+  checkDetail: {
+    total: {
+      uid: number;
+      eletric: number;
+      price: number;
+    };
+    list: Array<{
+      uid: number;
+      index: number;
+      eletric: number;
+      price: number;
+    }>;
   };
-  checkDetail: Array<{
-    count: number;
-    price: number;
-    time: number;
-  }>;
 }
 
 const lang = process.env.REACT_APP_DEFAULT_LANGUAGE || 'en';
@@ -129,11 +137,14 @@ const initState: IUser = {
     grid: 0.6,
   },
   gainsDetail: {
-    count: 0,
-    earning: 0,
-    netEarning: 0,
+    total: {
+      uid: 0,
+      eletric: 0,
+      userTotal: 0,
+      otherTotal: 0,
+    },
+    list: [],
   },
-  gainsCard: [],
   config: {
     lang,
   },
@@ -145,12 +156,14 @@ const initState: IUser = {
   getChartData: [],
   exChart: [],
   exchangeForm: [],
-  check: {
-    count: 0,
-    price: 0,
-    time: 0,
+  checkDetail: {
+    total: {
+      uid: 0,
+      eletric: 0,
+      price: 0,
+    },
+    list: [],
   },
-  checkDetail: [],
 };
 
 const user = (state = initState, action: IAction): IUser => {
@@ -191,7 +204,7 @@ const user = (state = initState, action: IAction): IUser => {
     }
     case 'GAINS_DETAIL_COMPLETE': {
       const { data } = action.payload as IGainsDetailResponse;
-      return { ...state, ...data };
+      return { ...state, gainsDetail: data };
     }
     case 'EXCHANGE_FORM_COMPLETE': {
       const { data } = action.payload as IExchangeFormResponse;
@@ -201,7 +214,7 @@ const user = (state = initState, action: IAction): IUser => {
     case 'CHECK_COMPLETE': {
       const { data } = action.payload as ICheckResponse;
 
-      return { ...state, ...data };
+      return { ...state, checkDetail: data };
     }
     case 'ELECTRIC_EX_CHART_COMPETE': {
       const { data } = action.payload as IElectricEXChartResponse;

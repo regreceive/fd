@@ -209,32 +209,24 @@ function* getWalletBalance() {
 
 function* getGainsDetail() {
   try {
-    const response = yield all([
-      call(request, '/gainsDetail', 'include'),
-      call(request, '/gainsCard', 'include'),
-    ]);
+    const response = yield call(request, '/api/eletric/earn', 'include');
 
-    const json = yield all([
-      call([response[0], 'json']),
-      call([response[1], 'json']),
-    ]);
-    const toast = Object.keys(
-      json.reduce((prev: {}, curr: IResponseSchema) => {
-        if (curr.toast !== '') {
-          prev[curr.toast as 'imNotEmpty'] = 1;
-        }
-        return prev;
-      }, {}),
-    );
-    const data = { gainsDetail: json[0].data, gainsCard: json[1].data };
-    yield put(
-      gainsDetailComplete({
-        status: 'ok',
-        token: json[0].token,
-        toast,
-        data,
-      }),
-    );
+    const json = yield call([response, 'json']);
+
+    yield put(gainsDetailComplete(json));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* getCheck() {
+  try {
+    const response = yield call(request, '/api/eletric/earn', 'include');
+
+    const json = yield call([response, 'json']);
+
+    yield put(checkComplete(json));
+    console.log(json);
   } catch (e) {
     console.log(e);
   }
@@ -304,39 +296,6 @@ function* getExchangeForm() {
 
     const json: IExchangeFormResponse = yield call([response, 'json']);
     yield put(exchangeFormComplete(json));
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-function* getCheck() {
-  try {
-    const response = yield all([
-      call(request, '/check', 'include'),
-      call(request, '/checkDetail', 'include'),
-    ]);
-
-    const json = yield all([
-      call([response[0], 'json']),
-      call([response[1], 'json']),
-    ]);
-    const toast = Object.keys(
-      json.reduce((prev: {}, curr: IResponseSchema) => {
-        if (curr.toast !== '') {
-          prev[curr.toast as 'imNotEmpty'] = 1;
-        }
-        return prev;
-      }, {}),
-    );
-    const data = { check: json[0].data, checkDetail: json[1].data };
-    yield put(
-      checkComplete({
-        status: 'ok',
-        token: json[0].token,
-        toast,
-        data,
-      }),
-    );
   } catch (e) {
     console.log(e);
   }

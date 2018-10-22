@@ -16,8 +16,7 @@ router.get('balance', api.balance);
 router.get('api/price/detail', api.priceConstitute);
 router.get('get-current-coast', api.exchange);
 
-router.get('gainsDetail', api.gainsDetail);
-router.get('gainsCard', api.gainsCard);
+router.get('api/eletric/earn', api.gainsDetail);
 router.get('api/eletric/chart', api.getChartData);
 router.get('api/eletric/ex/chart', api.exChart);
 

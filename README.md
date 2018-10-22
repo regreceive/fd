@@ -303,3 +303,63 @@ response = {
 | toast | 说明 |
 | ----- | ---- |
 
+### 收益明细列表
+
+GET /api/eletric/earn
+
+买家响应
+
+```js
+response ={
+      status: 'ok',
+      token: '123',
+      toast: '',
+      data:{
+        total:{
+          uid: 123,
+          price: 100,
+          eletric: 100,
+        },
+        list:[{
+          uid: 123,
+          index: 10,
+          eletric: 100,
+          price: 100,
+        }]
+      } 
+    };
+```
+
+
+| toast | 说明 |
+| ----- | ---- |
+
+卖家响应
+
+```js
+response ={
+      status: 'ok',
+      token: '123',
+      toast: '',
+      data:{
+        total:{
+          uid: 123,
+          eletric: 1000,
+          userTotal: 100,
+          otherTotal:100
+        },
+        list:[{
+          uid: 123,
+          index: 10,
+          eletric: 100,
+          userTotal: 100,
+          otherTotal:100
+        }]
+      } 
+    };
+    ```
+
+    | toast | 说明 |
+    | ----- | ---- |
+
+

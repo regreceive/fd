@@ -1,6 +1,5 @@
 import { IUser } from '../reducers/userReducer';
 import { IGlobal } from '../reducers/globalReducer';
-
 export interface IResponseSchema {
   status: string;
   token?: string;
@@ -210,10 +209,7 @@ export function getGainsDetail() {
 }
 
 export interface IGainsDetailResponse extends IResponseSchema {
-  data: {
-    gainsDetail: IUser['gainsDetail'];
-    gainsCard: IUser['gainsCard'];
-  };
+  data: IUser['gainsDetail'];
 }
 
 export function gainsDetailComplete(data: IGainsDetailResponse) {
@@ -264,10 +260,7 @@ export function getCheck() {
 }
 
 export interface ICheckResponse extends IResponseSchema {
-  data: {
-    check: IUser['check'];
-    checkDetail: IUser['checkDetail'];
-  };
+  data: IUser['checkDetail'];
 }
 
 export function checkComplete(data: ICheckResponse) {

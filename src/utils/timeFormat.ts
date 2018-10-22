@@ -3,6 +3,13 @@ export function timeFormat(timeStamp: number) {
   return `${hour}:${minute}:${second}`;
 }
 
+export function startedDadeTime(offset: number) {
+  const timeStamp =
+    new Date(new Date().setHours(0, 0, 0, 0)).getTime() +
+    offset * 60 * 60 * 1000;
+  return dateTimeFormat(timeStamp);
+}
+
 export function dateTimeFormat(timestamp: number) {
   const date = new Date(timestamp);
   const YYYY = date.getFullYear();

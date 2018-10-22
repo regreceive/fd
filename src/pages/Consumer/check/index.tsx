@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Translate } from 'react-localize-redux';
 import './index.css';
 import { RouteComponentProps } from 'react-router';
 import { Translate } from 'react-localize-redux';
@@ -9,10 +8,9 @@ import { connect } from 'react-redux';
 import { getCheck } from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
-import { dateTimeFormat } from '../../../utils/timeFormat';
+import { startedDadeTime } from '../../../utils/timeFormat';
 
 interface IStateProps {
-  check: IUser['check'];
   checkDetail: IUser['checkDetail'];
 }
 
@@ -21,7 +19,6 @@ interface IDispatchProps {
 }
 
 const mapStateToProps = (state: IStoreState): IStateProps => ({
-  check: state.user.check,
   checkDetail: state.user.checkDetail,
 });
 
@@ -42,6 +39,7 @@ export default class extends Component {
     this.injected.getCheck();
   }
   public render() {
+    console.log(this.injected.checkDetail);
     return (
       <div styleName="container">
         <div styleName="history">
@@ -60,26 +58,26 @@ export default class extends Component {
               <li>
                 <span>发电量</span>
                 <br />
-                <span>{this.injected.check.count}</span>
+                <span>{this.injected.checkDetail.total.eletric}</span>
               </li>
               <li>
                 <span>电价(元/度)</span>
                 <br />
-                <span>{this.injected.check.price}</span>
+                <span>{this.injected.checkDetail.total.price}</span>
               </li>
             </ul>
           </div>
-          <p>发电时间 {dateTimeFormat(this.injected.check.time)}</p>
+          <p>用电时间段 2018-09-09 12:00:00-12:59:59</p>
         </div>
         <div styleName="detail">账单详情</div>
         <div styleName="count">
           <span>用电量/KW</span> <span styleName="conuntSpan">总费用/EDF</span>{' '}
           <span>用电时间段</span>
         </div>
-        {this.injected.checkDetail.map((item, index) => (
+        {this.injected.checkDetail.list.map((item, index) => (
           <div styleName="number" key={index}>
-            <span>{item.count}</span> <span>{item.price}</span>{' '}
-            <span>{dateTimeFormat(item.time)}</span>
+            <span>{item.eletric}</span> <span>{item.price}</span>{' '}
+            <span>{startedDadeTime(item.index)}</span>
           </div>
         ))}
       </div>

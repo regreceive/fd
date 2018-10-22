@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Translate } from 'react-localize-redux';
+import { Link } from 'react-router-dom';
 import { push } from 'connected-react-router';
 import { LocationState, Path } from 'history';
 
@@ -11,7 +12,6 @@ import { IStoreState } from '../../../types';
 import { getChartsData, realTimePrice } from '../../data';
 import Curved from '../../../components/Charts';
 import { getPriceConstitute } from '../../../actions/userActions';
-
 import './index.css';
 
 interface IStateProps {
@@ -79,7 +79,12 @@ export default class extends Component {
 
         <div styleName="section spacer">
           <div>
-            <h2 styleName="spacer">我的账单</h2>
+            <div styleName="head-area">
+              <h2 styleName="spacer">我的账单</h2>
+              <Link to="/consumer/check">
+                <Translate id="more" />
+              </Link>
+            </div>
             <dl>
               <dt>当前已用电量</dt>
               <dd>0 度</dd>
