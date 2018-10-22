@@ -339,31 +339,33 @@ response = {
 
 卖家响应
 
-````js
-response ={
-      status: 'ok',
-      token: '123',
-      toast: '',
-      data:{
-        total:{
-          uid: 123,
-          eletric: 1000,
-          userTotal: 100,
-          otherTotal:100
-        },
-        list:[{
-          uid: 123,
-          index: 10,
-          eletric: 100,
-          userTotal: 100,
-          otherTotal:100
-        }]
-      }
-    };
-    ```
+```js
+response = {
+  status: 'ok',
+  token: '123',
+  toast: '',
+  data: {
+    total: {
+      uid: 123,
+      eletric: 1000,
+      userTotal: 100,
+      otherTotal: 100,
+    },
+    list: [
+      {
+        uid: 123,
+        index: 10,
+        eletric: 100,
+        userTotal: 100,
+        otherTotal: 100,
+      },
+    ],
+  },
+};
+```
 
-    | toast | 说明 |
-    | ----- | ---- |
+| toast | 说明 |
+| ----- | ---- |
 
 ### 用电方调整页面图表
 
@@ -376,9 +378,15 @@ response = {
   status: 'ok',
   token: '123',
   toast: '',
-  data:{"total":{"pre":100, "after":200,"eletric":100}, "list":[{"actual":100,"price":0.1,"index":0},{"actual":100,"price":0.1,"index":1}]}
+  data: {
+    total: { pre: 100, after: 200, eletric: 100 },
+    list: [
+      { actual: 100, price: 0.1, index: 0 },
+      { actual: 100, price: 0.1, index: 1 },
+    ],
+  },
 };
-````
+```
 
 | toast | 说明 |
 | ----- | ---- |

@@ -21,7 +21,7 @@ interface IDispatchProps {
   getPriceConstitute: typeof getPriceConstitute;
 }
 
-interface Istate {
+interface IState {
   name: string;
   count: number;
 }
@@ -39,7 +39,7 @@ const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   mapStateToProps,
   mapDispatchToProps,
 ) as any)
-export default class extends Component<{}, Istate> {
+export default class extends Component<{}, IState> {
   public state = { name: '', count: 0 };
   public change = (ev: any) => {
     if (ev.data) {
@@ -47,8 +47,6 @@ export default class extends Component<{}, Istate> {
         name: ev.data._origin.item,
         count: ev.data._origin.percent * 100,
       });
-    } else {
-      return;
     }
   };
 
@@ -83,8 +81,8 @@ export default class extends Component<{}, Istate> {
         >
           当前电价组成
         </NavBar>
-        <div styleName="title">当前用电价:0.25 EDF/度</div>
-        <h2>电力组成</h2>
+        <div styleName="electricity">当前用电价:0.25 EDF/度</div>
+        <h2 styleName="title">电力组成</h2>
         <Chart
           height={400}
           data={dv}

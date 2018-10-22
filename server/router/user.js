@@ -12,7 +12,7 @@ router.get('get-earns', api.earns);
 router.get('get-offer', api.offer);
 router.post('api/quotePrice', api.postOffer);
 router.get('quotePrice', api.quotePrice);
-router.get('balance', api.balance);
+router.get('api/balance', api.balance);
 router.get('api/price/detail', api.priceConstitute);
 
 router.get('api/eletric/earn', api.gainsDetail);
