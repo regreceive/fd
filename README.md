@@ -303,7 +303,6 @@ response = {
 | toast | 说明 |
 | ----- | ---- |
 
-
 ### 收益明细列表
 
 GET /api/eletric/earn
@@ -311,83 +310,114 @@ GET /api/eletric/earn
 买家响应
 
 ```js
-response = {
-  status: 'ok',
-  token: '123',
-  toast: '',
-  data: {
-    total: {
-      uid: 123,
-      price: 100,
-      eletric: 100,
-    },
-    list: [
-      {
-        uid: 123,
-        index: 10,
-        eletric: 100,
-        price: 100,
-      },
-    ],
-  },
-};
+response ={
+      status: 'ok',
+      token: '123',
+      toast: '',
+      data:{
+        total:{
+          uid: 123,
+          price: 100,
+          eletric: 100,
+        },
+        list:[{
+          uid: 123,
+          index: 10,
+          eletric: 100,
+          price: 100,
+        }]
+      } 
+    };
 ```
+
 
 | toast | 说明 |
 | ----- | ---- |
-
 
 卖家响应
 
 ```js
-response = {
-  status: 'ok',
-  token: '123',
-  toast: '',
-  data: {
-    total: {
-      uid: 123,
-      eletric: 1000,
-      userTotal: 100,
-      otherTotal: 100,
-    },
-    list: [
-      {
-        uid: 123,
-        index: 10,
-        eletric: 100,
-        userTotal: 100,
-        otherTotal: 100,
-      },
-    ],
-  },
-};
-```
+response ={
+      status: 'ok',
+      token: '123',
+      toast: '',
+      data:{
+        total:{
+          uid: 123,
+          eletric: 1000,
+          userTotal: 100,
+          otherTotal:100
+        },
+        list:[{
+          uid: 123,
+          index: 10,
+          eletric: 100,
+          userTotal: 100,
+          otherTotal:100
+        }]
+      } 
+    };
+    ```
 
-| toast | 说明 |
-| ----- | ---- |
+    | toast | 说明 |
+    | ----- | ---- |
 
-### 用电方调整页面图表
-
-GET api/eletric/chart
+### 卖家首页历史报价跳转页面（无API接口）
+GET /quotePrice
 
 响应
 
+
 ```js
-response = {
-  status: 'ok',
-  token: '123',
-  toast: '',
-  data: {
-    total: { pre: 100, after: 200, eletric: 100 },
-    list: [
-      { actual: 100, price: 0.1, index: 0 },
-      { actual: 100, price: 0.1, index: 1 },
+response ={
+    status: 'ok',
+    token: '123',
+    toast: '',
+    data: [
+      {
+        amount: 5000,
+        earning: 3000,
+        status: 0,
+        time: Date.now(),
+      },
+      {
+        amount: 5000,
+        earning: 3000,
+        status: 1,
+        time: Date.now(),
+      },
     ],
-  },
-};
-```
+  };
+  ```
 
-| toast | 说明 |
-| ----- | ---- |
+  | toast | 说明 |
+  | ----- | ---- |
 
+  ### 卖家电力交易报表（无API接口）
+  GET /producer/exchangeFrom
+  响应
+  ```js
+response ={
+    status: 'ok',
+    token: '123',
+    toast: '',
+    data:
+     [
+        {
+          count: 50000,
+          price: 3000,
+          time: Date.now(),
+        },
+        {
+          count: 50000,
+          price: 3000,
+          time: Date.now(),
+        },
+      ]
+
+
+  }
+   ```
+
+    | toast | 说明 |
+    | ----- | ---- |
