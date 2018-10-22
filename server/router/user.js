@@ -21,7 +21,5 @@ router.get('api/eletric/chart', api.getChartData);
 router.get('api/eletric/ex/chart', api.exChart);
 
 router.get('producer/exchangeFrom', api.exchangeForm);
-router.get('check', api.check);
-router.get('checkDetail', api.checkDetail);
 
 module.exports = router;
