@@ -74,18 +74,12 @@ export default class extends Component {
   }
 
   public clickHandle = (role: string) => () => {
-    console.log(this.state.fromTndex);
-
-    this.setState({ fromTndex: role });
-    this.fromTndex = Number(this.state.fromTndex);
+    this.fromTndex = Number(role);
     console.log(this.fromTndex);
   };
 
   public clickHandle1 = (role: string) => () => {
-    console.log(this.state.toIndex);
-
-    this.setState({ toIndex: role });
-    this.toIndex = Number(this.state.toIndex);
+    this.toIndex = Number(role);
   };
 
   public clickDisable = () => {
@@ -110,62 +104,62 @@ export default class extends Component {
         <DoubleChart currentCoast={currentCoast} />
         <div styleName="timeRefer">
           <span onClick={this.clickDisable}>
-            {this.state.fromTndex}
+            {this.fromTndex}
             {!this.state.spanShow2 &&
               this.state.spanShow && (
                 <ul>
-                  <li onClick={this.clickHandle('08:00')}>08:00</li>
+                  <li onClick={this.clickHandle('8')}>08:00</li>
 
-                  <li onClick={this.clickHandle('09:00')}>09:00</li>
+                  <li onClick={this.clickHandle('9')}>09:00</li>
 
-                  <li onClick={this.clickHandle('10:00')}>10:00</li>
+                  <li onClick={this.clickHandle('10')}>10:00</li>
 
-                  <li onClick={this.clickHandle('11:00')}>11:00</li>
+                  <li onClick={this.clickHandle('11')}>11:00</li>
 
-                  <li onClick={this.clickHandle('12:00')}>12:00</li>
+                  <li onClick={this.clickHandle('12')}>12:00</li>
 
-                  <li onClick={this.clickHandle('13:00')}>13:00</li>
+                  <li onClick={this.clickHandle('13')}>13:00</li>
 
-                  <li onClick={this.clickHandle('14:00')}>14:00</li>
+                  <li onClick={this.clickHandle('14')}>14:00</li>
 
-                  <li onClick={this.clickHandle('15:00')}>15:00</li>
+                  <li onClick={this.clickHandle('15')}>15:00</li>
 
-                  <li onClick={this.clickHandle('16:00')}>16:00</li>
+                  <li onClick={this.clickHandle('16')}>16:00</li>
 
-                  <li onClick={this.clickHandle('17:00')}>17:00</li>
+                  <li onClick={this.clickHandle('17')}>17:00</li>
 
-                  <li onClick={this.clickHandle('18:00')}>18:00</li>
+                  <li onClick={this.clickHandle('18')}>18:00</li>
 
-                  <li onClick={this.clickHandle('19:00')}>19:00</li>
+                  <li onClick={this.clickHandle('19')}>19:00</li>
 
-                  <li onClick={this.clickHandle('20:00')}>20:00</li>
+                  <li onClick={this.clickHandle('20')}>20:00</li>
 
-                  <li onClick={this.clickHandle('21:00')}>21:00</li>
+                  <li onClick={this.clickHandle('21')}>21:00</li>
 
-                  <li onClick={this.clickHandle('22:00')}>22:00</li>
+                  <li onClick={this.clickHandle('22')}>22:00</li>
 
-                  <li onClick={this.clickHandle('23:00')}>23:00</li>
+                  <li onClick={this.clickHandle('23')}>23:00</li>
 
-                  <li onClick={this.clickHandle('24:00')}>24:00</li>
+                  <li onClick={this.clickHandle('0')}>24:00</li>
 
-                  <li onClick={this.clickHandle('01:00')}>01:00</li>
+                  <li onClick={this.clickHandle('1')}>01:00</li>
 
-                  <li onClick={this.clickHandle('02:00')}>02:00</li>
+                  <li onClick={this.clickHandle('2')}>02:00</li>
 
-                  <li onClick={this.clickHandle('03:00')}>03:00</li>
+                  <li onClick={this.clickHandle('3')}>03:00</li>
 
-                  <li onClick={this.clickHandle('04:00')}>04:00</li>
+                  <li onClick={this.clickHandle('4')}>04:00</li>
 
-                  <li onClick={this.clickHandle('05:00')}>05:00</li>
+                  <li onClick={this.clickHandle('5')}>05:00</li>
 
-                  <li onClick={this.clickHandle('06:00')}>06:00</li>
+                  <li onClick={this.clickHandle('6')}>06:00</li>
 
-                  <li onClick={this.clickHandle('07:00')}>07:00</li>
+                  <li onClick={this.clickHandle('7')}>07:00</li>
                 </ul>
               )}
           </span>
           <span onClick={this.clickDisable1}>
-            {this.state.toIndex}
+            {this.toIndex}
             {this.state.spanShow2 &&
               !this.state.spanShow && (
                 <ul>
@@ -235,7 +229,7 @@ export default class extends Component {
   }
 
   private clickHandlePost = () => {
-    this.injected.postTime(this.adjustElectric, this.fromTndex, this.toIndex);
+    this.injected.postTime(this.fromTndex, this.toIndex, this.adjustElectric);
   };
   private adjustChangeHandle = (value: string) => {
     this.adjustElectric = Number(value);
