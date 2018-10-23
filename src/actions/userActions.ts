@@ -200,23 +200,6 @@ export function currentCoastComplete(data: ICurrentResponse) {
   };
 }
 
-export function getAdjust() {
-  return {
-    type: 'GET_ADJUST',
-  };
-}
-
-export interface IAjustResponse extends IResponseSchema {
-  data: IUser['adjust'];
-}
-
-export function adjustComplete(data: IAjustResponse) {
-  return {
-    type: 'ADJUST_COMPLETE',
-    payload: data,
-  };
-}
-
 export function getPriceConstitute() {
   return {
     type: 'GET_PRICE_CONSTITUTE',

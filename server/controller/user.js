@@ -295,22 +295,6 @@ exports.getChartData = async ctx => {
   };
 };
 
-exports.getAdjust = async ctx => {
-  await sleep();
-  ctx.body = {
-    status: 'ok',
-    token: '123',
-    toast: '',
-    data: {
-      total: { pre: 100, after: 200 },
-      list: [
-        { actual: 100, price: 0.1, index: 0 },
-        { actual: 100, price: 0.1, index: 1 },
-      ],
-    },
-  };
-};
-
 exports.exchangeForm = async ctx => {
   await sleep();
   ctx.body = {

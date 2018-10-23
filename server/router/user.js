@@ -17,7 +17,6 @@ router.get('api/price/detail', api.priceConstitute);
 
 router.get('api/eletric/earn', api.gainsDetail);
 router.get('api/eletric/chart', api.getChartData);
-router.get('api/eletric/adjust', api.getAdjust);
 router.get('api/eletric/ex/chart', api.exChart);
 
 router.get('producer/exchangeFrom', api.exchangeForm);
