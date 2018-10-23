@@ -8,7 +8,6 @@ import { IUser } from '../../../reducers/userReducer';
 import { getPriceConstitute } from '../../../actions/userActions';
 import { IStoreState } from '../../../types';
 import { Chart, Geom, Axis, Tooltip, Coord, Legend, Guide } from 'bizcharts';
-import DataSet from '@antv/data-set';
 
 import './index.css';
 
@@ -45,7 +44,7 @@ export default class extends Component<{}, IState> {
     if (ev.data) {
       this.setState({
         name: ev.data._origin.item,
-        count: ev.data._origin.percent * 100,
+        count: ev.data._origin.count * 100,
       });
     }
   };
@@ -58,16 +57,8 @@ export default class extends Component<{}, IState> {
     this.injected.getPriceConstitute();
   }
   public render() {
-    const { DataView } = DataSet;
     const { Html } = Guide;
     const { priceConstitute } = this.injected;
-    const dv = new DataView();
-    dv.source(priceConstitute.data).transform({
-      type: 'percent',
-      field: 'count',
-      dimension: 'item',
-      as: 'percent',
-    });
     return (
       <div styleName="container">
         <NavBar
@@ -84,7 +75,7 @@ export default class extends Component<{}, IState> {
         <h2 styleName="title">电力组成</h2>
         <Chart
           height={400}
-          data={dv}
+          data={priceConstitute.data}
           // scale={cols}
           padding="auto"
           forceFit
@@ -122,13 +113,13 @@ export default class extends Component<{}, IState> {
           </Guide>
           <Geom
             type="intervalStack"
-            position="percent"
+            position="count"
             color={[
               'item',
               ['#8EF003', '#FCE301', '#FF4E51', '#5688FE', '#FFAA36'],
             ]}
             tooltip={[
-              'item*percent',
+              'item*count',
               (item, percent) => {
                 percent = percent * 100 + '%';
                 return {
