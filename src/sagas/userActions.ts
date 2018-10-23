@@ -24,6 +24,9 @@ import {
   checkComplete,
   IElectricEXChartResponse,
   ICurrentResponse,
+  IAjustResponse,
+  adjustComplete,
+  postTimeComplete,
 } from '../actions/userActions';
 import { realTimeImmutableData, realTimeMutableData } from '../pages/data';
 
@@ -186,6 +189,22 @@ function* postOffer(action: IAction) {
   }
 }
 
+function* postTime(action: IAction) {
+  try {
+    const response = yield call(
+      request,
+      '/api/eletric/adjust',
+      'include',
+      action.payload,
+    );
+
+    const json = yield call([response, 'json']);
+    yield put(postTimeComplete(json));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 function* getQuotePrice() {
   try {
     const response = yield call(request, '/quotePrice', 'include');
@@ -246,6 +265,20 @@ function* getCurrentCoast() {
   }
 }
 
+function* getAdjust() {
+  try {
+    const response = yield call(request, '/api/eletric/adjust', 'include');
+
+    const json: IAjustResponse = yield call([response, 'json']);
+    json.data.list.forEach(row => {
+      row.index = row.index + ':00';
+    });
+    yield put(adjustComplete(json));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 function* getElectricEXChart() {
   try {
     const response = yield call(request, '/api/eletric/ex/chart', 'include');
@@ -289,6 +322,7 @@ export function* watchUser() {
   yield takeEvery('UPDATE_ROLE', updateRole);
   yield takeEvery('GET_PRODUCER_SUMMARY', getProducerSummary);
   yield takeEvery('POST_OFFER', postOffer);
+  yield takeEvery('POST_TIME', postTime);
   yield takeEvery('GET_QUOTE_PRICE', getQuotePrice);
   yield takeEvery('GET_WALLET_BALANCE', getWalletBalance);
   yield takeEvery('GET_GAINS_DETAIL', getGainsDetail);
@@ -297,4 +331,5 @@ export function* watchUser() {
   yield takeEvery('GET_ELECTRIC_EX_CHART', getElectricEXChart);
   yield takeEvery('GET_EXCAHNGE_FORM', getExchangeForm);
   yield takeEvery('GET_CHECK', getCheck);
+  yield takeEvery('GET_ADJUST', getAdjust);
 }

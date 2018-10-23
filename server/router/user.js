@@ -10,12 +10,14 @@ router.post('api/update-role', api.updateRole);
 router.get('api/user/sell/profit', api.earns);
 router.get('get-offer', api.offer);
 router.post('api/quotePrice', api.postOffer);
+router.post('api/eletric/adjust', api.postTime);
 router.get('quotePrice', api.quotePrice);
 router.get('api/balance', api.balance);
 router.get('api/price/detail', api.priceConstitute);
 
 router.get('api/eletric/earn', api.gainsDetail);
 router.get('api/eletric/chart', api.getChartData);
+router.get('api/eletric/adjust', api.getAdjust);
 router.get('api/eletric/ex/chart', api.exChart);
 
 router.get('producer/exchangeFrom', api.exchangeForm);

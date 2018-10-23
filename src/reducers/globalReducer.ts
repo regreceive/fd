@@ -22,6 +22,7 @@ const global = (state = initState, action: IAction): IGlobal => {
     case 'CURRENT_STATE_COMPLETE':
     case 'PRODUCER_SUMMARY_COMPLETE':
     case 'POST_OFFER_COMPLETE':
+    case 'POST_TIME_COMPLETE':
     case 'QUOTE_PRICE_COMPLETE':
     case 'PRICE_CONSTITUTE_COMPLETE': {
       const { token, toast } = action.payload;

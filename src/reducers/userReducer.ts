@@ -13,6 +13,7 @@ import {
   IElectricEXChartResponse,
   IExchangeFormResponse,
   ICheckResponse,
+  IAjustResponse,
 } from '../actions/userActions';
 
 export interface IUser {
@@ -57,12 +58,6 @@ export interface IUser {
       otherTotal: number;
     }>;
   };
-  gainsCard: Array<{
-    count: number;
-    earning: number;
-    netEarning: number;
-    time: number;
-  }>;
   priceConstitute: Array<{
     item: string;
     count: number;
@@ -75,6 +70,19 @@ export interface IUser {
       pre: number;
       after: number;
       eletric: number;
+    };
+    list: [
+      {
+        actual: number;
+        price: number;
+        index: string;
+      }
+    ];
+  };
+  adjust: {
+    total: {
+      pre: number;
+      after: number;
     };
     list: [
       {
@@ -150,7 +158,6 @@ const initState: IUser = {
     },
     list: [],
   },
-  gainsCard: [],
   config: {
     lang,
   },
@@ -159,6 +166,19 @@ const initState: IUser = {
       pre: 0,
       after: 0,
       eletric: 0,
+    },
+    list: [
+      {
+        actual: 0,
+        price: 0,
+        index: '0',
+      },
+    ],
+  },
+  adjust: {
+    total: {
+      pre: 0,
+      after: 0,
     },
     list: [
       {
@@ -216,6 +236,10 @@ const user = (state = initState, action: IAction): IUser => {
     case 'CURRENT_COAST_COMPLETE': {
       const { data } = action.payload as ICurrentResponse;
       return { ...state, currentCoast: data };
+    }
+    case 'ADJUST_COMPLETE': {
+      const { data } = action.payload as IAjustResponse;
+      return { ...state, adjust: data };
     }
     case 'GAINS_DETAIL_COMPLETE': {
       const { data } = action.payload as IGainsDetailResponse;

@@ -132,6 +132,24 @@ export function postOfferComplete(data: IResponseSchema) {
   };
 }
 
+export function postTime(
+  fromTndex: number,
+  toIdex: number,
+  adjustElectric: number,
+) {
+  return {
+    type: 'POST_TIME',
+    payload: { fromTndex, toIdex, adjustElectric },
+  };
+}
+
+export function postTimeComplete(data: IResponseSchema) {
+  return {
+    type: 'POST_TIME_COMPLETE',
+    payload: data,
+  };
+}
+
 export function getQuotePrice() {
   return {
     type: 'GET_QUOTE_PRICE',
@@ -178,6 +196,23 @@ export interface ICurrentResponse extends IResponseSchema {
 export function currentCoastComplete(data: ICurrentResponse) {
   return {
     type: 'CURRENT_COAST_COMPLETE',
+    payload: data,
+  };
+}
+
+export function getAdjust() {
+  return {
+    type: 'GET_ADJUST',
+  };
+}
+
+export interface IAjustResponse extends IResponseSchema {
+  data: IUser['adjust'];
+}
+
+export function adjustComplete(data: IAjustResponse) {
+  return {
+    type: 'ADJUST_COMPLETE',
     payload: data,
   };
 }
