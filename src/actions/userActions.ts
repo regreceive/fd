@@ -133,13 +133,13 @@ export function postOfferComplete(data: IResponseSchema) {
 }
 
 export function postTime(
-  fromTndex: number,
-  toIdex: number,
+  fromIndex: number,
+  toIndex: number,
   adjustElectric: number,
 ) {
   return {
     type: 'POST_TIME',
-    payload: { fromTndex, toIdex, adjustElectric },
+    payload: { fromIndex, toIndex, adjustElectric },
   };
 }
 
