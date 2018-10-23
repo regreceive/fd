@@ -450,3 +450,23 @@ response ={
 | toast | 说明 |
 | ----- | ---- |
 
+### 电价组成
+
+ GET /api/price/detail
+
+响应
+
+```js
+response ={
+  status: 'ok',
+  token: '123',
+  toast: '',
+  data: {
+      "SCHOOL": { "price": 10, "eletric": 10, "settle": 100 },
+      "FACTORY": { "price": 10, "eletric": 10, "settle": 100 }
+      }
+    }
+```
+
+| toast | 说明 |
+| ----- | ---- |

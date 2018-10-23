@@ -8,6 +8,7 @@ import { push, RouterAction } from 'connected-react-router';
 import { IStoreState } from '../../types';
 import { IUser } from '../../reducers/userReducer';
 import { logout, getWalletBalance } from '../../actions/userActions';
+import avatar from './assets/tian.jpg';
 
 import s from './index.css';
 
@@ -59,7 +60,8 @@ export default class extends Component {
               12346756
             </p>
           </div>
-          <div styleName="avatar" />
+          {/*<div styleName="avatar" />*/}
+          <img src={avatar} styleName="avatar" />
         </div>
 
         <div styleName="flex">
