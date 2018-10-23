@@ -197,6 +197,7 @@ function* postTime(action: IAction) {
 
     const json = yield call([response, 'json']);
     yield put(postTimeComplete(json));
+    yield put(currentCoastComplete(json));
   } catch (e) {
     console.log(e);
   }

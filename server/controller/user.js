@@ -129,6 +129,16 @@ exports.postTime = async ctx => {
     status: 'ok',
     token: '123',
     toast: 'success.offer',
+    data:  {
+      total: { pre: 100, after: 200, eletric: 100},
+      list: [
+        { actual: 10, price: 0.7, index: 0 },
+        { actual: 60, price: 0.1, index: 1 },
+        { actual: 66, price: 0.2, index: 2 },
+        { actual: 50, price: 0.3, index: 3 },
+        { actual: 40, price: 0.6, index: 4 },
+      ],
+    },
   };
 };
 
@@ -175,9 +185,9 @@ exports.priceConstitute = async ctx => {
     status: 'ok',
     token: '123',
     toast: '',
-    data:{
-      "SCHOOL":{"price":10, "eletric":10,"settle":100},
-      "FACTORY":{"price":10, "eletric":10,"settle":100}
+    data: {
+      "SCHOOL": { "price": 10, "eletric": 10, "settle": 100 },
+      "FACTORY": { "price": 10, "eletric": 10, "settle": 100 }
     }
   };
 };
