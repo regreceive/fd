@@ -314,8 +314,9 @@ response = {
 };
 ```
 
-    | toast | 说明 |
-    | ----- | ---- |
+| toast | 说明 |
+| ----- | ---- |
+
 
 ### 用电方调整页面图表
 
@@ -426,9 +427,10 @@ offer
 | toast | 说明 |
 | ----- | ---- |
 
+
 ### 用电调整（返回数据缺字段）
 
-POST  api/eletric/adjust
+POST api/eletric/adjust
 
 响应
 
@@ -442,8 +444,9 @@ response ={
         { actual: 50, price: 0.3, index: 3 },
         { actual: 40, price: 0.6, index: 4 },
       ],
-    },
+    }
 ```
 
 | toast | 说明 |
 | ----- | ---- |
+
