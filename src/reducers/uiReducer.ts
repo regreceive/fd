@@ -8,6 +8,7 @@ export interface IUi {
     role: number;
     roles: number;
     postOffer: number;
+    postTime: number;
   };
 }
 
@@ -19,6 +20,7 @@ const initState: IUi = {
     role: 0,
     roles: 0,
     postOffer: 0,
+    postTime: 0,
   },
 };
 
@@ -53,6 +55,9 @@ const global = (state = initState, action: IAction): IUi => {
     case 'POST_OFFER': {
       return freeze(state, 'postOffer');
     }
+    case 'POST_TIME': {
+      return freeze(state, 'postTime');
+    }
     case 'LOGIN_COMPLETE': {
       return release(state, 'login');
     }
@@ -65,8 +70,8 @@ const global = (state = initState, action: IAction): IUi => {
     case 'UPDATE_ROLE_COMPLETE': {
       return release(state, 'role');
     }
-    case 'POST_OFFER_COMPLETE': {
-      return release(state, 'postOffer');
+    case 'POST_TIME_COMPLETE': {
+      return release(state, 'postTime');
     }
     default:
       return state;

@@ -18,6 +18,7 @@ router.get('get-offer', api.offer);
 // 报价
 router.post('api/quotePrice', api.postOffer);
 // 报价历史
+router.post('api/eletric/adjust', api.postTime);
 router.get('quotePrice', api.quotePrice);
 // 余额
 router.get('api/balance', api.balance);
@@ -28,6 +29,7 @@ router.get('api/eletric/earn', api.gainsDetail);
 // 买家电力交易
 router.get('api/eletric/chart', api.getChartData);
 // 卖家电力交易
+router.get('api/eletric/adjust', api.getAdjust);
 router.get('api/eletric/ex/chart', api.exChart);
 // 电力交易报表
 router.get('producer/exchangeFrom', api.exchangeForm);
