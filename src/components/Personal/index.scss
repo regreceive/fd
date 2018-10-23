@@ -2,6 +2,8 @@
 
 .container {
   @extend %scroll;
+  display: flex;
+  flex-direction: column;
 }
 
 .section {
@@ -41,5 +43,16 @@
     height: 1.73rem;
     border-radius: 50%;
     background-color: #fff;
+  }
+}
+
+.flex {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .button {
+    margin: 0 20px 50px;
   }
 }

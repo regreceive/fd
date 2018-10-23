@@ -199,7 +199,7 @@ function* getQuotePrice() {
 
 function* getWalletBalance() {
   try {
-    const response = yield call(request, '/balance', 'include');
+    const response = yield call(request, '/api/balance', 'include');
 
     const json: IWalletBalanceResponse = yield call([response, 'json']);
     yield put(walletBalanceComplete(json));

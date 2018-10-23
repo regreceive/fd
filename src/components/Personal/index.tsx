@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { ActionSheet, Button } from 'antd-mobile';
+import { ActionSheet, Button, Picker, List } from 'antd-mobile';
 import { Path } from 'history';
 import { push, RouterAction } from 'connected-react-router';
 
@@ -9,7 +9,7 @@ import { IStoreState } from '../../types';
 import { IUser } from '../../reducers/userReducer';
 import { logout, getWalletBalance } from '../../actions/userActions';
 
-import './index.css';
+import s from './index.css';
 
 const basePath = process.env.REACT_APP_BASE_PATH;
 
@@ -61,32 +61,42 @@ export default class extends Component {
           </div>
           <div styleName="avatar" />
         </div>
-        <div styleName="section">
-          <div>
-            <dl>
-              <dt>EDF电力钱包</dt>
-              <dd>{this.injected.balance} EDF</dd>
-            </dl>
-            <dl onClick={this.helpHandle}>
-              <dt>帮助中心</dt>
-            </dl>
-            <dl>
-              <dt>语言设置</dt>
-            </dl>
-          </div>
-          <div styleName="button">
-            <Button
-              type="primary"
-              onClick={this.actionSheet}
-              disabled={this.injected.waiting}
+
+        <div styleName="flex">
+          <List>
+            <List.Item extra="10 EDF">EDF电力钱包</List.Item>
+            <List.Item onClick={this.helpHandle} arrow="horizontal">
+              帮助中心
+            </List.Item>
+            <Picker
+              cols={1}
+              extra="请选择"
+              data={[
+                { label: 'English', value: 'en' },
+                { label: 'Chinese', value: 'cn' },
+              ]}
+              onOk={this.langHandle}
             >
-              退出登录
-            </Button>
-          </div>
+              <List.Item arrow="horizontal">语言设置</List.Item>
+            </Picker>
+          </List>
+
+          <Button
+            type="primary"
+            onClick={this.actionSheet}
+            disabled={this.injected.waiting}
+            className={s.button}
+          >
+            退出登录
+          </Button>
         </div>
       </div>
     );
   }
+
+  private langHandle = (val: string) => {
+    console.log(val);
+  };
 
   private helpHandle = () => {
     this.injected.push(basePath + '/help-center');

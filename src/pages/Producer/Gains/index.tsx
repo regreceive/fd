@@ -38,7 +38,6 @@ export default class extends Component {
   }
 
   public render() {
-    console.log(this.injected.gainsDetail);
     return (
       <div styleName="container">
         <div styleName="earnings">

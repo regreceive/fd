@@ -58,4 +58,13 @@ a {
   .am-button-disabled {
     color: rgb(255, 255, 255) !important;
   }
+
+  .am-list-item {
+    padding-right: 15px;
+  }
+
+  .am-list-content {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
 }
