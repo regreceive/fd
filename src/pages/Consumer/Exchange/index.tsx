@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 // import { Translate } from 'react-localize-redux';
-import {
-  getCurrentCoast,
-  getAdjust,
-  postTime,
-} from '../../../actions/userActions';
+import { getCurrentCoast, postTime } from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
 import { Button, InputItem } from 'antd-mobile';
@@ -16,7 +12,6 @@ import './index.css';
 
 interface IStateProps {
   currentCoast: IUser['currentCoast'];
-  adjust: IUser['adjust'];
 }
 
 interface IState {
@@ -30,18 +25,15 @@ interface IState {
 }
 interface IDispatchProps {
   getCurrentCoast: typeof getCurrentCoast;
-  getAdjust: typeof getAdjust;
   postTime: typeof postTime;
 }
 
 const mapStateToProps = (state: IStoreState): IStateProps => ({
   currentCoast: state.user.currentCoast,
-  adjust: state.user.adjust,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   getCurrentCoast: () => dispatch(getCurrentCoast()),
-  getAdjust: () => dispatch(getAdjust()),
   postTime: (fromTndex: number, toIndex: number, adjustElectric: number) =>
     dispatch(postTime(fromTndex, toIndex, adjustElectric)),
 });
@@ -70,7 +62,6 @@ export default class extends Component {
 
   public componentDidMount() {
     this.injected.getCurrentCoast();
-    this.injected.getAdjust();
   }
 
   public clickHandle = (role: string) => () => {
