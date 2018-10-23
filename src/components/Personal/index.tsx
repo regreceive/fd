@@ -16,6 +16,7 @@ import s from './index.css';
 
 interface IStateProps {
   balance: IUser['wallet']['balance'];
+  username: IUser['username'];
   waiting: boolean;
 }
 
@@ -27,6 +28,7 @@ interface IDispatchToState {
 
 const mapStateToProps = (state: IStoreState): IStateProps => ({
   balance: state.user.wallet.balance,
+  username: state.user.username,
   waiting: state.ui.freeze.logout === 1,
 });
 
@@ -54,7 +56,7 @@ export default class extends Component {
       <div styleName="container">
         <div styleName="banner">
           <div styleName="user">
-            <p>188293044</p>
+            <p>{this.injected.username}</p>
             <p>
               <span>用户ID</span>
               12346756

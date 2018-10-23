@@ -182,7 +182,9 @@ module.exports = {
                     [
                       'react-css-modules',
                       {
-                        generateScopedName: '[name]-[local]-[hash:base64:5]',
+                        generateScopedName: isDebug
+                          ? '[name]-[local]-[hash:base64:5]'
+                          : '[hash:base64:5]',
                       },
                     ],
                   ],
