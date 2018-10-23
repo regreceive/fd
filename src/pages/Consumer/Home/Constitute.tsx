@@ -55,10 +55,6 @@ export default class extends Component<{}, IState> {
   }
 
   public componentDidMount() {
-    if (typeof this.injected.location.state !== 'object') {
-      this.injected.history.goBack();
-      return;
-    }
     this.injected.getPriceConstitute();
   }
   public render() {
@@ -66,7 +62,7 @@ export default class extends Component<{}, IState> {
     const { Html } = Guide;
     const { priceConstitute } = this.injected;
     const dv = new DataView();
-    dv.source(priceConstitute).transform({
+    dv.source(priceConstitute.data).transform({
       type: 'percent',
       field: 'count',
       dimension: 'item',
@@ -81,7 +77,10 @@ export default class extends Component<{}, IState> {
         >
           当前电价组成
         </NavBar>
-        <div styleName="electricity">当前用电价:0.25 EDF/度</div>
+        <div styleName="electricity">
+          当前用电价:
+          {priceConstitute.total.price} EDF/度
+        </div>
         <h2 styleName="title">电力组成</h2>
         <Chart
           height={400}

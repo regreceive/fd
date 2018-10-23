@@ -166,28 +166,10 @@ exports.priceConstitute = async ctx => {
     status: 'ok',
     token: '123',
     toast: '',
-    data: [
-      {
-        item: '光伏发电',
-        count: 0.4,
-      },
-      {
-        item: '光内燃机发电',
-        count: 0.21,
-      },
-      {
-        item: '大电网',
-        count: 0.17,
-      },
-      {
-        item: '能源发电',
-        count: 0.13,
-      },
-      {
-        item: '储能发电',
-        count: 0.09,
-      },
-    ],
+    data:{
+      "SCHOOL":{"price":10, "eletric":10,"settle":100},
+      "FACTORY":{"price":10, "eletric":10,"settle":100}
+    }
   };
 };
 

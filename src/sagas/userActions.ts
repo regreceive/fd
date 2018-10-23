@@ -7,7 +7,6 @@ import {
   getAvailableRolesComplete,
   IAvailableRolesComplete,
   ILoginComplete,
-  IPriceConstituteResponse,
   IQuotePriceResponse,
   IResponseSchema,
   IWalletBalanceResponse,
@@ -264,8 +263,25 @@ function* getPriceConstitute() {
   try {
     const response = yield call(request, '/api/price/detail', 'include');
 
-    const json: IPriceConstituteResponse = yield call([response, 'json']);
-    yield put(priceConstituteComplete(json));
+    const json = yield call([response, 'json']);
+
+    const sum = Object.keys(json.data).reduce(
+      (prev, current) => {
+        const settle = prev.settle + json.data[current].settle;
+        const eletric = prev.eletric + json.data[current].eletric;
+        return { eletric, settle };
+      },
+      { eletric: 0, settle: 0 },
+    );
+
+    const list = Object.keys(json.data).map(value => {
+      return { item: value, count: json.data[value].eletric / sum.eletric };
+    });
+
+    const total = { price: sum.eletric / sum.settle };
+    yield put(
+      priceConstituteComplete({ ...json, data: { data: list, total } }),
+    );
   } catch (e) {
     console.log(e);
   }
