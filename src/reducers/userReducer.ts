@@ -63,10 +63,15 @@ export interface IUser {
     netEarning: number;
     time: number;
   }>;
-  priceConstitute: Array<{
-    item: string;
-    count: number;
-  }>;
+  priceConstitute: {
+    total: {
+      price: number;
+    };
+    data: Array<{
+      item: string;
+      count: number;
+    }>;
+  };
   config: {
     lang: string;
   };
@@ -140,7 +145,12 @@ const initState: IUser = {
     balance: 0,
   },
   quotePrice: [],
-  priceConstitute: [],
+  priceConstitute: {
+    total: {
+      price: 0,
+    },
+    data: [],
+  },
   gainsDetail: {
     total: {
       uid: 0,
