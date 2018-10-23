@@ -14,7 +14,7 @@ router.post('api/update-role', api.updateRole);
 // 卖家收益
 router.get('api/user/sell/profit', api.earns);
 // 报价信息
-router.get('get-offer', api.offer);
+router.get('api/get-offer', api.offer);
 // 报价
 router.post('api/quotePrice', api.postOffer);
 // 用电调整
