@@ -20,20 +20,16 @@ export default class DoubleChart extends Component<IProps> {
     const scale = {
       index: {
         ticks: [
-          '0:00',
-          '2:00',
+          '1:00',
           '4:00',
-          '6:00',
-          '8:00',
+          '7:00',
           '10:00',
-          '12:00',
-          '14:00',
+          '13:00',
           '16:00',
-          '18:00',
-          '20:00',
+          '19:00',
           '22:00',
         ],
-        tickCount: 12,
+        tickCount: 8,
       },
     };
     const color1 = 'l (270) 0:#A6CCEA 1:#0057FF';

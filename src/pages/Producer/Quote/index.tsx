@@ -41,7 +41,6 @@ export default class extends Component {
   }
 
   public render() {
-    console.log(this.injected.quotePrice);
     return (
       <div styleName="container">
         <NavBar

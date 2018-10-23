@@ -208,7 +208,7 @@ exports.exchange = async ctx => {
 
 exports.gainsDetail = async ctx => {
   await sleep();
-  if (SIDE == 'BUY') {
+  if (SIDE === 'BUY') {
     ctx.body = {
       status: 'ok',
       token: '123',
@@ -265,8 +265,29 @@ exports.exChart = async ctx => {
     toast: '',
     data: [
       { uid: 123, index: 0, eletric: 90, price: 80 },
-      { uid: 123, index: 1, eletric: 100, price: 100 },
-      { uid: 123, index: 2, eletric: 100, price: 100 },
+      { uid: 123, index: 1, eletric: 70, price: 100 },
+      { uid: 123, index: 2, eletric: 60, price: 100 },
+      { uid: 123, index: 3, eletric: 50, price: 100 },
+      { uid: 123, index: 4, eletric: 40, price: 100 },
+      { uid: 123, index: 5, eletric: 30, price: 90 },
+      { uid: 123, index: 6, eletric: 20, price: 90 },
+      { uid: 123, index: 7, eletric: 10, price: 90 },
+      { uid: 123, index: 8, eletric: 0, price: 100 },
+      { uid: 123, index: 9, eletric: 20, price: 80 },
+      { uid: 123, index: 10, eletric: 30, price: 80 },
+      { uid: 123, index: 11, eletric: 40, price: 100 },
+      { uid: 123, index: 12, eletric: 50, price: 70 },
+      { uid: 123, index: 13, eletric: 60, price: 100 },
+      { uid: 123, index: 14, eletric: 70, price: 100 },
+      { uid: 123, index: 15, eletric: 80, price: 100 },
+      { uid: 123, index: 16, eletric: 90, price: 100 },
+      { uid: 123, index: 17, eletric: 100, price: 100 },
+      { uid: 123, index: 18, eletric: 141, price: 100 },
+      { uid: 123, index: 19, eletric: 120, price: 80 },
+      { uid: 123, index: 20, eletric: 130, price: 70 },
+      { uid: 123, index: 21, eletric: 140, price: 80 },
+      { uid: 123, index: 22, eletric: 150, price: 60 },
+      { uid: 123, index: 23, eletric: 160, price: 50 },
     ],
   };
 };

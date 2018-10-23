@@ -63,13 +63,14 @@ function mockResponse(json: object) {
 function* mockCurrentState() {
   const {
     user: { role },
+    global: { token },
   } = yield select();
   const [power] = realTimeMutableData(role);
   const [, , cost] = realTimeImmutableData(role);
 
   return mockResponse({
     status: 'ok',
-    token: '123',
+    token,
     toast: '',
     data: {
       power,
@@ -92,7 +93,7 @@ function* login(action: IAction) {
 
 function* logout() {
   try {
-    const response = yield call(request, '/api/logout', 'include');
+    const response = yield call(request, '/api/logout', 'include', {});
 
     const json = yield call([response, 'json']);
     yield put(logoutComplete(json));
@@ -134,7 +135,7 @@ function* getProducerSummary() {
       // call(request, '/get-current-state', 'include'),
       call(mockCurrentState),
       call(request, '/api/user/sell/profit', 'include'),
-      call(request, '/get-offer', 'include'),
+      call(request, '/api/get-offer', 'include'),
     ]);
 
     const json = yield all([
@@ -174,7 +175,7 @@ function* postOffer(action: IAction) {
   try {
     const response = yield call(
       request,
-      '/post-offer',
+      '/api/quotePrice',
       'include',
       action.payload,
     );

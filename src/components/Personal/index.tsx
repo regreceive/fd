@@ -12,7 +12,7 @@ import avatar from './assets/tian.jpg';
 
 import s from './index.css';
 
-const basePath = process.env.REACT_APP_BASE_PATH;
+// const basePath = process.env.REACT_APP_BASE_PATH;
 
 interface IStateProps {
   balance: IUser['wallet']['balance'];
@@ -67,9 +67,9 @@ export default class extends Component {
         <div styleName="flex">
           <List>
             <List.Item extra="10 EDF">EDF电力钱包</List.Item>
-            <List.Item onClick={this.helpHandle} arrow="horizontal">
-              帮助中心
-            </List.Item>
+            {/*<List.Item onClick={this.helpHandle} arrow="horizontal">*/}
+            {/*帮助中心*/}
+            {/*</List.Item>*/}
             <Picker
               cols={1}
               extra="请选择"
@@ -100,9 +100,9 @@ export default class extends Component {
     console.log(val);
   };
 
-  private helpHandle = () => {
-    this.injected.push(basePath + '/help-center');
-  };
+  // private helpHandle = () => {
+  //   this.injected.push(basePath + '/help-center');
+  // };
 
   private exitHandle = () => {
     this.injected.logout();

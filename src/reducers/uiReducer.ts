@@ -70,6 +70,9 @@ const global = (state = initState, action: IAction): IUi => {
     case 'UPDATE_ROLE_COMPLETE': {
       return release(state, 'role');
     }
+    case 'POST_OFFER_COMPLETE': {
+      return release(state, 'postOffer');
+    }
     case 'POST_TIME_COMPLETE': {
       return release(state, 'postTime');
     }
