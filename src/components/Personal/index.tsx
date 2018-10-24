@@ -62,13 +62,14 @@ export default class extends Component {
               12346756
             </p>
           </div>
-          {/*<div styleName="avatar" />*/}
           <img src={avatar} styleName="avatar" />
         </div>
 
         <div styleName="flex">
           <List>
-            <List.Item extra="10 EDF">EDF电力钱包</List.Item>
+            <List.Item extra={this.injected.balance + ' EDF'}>
+              EDF电力钱包
+            </List.Item>
             {/*<List.Item onClick={this.helpHandle} arrow="horizontal">*/}
             {/*帮助中心*/}
             {/*</List.Item>*/}
