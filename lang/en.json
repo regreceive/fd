@@ -17,7 +17,8 @@
   "kw": "${kw} 度",
   "edf-per-kw": "${edf} EDF/度",
   "check":"我的账单",
-  
+  "electricity-transaction":"电力交易",
+
   "login": {
     "button": "登录",
     "email": {

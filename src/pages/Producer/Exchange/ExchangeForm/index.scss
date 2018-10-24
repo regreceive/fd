@@ -5,6 +5,18 @@
   @extend %padding;
   padding: 0;
   background: #ffffff;
+  :global {
+    .am-navbar-light {
+      background-color: #fff;
+      color: #4a4a4a;
+      padding-bottom: 20px;
+      margin-top: 20px;
+    }
+    .am-icon-md {
+      width: 30px;
+      height: 80px;
+    }
+  }
 }
 .history {
   height: 24px;
