@@ -6,7 +6,7 @@ const router = new Router();
 // 登录
 router.post('login', api.login);
 // 登出
-router.get('api/logout', api.logout);
+router.post('api/logout', api.logout);
 // 可用角色列表
 router.get('config/role', api.availableRoles);
 // 绑定角色
