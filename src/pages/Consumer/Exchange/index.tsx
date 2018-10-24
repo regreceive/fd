@@ -60,6 +60,7 @@ export default class extends Component<{}, IState> {
 
   public componentDidMount() {
     this.injected.getCurrentCoast();
+    this.fromTndex = new Date().getHours() + 1;
   }
 
   public changeTime = (date: Date) => {
