@@ -5,6 +5,7 @@ import { IUser } from 'src/reducers/userReducer';
 interface IProps {
   currentCoast: IUser['currentCoast'];
 }
+
 export default class DoubleChart extends Component<IProps> {
   public render() {
     const { currentCoast } = this.props;
@@ -46,7 +47,6 @@ export default class DoubleChart extends Component<IProps> {
     // const color2 = 'l (270) 0:#FF9131 1:#FE5816';
     return (
       <div>
-        <h2>电价/用电量</h2>
         <Chart
           height={300}
           data={currentCoast.list}
