@@ -1,9 +1,11 @@
 @import '../common.scss';
 
+$offset: -1.4em;
+
 .container {
   position: relative;
   height: 100%;
-  background: url(./assets/bg.jpg) no-repeat 0 0;
+  background: url(./assets/bg.jpg) no-repeat 0 -50px;
   background-size: 100%;
   font-size: 10vw;
 
@@ -44,49 +46,49 @@ svg.selected {
 }
 
 .school {
-  top: 5.05em;
+  top: 5.05em + $offset;
   left: 5.4em;
   width: 1.2em;
 }
 
 .factory {
-  top: 13.45em;
+  top: 13.45em + $offset;
   left: 3.6em;
   width: 1.2em;
 }
 
 .mall {
-  top: 10.65em;
+  top: 10.65em + $offset;
   left: 6.3em;
   width: 1.2em;
 }
 
 .community {
-  top: 5.25em;
+  top: 5.25em + $offset;
   left: 2.76em;
   width: 1.2em;
 }
 
 .photovoltaic {
-  top: 10.45em;
+  top: 10.45em + $offset;
   left: 1.5em;
   width: 1.2em;
 }
 
 .wind {
-  top: 8.25em;
+  top: 8.25em + $offset;
   left: 7.2em;
   width: 1.2em;
 }
 
 .battery {
-  top: 13.21em;
+  top: 13.21em + $offset;
   left: 6em;
   width: 1.2em;
 }
 
 .gas {
-  top: 11.35em;
+  top: 11.35em + $offset;
   left: 8.3em;
   width: 1.2em;
 }
