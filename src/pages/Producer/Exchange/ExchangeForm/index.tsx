@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Translate } from 'react-localize-redux';
+import { Translate } from 'react-localize-redux';
 import './index.css';
 import ReactSVG from 'react-svg';
 import trendIcon from './trend.svg';
@@ -10,6 +10,7 @@ import { IUser } from '../../../../reducers/userReducer';
 import { IStoreState } from '../../../../types';
 import { dateTimeFormat } from '../../../../utils/timeFormat';
 import { getExchangeForm } from '../../../../actions/userActions';
+import { Icon, NavBar } from 'antd-mobile';
 interface IStateProps {
   exchangeForm: IUser['exchangeForm'];
 }
@@ -41,11 +42,15 @@ export default class extends Component {
   public render() {
     return (
       <div styleName="container">
-        <div styleName="history">
-          <h2>电力交易</h2>
+        <NavBar
+          mode="light"
+          icon={<Icon type="left" />}
+          onLeftClick={this.injected.history.goBack}
+          rightContent={<ReactSVG src={trendIcon} />}
+        >
+          <Translate id="electricity-transaction" />
+        </NavBar>
 
-          <ReactSVG src={trendIcon} onClick={this.injected.history.goBack} />
-        </div>
         {this.injected.exchangeForm.map((item, index) => (
           <div styleName="card-deal" key={index}>
             <div styleName="card-top">

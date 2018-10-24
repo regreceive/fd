@@ -16,8 +16,9 @@ interface IStateProps {
 
 interface IState {
   isShow: boolean;
-  begin: Date;
-  after: Date;
+  begin: any;
+  after: any;
+  adjustElectric: string;
 }
 
 interface IDispatchProps {
@@ -40,6 +41,8 @@ const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   mapDispatchToProps,
 ) as any)
 export default class extends Component<{}, IState> {
+  private fromTndex = 0;
+  private toIndex = 0;
   public constructor(props: object) {
     super(props);
     const date = new Date();
@@ -48,6 +51,7 @@ export default class extends Component<{}, IState> {
       begin: date,
       isShow: false,
       after: new Date(),
+      adjustElectric: '',
     };
   }
   get injected() {
@@ -59,26 +63,38 @@ export default class extends Component<{}, IState> {
   }
 
   public changeTime = (date: Date) => {
-    console.log(date);
+    const result = date.getHours() + 1;
+    this.fromTndex = result;
     this.setState({
       begin: date,
     });
   };
 
   public changeTime2 = (date: Date) => {
-    console.log(date);
+    const result = date.getHours() + 1;
+    this.toIndex = result;
     this.setState({
       after: date,
     });
   };
   public changePower = (value: string) => {
-    console.log(value);
+    this.setState({
+      adjustElectric: value,
+    });
   };
 
   public edit = () => {
     this.setState({
       isShow: !this.state.isShow,
     });
+    console.log(Number(this.state.begin));
+    if (this.state.isShow) {
+      this.injected.postTime(
+        this.fromTndex,
+        this.toIndex,
+        Number(this.state.adjustElectric),
+      );
+    }
   };
 
   public render() {
@@ -100,7 +116,7 @@ export default class extends Component<{}, IState> {
                 onChange={this.changeTime}
                 maxDate={this.state.after}
               >
-                <List.Item arrow="horizontal">开始时间</List.Item>
+                <List.Item arrow="horizontal">把</List.Item>
               </DatePicker>
               <InputItem extra="度" onChange={this.changePower} />
               <DatePicker
@@ -109,7 +125,7 @@ export default class extends Component<{}, IState> {
                 onChange={this.changeTime2}
                 minDate={this.state.begin}
               >
-                <List.Item arrow="horizontal">结束时间</List.Item>
+                <List.Item arrow="horizontal">调整到</List.Item>
               </DatePicker>
             </List>
           </div>
@@ -120,8 +136,4 @@ export default class extends Component<{}, IState> {
       </div>
     );
   }
-
-  // private clickHandlePost = () => {
-  //   this.injected.postTime(this.fromTndex, this.toIndex, this.adjustElectric);
-  // };
 }
