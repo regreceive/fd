@@ -51,7 +51,7 @@
     "success": {
       "login": "登录成功",
       "logout": "已退出登录",
-      "offer": "报价单已通过审核"
+      "quote": "报价单已通过审核"
     },
     "fail": {
       "account_not_found": "账户不存在",

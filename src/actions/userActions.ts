@@ -125,7 +125,11 @@ export function postOffer(power: number, price: number) {
   };
 }
 
-export function postOfferComplete(data: IResponseSchema) {
+export interface IPostOfferComplete extends IResponseSchema {
+  data: IUser['offer'];
+}
+
+export function postOfferComplete(data: IPostOfferComplete) {
   return {
     type: 'POST_OFFER_COMPLETE',
     payload: data,

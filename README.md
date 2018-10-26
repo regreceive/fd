@@ -203,7 +203,15 @@ request = { power: 12, price: 1.21 };
 响应
 
 ```js
-response = { status: 'ok', token: '123', toast: 'success.offer' };
+response = {
+  status: 'ok',
+  token: '123',
+  toast: 'success.offer',
+  data: {
+    price: 1,
+    timestamp: Date.now(),
+  },
+};
 ```
 
 | toast | 说明 |
@@ -435,38 +443,40 @@ POST api/eletric/adjust
 响应
 
 ```js
-response ={
-      total: { pre: 100, after: 200, eletric: 100},
-      list: [
-        { actual: 10, price: 0.7, index: 0 },
-        { actual: 60, price: 0.1, index: 1 },
-        { actual: 66, price: 0.2, index: 2 },
-        { actual: 50, price: 0.3, index: 3 },
-        { actual: 40, price: 0.6, index: 4 },
-      ],
-    }
+response = {
+  total: { pre: 100, after: 200, eletric: 100 },
+  list: [
+    { actual: 10, price: 0.7, index: 0 },
+    { actual: 60, price: 0.1, index: 1 },
+    { actual: 66, price: 0.2, index: 2 },
+    { actual: 50, price: 0.3, index: 3 },
+    { actual: 40, price: 0.6, index: 4 },
+  ],
+};
 ```
 
 | toast | 说明 |
 | ----- | ---- |
 
+
 ### 电价组成
 
- GET /api/price/detail
+GET /api/price/detail
 
 响应
 
 ```js
-response ={
+response = {
   status: 'ok',
   token: '123',
   toast: '',
   data: {
-      "SCHOOL": { "price": 10, "eletric": 10, "settle": 100 },
-      "FACTORY": { "price": 10, "eletric": 10, "settle": 100 }
-      }
-    }
+    SCHOOL: { price: 10, eletric: 10, settle: 100 },
+    FACTORY: { price: 10, eletric: 10, settle: 100 },
+  },
+};
 ```
 
 | toast | 说明 |
 | ----- | ---- |
+

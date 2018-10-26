@@ -25,7 +25,12 @@ const global = (state = initState, action: IAction): IGlobal => {
     case 'POST_TIME_COMPLETE':
     case 'QUOTE_PRICE_COMPLETE':
     case 'PRICE_CONSTITUTE_COMPLETE': {
-      const { token, toast } = action.payload;
+      const { toast } = action.payload;
+      let { token } = action.payload;
+      if (typeof token === 'undefined') {
+        token = state.token;
+      }
+
       return {
         ...state,
         token: token || '',

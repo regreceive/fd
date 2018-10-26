@@ -13,11 +13,12 @@ import {
   IElectricEXChartResponse,
   IExchangeFormResponse,
   ICheckResponse,
+  IPostOfferComplete,
 } from '../actions/userActions';
 
 export interface IUser {
   username: string;
-  side: '' | 'BUY' | 'SELL';
+  side: string;
   role: string;
   roles: Array<{ role: string; available: boolean; side: 'SELL' | 'BUY' }>;
   currentState: {
@@ -192,6 +193,11 @@ const initState: IUser = {
 };
 
 const user = (state = initState, action: IAction): IUser => {
+  // 服务器返回异常情况下，不含有data字段，所以返回原有state
+  if (!action.payload.data) {
+    return state;
+  }
+
   switch (action.type) {
     case 'LOGIN_COMPLETE': {
       const { data } = action.payload as ILoginComplete;
@@ -246,6 +252,10 @@ const user = (state = initState, action: IAction): IUser => {
     case 'ELECTRIC_EX_CHART_COMPETE': {
       const { data } = action.payload as IElectricEXChartResponse;
       return { ...state, exChart: data };
+    }
+    case 'POST_OFFER_COMPLETE': {
+      const { data } = action.payload as IPostOfferComplete;
+      return { ...state, offer: data };
     }
     default:
       return state;

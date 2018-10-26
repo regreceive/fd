@@ -43,6 +43,7 @@ function* request(
     } = yield select();
     init.headers.append('token', token);
   }
+
   if (body) {
     init.body = JSON.stringify(body);
     init.method = 'post';
@@ -84,7 +85,7 @@ function* login(action: IAction) {
     const response = yield call(request, '/login', 'omit', action.payload);
 
     const json: ILoginComplete = yield call([response, 'json']);
-    json.token = json.data.token;
+    json.token = (json.data || json).token;
     yield put(loginComplete(json));
   } catch (e) {
     console.log(e);

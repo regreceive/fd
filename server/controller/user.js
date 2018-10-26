@@ -120,6 +120,10 @@ exports.postOffer = async ctx => {
     status: 'ok',
     token: '123',
     toast: 'success.offer',
+    data: {
+      price: 1,
+      timestamp: Date.now(),
+    },
   };
 };
 
