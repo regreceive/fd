@@ -56,6 +56,7 @@ export default class extends Component {
       <div styleName="container">
         <div styleName="banner">
           <div styleName="user">
+            <div>我的</div>
             <p>{this.injected.username}</p>
             <p>
               <span>用户ID</span>

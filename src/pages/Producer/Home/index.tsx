@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { Translate } from 'react-localize-redux';
 
 import { getChartsData } from '../../data';
 import Curved from '../../../components/Charts';
@@ -51,6 +52,9 @@ export default class extends Component {
     const data = getChartsData(role);
     return (
       <div styleName="container">
+        <div styleName="title">
+          <Translate id={'role.' + role.toLocaleLowerCase()} />
+        </div>
         <Curved data={data} />
         <CurrentState role={role} data={currentState} />
         <Earns role={role} data={earns} />
