@@ -8,19 +8,24 @@ import {
 import Charts from '../../../components/Charts';
 
 import './index.css';
-
+import { Icon, NavBar } from 'antd-mobile';
+import { Translate } from 'react-localize-redux';
 interface IStateProps {
   role: IUser['role'];
+  goBack: () => void;
 }
 
 const Wind = (prop: IStateProps) => {
-  const { role } = prop;
+  const { role, goBack } = prop;
   const mutableData = realTimeMutableData(role);
   const immutableData = realTimeImmutableData(role);
   const data = getChartsData(role);
 
   return (
     <div styleName="container">
+      <NavBar mode="light" icon={<Icon type="left" />} onLeftClick={goBack}>
+        <Translate id="wind" />
+      </NavBar>
       <Charts data={data} />
       <div styleName="section">
         <div>
