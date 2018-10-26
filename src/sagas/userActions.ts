@@ -162,7 +162,7 @@ function* getProducerSummary() {
     yield put(
       producerSummaryComplete({
         status: 'ok',
-        token: json[0].token,
+        token: json[1].token,
         toast,
         data,
       }),

@@ -194,7 +194,7 @@ const initState: IUser = {
 
 const user = (state = initState, action: IAction): IUser => {
   // 服务器返回异常情况下，不含有data字段，所以返回原有state
-  if (!action.payload.data) {
+  if (action.payload && !action.payload.data) {
     return state;
   }
 
@@ -218,7 +218,10 @@ const user = (state = initState, action: IAction): IUser => {
     }
     case 'PRODUCER_SUMMARY_COMPLETE': {
       const { data } = action.payload as IProducerSummaryResponse;
-      return { ...state, ...data };
+      if (data.earns && data.offer) {
+        return { ...state, ...data };
+      }
+      return state;
     }
     case 'QUOTE_PRICE_COMPLETE': {
       const { data } = action.payload as IQuotePriceResponse;
