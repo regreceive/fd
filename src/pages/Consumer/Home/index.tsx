@@ -60,6 +60,9 @@ export default class extends Component {
 
     return (
       <div styleName="container">
+        <h2>
+          <Translate id={'role.' + role.toLocaleLowerCase()} />
+        </h2>
         <Curved data={data} />
         <div styleName="section">
           <div>

@@ -80,7 +80,7 @@ export default class extends React.Component<{}, IState> {
           </div>
           <dl>
             <dt>大电网实时电价</dt>
-            <dd>{realTimePrice()} 元/度</dd>
+            <dd>{realTimePrice()} EDF/度</dd>
           </dl>
           <dl>
             <dt>距离下次提交报价</dt>
