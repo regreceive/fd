@@ -6,21 +6,25 @@ import {
   realTimeMutableData,
 } from '../../data';
 import Charts from '../../../components/Charts';
-
+import { Icon, NavBar } from 'antd-mobile';
 import './index.css';
-
-interface IStateProps {
+import { Translate } from 'react-localize-redux';
+interface IProps {
   role: IUser['role'];
+  goBack: () => void;
 }
 
-const Gas = (prop: IStateProps) => {
-  const { role } = prop;
+const Gas = (prop: IProps) => {
+  const { role, goBack } = prop;
   const mutableData = realTimeMutableData(role);
   const immutableData = realTimeImmutableData(role);
   const data = getChartsData(role);
 
   return (
     <div styleName="container">
+      <NavBar mode="light" icon={<Icon type="left" />} onLeftClick={goBack}>
+        <Translate id="internal-combustion-engine" />
+      </NavBar>
       <Charts data={data} />
       <div styleName="section">
         <div>

@@ -6,21 +6,26 @@ import {
   realTimeMutableData,
 } from '../../data';
 import Charts from '../../../components/Charts';
-
+import { Icon, NavBar } from 'antd-mobile';
+import { Translate } from 'react-localize-redux';
 import './index.css';
 
 interface IStateProps {
   role: IUser['role'];
+  goBack: () => void;
 }
 
 const Photovoltaic = (prop: IStateProps) => {
-  const { role } = prop;
+  const { role, goBack } = prop;
   const mutableData = realTimeMutableData(role);
   const immutableData = realTimeImmutableData(role);
   const data = getChartsData(role);
 
   return (
     <div styleName="container">
+      <NavBar mode="light" icon={<Icon type="left" />} onLeftClick={goBack}>
+        <Translate id="sun" />
+      </NavBar>
       <Charts data={data} />
       <div styleName="section">
         <div>

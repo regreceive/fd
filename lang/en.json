@@ -18,7 +18,12 @@
   "edf-per-kw": "${edf} EDF/度",
   "check":"我的账单",
   "electricity-transaction":"电力交易",
-
+  "internal-combustion-engine":"内燃机状态",
+  "wind":"风能电站状态",
+  "sun":"光伏电站状态",
+  "battery":"储能电站状态",
+  "bill-detail":"详情",
+  
   "login": {
     "button": "登录",
     "email": {

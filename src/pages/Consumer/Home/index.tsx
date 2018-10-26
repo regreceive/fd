@@ -89,7 +89,7 @@ export default class extends Component {
             <div styleName="head-area">
               <h2 styleName="spacer">我的账单</h2>
               <Link to="/consumer/check">
-                <Translate id="more" />
+                <Translate id="bill-detail" />
               </Link>
             </div>
             <dl>
