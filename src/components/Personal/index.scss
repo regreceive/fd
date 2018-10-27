@@ -14,11 +14,23 @@
 
 .banner {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: flex-end;
   height: 4.9rem;
   padding: 0.8rem;
   background-color: rgb(249, 108, 64);
+
+  .title {
+    text-align: center;
+    color: #fff;
+    font-size: 0.53rem;
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
 
   .user {
     color: #fff;

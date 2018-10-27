@@ -55,15 +55,17 @@ export default class extends Component {
     return (
       <div styleName="container">
         <div styleName="banner">
-          <div styleName="user">
-            <div>我的</div>
-            <p>{this.injected.username}</p>
-            <p>
-              <span>用户ID</span>
-              12346756
-            </p>
+          <div styleName="title">我的</div>
+          <div styleName="wrapper">
+            <div styleName="user">
+              <p>{this.injected.username}</p>
+              <p>
+                <span>用户ID</span>
+                12346756
+              </p>
+            </div>
+            <img src={avatar} styleName="avatar" />
           </div>
-          <img src={avatar} styleName="avatar" />
         </div>
 
         <div styleName="flex">

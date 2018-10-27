@@ -147,7 +147,7 @@ export function postTime(
   };
 }
 
-export function postTimeComplete(data: IResponseSchema) {
+export function postTimeComplete(data: ICurrentResponse) {
   return {
     type: 'POST_TIME_COMPLETE',
     payload: data,

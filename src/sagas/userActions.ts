@@ -256,9 +256,11 @@ function* getCurrentCoast() {
     const response = yield call(request, '/api/eletric/chart', 'include');
 
     const json: ICurrentResponse = yield call([response, 'json']);
-    json.data.list.forEach(row => {
-      row.index = row.index + ':00';
-    });
+    if (json.data) {
+      json.data.list.forEach(row => {
+        row.index = row.index + ':00';
+      });
+    }
     yield put(currentCoastComplete(json));
   } catch (e) {
     console.log(e);
@@ -270,9 +272,11 @@ function* getElectricEXChart() {
     const response = yield call(request, '/api/eletric/ex/chart', 'include');
 
     const json: IElectricEXChartResponse = yield call([response, 'json']);
-    json.data.forEach(row => {
-      row.index = row.index + ':00';
-    });
+    if (json.data) {
+      json.data.forEach(row => {
+        row.index = row.index + ':00';
+      });
+    }
     yield put(electricChartComplete(json));
   } catch (e) {
     console.log(e);
@@ -285,6 +289,10 @@ function* getPriceConstitute() {
 
     const json = yield call([response, 'json']);
 
+    if (!json.data) {
+      yield put(priceConstituteComplete(json));
+      return;
+    }
     const sum = Object.keys(json.data).reduce(
       (prev, current) => {
         const settle = prev.settle + json.data[current].settle;
