@@ -197,8 +197,13 @@ function* postTime(action: IAction) {
       action.payload,
     );
 
-    const json = yield call([response, 'json']);
+    const json: ICurrentResponse = yield call([response, 'json']);
     yield put(postTimeComplete(json));
+    if (json.data) {
+      json.data.list.forEach(row => {
+        row.index = row.index + ':00';
+      });
+    }
     yield put(currentCoastComplete(json));
   } catch (e) {
     console.log(e);
