@@ -2,7 +2,7 @@ import React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Button, InputItem } from 'antd-mobile';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { timeFormat } from '../../../utils/timeFormat';
 import { IUser } from '../../../reducers/userReducer';
@@ -76,7 +76,7 @@ export default class extends React.Component<{}, IState> {
         <div>
           <div styleName="head-area">
             <h2>报价信息</h2>
-            {/*<Link to="/producer/quote">历史报价</Link>*/}
+            <Link to="/producer/quote">历史报价</Link>
           </div>
           <dl>
             <dt>大电网实时电价</dt>
@@ -125,6 +125,7 @@ export default class extends React.Component<{}, IState> {
       const countdown = this.state.countdown - 1000;
       this.setState({ countdown });
       if (countdown <= 0) {
+        this.setState({ countdown: 0 });
         window.clearInterval(this.interval);
       }
     }, 1000);

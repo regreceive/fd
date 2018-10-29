@@ -58,7 +58,7 @@ export default class extends Component {
                 <li>
                   <span>发电量</span>
                   <br />
-                  <span>{item.count}</span>
+                  <span>{item.amount}</span>
                 </li>
                 <li>
                   <span>电价(元/度)</span>

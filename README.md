@@ -393,7 +393,7 @@ response = {
 
 ### 卖家首页历史报价
 
-GET api/quotePrice
+GET /api/quotePrice
 
 响应
 
@@ -425,7 +425,7 @@ response = {
 
 ### 卖家电力交易报表（用报价历史列表接口）
 
-GET /producer/exchangeFrom
+GET /api/quotePrice
 响应
 
 ```js
@@ -466,8 +466,6 @@ response = {
   data: { price: 0.23, timestamp: 1539526393793 },
 };
 ```
-
-offer
 
 - price 实时电价
 - timestamp 上次报价时间戳

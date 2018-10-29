@@ -148,7 +148,7 @@ function* getProducerSummary() {
     const toast = Object.keys(
       json.reduce((prev: {}, curr: IResponseSchema) => {
         if (curr.toast !== '') {
-          prev[curr.toast as 'imNotEmpty'] = 1;
+          prev[curr.toast as string] = 1;
         }
         return prev;
       }, {}),
@@ -207,7 +207,7 @@ function* postTime(action: IAction) {
 
 function* getQuotePrice() {
   try {
-    const response = yield call(request, '/quotePrice', 'include');
+    const response = yield call(request, '/api/quotePrice', 'include');
 
     const json: IQuotePriceResponse = yield call([response, 'json']);
     yield put(quotePriceComplete(json));

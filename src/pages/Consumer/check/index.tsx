@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import './index.css';
 import { RouteComponentProps } from 'react-router';
 import { Translate } from 'react-localize-redux';
 import { Icon, NavBar } from 'antd-mobile';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+
 import { getCheck } from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
-import { startedDadeTime } from '../../../utils/timeFormat';
+import { startedDateTime } from '../../../utils/timeFormat';
+
+import './index.css';
 
 interface IStateProps {
   checkDetail: IUser['checkDetail'];
@@ -76,7 +78,7 @@ export default class extends Component {
         {this.injected.checkDetail.list.map((item, index) => (
           <div styleName="number" key={index}>
             <span>{item.eletric}</span> <span>{item.price}</span>{' '}
-            <span>{startedDadeTime(item.index)}</span>
+            <span>{startedDateTime(item.index)}</span>
           </div>
         ))}
       </div>

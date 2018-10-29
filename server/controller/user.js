@@ -320,12 +320,12 @@ exports.exchangeForm = async ctx => {
     toast: '',
     data: [
       {
-        count: 50000,
+        amount: 50000,
         price: 3000,
         time: Date.now(),
       },
       {
-        count: 50000,
+        amount: 50000,
         price: 3000,
         time: Date.now(),
       },

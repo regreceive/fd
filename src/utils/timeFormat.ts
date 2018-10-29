@@ -3,11 +3,10 @@ export function timeFormat(timeStamp: number) {
   return `${hour}:${minute}:${second}`;
 }
 
-export function startedDadeTime(offset: number) {
-  const timeStamp =
-    new Date(new Date().setHours(0, 0, 0, 0)).getTime() +
-    offset * 60 * 60 * 1000;
-  return dateTimeFormat(timeStamp);
+export function startedDateTime(offset: number) {
+  const date = new Date();
+  date.setHours(offset, 0, 0, 0);
+  return dateTimeFormat(date.getTime());
 }
 
 export function dateTimeFormat(timestamp: number) {

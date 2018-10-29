@@ -104,7 +104,7 @@ export interface IUser {
     price: number;
   }>;
   exchangeForm: Array<{
-    count: number;
+    amount: number;
     price: number;
     time: number;
   }>;

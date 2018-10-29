@@ -52,6 +52,7 @@
 
   "mine": {
     "userId": "用户ID",
+    "help": "帮助中心",
     "wallet": "EDF电力钱包",
     "language": "语言设置",
     "exit": "退出登录",

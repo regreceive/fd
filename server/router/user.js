@@ -20,7 +20,7 @@ router.post('api/quotePrice', api.postOffer);
 // 用电调整
 router.post('api/eletric/adjust', api.postTime);
 // 报价历史
-router.get('quotePrice', api.quotePrice);
+router.get('api/quotePrice', api.quotePrice);
 // 余额
 router.get('api/balance', api.balance);
 // 电力组成

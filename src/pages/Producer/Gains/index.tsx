@@ -7,7 +7,7 @@ import { RouteComponentProps } from 'react-router';
 import { getGainsDetail } from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
-import { startedDadeTime } from '../../../utils/timeFormat';
+import { startedDateTime } from '../../../utils/timeFormat';
 interface IStateProps {
   gainsDetail: IUser['gainsDetail'];
 }
@@ -90,7 +90,7 @@ export default class extends Component {
                 </li>
               </ul>
             </div>
-            <p>发电时间 {startedDadeTime(item.index)} </p>
+            <p>发电时间 {startedDateTime(item.index)} </p>
           </div>
         ))}
       </div>

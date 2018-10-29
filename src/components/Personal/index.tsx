@@ -90,7 +90,7 @@ export default class extends Component {
               <Translate id="mine.wallet" />
             </List.Item>
             {/*<List.Item onClick={this.helpHandle} arrow="horizontal">*/}
-            {/*帮助中心*/}
+            {/*<Translate id="mine.help" />*/}
             {/*</List.Item>*/}
             <Picker
               cols={1}
