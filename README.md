@@ -206,7 +206,7 @@ request = { power: 12, price: 1.21 };
 response = {
   status: 'ok',
   token: '123',
-  toast: 'success.offer',
+  toast: 'success.quote',
   data: {
     price: 1,
     timestamp: Date.now(),
@@ -214,9 +214,9 @@ response = {
 };
 ```
 
-| toast | 说明 |
-| ----- | ---- |
-
+| toast         | 说明             |
+| ------------- | ---------------- |
+| success.quote | 报价单已通过审核 |
 
 ### 钱包余额
 
@@ -477,9 +477,9 @@ response = {
 };
 ```
 
-| toast | 说明 |
-| ----- | ---- |
-
+| toast         | 说明         |
+| ------------- | ------------ |
+| success.quote | 电力调整成功 |
 
 ### 电价组成
 
