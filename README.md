@@ -34,19 +34,36 @@ $ yarn build:release
 
 ## API
 
-响应消息体
+**请求消息体**
+
+_Headers_
+
+```
+Accept: application/json
+Content-Type: application/json
+token: ...
+```
+
+_Body_
+
+```ts
+{key: any, ...}
+```
+
+**响应消息体**
 
 ```ts
 interface IResponseSchema {
   status: string;
   token?: string;
   toast: string;
-  data: {};
+  data: object | Array<T>;
 }
 ```
 
 - token 登录身份，用于之后受保护的数据交互，会话失效返回空字符串
-- toast 客户端显示的提示信息，无消息返回空字符串：
+- toast 客户端显示的提示信息，无消息返回空字符串
+- data 数据字段，请携带该字段即使报异常或无数据
 
 ### 登录
 
