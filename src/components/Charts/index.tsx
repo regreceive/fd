@@ -31,7 +31,7 @@ const Curved = (props: IProps) => {
       forceFit
       height={300}
       background={bg}
-      padding={[40, 20, 90, 40]}
+      padding={[40, 40, 90, 40]}
     >
       <Legend />
       <Axis name="time" />
@@ -41,7 +41,7 @@ const Curved = (props: IProps) => {
           formatter: val => `${val}`,
         }}
       />
-      <Axis name="Diffuse" visible={false} />
+      <Axis name="Diffuse" />
       <Tooltip
         crosshairs={{
           type: 'y',

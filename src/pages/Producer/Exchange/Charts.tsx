@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Chart, Geom, Axis } from 'bizcharts';
+import { Chart, Geom, Axis, Tooltip } from 'bizcharts';
 import { IUser } from 'src/reducers/userReducer';
 
 interface IProps {
@@ -33,7 +33,6 @@ export default class DoubleChart extends Component<IProps> {
       },
     };
     const color1 = 'l (270) 0:#A6CCEA 1:#0057FF';
-    // const color2 = 'l (270) 0:#FF9131 1:#FE5816';
     return (
       <div>
         <h2>电价/用电量</h2>
@@ -63,11 +62,17 @@ export default class DoubleChart extends Component<IProps> {
             }}
           />
           <Axis name="eletric" />
-          {/* <Tooltip /> */}
+          <Tooltip />
           <Geom
             type="interval"
             position="index*eletric"
             color={['index', [color1]]}
+            tooltip={[
+              'index*eletric',
+              (index, eletric) => {
+                return { name: 'eletric', value: eletric };
+              },
+            ]}
             size={5}
           />
           <Geom
