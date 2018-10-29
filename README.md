@@ -351,6 +351,28 @@ response = {
 | ----- | ---- |
 
 
+### 发电方电力交易图表
+
+GET api/eletric/ex/chart
+
+响应
+
+```js
+response = {
+  status: 'ok',
+  token: '123',
+  toast: '',
+  data: [
+    { actual: 100, price: 0.1, index: 0 },
+    { actual: 100, price: 0.1, index: 1 },
+  ],
+};
+```
+
+| toast | 说明 |
+| ----- | ---- |
+
+
 ### 卖家首页历史报价
 
 GET /quotePrice
