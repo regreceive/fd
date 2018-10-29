@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { Translate } from 'react-localize-redux';
 import { ActionSheet, Button, Picker, List } from 'antd-mobile';
 import { Path } from 'history';
 import { push, RouterAction } from 'connected-react-router';
 
+import translate from '../../utils/translate';
 import { IStoreState } from '../../types';
 import { IUser } from '../../reducers/userReducer';
 import { logout, getWalletBalance } from '../../actions/userActions';
@@ -43,6 +45,8 @@ const mapDispatchToProps = (dispatch: Dispatch): IDispatchToState => ({
   mapDispatchToProps,
 ) as any)
 export default class extends Component {
+  private asyncLang = { exit: '', cancel: '', exitConfirm: '' };
+
   get injected() {
     return this.props as IStateProps & IDispatchToState;
   }
@@ -51,16 +55,28 @@ export default class extends Component {
     this.injected.getWalletBalance();
   }
 
+  public componentWillMount() {
+    this.asyncLang = {
+      exit: translate('exit'),
+      cancel: translate('cancel'),
+      exitConfirm: translate('mine.exitConfirm'),
+    };
+  }
+
   public render() {
     return (
       <div styleName="container">
         <div styleName="banner">
-          <div styleName="title">我的</div>
+          <div styleName="title">
+            <Translate id="personal" />
+          </div>
           <div styleName="wrapper">
             <div styleName="user">
               <p>{this.injected.username}</p>
               <p>
-                <span>用户ID</span>
+                <span>
+                  <Translate id="mine.userId" />
+                </span>
                 12346756
               </p>
             </div>
@@ -71,21 +87,23 @@ export default class extends Component {
         <div styleName="flex">
           <List>
             <List.Item extra={this.injected.balance + ' EDF'}>
-              EDF电力钱包
+              <Translate id="mine.wallet" />
             </List.Item>
             {/*<List.Item onClick={this.helpHandle} arrow="horizontal">*/}
             {/*帮助中心*/}
             {/*</List.Item>*/}
             <Picker
               cols={1}
-              extra="请选择"
+              extra={translate('select')}
               data={[
                 { label: 'English', value: 'en' },
                 { label: 'Chinese', value: 'cn' },
               ]}
               onOk={this.langHandle}
             >
-              <List.Item arrow="horizontal">语言设置</List.Item>
+              <List.Item arrow="horizontal">
+                <Translate id="mine.language" />
+              </List.Item>
             </Picker>
           </List>
 
@@ -95,7 +113,7 @@ export default class extends Component {
             disabled={this.injected.waiting}
             className={s.button}
           >
-            退出登录
+            <Translate id="mine.exit" />
           </Button>
         </div>
       </div>
@@ -117,10 +135,10 @@ export default class extends Component {
   private actionSheet = () => {
     ActionSheet.showActionSheetWithOptions(
       {
-        options: ['退出', '取消'],
+        options: [this.asyncLang.exit, this.asyncLang.cancel],
         cancelButtonIndex: 1,
         destructiveButtonIndex: 0,
-        message: '确定要退出吗？',
+        message: this.asyncLang.exitConfirm,
       },
       (buttonIndex: number) => {
         if (buttonIndex === 0) {

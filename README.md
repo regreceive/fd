@@ -82,7 +82,7 @@ response = {
 
 ### 退出登录
 
-GET /api/logout
+POST /api/logout
 
 响应
 

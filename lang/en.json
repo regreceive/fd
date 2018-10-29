@@ -1,6 +1,5 @@
 {
   "pack": "en",
-  "pack_icon": "uk.svg",
   "pack_label": "English",
   "pack_active": true,
 
@@ -13,17 +12,19 @@
   "hello": "您好！",
   "ok": "确定",
   "cancel": "取消",
+  "exit": "退出",
+  "select": "请选择",
   "more": "更多",
   "kw": "${kw} 度",
   "edf-per-kw": "${edf} EDF/度",
-  "check":"我的账单",
-  "electricity-transaction":"电力交易",
-  "internal-combustion-engine":"内燃机状态",
-  "wind":"风能电站状态",
-  "sun":"光伏电站状态",
-  "battery":"储能电站状态",
-  "bill-detail":"详情",
-  
+  "check": "我的账单",
+  "electricity-transaction": "电力交易",
+  "internal-combustion-engine": "内燃机状态",
+  "wind": "风能电站状态",
+  "sun": "光伏电站状态",
+  "battery": "储能电站状态",
+  "bill-detail": "详情",
+
   "login": {
     "button": "登录",
     "email": {
@@ -49,6 +50,14 @@
     "gas": "燃气轮机"
   },
 
+  "mine": {
+    "userId": "用户ID",
+    "wallet": "EDF电力钱包",
+    "language": "语言设置",
+    "exit": "退出登录",
+    "exitConfirm": "确定要退出吗？"
+  },
+
   "toast": {
     "loading": {
       "login": "登录中"
@@ -56,7 +65,8 @@
     "success": {
       "login": "登录成功",
       "logout": "已退出登录",
-      "quote": "报价单已通过审核"
+      "quote": "报价单已通过审核",
+      "adjust": "电力调整成功"
     },
     "fail": {
       "account_not_found": "账户不存在",
