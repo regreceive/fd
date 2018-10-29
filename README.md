@@ -359,6 +359,7 @@ response = {
     list: [
       { actual: 100, price: 0.1, index: 0 },
       { actual: 100, price: 0.1, index: 1 },
+      { actual: 100, price: null, index: 2 },
     ],
   },
 };
