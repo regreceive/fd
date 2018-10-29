@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Chart, Geom, Axis } from 'bizcharts';
+import { Chart, Geom, Axis, Tooltip } from 'bizcharts';
+import './index.css';
 import { IUser } from 'src/reducers/userReducer';
 
 interface IProps {
@@ -9,14 +10,6 @@ interface IProps {
 export default class DoubleChart extends Component<IProps> {
   public render() {
     const { currentCoast } = this.props;
-    // const cols = {
-    //   month: {
-    //     alias: '月份',
-    //   },
-    //   acc: {
-    //     alias: '积累量',
-    //   },
-    // };
     const grid = {
       lineStyle: {
         stroke: '#E5E5E5',
@@ -24,35 +17,30 @@ export default class DoubleChart extends Component<IProps> {
         lineWidth: 1,
       },
     };
-    // const scale = {
-    //   index: {
-    //     ticks: [
-    //       '0:00',
-    //       '2:00',
-    //       '4:00',
-    //       '6:00',
-    //       '8:00',
-    //       '10:00',
-    //       '12:00',
-    //       '14:00',
-    //       '16:00',
-    //       '18:00',
-    //       '20:00',
-    //       '22:00',
-    //     ],
-    //     tickCount: 2, // 定义坐标轴刻度线的条数，默认为 5
-    //   },
-    // };
+    const scale = {
+      index: {
+        ticks: [
+          '1:00',
+          '4:00',
+          '7:00',
+          '10:00',
+          '13:00',
+          '16:00',
+          '19:00',
+          '22:00',
+        ],
+        tickCount: 8,
+      },
+    };
     const color1 = 'l (270) 0:#A6CCEA 1:#0057FF';
-    // const color2 = 'l (270) 0:#FF9131 1:#FE5816';
     return (
       <div>
         <Chart
           height={300}
           data={currentCoast.list}
-          // scale={scale}
+          scale={scale}
           forceFit
-          padding="auto"
+          padding={[40, 40, 50, 40]}
         >
           <Axis
             name="index"
@@ -73,11 +61,20 @@ export default class DoubleChart extends Component<IProps> {
             }}
           />
           <Axis name="actual" />
-          {/* <Tooltip /> */}
+          <Tooltip />
           <Geom
             type="interval"
             position="index*actual"
             color={['index', [color1]]}
+            tooltip={[
+              'index*actual',
+              (index, actual) => {
+                return {
+                  name: 'actual',
+                  value: actual,
+                };
+              },
+            ]}
             size={5}
           />
           <Geom
