@@ -393,7 +393,7 @@ response = {
 
 ### 卖家首页历史报价
 
-GET /quotePrice
+GET api/quotePrice
 
 响应
 
