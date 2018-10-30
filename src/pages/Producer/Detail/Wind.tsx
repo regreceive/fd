@@ -7,7 +7,7 @@ import {
   realTimeImmutableData,
   realTimeMutableData,
 } from '../../data';
-import Charts from '../Home/Charts/pv';
+import Charts from '../Home/Charts/wind';
 
 import './index.css';
 
