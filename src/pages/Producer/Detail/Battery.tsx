@@ -1,11 +1,7 @@
 import React from 'react';
 import { IUser } from '../../../reducers/userReducer';
-import {
-  getChartsData,
-  realTimeImmutableData,
-  realTimeMutableData,
-} from '../../data';
-import Charts from '../../../components/Charts';
+import { realTimeImmutableData, realTimeMutableData } from '../../data';
+import DashBoard from './DashBoard';
 import { Icon, NavBar } from 'antd-mobile';
 import { Translate } from 'react-localize-redux';
 import './index.css';
@@ -19,14 +15,13 @@ const Battery = (prop: IStateProps) => {
   const { role, goBack } = prop;
   const mutableData = realTimeMutableData(role);
   const immutableData = realTimeImmutableData(role);
-  const data = getChartsData(role);
 
   return (
     <div styleName="container">
       <NavBar mode="light" icon={<Icon type="left" />} onLeftClick={goBack}>
         <Translate id="battery" />
       </NavBar>
-      <Charts data={data} />
+      <DashBoard />
       <div styleName="section">
         <div>
           <h2>储能电站相关参数</h2>

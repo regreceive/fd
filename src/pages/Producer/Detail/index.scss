@@ -21,3 +21,7 @@
 .section {
   @extend %section;
 }
+
+.chart {
+  background: linear-gradient(to right, #9965f7, #6417da);
+}
