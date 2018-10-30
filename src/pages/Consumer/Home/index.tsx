@@ -9,9 +9,9 @@ import { LocationState, Path } from 'history';
 import { basePath } from '../../../services/constants';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
-import { getChartsData, realTimePrice } from '../../data';
-import Curved from '../../../components/Charts';
+import { realTimePrice } from '../../data';
 import { getCheck, getPriceConstitute } from '../../../actions/userActions';
+
 import './index.css';
 
 interface IStateProps {
@@ -56,14 +56,12 @@ export default class extends Component {
 
   public render() {
     const { role } = this.injected;
-    const data = getChartsData(role);
 
     return (
       <div styleName="container">
         <h2>
           <Translate id={'role.' + role.toLocaleLowerCase()} />
         </h2>
-        <Curved data={data} />
         <div styleName="section">
           <div>
             <div styleName="head-area">

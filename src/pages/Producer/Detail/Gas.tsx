@@ -1,14 +1,16 @@
 import React from 'react';
+import { Icon, NavBar } from 'antd-mobile';
+import { Translate } from 'react-localize-redux';
 import { IUser } from '../../../reducers/userReducer';
 import {
   getChartsData,
   realTimeImmutableData,
   realTimeMutableData,
 } from '../../data';
-import Charts from '../../../components/Charts';
-import { Icon, NavBar } from 'antd-mobile';
+import Charts from '../Home/Charts/pv';
+
 import './index.css';
-import { Translate } from 'react-localize-redux';
+
 interface IProps {
   role: IUser['role'];
   goBack: () => void;

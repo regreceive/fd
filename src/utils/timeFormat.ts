@@ -40,24 +40,3 @@ export function timeParse(timeStamp: number) {
 export function fill(num: number | string) {
   return num > 9 ? num.toString() : `0${num}`;
 }
-
-function hourMinute(hour: number) {
-  const integer = Math.floor(hour);
-  const decimal = hour - integer;
-  return integer + ':' + fill(Math.floor(decimal * 60));
-}
-
-export function timeSegment(hour: number) {
-  if (hour < 8) {
-    return Array(hour)
-      .fill(0)
-      .map((value, index) => index + ':00');
-  }
-
-  const part = hour / 8;
-  return Array(8)
-    .fill(0)
-    .map((value, index) => {
-      return hourMinute(part * index);
-    });
-}
