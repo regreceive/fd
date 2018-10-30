@@ -349,6 +349,275 @@ const charts = {
       Temperature: 31.69,
     },
   ],
+  WIND: [
+    {
+      time: '0:00',
+      Output: 2750.86,
+      speed: 341.4,
+    },
+    {
+      time: '1:00',
+      Output: 1353.6,
+      speed: 273.6,
+    },
+    {
+      time: '2:00',
+      Output: 553.08,
+      speed: 214.8,
+    },
+    {
+      time: '3:00',
+      Output: 261.99,
+      speed: 181.8,
+    },
+    {
+      time: '4:00',
+      Output: 160.1,
+      speed: 165.6,
+    },
+    {
+      time: '5:00',
+      Output: 203.77,
+      speed: 172.2,
+    },
+    {
+      time: '6:00',
+      Output: 203.77,
+      speed: 171.6,
+    },
+    {
+      time: '7:00',
+      Output: 145.55,
+      speed: 160.8,
+    },
+    {
+      time: '8:00',
+      Output: 422.09,
+      speed: 200.4,
+    },
+    {
+      time: '9:00',
+      Output: 756.85,
+      speed: 232.2,
+    },
+    {
+      time: '10:00',
+      Output: 1062.5,
+      speed: 254.4,
+    },
+    {
+      time: '11:00',
+      Output: 1164.38,
+      speed: 261.6,
+    },
+    {
+      time: '12:00',
+      Output: 1149.83,
+      speed: 261,
+    },
+    {
+      time: '13:00',
+      Output: 1397.26,
+      speed: 276,
+    },
+    {
+      time: '14:00',
+      Output: 1761.13,
+      speed: 295.8,
+    },
+    {
+      time: '15:00',
+      Output: 2037.67,
+      speed: 309.6,
+    },
+    {
+      time: '16:00',
+      Output: 2066.78,
+      speed: 311.4,
+    },
+    {
+      time: '17:00',
+      Output: 1979.45,
+      speed: 307.2,
+    },
+    {
+      time: '18:00',
+      Output: 2314.21,
+      speed: 322.8,
+    },
+    {
+      time: '19:00',
+      Output: 3231.17,
+      speed: 360.6,
+    },
+    {
+      time: '20:00',
+      Output: 3653.26,
+      speed: 375.6,
+    },
+    {
+      time: '21:00',
+      Output: 3158.39,
+      speed: 357.6,
+    },
+    {
+      time: '22:00',
+      Output: 2328.77,
+      speed: 323.4,
+    },
+    {
+      time: '23:00',
+      Output: 1644.69,
+      speed: 289.8,
+    },
+  ],
+  GAS: [
+    {
+      time: '0:00',
+      Output: 2789,
+      ColdLoad: 7948.65,
+      ThermalLoad: 996.07,
+    },
+    {
+      time: '1:00',
+      Output: 2769,
+      ColdLoad: 7891.65,
+      ThermalLoad: 988.93,
+    },
+    {
+      time: '2:00',
+      Output: 2679,
+      ColdLoad: 7635.15,
+      ThermalLoad: 956.79,
+    },
+    {
+      time: '3:00',
+      Output: 2719,
+      ColdLoad: 7749.15,
+      ThermalLoad: 971.07,
+    },
+    {
+      time: '4:00',
+      Output: 2703,
+      ColdLoad: 7703.55,
+      ThermalLoad: 965.36,
+    },
+    {
+      time: '5:00',
+      Output: 2646,
+      ColdLoad: 7541.1,
+      ThermalLoad: 945.0,
+    },
+    {
+      time: '6:00',
+      Output: 2681,
+      ColdLoad: 7640.85,
+      ThermalLoad: 957.5,
+    },
+    {
+      time: '7:00',
+      Output: 2737,
+      ColdLoad: 7800.45,
+      ThermalLoad: 977.5,
+    },
+    {
+      time: '8:00',
+      Output: 2764,
+      ColdLoad: 7877.4,
+      ThermalLoad: 987.14,
+    },
+    {
+      time: '9:00',
+      Output: 2756,
+      ColdLoad: 7854.6,
+      ThermalLoad: 984.29,
+    },
+    {
+      time: '10:00',
+      Output: 2778,
+      ColdLoad: 7917.3,
+      ThermalLoad: 992.14,
+    },
+    {
+      time: '11:00',
+      Output: 2655,
+      ColdLoad: 7566.75,
+      ThermalLoad: 948.21,
+    },
+    {
+      time: '12:00',
+      Output: 2645,
+      ColdLoad: 7538.25,
+      ThermalLoad: 944.64,
+    },
+    {
+      time: '13:00',
+      Output: 2619,
+      ColdLoad: 7464.15,
+      ThermalLoad: 935.36,
+    },
+    {
+      time: '14:00',
+      Output: 2699,
+      ColdLoad: 7692.15,
+      ThermalLoad: 963.93,
+    },
+    {
+      time: '14:00',
+      Output: 2699,
+      ColdLoad: 7692.15,
+      ThermalLoad: 963.93,
+    },
+    {
+      time: '15:00',
+      Output: 2602,
+      ColdLoad: 7415.7,
+      ThermalLoad: 929.29,
+    },
+    {
+      time: '17:00',
+      Output: 2769,
+      ColdLoad: 7891.65,
+      ThermalLoad: 988.93,
+    },
+
+    {
+      time: '18:00',
+      Output: 2628,
+      ColdLoad: 7489.8,
+      ThermalLoad: 938.57,
+    },
+    {
+      time: '19:00',
+      Output: 2631,
+      ColdLoad: 7498.35,
+      ThermalLoad: 939.64,
+    },
+    {
+      time: '20:00',
+      Output: 2707,
+      ColdLoad: 7714.95,
+      ThermalLoad: 966.79,
+    },
+    {
+      time: '21:00',
+      Output: 2694,
+      ColdLoad: 7677.9,
+      ThermalLoad: 962.14,
+    },
+    {
+      time: '22:00',
+      Output: 2626,
+      ColdLoad: 7484.1,
+      ThermalLoad: 937.86,
+    },
+    {
+      time: '23:00',
+      Output: 2720,
+      ColdLoad: 7752.0,
+      ThermalLoad: 971.43,
+    },
+  ],
 };
 
 // function fill(begin: number) {
