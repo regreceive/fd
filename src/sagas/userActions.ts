@@ -322,7 +322,7 @@ function* getPriceConstitute() {
 
 function* getExchangeForm() {
   try {
-    const response = yield call(request, '/producer/exchangeFrom', 'include');
+    const response = yield call(request, '/api/quotePrice', 'include');
 
     const json: IExchangeFormResponse = yield call([response, 'json']);
     yield put(exchangeFormComplete(json));

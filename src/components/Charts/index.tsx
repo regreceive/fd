@@ -1,5 +1,6 @@
 import React from 'react';
 import { Axis, Chart, Geom, Legend, Tooltip } from 'bizcharts';
+import { timeSegment } from '../../utils/timeFormat';
 
 interface IProps {
   data: object[];
@@ -8,17 +9,8 @@ interface IProps {
 const Curved = (props: IProps) => {
   const scale = {
     time: {
-      ticks: [
-        '1:00',
-        '4:00',
-        '7:00',
-        '10:00',
-        '13:00',
-        '16:00',
-        '19:00',
-        '22:00',
-      ],
-      tickCount: 8, // 定义坐标轴刻度线的条数，默认为 5
+      ticks: timeSegment(new Date().getHours()),
+      tickCount: 8,
     },
   };
   const bg = {
@@ -31,33 +23,46 @@ const Curved = (props: IProps) => {
       forceFit
       height={300}
       background={bg}
-      padding={[40, 40, 90, 40]}
+      padding={[40, 20, 90, 20]}
     >
       <Legend />
       <Axis name="time" />
-      <Axis
-        name="pv"
-        label={{
-          formatter: val => `${val}`,
-        }}
-      />
-      <Axis name="Diffuse" />
+      <Axis name="Output" visible={false} />
+      <Axis name="Direct" visible={false} />
+      <Axis name="Diffuse" visible={false} />
+      <Axis name="Temperature" visible={false} />
       <Tooltip
         crosshairs={{
           type: 'y',
         }}
       />
+      <Geom type="line" position="time*Output" color="#ff0000" shape="smooth" />
       <Geom
         type="line"
-        position="time*PV"
-        size={2}
-        color={'city'}
-        shape={'smooth'}
+        position="time*Direct"
+        shape="smooth"
+        color="#c1aeaa"
         style={{
           lineDash: [4, 4],
         }}
       />
-      <Geom type="line" position="time*Diffuse" size={2} shape={'smooth'} />
+      <Geom
+        type="line"
+        position="time*Diffuse"
+        shape="smooth"
+        style={{
+          lineDash: [4, 4],
+        }}
+      />
+      <Geom
+        type="line"
+        position="time*Temperature"
+        shape="smooth"
+        color="#e0e066"
+        style={{
+          lineDash: [4, 4],
+        }}
+      />
     </Chart>
   );
 };

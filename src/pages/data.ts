@@ -182,148 +182,196 @@ const charts = {
   PHOTOVOLTAIC: [
     {
       time: '0:00',
-      PV: 0,
+      Output: 0,
+      Direct: 0,
       Diffuse: 0,
+      Temperature: 35.21,
     },
     {
       time: '1:00',
-      PV: 0,
+      Output: 0,
+      Direct: 0,
       Diffuse: 0,
+      Temperature: 37.68,
     },
     {
       time: '2:00',
-      PV: 0,
+      Output: 0,
+      Direct: 0,
       Diffuse: 0,
+      Temperature: 38.82,
     },
     {
       time: '3:00',
-      PV: 0,
+      Output: 0,
+      Direct: 0,
       Diffuse: 0,
+      Temperature: 38.84,
     },
     {
       time: '4:00',
-      PV: 0,
+      Output: 0,
+      Direct: 0,
       Diffuse: 0,
+      Temperature: 38.23,
     },
     {
       time: '5:00',
-      PV: 0.2,
-      Diffuse: 0.9,
+      Output: 182.66,
+      Direct: 0,
+      Diffuse: 35,
+      Temperature: 37.98,
     },
     {
       time: '6:00',
-      PV: 1.9,
-      Diffuse: 3.5,
+      Output: 557.6,
+      Direct: 1,
+      Diffuse: 81,
+      Temperature: 37.72,
     },
     {
       time: '7:00',
-      PV: 5.3,
-      Diffuse: 7.5,
+      Output: 1576.67,
+      Direct: 19,
+      Diffuse: 186,
+      Temperature: 37.21,
     },
     {
       time: '8:00',
-      PV: 31.5,
-      Diffuse: 31.9,
+      Output: 3028.36,
+      Direct: 70,
+      Diffuse: 319,
+      Temperature: 36.8,
     },
     {
       time: '9:00',
-      PV: 38,
-      Diffuse: 38.6,
+      Output: 3653.26,
+      Direct: 87,
+      Diffuse: 386,
+      Temperature: 36.66,
     },
     {
       time: '10:00',
-      PV: 32.9,
-      Diffuse: 37.1,
+      Output: 3162.95,
+      Direct: 37,
+      Diffuse: 371,
+      Temperature: 36.27,
     },
     {
       time: '11:00',
-      PV: 22.1,
-      Diffuse: 26.6,
+      Output: 2124.66,
+      Direct: 10,
+      Diffuse: 266,
+      Temperature: 35.47,
     },
     {
       time: '12:00',
-      PV: 19.9,
-      Diffuse: 24.2,
+      Output: 1913.15,
+      Direct: 8,
+      Diffuse: 242,
+      Temperature: 34.33,
     },
     {
       time: '13:00',
-      PV: 15.4,
-      Diffuse: 19.1,
+      Output: 1480.53,
+      Direct: 4,
+      Diffuse: 191,
+      Temperature: 33.77,
     },
     {
       time: '14:00',
-      PV: 11.1,
-      Diffuse: 14.3,
+      Output: 1067.14,
+      Direct: 3,
+      Diffuse: 143,
+      Temperature: 33.39,
     },
     {
       time: '15:00',
-      PV: 10.4,
-      Diffuse: 13.4,
+      Output: 999.84,
+      Direct: 2,
+      Diffuse: 134,
+      Temperature: 32.92,
     },
     {
       time: '16:00',
-      PV: 13.4,
-      Diffuse: 16.6,
+      Output: 1288.25,
+      Direct: 5,
+      Diffuse: 166,
+      Temperature: 32.42,
     },
     {
       time: '17:00',
-      PV: 8.2,
-      Diffuse: 10.9,
+      Output: 788.33,
+      Direct: 2,
+      Diffuse: 109,
+      Temperature: 32,
     },
     {
       time: '18:00',
-      PV: 3.2,
-      Diffuse: 5.2,
+      Output: 307.64,
+      Direct: 0,
+      Diffuse: 52,
+      Temperature: 31.8,
     },
     {
       time: '19:00',
-      PV: 0,
-      Diffuse: 0.6,
+      Output: 0,
+      Direct: 0,
+      Diffuse: 6,
+      Temperature: 31.61,
     },
     {
       time: '20:00',
-      PV: 0,
+      Output: 0,
+      Direct: 0,
       Diffuse: 0,
+      Temperature: 31.46,
     },
     {
       time: '21:00',
-      PV: 0,
+      Output: 0,
+      Direct: 0,
       Diffuse: 0,
+      Temperature: 31.31,
     },
     {
       time: '22:00',
-      PV: 0,
+      Output: 0,
+      Direct: 0,
       Diffuse: 0,
+      Temperature: 31.36,
     },
     {
       time: '23:00',
-      PV: 0,
+      Output: 0,
+      Direct: 0,
       Diffuse: 0,
+      Temperature: 31.69,
     },
   ],
 };
 
-function fill(begin: number) {
-  const ret = [];
-  for (let i = begin; i < 24; i++) {
-    ret.push({
-      time: ('0' + i).slice(-2) + ':00',
-      PV: 0,
-      Direct: 0,
-      Diffuse: 0,
-      Temperature: 0,
-    });
-  }
-  return ret;
-}
+// function fill(begin: number) {
+//   const ret = [];
+//   for (let i = begin; i < 24; i++) {
+//     ret.push({
+//       time: ('0' + i).slice(-2) + ':00',
+//       Output: 0,
+//       Direct: 0,
+//       Diffuse: 0,
+//       Temperature: 0,
+//     });
+//   }
+//   return ret;
+// }
 
 export function getChartsData(role: string) {
   const hour = new Date().getHours();
   let data;
   try {
-    data = charts[role].slice(0, hour + 1).concat(fill(hour + 1));
+    data = charts[role].slice(0, hour + 1);
   } catch (e) {
-    data = charts.PHOTOVOLTAIC.slice(0, hour + 1).concat(fill(hour + 1));
+    data = charts.PHOTOVOLTAIC.slice(0, hour + 1);
   }
   return data;
 }

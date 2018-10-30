@@ -105,7 +105,7 @@ export interface IUser {
   }>;
   exchangeForm: Array<{
     amount: number;
-    price: number;
+    earning: number;
     time: number;
   }>;
   checkDetail: {

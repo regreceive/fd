@@ -63,7 +63,7 @@ export default class extends Component {
                 <li>
                   <span>电价(元/度)</span>
                   <br />
-                  <span>{item.price}</span>
+                  <span>{item.earning}</span>
                 </li>
               </ul>
             </div>
