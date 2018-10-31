@@ -259,7 +259,7 @@ exports.gainsDetail = async ctx => {
           },
           {
             uid: 124,
-            index: 10,
+            index: 11,
             eletric: 100,
             price: 100,
           },

@@ -8,7 +8,7 @@ import { Icon, NavBar } from 'antd-mobile';
 import { getCheck } from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
-import { startedDateTime } from '../../../utils/timeFormat';
+import { dateTimeFormat, segmentTime } from '../../../utils/timeFormat';
 
 import './index.css';
 
@@ -27,6 +27,14 @@ const mapStateToProps = (state: IStoreState): IStateProps => ({
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   getCheck: () => dispatch(getCheck()),
 });
+
+function dateTimeScope() {
+  const from = new Date(Date.now() - 60 * 60 * 24 * 1000);
+  from.setHours(5, 0, 0, 0);
+  const to = new Date();
+  to.setMinutes(0, 0);
+  return dateTimeFormat(from.getTime()) + '-' + dateTimeFormat(to.getTime());
+}
 
 @(connect(
   mapStateToProps,
@@ -63,7 +71,7 @@ export default class extends Component {
               <span>{this.injected.checkDetail.total.price}</span>
             </div>
           </div>
-          <p>用电时间段 2018-09-09 12:00:00-12:59:59</p>
+          <p>用电时间段 {dateTimeScope()}</p>
         </div>
 
         <div styleName="detail">
@@ -76,7 +84,7 @@ export default class extends Component {
             <div styleName="list" key={item.uid}>
               <span>{item.eletric}</span>
               <span>{item.price}</span>
-              <span styleName="fixed">{startedDateTime(item.index)}</span>
+              <span styleName="fixed">{segmentTime(item.index)}</span>
             </div>
           ))}
         </div>

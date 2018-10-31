@@ -9,7 +9,9 @@ export function startedDateTime(offset: number) {
   return dateTimeFormat(date.getTime());
 }
 
-export function segmentTime(hour: number) {}
+export function segmentTime(hour: number) {
+  return fill(hour) + ':00:00-' + fill(hour) + ':59:59';
+}
 
 export function dateTimeFormat(timestamp: number) {
   const date = new Date(timestamp);
