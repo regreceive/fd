@@ -230,6 +230,12 @@ exports.gainsDetail = async ctx => {
             eletric: 100,
             price: 100,
           },
+          {
+            uid: 124,
+            index: 10,
+            eletric: 100,
+            price: 100,
+          },
         ],
       },
     };
@@ -242,16 +248,20 @@ exports.gainsDetail = async ctx => {
         total: {
           uid: 123,
           eletric: 1000,
-          userTotal: 100,
-          otherTotal: 100,
+          price: 100,
         },
         list: [
           {
             uid: 123,
             index: 10,
             eletric: 100,
-            userTotal: 100,
-            otherTotal: 100,
+            price: 100,
+          },
+          {
+            uid: 124,
+            index: 10,
+            eletric: 100,
+            price: 100,
           },
         ],
       },

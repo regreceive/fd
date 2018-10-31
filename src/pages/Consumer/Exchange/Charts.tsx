@@ -28,7 +28,7 @@ export default class DoubleChart extends Component<IProps> {
           '16:00',
           '19:00',
           '22:00',
-        ].slice(0, Math.ceil(new Date().getHours() / 3)),
+        ],
         tickCount: 8,
       },
     };
@@ -40,7 +40,7 @@ export default class DoubleChart extends Component<IProps> {
           data={currentCoast.list}
           scale={scale}
           forceFit
-          padding={[40, 40, 50, 40]}
+          padding="auto"
         >
           <Axis
             name="index"
@@ -52,15 +52,8 @@ export default class DoubleChart extends Component<IProps> {
             }}
             grid={grid}
           />
-          <Axis
-            name="price"
-            line={{
-              stroke: '#E5E5E5',
-              lineDash: [4, 4],
-              lineWidth: 1,
-            }}
-          />
-          <Axis name="actual" />
+          <Axis name="price" visible={false} />
+          <Axis name="actual" visible={false} />
           <Tooltip />
           <Geom
             type="interval"
@@ -75,7 +68,7 @@ export default class DoubleChart extends Component<IProps> {
                 };
               },
             ]}
-            size={5}
+            size={3}
           />
           <Geom
             type="line"

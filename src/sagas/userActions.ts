@@ -24,6 +24,8 @@ import {
   IElectricEXChartResponse,
   ICurrentResponse,
   postTimeComplete,
+  IGainsDetailResponse,
+  ICheckResponse,
 } from '../actions/userActions';
 import { realTimeImmutableData, realTimeMutableData } from '../pages/data';
 
@@ -201,7 +203,7 @@ function* postTime(action: IAction) {
     yield put(postTimeComplete(json));
     if (json.data) {
       json.data.list.forEach(row => {
-        row.index = row.index + ':00';
+        row.index = ((parseInt(row.index, 10) + 6) % 24) + ':00';
       });
     }
     yield put(currentCoastComplete(json));
@@ -236,7 +238,10 @@ function* getGainsDetail() {
   try {
     const response = yield call(request, '/api/eletric/earn', 'include');
 
-    const json = yield call([response, 'json']);
+    const json: IGainsDetailResponse = yield call([response, 'json']);
+    json.data.list.forEach(row => {
+      row.index = (row.index + 6) % 24;
+    });
 
     yield put(gainsDetailComplete(json));
   } catch (e) {
@@ -248,7 +253,10 @@ function* getCheck() {
   try {
     const response = yield call(request, '/api/eletric/earn', 'include');
 
-    const json = yield call([response, 'json']);
+    const json: ICheckResponse = yield call([response, 'json']);
+    json.data.list.forEach(row => {
+      row.index = (row.index + 6) % 24;
+    });
 
     yield put(checkComplete(json));
   } catch (e) {
@@ -263,7 +271,7 @@ function* getCurrentCoast() {
     const json: ICurrentResponse = yield call([response, 'json']);
     if (json.data) {
       json.data.list.forEach(row => {
-        row.index = row.index + ':00';
+        row.index = ((parseInt(row.index, 10) + 6) % 24) + ':00';
       });
     }
     yield put(currentCoastComplete(json));
@@ -279,7 +287,7 @@ function* getElectricEXChart() {
     const json: IElectricEXChartResponse = yield call([response, 'json']);
     if (json.data) {
       json.data.forEach(row => {
-        row.index = row.index + ':00';
+        row.index = ((parseInt(row.index, 10) + 6) % 24) + ':00';
       });
     }
     yield put(electricChartComplete(json));

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { Translate } from 'react-localize-redux';
 import { Icon, NavBar } from 'antd-mobile';
-import { Dispatch } from 'redux';
-import { connect } from 'react-redux';
 
 import { getCheck } from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
@@ -40,47 +40,46 @@ export default class extends Component {
   public componentDidMount() {
     this.injected.getCheck();
   }
+
   public render() {
     return (
       <div styleName="container">
-        <div styleName="history">
-          <NavBar
-            mode="light"
-            icon={<Icon type="left" />}
-            onLeftClick={this.injected.history.goBack}
-          >
-            <Translate id="check" />
-          </NavBar>
-        </div>
+        <NavBar
+          mode="light"
+          icon={<Icon type="left" />}
+          onLeftClick={this.injected.history.goBack}
+        >
+          <Translate id="check" />
+        </NavBar>
 
-        <div styleName="card-deal">
-          <div styleName="card-top">
-            <ul>
-              <li>
-                <span>发电量</span>
-                <br />
-                <span>{this.injected.checkDetail.total.eletric}</span>
-              </li>
-              <li>
-                <span>电价(元/度)</span>
-                <br />
-                <span>{this.injected.checkDetail.total.price}</span>
-              </li>
-            </ul>
+        <div styleName="overview">
+          <div styleName="row">
+            <div styleName="column">
+              <span>用电量/KW</span>
+              <span>{this.injected.checkDetail.total.eletric}</span>
+            </div>
+            <div styleName="column">
+              <span>总费用/EDF</span>
+              <span>{this.injected.checkDetail.total.price}</span>
+            </div>
           </div>
           <p>用电时间段 2018-09-09 12:00:00-12:59:59</p>
         </div>
-        <div styleName="detail">账单详情</div>
-        <div styleName="count">
-          <span>用电量/KW</span> <span styleName="conuntSpan">总费用/EDF</span>{' '}
-          <span>用电时间段</span>
-        </div>
-        {this.injected.checkDetail.list.map((item, index) => (
-          <div styleName="number" key={index}>
-            <span>{item.eletric}</span> <span>{item.price}</span>{' '}
-            <span>{startedDateTime(item.index)}</span>
+
+        <div styleName="detail">
+          <h2>账单详情</h2>
+          <div styleName="header">
+            <span>用电量/KW</span> <span>总费用/EDF</span>{' '}
+            <span styleName="fixed">用电时间段</span>
           </div>
-        ))}
+          {this.injected.checkDetail.list.map(item => (
+            <div styleName="list" key={item.uid}>
+              <span>{item.eletric}</span>
+              <span>{item.price}</span>
+              <span styleName="fixed">{startedDateTime(item.index)}</span>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
