@@ -10,13 +10,13 @@ export default class DoubleChart extends Component<IProps> {
   public render() {
     const { exChart } = this.props;
 
-    const grid = {
-      lineStyle: {
-        stroke: '#E5E5E5',
-        lineDash: [4, 4],
-        lineWidth: 1,
-      },
-    };
+    // const grid = {
+    //   lineStyle: {
+    //     stroke: '#E5E5E5',
+    //     lineDash: [4, 4],
+    //     lineWidth: 1,
+    //   },
+    // };
     const scale = {
       index: {
         ticks: [
@@ -28,7 +28,7 @@ export default class DoubleChart extends Component<IProps> {
           '16:00',
           '19:00',
           '22:00',
-        ],
+        ].slice(0, Math.ceil(new Date().getHours() / 3)),
         tickCount: 8,
       },
     };
@@ -43,25 +43,9 @@ export default class DoubleChart extends Component<IProps> {
           forceFit
           padding="auto"
         >
-          <Axis
-            name="index"
-            tickLine="null"
-            line={{
-              stroke: '#E5E5E5',
-              lineDash: [4, 4],
-              lineWidth: 1,
-            }}
-            grid={grid}
-          />
-          <Axis
-            name="price"
-            line={{
-              stroke: '#E5E5E5',
-              lineDash: [4, 4],
-              lineWidth: 1,
-            }}
-          />
-          <Axis name="eletric" />
+          <Axis name="index" />
+          <Axis name="price" visible={false} />
+          <Axis name="eletric" visible={false} />
           <Tooltip />
           <Geom
             type="interval"
@@ -70,7 +54,7 @@ export default class DoubleChart extends Component<IProps> {
             tooltip={[
               'index*eletric',
               (index, eletric) => {
-                return { name: 'eletric', value: eletric };
+                return { name: 'electric', value: eletric };
               },
             ]}
             size={5}

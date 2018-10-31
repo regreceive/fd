@@ -2,12 +2,12 @@ import React from 'react';
 import { Icon, NavBar } from 'antd-mobile';
 import { Translate } from 'react-localize-redux';
 import { IUser } from '../../../reducers/userReducer';
+
 import {
   getChartsData,
   realTimeImmutableData,
   realTimeMutableData,
 } from '../../data';
-
 import Charts from '../Home/Charts/pv';
 
 import './index.css';

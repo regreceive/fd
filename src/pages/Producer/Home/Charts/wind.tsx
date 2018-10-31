@@ -17,7 +17,7 @@ const Curved = (props: IProps) => {
         '16:00',
         '19:00',
         '22:00',
-      ].slice(0, Math.floor((new Date().getHours() + 1) / 3)),
+      ].slice(0, Math.ceil(new Date().getHours() / 3)),
       tickCount: 8,
     },
   };
@@ -42,12 +42,25 @@ const Curved = (props: IProps) => {
           type: 'y',
         }}
       />
-      <Geom type="line" position="time*Output" color="#ff0000" shape="smooth" />
+      <Geom
+        type="line"
+        position="time*Output"
+        color="#ff0000"
+        shape="smooth"
+        size={3}
+        style={{
+          shadowColor: 'lightgray',
+          shadowBlur: 5,
+          shadowOffsetX: 0,
+          shadowOffsetY: 3,
+        }}
+      />
       <Geom
         type="line"
         position="time*Speed"
         shape="smooth"
         color="#c1aeaa"
+        size={3}
         style={{
           lineDash: [4, 4],
         }}

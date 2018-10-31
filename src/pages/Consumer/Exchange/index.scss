@@ -7,11 +7,14 @@
   flex-direction: column;
   overflow-x: hidden;
   background: #fff;
+
   .title {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     @extend %padding;
   }
+
   .empty {
     background: #f6f6f6;
     height: 20px;
@@ -20,6 +23,7 @@
 
 .section {
   @extend %section;
+
   > div > div {
     &:first-child {
       border-bottom: 1px solid #f4f6f8;
