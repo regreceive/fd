@@ -50,6 +50,20 @@ const DashBoard = () => {
             />
           </Guide>
         </View>
+        <View>
+          <Guide>
+            <Text
+              position={['50%', '65%']}
+              content="5000"
+              style={{
+                fill: '#fff',
+                fontSize: 20,
+                textAlign: 'center',
+                textBaseline: 'middle',
+              }}
+            />
+          </Guide>
+        </View>
       </Chart>
     </div>
   );

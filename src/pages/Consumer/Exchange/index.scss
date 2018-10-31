@@ -3,8 +3,6 @@
 .container {
   @extend %container;
   @extend %scroll;
-  display: flex;
-  flex-direction: column;
   overflow-x: hidden;
   background: #fff;
 
@@ -18,6 +16,14 @@
   .empty {
     background: #f6f6f6;
     height: 20px;
+  }
+
+  :global {
+    .am-navbar-left {
+      p {
+        color: #737b91;
+      }
+    }
   }
 }
 
