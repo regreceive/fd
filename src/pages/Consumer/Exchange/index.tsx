@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { List, DatePicker, InputItem } from 'antd-mobile';
+import { List, DatePicker, InputItem, NavBar } from 'antd-mobile';
 import { getCurrentCoast, postTime } from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
@@ -101,7 +101,11 @@ export default class extends Component<{}, IState> {
       );
     }
   };
-
+  public cancel = () => {
+    this.setState({
+      isEdit: !this.state.isEdit,
+    });
+  };
   public render() {
     const { isEdit } = this.state;
     const { currentCoast } = this.injected;
@@ -113,10 +117,13 @@ export default class extends Component<{}, IState> {
 
     return (
       <div styleName="container">
-        <div styleName="title">
-          <h2>电力模拟</h2>
-          <p onClick={this.edit}>{isEdit ? '保存' : '编辑'}</p>
-        </div>
+        <NavBar
+          mode="light"
+          leftContent={<p onClick={this.cancel}>{isEdit === true && '取消'}</p>}
+          rightContent={<p onClick={this.edit}>{isEdit ? '保存' : '编辑'}</p>}
+        >
+          电力模拟
+        </NavBar>
         <DoubleChart currentCoast={currentCoast} />
         {isEdit === true && (
           <List>

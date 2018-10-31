@@ -40,7 +40,7 @@ export default class DoubleChart extends Component<IProps> {
           data={currentCoast.list}
           scale={scale}
           forceFit
-          padding={[40, 40, 50, 40]}
+          padding="auto"
         >
           <Axis
             name="index"
