@@ -30,13 +30,19 @@ const Wind = (prop: IStateProps) => {
       <Charts data={data} />
       <div styleName="section">
         <div>
-          <h2>风能电站相关参数</h2>
+          <h2>
+            <Translate id="producer.home.detail.wind.title1" />
+          </h2>
           <dl>
-            <dt>发电量</dt>
+            <dt>
+              <Translate id="producer.home.detail.wind.output" />
+            </dt>
             <dd>{mutableData[0]} kW</dd>
           </dl>
           <dl>
-            <dt>风速</dt>
+            <dt>
+              <Translate id="producer.home.detail.wind.speed" />
+            </dt>
             <dd>{mutableData[1]} m/s</dd>
           </dl>
         </div>
@@ -44,28 +50,44 @@ const Wind = (prop: IStateProps) => {
 
       <div styleName="section spacer">
         <div>
-          <h2>风能电站固定属性</h2>
+          <h2>
+            <Translate id="producer.home.detail.wind.title2" />
+          </h2>
           <dl>
-            <dt>发电容量(固定值)</dt>
+            <dt>
+              <Translate id="producer.home.detail.wind.generation" />
+            </dt>
             <dd>10 度</dd>
           </dl>
           <dl>
-            <dt>投资成本</dt>
-            <dd>{immutableData[0]} EDF/度</dd>
+            <dt>
+              <Translate id="producer.home.detail.wind.coast" />
+            </dt>
+            <dd>
+              <Translate id="edf-per-kw" data={{ edf: immutableData[0] }} />
+            </dd>
           </dl>
         </div>
       </div>
 
       <div styleName="section spacer">
         <div>
-          <h2>当前风能情况</h2>
+          <h2>
+            <Translate id="producer.home.detail.wind.title3" />
+          </h2>
           <dl>
-            <dt>当前发电出力(变化植)</dt>
+            <dt>
+              <Translate id="producer.home.detail.wind.power" />
+            </dt>
             <dd>{mutableData[0]} kW</dd>
           </dl>
           <dl>
-            <dt>发电综合成本(变化值)</dt>
-            <dd>{immutableData[2]} EDF/度</dd>
+            <dt>
+              <Translate id="producer.home.detail.wind.genetateCoast" />
+            </dt>
+            <dd>
+              <Translate id="edf-per-kw" data={{ edf: immutableData[2] }} />
+            </dd>
           </dl>
         </div>
       </div>

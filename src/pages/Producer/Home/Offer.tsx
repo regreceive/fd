@@ -3,6 +3,7 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Button, InputItem } from 'antd-mobile';
 import { Link } from 'react-router-dom';
+import { Translate } from 'react-localize-redux';
 
 import { timeFormat } from '../../../utils/timeFormat';
 import { IUser } from '../../../reducers/userReducer';
@@ -75,19 +76,31 @@ export default class extends React.Component<{}, IState> {
       <div styleName="section">
         <div>
           <div styleName="head-area">
-            <h2>报价信息</h2>
-            <Link to="/producer/quote">历史报价</Link>
+            <h2>
+              <Translate id="producer.home.offer.info" />
+            </h2>
+            <Link to="/producer/quote">
+              <Translate id="producer.home.offer.historyPrice" />
+            </Link>
           </div>
           <dl>
-            <dt>大电网实时电价</dt>
-            <dd>{realTimePrice()} EDF/度</dd>
+            <dt>
+              <Translate id="producer.home.offer.realTime" />
+            </dt>
+            <dd>
+              <Translate id="edf-per-kw" data={{ edf: realTimePrice() }} />
+            </dd>
           </dl>
           <dl>
-            <dt>距离下次提交报价</dt>
+            <dt>
+              <Translate id="producer.home.offer.nextOffer" />
+            </dt>
             <dd>{timeFormat(this.state.countdown)}</dd>
           </dl>
           <dl>
-            <dt>请输入发电量</dt>
+            <dt>
+              <Translate id="producer.home.offer.output" />
+            </dt>
             <InputItem
               extra="度"
               type="digit"
@@ -95,7 +108,9 @@ export default class extends React.Component<{}, IState> {
             />
           </dl>
           <dl>
-            <dt>请输入电价</dt>
+            <dt>
+              <Translate id="producer.home.offer.price" />
+            </dt>
             <InputItem
               extra="EDF/度"
               type="digit"
@@ -104,7 +119,9 @@ export default class extends React.Component<{}, IState> {
           </dl>
           <dl styleName="no-border">
             <dt>
-              <a>报价须知(含惩罚措施)</a>
+              <a>
+                <Translate id="producer.home.offer.quotedPrice" />
+              </a>
             </dt>
           </dl>
         </div>
@@ -114,7 +131,7 @@ export default class extends React.Component<{}, IState> {
           disabled={waiting}
           onClick={this.clickHandle}
         >
-          确定
+          <Translate id="producer.home.offer.button" />
         </Button>
       </div>
     );

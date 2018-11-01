@@ -15,7 +15,7 @@ const CurrentState = (props: IProps) => {
     <div styleName="section">
       <div styleName="head-area">
         <h2>
-          <Translate id="producer.home.state" />
+          <Translate id="producer.home.currentState.state" />
         </h2>
         <Link to="/producer/detail">
           <Translate id="more" />
@@ -23,7 +23,7 @@ const CurrentState = (props: IProps) => {
       </div>
       <dl>
         <dt>
-          <Translate id="producer.home.power" />
+          <Translate id="producer.home.currentState.power" />
         </dt>
         <dd>
           <Translate id="kw" data={{ kw: props.data.power }} />
@@ -31,7 +31,7 @@ const CurrentState = (props: IProps) => {
       </dl>
       <dl>
         <dt>
-          <Translate id="producer.home.cost" />
+          <Translate id="producer.home.currentState.cost" />
         </dt>
         <dd>
           <Translate id="edf-per-kw" data={{ edf: props.data.cost }} />
