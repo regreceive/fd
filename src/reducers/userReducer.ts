@@ -124,11 +124,11 @@ export interface IUser {
   };
   dashBoard: {
     percent: string;
-    total: string;
+    max: string;
   };
 }
 
-const lang = process.env.REACT_APP_DEFAULT_LANGUAGE || 'en';
+const DEFAULT_LANGUAGE = process.env.REACT_APP_DEFAULT_LANGUAGE || 'en';
 
 const initState: IUser = {
   username: '',
@@ -168,7 +168,7 @@ const initState: IUser = {
   },
   gainsCard: [],
   config: {
-    lang,
+    lang: DEFAULT_LANGUAGE,
   },
   currentCoast: {
     total: {
@@ -197,7 +197,7 @@ const initState: IUser = {
   },
   dashBoard: {
     percent: '',
-    total: '',
+    max: '',
   },
 };
 
@@ -208,6 +208,10 @@ const user = (state = initState, action: IAction): IUser => {
   }
 
   switch (action.type) {
+    case 'CHANGE_LANGUAGE': {
+      const { data } = action.payload;
+      return { ...state, config: { ...state.config, lang: data } };
+    }
     case 'LOGIN_COMPLETE': {
       const { data } = action.payload as ILoginComplete;
       const { username, role, side } = data;

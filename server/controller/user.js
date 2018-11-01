@@ -87,7 +87,6 @@ exports.updateRole = async ctx => {
   };
 };
 
-
 exports.earns = async ctx => {
   await sleep();
   ctx.body = {
@@ -133,8 +132,8 @@ exports.postTime = async ctx => {
     status: 'ok',
     token: '123',
     toast: 'success.offer',
-    data:  {
-      total: { pre: 100, after: 200, eletric: 100},
+    data: {
+      total: { pre: 100, after: 200, eletric: 100 },
       list: [
         { actual: 10, price: 0.7, index: 0 },
         { actual: 60, price: 0.1, index: 1 },
@@ -190,9 +189,9 @@ exports.priceConstitute = async ctx => {
     token: '123',
     toast: '',
     data: {
-      "SCHOOL": { "price": 10, "eletric": 10, "settle": 100 },
-      "FACTORY": { "price": 10, "eletric": 10, "settle": 100 }
-    }
+      SCHOOL: { price: 10, eletric: 10, settle: 100 },
+      FACTORY: { price: 10, eletric: 10, settle: 100 },
+    },
   };
 };
 
@@ -351,7 +350,7 @@ exports.dashBoardData = async ctx => {
     toast: '',
     data: {
       percent: '33%',
-      total:56776
-    }
-  }
-}
+      max: 56776,
+    },
+  };
+};

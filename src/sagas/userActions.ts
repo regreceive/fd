@@ -27,6 +27,7 @@ import {
   IGainsDetailResponse,
   ICheckResponse,
   dashBoardComplete,
+  IDashBoardResponse,
 } from '../actions/userActions';
 import { realTimeImmutableData, realTimeMutableData } from '../pages/data';
 
@@ -342,9 +343,9 @@ function* getExchangeForm() {
 
 function* getDashBoardData() {
   try {
-    const response = yield call(request, '/api/dashboard', 'include');
+    const response = yield call(request, '/api/storage/info', 'include');
 
-    const json = yield call([response, 'json']);
+    const json: IDashBoardResponse = yield call([response, 'json']);
     yield put(dashBoardComplete(json));
   } catch (e) {
     console.log(e);

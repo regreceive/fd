@@ -12,7 +12,7 @@ import './style.css';
 
 const data1: Array<{ type: string; value: number }> = [];
 for (let i = 0; i < 50; i++) {
-  const item = { type: `${i}`, value: 10 };
+  const item = { type: i.toString(), value: 10 };
   data1.push(item);
 }
 
@@ -34,6 +34,7 @@ const mapStateToProps = (state: IStoreState): IStateProps => ({
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   getDashBoardData: () => dispatch(getDashBoardData()),
 });
+
 @(connect(
   mapStateToProps,
   mapDispatchToProps,
@@ -89,7 +90,7 @@ export default class extends Component<IProps, {}> {
             <Guide>
               <Text
                 position={['50%', '65%']}
-                content={dashBoard.total}
+                content={dashBoard.max}
                 style={{
                   fill: '#fff',
                   fontSize: 20,

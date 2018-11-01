@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { Translate } from 'react-localize-redux';
+import {
+  LocalizeContextProps,
+  SingleLanguageTranslation,
+  Translate,
+  withLocalize,
+} from 'react-localize-redux';
 import { ActionSheet, Button, Picker, List } from 'antd-mobile';
 import { Path } from 'history';
 import { push, RouterAction } from 'connected-react-router';
 
-import translate from '../../utils/translate';
 import { IStoreState } from '../../types';
 import { IUser } from '../../reducers/userReducer';
-import { logout, getWalletBalance } from '../../actions/userActions';
+import {
+  logout,
+  getWalletBalance,
+  changeLanguage,
+} from '../../actions/userActions';
+import { getLanguage } from '../Layout';
 import avatar from './assets/tian.jpg';
 
 import s from './index.css';
@@ -19,6 +28,7 @@ import s from './index.css';
 interface IStateProps {
   balance: IUser['wallet']['balance'];
   username: IUser['username'];
+  lang: IUser['config']['lang'];
   waiting: boolean;
 }
 
@@ -26,41 +36,35 @@ interface IDispatchToState {
   logout: typeof logout;
   push: (path: Path) => RouterAction;
   getWalletBalance: typeof getWalletBalance;
+  changeLanguage: typeof changeLanguage;
 }
 
 const mapStateToProps = (state: IStoreState): IStateProps => ({
   balance: state.user.wallet.balance,
   username: state.user.username,
   waiting: state.ui.freeze.logout === 1,
+  lang: state.user.config.lang,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchToState => ({
   logout: () => dispatch(logout()),
   push: (path: Path) => dispatch(push(path)),
   getWalletBalance: () => dispatch(getWalletBalance()),
+  changeLanguage: (lang: string) => dispatch(changeLanguage(lang)),
 });
 
+@(withLocalize as any)
 @(connect(
   mapStateToProps,
   mapDispatchToProps,
 ) as any)
 export default class extends Component {
-  private asyncLang = { exit: '', cancel: '', exitConfirm: '' };
-
   get injected() {
-    return this.props as IStateProps & IDispatchToState;
+    return this.props as LocalizeContextProps & IStateProps & IDispatchToState;
   }
 
   public componentDidMount() {
     this.injected.getWalletBalance();
-  }
-
-  public componentWillMount() {
-    this.asyncLang = {
-      exit: translate('exit'),
-      cancel: translate('cancel'),
-      exitConfirm: translate('mine.exitConfirm'),
-    };
   }
 
   public render() {
@@ -94,10 +98,10 @@ export default class extends Component {
             {/*</List.Item>*/}
             <Picker
               cols={1}
-              extra={translate('select')}
+              extra={this.injected.translate('select') as string}
               data={[
                 { label: 'English', value: 'en' },
-                { label: 'Chinese', value: 'cn' },
+                { label: '中文', value: 'cn' },
               ]}
               onOk={this.langHandle}
             >
@@ -120,8 +124,12 @@ export default class extends Component {
     );
   }
 
-  private langHandle = (val: string) => {
-    console.log(val);
+  private langHandle = (lang: string[]) => {
+    getLanguage(lang[0]).then((data: SingleLanguageTranslation) => {
+      this.injected.addTranslationForLanguage(data, lang[0]);
+      this.injected.setActiveLanguage(lang[0]);
+    });
+    this.injected.changeLanguage(lang[0]);
   };
 
   // private helpHandle = () => {
@@ -135,10 +143,13 @@ export default class extends Component {
   private actionSheet = () => {
     ActionSheet.showActionSheetWithOptions(
       {
-        options: [this.asyncLang.exit, this.asyncLang.cancel],
+        options: [
+          this.injected.translate('exit') as string,
+          this.injected.translate('cancel') as string,
+        ],
         cancelButtonIndex: 1,
         destructiveButtonIndex: 0,
-        message: this.asyncLang.exitConfirm,
+        message: this.injected.translate('mine.exitConfirm'),
       },
       (buttonIndex: number) => {
         if (buttonIndex === 0) {

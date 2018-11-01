@@ -1,11 +1,107 @@
 {
-  "pack": "cn",
-  "pack_icon": "cn.svg",
-  "pack_label": "中文",
+  "pack": "en",
+  "pack_label": "English",
   "pack_active": true,
 
-  "homepage": "首页",
+  "home": "首页",
   "exchange": "电力交易",
   "gains": "收益明细",
-  "personal": "我的"
+  "personal": "我的",
+  "historical-quote": "历史报价",
+  "help-center": "帮助中心",
+  "hello": "您好！",
+  "ok": "确定",
+  "cancel": "取消",
+  "exit": "退出",
+  "select": "请选择",
+  "more": "更多",
+  "kw": "${kw} 度",
+  "edf-per-kw": "${edf} EDF/度",
+  "check": "我的账单",
+  "electricity-transaction": "电力交易",
+  "internal-combustion-engine": "内燃机状态",
+  "wind": "风能电站状态",
+  "sun": "光伏电站状态",
+  "battery": "储能电站状态",
+  "bill-detail": "详情",
+
+  "login": {
+    "button": "登录",
+    "email": {
+      "placeholder": "邮箱"
+    },
+    "password": {
+      "placeholder": "密码"
+    },
+    "agree": "同意",
+    "next": "下一步",
+    "agreement": "用户协议"
+  },
+
+  "role": {
+    "title": "选择角色",
+    "school": "学校",
+    "factory": "工厂",
+    "mall": "商场",
+    "community": "住宅小区",
+    "photovoltaic": "光伏发电",
+    "wind": "风能发电",
+    "battery": "储能电池",
+    "gas": "燃气轮机"
+  },
+
+  "mine": {
+    "userId": "用户ID",
+    "help": "帮助中心",
+    "wallet": "EDF电力钱包",
+    "language": "语言设置",
+    "exit": "退出登录",
+    "exitConfirm": "确定要退出吗？"
+  },
+
+  "toast": {
+    "loading": {
+      "login": "登录中"
+    },
+    "success": {
+      "login": "登录成功",
+      "logout": "已退出登录",
+      "quote": "报价单已通过审核",
+      "adjust": "电力调整成功"
+    },
+    "fail": {
+      "account_not_found": "账户不存在",
+      "password_incorrect": "密码错误",
+      "none_of_available_roles": "没有可用的角色",
+      "login_again": "重新登录",
+      "role_in_used": "角色已占用，请重新选择"
+    }
+  },
+
+  "producer": {
+    "home": {
+      "state": "当前状态",
+      "power": "当前天气状况的发电量",
+      "cost": "发电综合成本(单位:*/kwh)"
+    }
+  },
+
+  "modal": {
+    "role": {
+      "title": "选择角色",
+      "photovoltaic": "根据情况发电，确定选择光伏电站吗？",
+      "wind": "根据天气情况发电，确定选择光伏电站吗？",
+      "battery": "夜间充电，白天售电，确定选择储能电池电站吗？",
+      "gas": "多样的能源出力组合，确定选择储CCHP燃气机组电站吗？",
+      "school": "一类负荷，负荷稳定，确定选择学校角色吗？",
+      "factory": "园区的主要负荷，确定选择工厂角色吗？",
+      "mall": "周六日出现用电高峰，确定选择商场角色吗？",
+      "community": "早晚是其用电高峰，确定选择住宅小区角色吗？"
+    },
+
+    "button": {
+      "ok": "确定",
+      "cancel": "取消"
+    }
+  }
 }

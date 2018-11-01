@@ -7,6 +7,13 @@ export interface IResponseSchema {
   data: {};
 }
 
+export function changeLanguage(lang: string) {
+  return {
+    type: 'CHANGE_LANGUAGE',
+    payload: { data: lang },
+  };
+}
+
 export interface ILogin {
   username: string;
   password: string;

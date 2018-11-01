@@ -26,10 +26,10 @@ function show(type: string, content: string): Promise<any> {
         Toast.info(content, undefined, resolve);
         break;
       case 'success':
-        Toast.success(content, undefined, resolve);
+        Toast.success(content, undefined, resolve, false);
         break;
       case 'fail':
-        Toast.fail(content, undefined, resolve);
+        Toast.fail(content, undefined, resolve, false);
         break;
       case 'offline':
         Toast.offline(content, undefined, resolve);
