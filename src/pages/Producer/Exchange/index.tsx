@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { Translate } from 'react-localize-redux';
 
 import { getElectricEXChart } from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
@@ -45,9 +46,13 @@ export default class extends Component {
     return (
       <div styleName="container">
         <div styleName="history">
-          <h2>电力交易</h2>
+          <h2>
+            <Translate id="producer.exchange.title" />
+          </h2>
           <span>
-            <Link to="/producer/exchangeFrom">报表</Link>
+            <Link to="/producer/exchangeFrom">
+              <Translate id="producer.exchange.report" />
+            </Link>
           </span>
         </div>
         <DoubleChart exChart={exChart} />

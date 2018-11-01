@@ -30,25 +30,37 @@ const Gas = (prop: IProps) => {
       <Charts data={data} />
       <div styleName="section">
         <div>
-          <h2>内燃机电站相关参数</h2>
+          <h2>
+            <Translate id="producer.home.detail.gas.title1" />
+          </h2>
           <dl>
-            <dt>发电量</dt>
+            <dt>
+              <Translate id="producer.home.detail.gas.output" />
+            </dt>
             <dd>{mutableData[0]} kW</dd>
           </dl>
           <dl>
-            <dt>电制冷机消耗电量</dt>
+            <dt>
+              <Translate id="producer.home.detail.gas.runPower" />
+            </dt>
             <dd>{mutableData[1]} kW</dd>
           </dl>
           <dl>
-            <dt>冷负荷</dt>
+            <dt>
+              <Translate id="producer.home.detail.gas.cold" />
+            </dt>
             <dd>{mutableData[2]} kW</dd>
           </dl>
           <dl>
-            <dt>热负荷</dt>
+            <dt>
+              <Translate id="producer.home.detail.gas.hot" />
+            </dt>
             <dd>{mutableData[3]} kW</dd>
           </dl>
           <dl>
-            <dt>燃料价格</dt>
+            <dt>
+              <Translate id="producer.home.detail.gas.price" />
+            </dt>
             <dd>{mutableData[4]} RMB/m3</dd>
           </dl>
         </div>
@@ -56,17 +68,25 @@ const Gas = (prop: IProps) => {
 
       <div styleName="section spacer">
         <div>
-          <h2>内燃机电站固定属性</h2>
+          <h2>
+            <Translate id="producer.home.detail.gas.title2" />
+          </h2>
           <dl>
-            <dt>发电容量(固定值)</dt>
+            <dt>
+              <Translate id="producer.home.detail.gas.generation" />
+            </dt>
             <dd>10 度</dd>
           </dl>
           <dl>
-            <dt>投资成本</dt>
+            <dt>
+              <Translate id="producer.home.detail.gas.coast" />
+            </dt>
             <dd>{immutableData[0]} EDF/度</dd>
           </dl>
           <dl>
-            <dt>燃料成本</dt>
+            <dt>
+              <Translate id="producer.home.detail.gas.fuel" />
+            </dt>
             <dd>{immutableData[1]} EDF/度</dd>
           </dl>
         </div>
@@ -74,14 +94,22 @@ const Gas = (prop: IProps) => {
 
       <div styleName="section spacer">
         <div>
-          <h2>当前内燃机情况</h2>
+          <h2>
+            <Translate id="producer.home.detail.gas.title3" />
+          </h2>
           <dl>
-            <dt>当前发电出力(变化植)</dt>
+            <dt>
+              <Translate id="producer.home.detail.gas.power" />
+            </dt>
             <dd>{mutableData[0]} kW</dd>
           </dl>
           <dl>
-            <dt>发电综合成本(变化值)</dt>
-            <dd>{immutableData[2]} EDF/度</dd>
+            <dt>
+              <Translate id="producer.home.detail.gas.genetateCoast" />
+            </dt>
+            <dd>
+              <Translate id="edf-per-kw" data={{ edf: immutableData[2] }} />
+            </dd>
           </dl>
         </div>
       </div>

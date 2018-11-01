@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Translate } from 'react-localize-redux';
+import { Translate } from 'react-localize-redux';
 import './index.css';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
@@ -38,50 +38,65 @@ export default class extends Component {
   }
 
   public render() {
+    const { gainsDetail } = this.injected;
     return (
       <div styleName="container">
         <div styleName="earnings">
           <div styleName="earnings-inset">
-            收益明细
-            <p>总收益</p>
+            <Translate id="producer.gains.title" />
+            <p>
+              <Translate id="producer.gains.totalProfit" />
+            </p>
           </div>
           <div styleName="earnings-bottom">
             <ul>
               <li>
-                <span>{this.injected.gainsDetail.total.eletric}</span>
+                <span>{gainsDetail.total.eletric}</span>
                 <br />
-                <span>发电量(度)</span>
+                <span>
+                  <Translate id="producer.gains.header.output" />
+                </span>
               </li>
               <li>
-                <span>{this.injected.gainsDetail.total.userTotal}</span>
+                <span>{gainsDetail.total.userTotal}</span>
                 <br />
-                <span>用户收益</span>
+                <span>
+                  <Translate id="producer.gains.header.userProfit" />
+                </span>
               </li>
               <li>
-                <span>{this.injected.gainsDetail.total.otherTotal}</span>
+                <span>{gainsDetail.total.otherTotal}</span>
                 <br />
-                <span>大电网收益</span>
+                <span>
+                  <Translate id="producer.gains.header.largeProfit" />
+                </span>
               </li>
             </ul>
           </div>
         </div>
 
-        {this.injected.gainsDetail.list.map((item, index) => (
+        {gainsDetail.list.map((item, index) => (
           <div styleName="card" key={index}>
             <div styleName="card-top">
               <ul>
                 <li>
-                  <span>发电量</span>
+                  <span>
+                    <Translate id="producer.gains.card.output" />
+                  </span>
                   <br />
                   <span>{item.eletric}</span>
                 </li>
                 <li>
-                  <span>用户收益</span>
+                  <span>
+                    <Translate id="producer.gains.card.userProfit" />
+                  </span>
                   <br />
                   <span styleName="detailSpan">{item.userTotal}</span>
                 </li>
                 <li>
-                  <span>大电网收益</span>
+                  <span>
+                    <Translate id="producer.gains.card.largeProfit" />
+                  </span>
                   <br />
                   {item.otherTotal !== 0 && (
                     <span styleName="blue">{item.otherTotal}</span>
@@ -90,7 +105,10 @@ export default class extends Component {
                 </li>
               </ul>
             </div>
-            <p>发电时间 {startedDateTime(item.index)} </p>
+            <p>
+              <Translate id="producer.gains.card.time" />{' '}
+              {startedDateTime(item.index)}{' '}
+            </p>
           </div>
         ))}
       </div>

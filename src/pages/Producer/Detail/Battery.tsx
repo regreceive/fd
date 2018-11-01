@@ -25,17 +25,25 @@ const Battery = (prop: IProps) => {
       <DashBoard data={[]} />
       <div styleName="section">
         <div>
-          <h2>储能电站相关参数</h2>
+          <h2>
+            <Translate id="producer.home.detail.battery.title1" />
+          </h2>
           <dl>
-            <dt>发电量</dt>
+            <dt>
+              <Translate id="producer.home.detail.battery.output" />
+            </dt>
             <dd>{mutableData[0]} kW</dd>
           </dl>
           <dl>
-            <dt>剩余电量</dt>
+            <dt>
+              <Translate id="producer.home.detail.battery.rest" />
+            </dt>
             <dd>{mutableData[1]} kW</dd>
           </dl>
           <dl>
-            <dt>充电量</dt>
+            <dt>
+              <Translate id="producer.home.detail.battery.charge" />
+            </dt>
             <dd>{mutableData[2]} kW</dd>
           </dl>
         </div>
@@ -43,32 +51,52 @@ const Battery = (prop: IProps) => {
 
       <div styleName="section spacer">
         <div>
-          <h2>储能电站固定属性</h2>
+          <h2>
+            <Translate id="producer.home.detail.battery.title2" />
+          </h2>
           <dl>
-            <dt>发电容量(固定值)</dt>
+            <dt>
+              <Translate id="producer.home.detail.battery.generation" />
+            </dt>
             <dd>10 度</dd>
           </dl>
           <dl>
-            <dt>投资成本</dt>
-            <dd>{immutableData[0]} EDF/度</dd>
+            <dt>
+              <Translate id="producer.home.detail.battery.coast" />
+            </dt>
+            <dd>
+              <Translate id="edf-per-kw" data={{ edf: immutableData[0] }} />
+            </dd>
           </dl>
           <dl>
-            <dt>分时电价</dt>
-            <dd>{immutableData[1]} EDF/度</dd>
+            <dt>
+              <Translate id="producer.home.detail.battery.time" />
+            </dt>
+            <dd>
+              <Translate id="edf-per-kw" data={{ edf: immutableData[1] }} />
+            </dd>
           </dl>
         </div>
       </div>
 
       <div styleName="section spacer">
         <div>
-          <h2>当前储能情况</h2>
+          <h2>
+            <Translate id="producer.home.detail.battery.title3" />
+          </h2>
           <dl>
-            <dt>当前发电出力(变化植)</dt>
+            <dt>
+              <Translate id="producer.home.detail.battery.power" />
+            </dt>
             <dd>{mutableData[0]} kW</dd>
           </dl>
           <dl>
-            <dt>发电综合成本(变化值)</dt>
-            <dd>{immutableData[2]} EDF/度</dd>
+            <dt>
+              <Translate id="producer.home.detail.battery.genetateCoast" />
+            </dt>
+            <dd>
+              <Translate id="edf-per-kw" data={{ edf: immutableData[2] }} />
+            </dd>
           </dl>
         </div>
       </div>

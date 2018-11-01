@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Chart, Geom, Axis, Tooltip } from 'bizcharts';
+import { Translate } from 'react-localize-redux';
+
 import { IUser } from 'src/reducers/userReducer';
 
 interface IProps {
@@ -35,7 +37,9 @@ export default class DoubleChart extends Component<IProps> {
     const color1 = 'l (270) 0:#A6CCEA 1:#0057FF';
     return (
       <div>
-        <h2>电价/用电量</h2>
+        <h2>
+          <Translate id="producer.exchange.chart" />
+        </h2>
         <Chart
           height={300}
           data={exChart}

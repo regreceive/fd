@@ -57,21 +57,38 @@ export default class extends Component {
             <div styleName="card-top">
               <ul>
                 <li>
-                  <span>发电量</span>
+                  <span>
+                    <Translate id="producer.home.quote.output" />
+                  </span>
                   <span>{item.amount}</span>
                 </li>
                 <li>
-                  <span>用户收益</span>
+                  <span>
+                    <Translate id="producer.home.quote.profit" />
+                  </span>
                   <span>{item.earning}</span>
                 </li>
                 <li>
-                  <span>状态</span>
-                  {item.status === 0 && <span styleName="blue">待审核</span>}
-                  {item.status === 1 && <span styleName="lose">审核失败</span>}
+                  <span>
+                    <Translate id="producer.home.quote.status" />
+                  </span>
+                  {item.status === 0 && (
+                    <span styleName="blue">
+                      <Translate id="producer.home.quote.pending" />
+                    </span>
+                  )}
+                  {item.status === 1 && (
+                    <span styleName="lose">
+                      <Translate id="producer.home.quote.fail" />
+                    </span>
+                  )}
                 </li>
               </ul>
             </div>
-            <p>发电时间 {dateTimeFormat(item.time)}</p>
+            <p>
+              <Translate id="producer.home.quote.fail" />{' '}
+              {dateTimeFormat(item.time)}
+            </p>
           </div>
         ))}
       </div>
