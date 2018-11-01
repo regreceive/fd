@@ -59,9 +59,11 @@ export default class extends Component {
 
     return (
       <div styleName="container">
-        <h2>
-          <Translate id={'role.' + role.toLocaleLowerCase()} />
-        </h2>
+        <div styleName="banner">
+          <h2>
+            <Translate id={'role.' + role.toLocaleLowerCase()} />
+          </h2>
+        </div>
         <div styleName="section">
           <div>
             <div styleName="head-area">

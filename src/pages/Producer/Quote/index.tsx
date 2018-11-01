@@ -9,6 +9,7 @@ import { getQuotePrice } from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
 import { dateTimeFormat } from '../../../utils/timeFormat';
+
 import './index.css';
 
 interface IStateProps {
@@ -50,6 +51,7 @@ export default class extends Component {
         >
           <Translate id="historical-quote" />
         </NavBar>
+
         {this.injected.quotePrice.map((item, index) => (
           <div styleName="card" key={index}>
             <div styleName="card-top">

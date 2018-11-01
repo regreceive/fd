@@ -3,17 +3,31 @@
 .container {
   @extend %container;
   background: #fff;
+
   .electricity {
     color: #121314;
-    padding: 25px 0px 26px 20px;
+    padding: 20px 0 26px 20px;
   }
+
   .title {
     color: #4a4a4a;
     @extend %padding;
     font-size: 18px;
   }
-  h2 {
-    text-align: center;
+
+  .banner {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    background: #f96268;
+    vertical-align: middle;
+
+    h2 {
+      margin: auto;
+      color: #fff;
+    }
   }
 }
 

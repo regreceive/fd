@@ -65,7 +65,7 @@ export default class extends Component {
             </ul>
           </div>
         </div>
-        <div styleName="detail">收益明细</div>
+
         {this.injected.gainsDetail.list.map((item, index) => (
           <div styleName="card" key={index}>
             <div styleName="card-top">
