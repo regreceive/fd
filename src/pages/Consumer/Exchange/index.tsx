@@ -148,7 +148,6 @@ export default class extends Component<{}, IState> {
             </DatePicker>
           </List>
         )}
-        <div styleName="empty" />
         <DetailInfo currentCoast={currentCoast} />
       </div>
     );

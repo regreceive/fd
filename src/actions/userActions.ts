@@ -288,3 +288,20 @@ export function checkComplete(data: ICheckResponse) {
     payload: data,
   };
 }
+
+export function getDashBoardData() {
+  return {
+    type: 'GET_DASHBOARD_DATA',
+  };
+}
+
+export interface IDashBoardResponse extends IResponseSchema {
+  data: IUser['dashBoard'];
+}
+
+export function dashBoardComplete(data: IDashBoardResponse) {
+  return {
+    type: 'DASHBOARD_COMPLETE',
+    payload: data,
+  };
+}
