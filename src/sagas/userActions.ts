@@ -26,6 +26,7 @@ import {
   postTimeComplete,
   IGainsDetailResponse,
   ICheckResponse,
+  dashBoardComplete,
 } from '../actions/userActions';
 import { realTimeImmutableData, realTimeMutableData } from '../pages/data';
 
@@ -339,6 +340,17 @@ function* getExchangeForm() {
   }
 }
 
+function* getDashBoardData() {
+  try {
+    const response = yield call(request, '/api/dashboard', 'include');
+
+    const json = yield call([response, 'json']);
+    yield put(dashBoardComplete(json));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export function* watchUser() {
   yield takeEvery('LOGIN', login);
   yield takeEvery('LOGOUT', logout);
@@ -355,4 +367,5 @@ export function* watchUser() {
   yield takeEvery('GET_ELECTRIC_EX_CHART', getElectricEXChart);
   yield takeEvery('GET_EXCAHNGE_FORM', getExchangeForm);
   yield takeEvery('GET_CHECK', getCheck);
+  yield takeEvery('GET_DASHBOARD_DATA', getDashBoardData);
 }

@@ -11,6 +11,7 @@ import { RouteComponentProps } from 'react-router';
 interface IStateProps {
   role: IUser['role'];
 }
+
 const mapStateMapProps = (state: IStoreState): IStateProps => ({
   role: state.user.role,
 });

@@ -1,17 +1,18 @@
 import React from 'react';
+
 import { IUser } from '../../../reducers/userReducer';
 import { realTimeImmutableData, realTimeMutableData } from '../../data';
-import DashBoard from './DashBoard';
+import DashBoard from '../Home/Charts/DashBoard';
 import { Icon, NavBar } from 'antd-mobile';
 import { Translate } from 'react-localize-redux';
 import './index.css';
 
-interface IStateProps {
+interface IProps {
   role: IUser['role'];
   goBack: () => void;
 }
 
-const Battery = (prop: IStateProps) => {
+const Battery = (prop: IProps) => {
   const { role, goBack } = prop;
   const mutableData = realTimeMutableData(role);
   const immutableData = realTimeImmutableData(role);
@@ -21,7 +22,7 @@ const Battery = (prop: IStateProps) => {
       <NavBar mode="light" icon={<Icon type="left" />} onLeftClick={goBack}>
         <Translate id="battery" />
       </NavBar>
-      <DashBoard />
+      <DashBoard data={[]} />
       <div styleName="section">
         <div>
           <h2>储能电站相关参数</h2>

@@ -33,5 +33,7 @@ router.get('api/eletric/chart', api.getChartData);
 router.get('api/eletric/ex/chart', api.exChart);
 // 电力交易报表
 router.get('producer/exchangeFrom', api.exchangeForm);
+//储能电站仪表显示
+router.get('api/dashboard', api.dashBoardData);
 
 module.exports = router;

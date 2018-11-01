@@ -14,6 +14,7 @@ import {
   IExchangeFormResponse,
   ICheckResponse,
   IPostOfferComplete,
+  IDashBoardResponse,
 } from '../actions/userActions';
 
 export interface IUser {
@@ -121,6 +122,10 @@ export interface IUser {
       price: number;
     }>;
   };
+  dashBoard: {
+    percent: string;
+    total: string;
+  };
 }
 
 const lang = process.env.REACT_APP_DEFAULT_LANGUAGE || 'en';
@@ -189,6 +194,10 @@ const initState: IUser = {
       price: 0,
     },
     list: [],
+  },
+  dashBoard: {
+    percent: '',
+    total: '',
   },
 };
 
@@ -259,6 +268,10 @@ const user = (state = initState, action: IAction): IUser => {
     case 'POST_OFFER_COMPLETE': {
       const { data } = action.payload as IPostOfferComplete;
       return { ...state, offer: data };
+    }
+    case 'DASHBOARD_COMPLETE': {
+      const { data } = action.payload as IDashBoardResponse;
+      return { ...state, dashBoard: data };
     }
     default:
       return state;

@@ -342,3 +342,16 @@ exports.exchangeForm = async ctx => {
     ],
   };
 };
+
+exports.dashBoardData = async ctx => {
+  await sleep();
+  ctx.body = {
+    status: 'ok',
+    token: '123',
+    toast: '',
+    data: {
+      percent: '33%',
+      total:56776
+    }
+  }
+}

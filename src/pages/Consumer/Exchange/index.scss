@@ -13,15 +13,12 @@
     @extend %padding;
   }
 
-  .empty {
-    background: #f6f6f6;
-    height: 20px;
-  }
-
   :global {
-    .am-navbar-left {
+    .am-navbar-left,
+    .am-navbar-right {
       p {
         color: #737b91;
+        font-size: 14px;
       }
     }
   }
@@ -29,7 +26,7 @@
 
 .section {
   @extend %section;
-
+  border-top: 20px solid #f6f6f6;
   > div > div {
     &:first-child {
       border-bottom: 1px solid #f4f6f8;

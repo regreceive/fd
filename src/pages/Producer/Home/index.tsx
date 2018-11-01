@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 });
 
 interface IAsync {
-  data: any;
+  data: object[];
 }
 
 const asyncChart = (role: string) =>
