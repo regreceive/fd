@@ -43,9 +43,11 @@ export default class extends Component<IProps, {}> {
   get injected() {
     return this.props as IStateProps & IDispatchToState & IProps;
   }
+
   public componentDidMount() {
     this.injected.getDashBoardData();
   }
+
   public render() {
     const cols = { type: { range: [0, 1] }, value: { sync: true } };
     const { dashBoard } = this.injected;
@@ -84,10 +86,6 @@ export default class extends Component<IProps, {}> {
                   textBaseline: 'middle',
                 }}
               />
-            </Guide>
-          </View>
-          <View>
-            <Guide>
               <Text
                 position={['50%', '65%']}
                 content={dashBoard.max}

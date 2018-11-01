@@ -67,7 +67,7 @@ export default class Layout extends React.Component {
       options: { renderToStaticMarkup, defaultLanguage: this.injected.lang },
     });
 
-    // this.initLanguage(this.injected.lang);
+    this.initLanguage(this.injected.lang);
 
     // 统一入口是启动页
     if (splashEnable) {
