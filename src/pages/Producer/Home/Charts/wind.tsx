@@ -1,11 +1,13 @@
 import React from 'react';
 import { Axis, Chart, Geom, Legend, Tooltip } from 'bizcharts';
-
-interface IProps {
+import convert from '../../../../utils/convert';
+import { LocalizeContextProps, withLocalize } from 'react-localize-redux';
+interface IProps extends LocalizeContextProps {
   data: object[];
 }
 
 const Curved = (props: IProps) => {
+  const translate = convert(props.translate);
   const scale = {
     time: {
       ticks: [
@@ -20,6 +22,12 @@ const Curved = (props: IProps) => {
       ].slice(0, Math.ceil(new Date().getHours() / 3)),
       tickCount: 8,
     },
+    Output: {
+      alias: translate('Output'),
+    },
+    Speed: {
+      alias: translate('Speed'),
+    },
   };
   const bg = {
     fill: '#fff',
@@ -33,7 +41,7 @@ const Curved = (props: IProps) => {
       background={bg}
       padding={[40, 20, 90, 20]}
     >
-      <Legend />
+      <Legend itemFormatter={translate} />
       <Axis name="time" />
       <Axis name="Output" visible={false} />
       <Axis name="Speed" visible={false} />
@@ -69,4 +77,4 @@ const Curved = (props: IProps) => {
   );
 };
 
-export default Curved;
+export default withLocalize(Curved);

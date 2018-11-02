@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Chart, Geom, Axis, Tooltip } from 'bizcharts';
-import { Translate } from 'react-localize-redux';
+import convert from '../../../utils/convert';
+import {
+  LocalizeContextProps,
+  withLocalize,
+  Translate,
+} from 'react-localize-redux';
 
 import { IUser } from 'src/reducers/userReducer';
 
@@ -8,17 +13,14 @@ interface IProps {
   exChart: IUser['exChart'];
 }
 
+@(withLocalize as any)
 export default class DoubleChart extends Component<IProps> {
+  get injected() {
+    return this.props as IProps & LocalizeContextProps;
+  }
   public render() {
     const { exChart } = this.props;
-
-    // const grid = {
-    //   lineStyle: {
-    //     stroke: '#E5E5E5',
-    //     lineDash: [4, 4],
-    //     lineWidth: 1,
-    //   },
-    // };
+    const translate = convert(this.injected.translate);
     const scale = {
       index: {
         ticks: [
@@ -33,8 +35,14 @@ export default class DoubleChart extends Component<IProps> {
         ],
         tickCount: 8,
       },
+      price: {
+        alias: translate('price'),
+      },
+      eletric: {
+        alias: translate('eletric'),
+      },
     };
-    const color1 = 'l (270) 0:#A6CCEA 1:#0057FF';
+    // const color1 = 'l (270) 0:#A6CCEA 1:#0057FF';
     return (
       <div>
         <h2>
@@ -54,13 +62,7 @@ export default class DoubleChart extends Component<IProps> {
           <Geom
             type="interval"
             position="index*eletric"
-            color={['index', [color1]]}
-            tooltip={[
-              'index*eletric',
-              (index, eletric) => {
-                return { name: 'electric', value: eletric };
-              },
-            ]}
+            color="#0057FF"
             size={5}
           />
           <Geom
