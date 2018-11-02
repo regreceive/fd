@@ -56,18 +56,25 @@ export default class extends Component {
             <div styleName="card-top">
               <ul>
                 <li>
-                  <span>发电量</span>
+                  <span>
+                    <Translate id="producer.exchange.form.output" />
+                  </span>
                   <br />
                   <span>{item.amount}</span>
                 </li>
                 <li>
-                  <span>电价(元/度)</span>
+                  <span>
+                    <Translate id="producer.exchange.form.price" />
+                  </span>
                   <br />
                   <span>{item.earning}</span>
                 </li>
               </ul>
             </div>
-            <p>用电时间段 {dateTimeFormat(item.time)} </p>
+            <p>
+              <Translate id="producer.exchange.form.time" />{' '}
+              {dateTimeFormat(item.time)}{' '}
+            </p>
           </div>
         ))}
       </div>

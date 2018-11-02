@@ -67,22 +67,32 @@ export default class extends Component {
         <div styleName="section">
           <div>
             <div styleName="head-area">
-              <h2>当前电价组成</h2>
+              <h2>
+                <Translate id="consumer.home.title1" />
+              </h2>
               <a onClick={this.linkHandle}>
                 <Translate id="more" />
               </a>
             </div>
             <dl>
-              <dt>今日用电总量</dt>
+              <dt>
+                <Translate id="consumer.home.total" />
+              </dt>
               <dd>0 度</dd>
             </dl>
             <dl>
-              <dt>当前用电价</dt>
+              <dt>
+                <Translate id="consumer.home.current" />
+              </dt>
               <dd>1 EDF/度</dd>
             </dl>
             <dl>
-              <dt>当前大电网电价</dt>
-              <dd>{realTimePrice()} EDF/度</dd>
+              <dt>
+                <Translate id="consumer.home.large" />
+              </dt>
+              <dd>
+                <Translate id="edf-per-kw" data={{ edf: realTimePrice() }} />
+              </dd>
             </dl>
           </div>
         </div>
@@ -90,21 +100,29 @@ export default class extends Component {
         <div styleName="section spacer">
           <div>
             <div styleName="head-area">
-              <h2 styleName="spacer">我的账单</h2>
+              <h2 styleName="spacer">
+                <Translate id="consumer.home.title2" />
+              </h2>
               <Link to="/consumer/check">
                 <Translate id="bill-detail" />
               </Link>
             </div>
             <dl>
-              <dt>当前已用电量</dt>
+              <dt>
+                <Translate id="consumer.home.used" />
+              </dt>
               <dd>{this.injected.eletric} 度</dd>
             </dl>
             <dl>
-              <dt>用电花费</dt>
+              <dt>
+                <Translate id="consumer.home.coast" />
+              </dt>
               <dd>{this.injected.price} EDF</dd>
             </dl>
             <dl>
-              <dt>已省</dt>
+              <dt>
+                <Translate id="consumer.home.save" />
+              </dt>
               <dd>1000 EDF</dd>
             </dl>
           </div>

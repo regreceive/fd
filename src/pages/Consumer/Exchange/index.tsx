@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import {
+  LocalizeContextProps,
+  withLocalize,
+  Translate,
+} from 'react-localize-redux';
 import { List, DatePicker, InputItem, NavBar } from 'antd-mobile';
 import { getCurrentCoast, postTime } from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
@@ -43,6 +48,7 @@ function calculateTo(begin: Date) {
   return date;
 }
 
+@(withLocalize as any)
 @(connect(
   mapStateToProps,
   mapDispatchToProps,
@@ -64,7 +70,10 @@ export default class extends Component<{}, IState> {
     };
   }
   get injected() {
-    return this.props as IStateProps & IDispatchProps & IState;
+    return this.props as IStateProps &
+      IDispatchProps &
+      IState &
+      LocalizeContextProps;
   }
 
   public componentDidMount() {
@@ -119,10 +128,20 @@ export default class extends Component<{}, IState> {
       <div styleName="container">
         <NavBar
           mode="light"
-          leftContent={<p onClick={this.cancel}>{isEdit === true && '取消'}</p>}
-          rightContent={<p onClick={this.edit}>{isEdit ? '保存' : '编辑'}</p>}
+          leftContent={
+            <p onClick={this.cancel}>
+              {isEdit === true && this.injected.translate('cancel')}
+            </p>
+          }
+          rightContent={
+            <p onClick={this.edit}>
+              {isEdit
+                ? this.injected.translate('save')
+                : this.injected.translate('edit')}
+            </p>
+          }
         >
-          电力模拟
+          <Translate id="consumer.exchange.title" />
         </NavBar>
         <DoubleChart currentCoast={currentCoast} />
         {isEdit === true && (
@@ -134,7 +153,9 @@ export default class extends Component<{}, IState> {
               minDate={fromDateMin}
               maxDate={dateMax}
             >
-              <List.Item arrow="horizontal">把</List.Item>
+              <List.Item arrow="horizontal">
+                <Translate id="consumer.exchange.from" />
+              </List.Item>
             </DatePicker>
             <InputItem extra="度" onChange={this.changePower} />
             <DatePicker
@@ -144,7 +165,9 @@ export default class extends Component<{}, IState> {
               minDate={toDateMin}
               maxDate={dateMax}
             >
-              <List.Item arrow="horizontal">调整到</List.Item>
+              <List.Item arrow="horizontal">
+                <Translate id="consumer.exchange.to" />
+              </List.Item>
             </DatePicker>
           </List>
         )}
