@@ -25,6 +25,7 @@ interface IProps {
   isLogin: boolean;
   side: IUser['side'];
   role: IUser['role'];
+  lang: IUser['config']['lang'];
   toast: IGlobal['toast'];
   clearToast: typeof clearToast;
 }
@@ -52,7 +53,8 @@ export default class LayoutView extends React.Component<IProps> {
     return (
       nextProps.side !== this.props.side ||
       nextProps.role !== this.props.role ||
-      nextProps.isLogin !== this.props.isLogin
+      nextProps.isLogin !== this.props.isLogin ||
+      nextProps.lang !== this.props.lang
     );
   }
 

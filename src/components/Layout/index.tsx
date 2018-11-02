@@ -84,7 +84,8 @@ export default class Layout extends React.Component {
       nextProps.side !== this.injected.side ||
       nextProps.role !== this.injected.role ||
       nextProps.isLogin !== this.injected.isLogin ||
-      nextProps.toast !== this.injected.toast
+      nextProps.toast !== this.injected.toast ||
+      nextProps.lang !== this.injected.lang
     );
   }
 
@@ -97,13 +98,15 @@ export default class Layout extends React.Component {
   }
 
   public render() {
+    const langData = this.injected.lang === 'en' ? enUS : {};
     return (
-      <LocaleProvider locale={enUS}>
+      <LocaleProvider locale={langData}>
         <LayoutView
           isLogin={this.injected.isLogin}
           side={this.injected.side}
           role={this.injected.role}
           toast={this.injected.toast}
+          lang={this.injected.lang}
           clearToast={this.injected.clearToast}
         />
       </LocaleProvider>
