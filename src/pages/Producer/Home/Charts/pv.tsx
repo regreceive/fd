@@ -8,6 +8,7 @@ interface IProps extends LocalizeContextProps {
 }
 
 const Curved = (props: IProps) => {
+  const translate = convert(props.translate);
   const scale = {
     time: {
       ticks: [
@@ -22,6 +23,18 @@ const Curved = (props: IProps) => {
       ].slice(0, Math.ceil(new Date().getHours() / 3)),
       tickCount: 8,
     },
+    Output: {
+      alias: translate('Output'),
+    },
+    Direct: {
+      alias: translate('Direct'),
+    },
+    Diffuse: {
+      alias: translate('Diffuse'),
+    },
+    Temperature: {
+      alias: translate('Temperature'),
+    },
   };
   const bg = {
     fill: '#fff',
@@ -35,7 +48,7 @@ const Curved = (props: IProps) => {
       background={bg}
       padding={[40, 20, 90, 20]}
     >
-      <Legend itemFormatter={convert(props.translate)} />
+      <Legend itemFormatter={translate} />
       <Axis name="time" />
       <Axis name="Output" visible={false} />
       <Axis name="Direct" visible={false} />
