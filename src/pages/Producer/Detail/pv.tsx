@@ -70,7 +70,9 @@ const Photovoltaic = (prop: IStateProps) => {
             <dt>
               <Translate id="producer.home.detail.pv.generation" />
             </dt>
-            <dd>10 度</dd>
+            <dd>
+              <Translate id="kw" data={{ kw: `${10}` }} />
+            </dd>
           </dl>
           <dl>
             <dt>
