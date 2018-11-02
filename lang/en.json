@@ -12,6 +12,8 @@
   "hello": "您好！",
   "ok": "确定",
   "cancel": "取消",
+  "edit":"编辑",
+  "save":"保存",
   "exit": "退出",
   "select": "Choose",
   "more": "更多",
@@ -168,7 +170,12 @@
     "exchange": {
       "title": "电力交易",
       "report": "报表",
-      "chart": "电价/用电量"
+      "chart": "电价/用电量",
+      "form": {
+        "output":"发电量",
+        "price": "电价(元/度)",
+        "time": "用电时间段"
+      }
     },
     "gains": {
       "title": "收益明细",
@@ -184,6 +191,45 @@
         "largeProfit": "大电网收益",
         "time": "发电时间"
       }
+    }
+  },
+
+  "consumer": {
+    "home": {
+      "title1": "当前电价组成",
+      "total": "今日用电总量",
+      "current": "当前用电价",
+      "large": "当前大电网电价",
+      "title2": "我的账单",
+      "used": "当前已用电量",
+      "coast": "用电花费",
+      "save":"已省",
+      "chart": {
+        "title": "当前电价组成",
+        "use": "当前用电价",
+        "comprise":"电力组成"
+      },
+      "check": {
+        "output": "用电量/KW",
+        "total": "总费用/EDF",
+        "time":"用电时间段",
+        "bill": {
+          "detail": "账单详情",
+          "output": "用电量/KW",
+          "total": "总费用/EDF",
+          "time": "用电时间段"
+        }
+      }
+    },
+    "exchange": {
+      "detail": {
+        "current": "截止到当前时刻",
+        "before": "调整前用电花费",
+        "after": "调整后用电花费"
+      },
+      "title": "电力模拟",
+      "from":"把",
+      "to":"调整到"
     }
   },
 

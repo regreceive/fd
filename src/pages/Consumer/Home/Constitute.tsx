@@ -3,7 +3,8 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { Icon, NavBar } from 'antd-mobile';
-// import { Translate } from 'react-localize-redux';
+import { Translate } from 'react-localize-redux';
+
 import { IUser } from '../../../reducers/userReducer';
 import { getPriceConstitute } from '../../../actions/userActions';
 import { IStoreState } from '../../../types';
@@ -66,13 +67,18 @@ export default class extends Component<{}, IState> {
           icon={<Icon type="left" />}
           onLeftClick={this.injected.history.goBack}
         >
-          当前电价组成
+          <Translate id="consumer.home.chart.title" />
         </NavBar>
         <div styleName="electricity">
-          当前用电价:
-          {priceConstitute.total.price} EDF/度
+          <Translate id="consumer.home.chart.use" />:
+          <Translate
+            id="edf-per-kw"
+            data={{ edf: priceConstitute.total.price }}
+          />
         </div>
-        <h2 styleName="title">电力组成</h2>
+        <h2 styleName="title">
+          <Translate id="consumer.home.chart.comprise" />
+        </h2>
         <Chart
           height={400}
           data={priceConstitute.data}

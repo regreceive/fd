@@ -63,22 +63,37 @@ export default class extends Component {
         <div styleName="overview">
           <div styleName="row">
             <div styleName="column">
-              <span>用电量/KW</span>
+              <span>
+                <Translate id="consumer.home.check.output" />
+              </span>
               <span>{this.injected.checkDetail.total.eletric}</span>
             </div>
             <div styleName="column">
-              <span>总费用/EDF</span>
+              <span>
+                <Translate id="consumer.home.check.total" />
+              </span>
               <span>{this.injected.checkDetail.total.price}</span>
             </div>
           </div>
-          <p>用电时间段 {dateTimeScope()}</p>
+          <p>
+            <Translate id="consumer.home.check.time" /> {dateTimeScope()}
+          </p>
         </div>
 
         <div styleName="detail">
-          <h2>账单详情</h2>
+          <h2>
+            <Translate id="consumer.home.check.bill.detail" />
+          </h2>
           <div styleName="header">
-            <span>用电量/KW</span> <span>总费用/EDF</span>{' '}
-            <span styleName="fixed">用电时间段</span>
+            <span>
+              <Translate id="consumer.home.check.bill.output" />
+            </span>{' '}
+            <span>
+              <Translate id="consumer.home.check.bill.total" />
+            </span>{' '}
+            <span styleName="fixed">
+              <Translate id="consumer.home.check.bill.time" />
+            </span>
           </div>
           {this.injected.checkDetail.list.map(item => (
             <div styleName="list" key={item.uid}>
