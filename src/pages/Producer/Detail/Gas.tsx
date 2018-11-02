@@ -75,19 +75,23 @@ const Gas = (prop: IProps) => {
             <dt>
               <Translate id="producer.home.detail.gas.generation" />
             </dt>
-            <dd>10 度</dd>
+            <dd>
+              <Translate id="kw" data={{ kw: `${10}` }} />
+            </dd>
           </dl>
           <dl>
             <dt>
               <Translate id="producer.home.detail.gas.coast" />
             </dt>
-            <dd>{immutableData[0]} EDF/度</dd>
+            <dd>
+              <Translate id="edf-per-kw" data={{ edf: immutableData[0] }} />
+            </dd>
           </dl>
           <dl>
             <dt>
               <Translate id="producer.home.detail.gas.fuel" />
             </dt>
-            <dd>{immutableData[1]} EDF/度</dd>
+            <Translate id="edf-per-kw" data={{ edf: immutableData[1] }} />
           </dl>
         </div>
       </div>
