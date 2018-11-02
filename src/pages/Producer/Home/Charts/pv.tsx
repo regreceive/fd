@@ -1,7 +1,9 @@
 import React from 'react';
+import { LocalizeContextProps, withLocalize } from 'react-localize-redux';
 import { Axis, Chart, Geom, Legend, Tooltip } from 'bizcharts';
+import convert from '../../../../utils/convert';
 
-interface IProps {
+interface IProps extends LocalizeContextProps {
   data: object[];
 }
 
@@ -33,7 +35,7 @@ const Curved = (props: IProps) => {
       background={bg}
       padding={[40, 20, 90, 20]}
     >
-      <Legend />
+      <Legend itemFormatter={convert(props.translate)} />
       <Axis name="time" />
       <Axis name="Output" visible={false} />
       <Axis name="Direct" visible={false} />
@@ -89,4 +91,4 @@ const Curved = (props: IProps) => {
   );
 };
 
-export default Curved;
+export default withLocalize(Curved);

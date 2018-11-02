@@ -117,13 +117,13 @@ export default class extends React.Component<{}, IState> {
               onChange={this.priceChangeHandle}
             />
           </dl>
-          <dl styleName="no-border">
-            <dt>
-              <a>
-                <Translate id="producer.home.offer.quotedPrice" />
-              </a>
-            </dt>
-          </dl>
+          {/*<dl styleName="no-border">*/}
+          {/*<dt>*/}
+          {/*<a>*/}
+          {/*<Translate id="producer.home.offer.quotedPrice" />*/}
+          {/*</a>*/}
+          {/*</dt>*/}
+          {/*</dl>*/}
         </div>
         <Button
           type="ghost"

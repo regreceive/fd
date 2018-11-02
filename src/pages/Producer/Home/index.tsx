@@ -61,8 +61,14 @@ const asyncChart = (role: string) =>
   mapDispatchToProps,
 ) as any)
 export default class extends Component {
+  private chart: React.ComponentType<IAsync>;
+
   get injected() {
     return this.props as IStateProps & IDispatchToState;
+  }
+
+  public componentWillMount() {
+    this.chart = asyncChart(this.injected.role);
   }
 
   public componentDidMount() {
@@ -70,7 +76,7 @@ export default class extends Component {
   }
 
   public render() {
-    const AsyncChart = asyncChart(this.injected.role);
+    const AsyncChart = this.chart;
     const { role, currentState, earns } = this.injected;
     const data = getChartsData(role);
     return (

@@ -250,5 +250,12 @@
       "ok": "确定",
       "cancel": "取消"
     }
+  },
+
+  "param": {
+    "Output": "Output",
+    "Direct": "Direct",
+    "Diffuse": "Diffuse",
+    "Temperature": "Temperature"
   }
 }
