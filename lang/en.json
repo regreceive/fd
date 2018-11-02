@@ -256,6 +256,12 @@
     "Output": "Output",
     "Direct": "Direct",
     "Diffuse": "Diffuse",
-    "Temperature": "Temperature"
+    "Temperature": "Temperature",
+    "ColdLoad": "ColdLoad",
+    "ThermalLoad": "ThermalLoad",
+    "Speed": "Speed",
+    "price": "price",
+    "eletric": "eletric",
+    "actual": "actual"
   }
 }
