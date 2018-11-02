@@ -8,7 +8,7 @@ import { Translate } from 'react-localize-redux';
 import { IUser } from '../../../reducers/userReducer';
 import { getPriceConstitute } from '../../../actions/userActions';
 import { IStoreState } from '../../../types';
-import { Chart, Geom, Axis, Tooltip, Coord, Legend, Guide } from 'bizcharts';
+import { Chart, Geom, Axis, Coord, Legend, Guide } from 'bizcharts';
 
 import './index.css';
 
@@ -45,7 +45,7 @@ export default class extends Component<{}, IState> {
     if (ev.data) {
       this.setState({
         name: ev.data._origin.item,
-        count: ev.data._origin.count * 100,
+        count: ev.data._origin.percent * 100,
       });
     }
   };
@@ -97,12 +97,12 @@ export default class extends Component<{}, IState> {
               fontSize: '12',
             }}
           />
-          <Tooltip
+          {/* <Tooltip
             showTitle={false}
             itemTpl="<li>
             <span style=&quot;background-color:{color};&quot; class=&quot;g2-tooltip-marker&quot;></span>{name}: {value}
             </li>"
-          />
+          /> */}
           <Guide>
             <Html
               position={['50%', '50%']}
@@ -123,16 +123,6 @@ export default class extends Component<{}, IState> {
             color={[
               'item',
               ['#8EF003', '#FCE301', '#FF4E51', '#5688FE', '#FFAA36'],
-            ]}
-            tooltip={[
-              'item*percent',
-              (item, percent) => {
-                percent = percent * 100 + '%';
-                return {
-                  name: item,
-                  value: percent,
-                };
-              },
             ]}
             style={{
               lineWidth: 1,
