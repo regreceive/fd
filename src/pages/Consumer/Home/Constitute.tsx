@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
+import {
+  Translate,
+  LocalizeContextProps,
+  withLocalize,
+  TranslateFunction,
+} from 'react-localize-redux';
 import { Icon, NavBar } from 'antd-mobile';
-import { Translate } from 'react-localize-redux';
 
 import { IUser } from '../../../reducers/userReducer';
 import { getPriceConstitute } from '../../../actions/userActions';
@@ -21,11 +26,6 @@ interface IDispatchProps {
   getPriceConstitute: typeof getPriceConstitute;
 }
 
-interface IState {
-  name: string;
-  count: number;
-}
-
 const mapStateToProps = (state: IStoreState): IStateProps => ({
   role: state.user.role,
   priceConstitute: state.user.priceConstitute,
@@ -35,28 +35,26 @@ const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   getPriceConstitute: () => dispatch(getPriceConstitute()),
 });
 
+const convert = (translate: TranslateFunction) => (val: string) =>
+  translate('role.' + val.toLowerCase()) as string;
+
+@(withLocalize as any)
 @(connect(
   mapStateToProps,
   mapDispatchToProps,
 ) as any)
-export default class extends Component<{}, IState> {
-  public state = { name: '', count: 0 };
-  public change = (ev: any) => {
-    if (ev.data) {
-      this.setState({
-        name: ev.data._origin.item,
-        count: ev.data._origin.percent * 100,
-      });
-    }
-  };
-
+export default class extends Component {
   get injected() {
-    return this.props as IStateProps & IDispatchProps & RouteComponentProps;
+    return this.props as IStateProps &
+      IDispatchProps &
+      RouteComponentProps &
+      LocalizeContextProps;
   }
 
   public componentDidMount() {
     this.injected.getPriceConstitute();
   }
+
   public render() {
     const { Html } = Guide;
     const { priceConstitute } = this.injected;
@@ -79,38 +77,19 @@ export default class extends Component<{}, IState> {
         <h2 styleName="title">
           <Translate id="consumer.home.chart.comprise" />
         </h2>
-        <Chart
-          height={400}
-          data={priceConstitute.list}
-          // scale={cols}
-          padding="auto"
-          forceFit
-          onPlotClick={this.change}
-        >
-          <Coord type={'theta'} radius={0.75} innerRadius={0.6} />
+
+        <Chart height={400} data={priceConstitute.list} padding="auto" forceFit>
+          <Coord type="theta" radius={0.75} innerRadius={0.6} />
           <Axis name="percent" />
-          <Legend
-            position="bottom"
-            itemGap={24}
-            textStyle={{
-              fill: '#121314',
-              fontSize: '12',
-            }}
-          />
-          {/* <Tooltip
-            showTitle={false}
-            itemTpl="<li>
-            <span style=&quot;background-color:{color};&quot; class=&quot;g2-tooltip-marker&quot;></span>{name}: {value}
-            </li>"
-          /> */}
+          <Legend itemFormatter={convert(this.injected.translate)} />
           <Guide>
             <Html
               position={['50%', '50%']}
               html={
                 '<div style=color:#8c8c8c;font-size:1.16em;text-align:center;width:10em;>' +
-                this.state.name +
+                '用电量' +
                 '<br><span style=color:#262626;font-size:2.5em>' +
-                this.state.count +
+                this.injected.priceConstitute.statistics.eletric +
                 '</span >%</div>'
               }
               alignX="middle"

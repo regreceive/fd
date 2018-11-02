@@ -191,6 +191,7 @@ exports.priceConstitute = async ctx => {
     data: {
       SCHOOL: { price: 10, eletric: 10, settle: 100 },
       FACTORY: { price: 10, eletric: 10, settle: 100 },
+      MALL: { price: 10, eletric: 10, settle: 100 },
     },
   };
 };
