@@ -66,12 +66,14 @@ export interface IUser {
     time: number;
   }>;
   priceConstitute: {
-    total: {
-      price: number;
+    statistics: {
+      unitPrice: number;
+      eletric: number;
+      settle: number;
     };
-    data: Array<{
+    list: Array<{
       item: string;
-      count: number;
+      percent: number;
     }>;
   };
   config: {
@@ -152,10 +154,12 @@ const initState: IUser = {
   },
   quotePrice: [],
   priceConstitute: {
-    total: {
-      price: 0,
+    statistics: {
+      unitPrice: 0,
+      eletric: 0,
+      settle: 0,
     },
-    data: [],
+    list: [],
   },
   gainsDetail: {
     total: {

@@ -73,7 +73,7 @@ export default class extends Component<{}, IState> {
           <Translate id="consumer.home.chart.use" />:
           <Translate
             id="edf-per-kw"
-            data={{ edf: priceConstitute.total.price }}
+            data={{ edf: priceConstitute.statistics.unitPrice }}
           />
         </div>
         <h2 styleName="title">
@@ -81,7 +81,7 @@ export default class extends Component<{}, IState> {
         </h2>
         <Chart
           height={400}
-          data={priceConstitute.data}
+          data={priceConstitute.list}
           // scale={cols}
           padding="auto"
           forceFit
@@ -119,13 +119,13 @@ export default class extends Component<{}, IState> {
           </Guide>
           <Geom
             type="intervalStack"
-            position="count"
+            position="percent"
             color={[
               'item',
               ['#8EF003', '#FCE301', '#FF4E51', '#5688FE', '#FFAA36'],
             ]}
             tooltip={[
-              'item*count',
+              'item*percent',
               (item, percent) => {
                 percent = percent * 100 + '%';
                 return {

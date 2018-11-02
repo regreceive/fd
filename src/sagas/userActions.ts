@@ -317,13 +317,17 @@ function* getPriceConstitute() {
       { eletric: 0, settle: 0 },
     );
 
-    const list = Object.keys(json.data).map(value => {
-      return { item: value, count: json.data[value].eletric / sum.eletric };
-    });
+    const list = Object.keys(json.data).map(value => ({
+      item: value,
+      percent: Math.floor((json.data[value].eletric / sum.eletric) * 100) / 100,
+    }));
 
-    const total = { price: sum.eletric / sum.settle };
+    const unitPrice = sum.settle / sum.eletric;
     yield put(
-      priceConstituteComplete({ ...json, data: { data: list, total } }),
+      priceConstituteComplete({
+        ...json,
+        data: { list, statistics: { unitPrice, ...sum } },
+      }),
     );
   } catch (e) {
     console.log(e);
