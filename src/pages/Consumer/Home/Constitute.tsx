@@ -13,7 +13,7 @@ import { Icon, NavBar } from 'antd-mobile';
 import { IUser } from '../../../reducers/userReducer';
 import { getPriceConstitute } from '../../../actions/userActions';
 import { IStoreState } from '../../../types';
-import { Chart, Geom, Axis, Coord, Legend, Guide } from 'bizcharts';
+import { Chart, Geom, Axis, Coord, Legend, Guide, Tooltip } from 'bizcharts';
 
 import './index.css';
 
@@ -58,6 +58,8 @@ export default class extends Component {
   public render() {
     const { Html } = Guide;
     const { priceConstitute } = this.injected;
+    const translate = convert(this.injected.translate);
+    console.log(priceConstitute);
     return (
       <div styleName="container">
         <NavBar
@@ -81,16 +83,17 @@ export default class extends Component {
         <Chart height={400} data={priceConstitute.list} padding="auto" forceFit>
           <Coord type="theta" radius={0.75} innerRadius={0.6} />
           <Axis name="percent" />
-          <Legend itemFormatter={convert(this.injected.translate)} />
+          <Legend itemFormatter={translate} />
+          <Tooltip showTitle={false} />
           <Guide>
             <Html
               position={['50%', '50%']}
               html={
                 '<div style=color:#8c8c8c;font-size:1.16em;text-align:center;width:10em;>' +
-                '用电量' +
+                this.injected.translate('totalCoast') +
                 '<br><span style=color:#262626;font-size:2.5em>' +
-                this.injected.priceConstitute.statistics.eletric +
-                '</span >%</div>'
+                this.injected.priceConstitute.statistics.settle +
+                '</span ></div>'
               }
               alignX="middle"
               alignY="middle"
@@ -107,6 +110,16 @@ export default class extends Component {
               lineWidth: 1,
               stroke: '#fff',
             }}
+            tooltip={[
+              'item*percent',
+              (item, percent) => {
+                percent = percent * 100 + '%';
+                return {
+                  name: translate(item),
+                  value: percent,
+                };
+              },
+            ]}
           />
         </Chart>
       </div>

@@ -27,6 +27,7 @@
   "sun": "光伏电站状态",
   "battery": "储能电站状态",
   "bill-detail": "详情",
+  "totalCoast":"总用电量",
 
   "login": {
     "button": "登录",
