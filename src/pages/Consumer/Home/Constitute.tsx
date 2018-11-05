@@ -13,7 +13,7 @@ import { Icon, NavBar } from 'antd-mobile';
 import { IUser } from '../../../reducers/userReducer';
 import { getPriceConstitute } from '../../../actions/userActions';
 import { IStoreState } from '../../../types';
-import { Chart, Geom, Axis, Coord, Legend, Guide, Tooltip } from 'bizcharts';
+import { Chart, Geom, Coord, Legend, Guide, Tooltip } from 'bizcharts';
 
 import './index.css';
 
@@ -59,7 +59,7 @@ export default class extends Component {
     const { Html } = Guide;
     const { priceConstitute } = this.injected;
     const translate = convert(this.injected.translate);
-    console.log(priceConstitute);
+
     return (
       <div styleName="container">
         <NavBar
@@ -82,7 +82,6 @@ export default class extends Component {
 
         <Chart height={400} data={priceConstitute.list} padding="auto" forceFit>
           <Coord type="theta" radius={0.75} innerRadius={0.6} />
-          <Axis name="percent" />
           <Legend itemFormatter={translate} />
           <Tooltip showTitle={false} />
           <Guide>

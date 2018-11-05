@@ -189,9 +189,10 @@ exports.priceConstitute = async ctx => {
     token: '123',
     toast: '',
     data: {
-      SCHOOL: { price: 10, eletric: 10, settle: 100 },
-      FACTORY: { price: 10, eletric: 10, settle: 100 },
-      MALL: { price: 10, eletric: 10, settle: 100 },
+      PHOTOVOLTAIC: { price: 10, eletric: 25, settle: 100 },
+      FACTORY: { price: 10, eletric: 25, settle: 100 },
+      BATTERY: { price: 10, eletric: 25, settle: 100 },
+      GAS: { price: 10, eletric: 25, settle: 100 },
     },
   };
 };
