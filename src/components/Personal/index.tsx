@@ -19,7 +19,7 @@ import {
   changeLanguage,
 } from '../../actions/userActions';
 import { getLanguage } from '../Layout';
-import avatar from './assets/tian.jpg';
+import avatar from './assets/avatar.png';
 
 import s from './index.css';
 

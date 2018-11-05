@@ -5,9 +5,10 @@ import { Translate } from 'react-localize-redux';
 import { Button } from 'antd-mobile';
 
 import { ILogin, login } from '../../actions/userActions';
+import { IStoreState } from '../../types';
+import logo from './assets/logo.png';
 
 import './index.css';
-import { IStoreState } from '../../types';
 
 interface IState {
   submitDisabled: boolean;
@@ -58,7 +59,9 @@ export default class extends Component<{}, IState> {
   public render() {
     return (
       <div styleName="container">
-        <div styleName="logo-container">edf</div>
+        <div styleName="logo-container">
+          <img src={logo} />
+        </div>
         <div styleName="form-container">
           <h1>
             <Translate id="hello" />
