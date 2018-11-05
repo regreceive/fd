@@ -66,21 +66,30 @@
   },
 
   "toast": {
+    "token_error": "参数异常",
+    "service_busy": "服务器正在忙",
+    "game_not_start": "游戏尚未开始",
+    "user_no_role": "用户未绑定角色",
+    "bind_error": "用户角色绑定失败",
     "loading": {
-      "login": "Logging in"
+      "login": "登录中"
     },
     "success": {
-      "login": "Login Successful",
-      "logout": "You have been logged out",
-      "quote": "Quotation Approval",
-      "adjust": "Electricity Adjustment Success"
+      "login": "登录成功",
+      "logout": "已退出登录",
+      "quote": "报价单已通过审核",
+      "adjust": "电力调整成功"
     },
     "fail": {
-      "account_not_found": "The account does not exist.",
-      "password_incorrect": "assword Incorrect",
-      "none_of_available_roles": "No Role Available",
-      "login_again": "Login Again",
-      "role_in_used": "The role is used，please select again."
+      "account_not_found": "账户不存在",
+      "password_incorrect": "密码错误",
+      "none_of_available_roles": "没有可用的角色",
+      "login_again": "重新登录",
+      "role_in_used": "角色已占用，请重新选择",
+      "role_has_no_permission": "角色没有权限",
+      "can_not_quote_price": "当前时段无法报价",
+      "time_out": "当前时段无法调整",
+      "eletric_out_index_of_number": "储能发电报电量溢出"
     }
   },
 
