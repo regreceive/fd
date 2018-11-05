@@ -15,6 +15,7 @@ import {
   ICheckResponse,
   IPostOfferComplete,
   IDashBoardResponse,
+  IGameStatus,
 } from '../actions/userActions';
 
 export interface IUser {
@@ -128,6 +129,7 @@ export interface IUser {
     percent: string;
     max: string;
   };
+  gameStatus: number;
 }
 
 const DEFAULT_LANGUAGE = process.env.REACT_APP_DEFAULT_LANGUAGE || 'en';
@@ -203,11 +205,12 @@ const initState: IUser = {
     percent: '',
     max: '',
   },
+  gameStatus: 8,
 };
 
 const user = (state = initState, action: IAction): IUser => {
   // 服务器返回异常情况下，不含有data字段，所以返回原有state
-  if (action.payload && !action.payload.data) {
+  if (action.payload && typeof action.payload.data === 'undefined') {
     return state;
   }
 
@@ -280,6 +283,10 @@ const user = (state = initState, action: IAction): IUser => {
     case 'DASHBOARD_COMPLETE': {
       const { data } = action.payload as IDashBoardResponse;
       return { ...state, dashBoard: data };
+    }
+    case 'GAME_STATUS_COMPLETE': {
+      const { data } = action.payload as IGameStatus;
+      return { ...state, gameStatus: data };
     }
     default:
       return state;

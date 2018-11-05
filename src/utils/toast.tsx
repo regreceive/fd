@@ -3,14 +3,16 @@ import { Toast } from 'antd-mobile';
 import { Translate } from 'react-localize-redux';
 import { renderToString } from 'react-dom/server';
 
-export default async function toast(id: string[] | string) {
+export default async function toast(id: string[] | string, variable = {}) {
   if (typeof id === 'string') {
     id = [id];
   }
 
   const translated = id.map(value => {
     const type = value.substring(0, value.indexOf('.'));
-    const content = renderToString(<Translate id={'toast.' + value} />);
+    const content = renderToString(
+      <Translate id={'toast.' + value} data={variable} />,
+    );
     return { type, content };
   });
 

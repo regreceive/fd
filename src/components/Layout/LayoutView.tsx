@@ -16,6 +16,8 @@ import toast from '../../utils/toast';
 import { IUser } from '../../reducers/userReducer';
 import { IGlobal } from '../../reducers/globalReducer';
 import { clearToast } from '../../actions/globalActions';
+import { getGameStatus } from '../../actions/userActions';
+
 import './LayoutView.css';
 
 const basePath = process.env.REACT_APP_BASE_PATH;
@@ -27,7 +29,9 @@ interface IProps {
   role: IUser['role'];
   lang: IUser['config']['lang'];
   toast: IGlobal['toast'];
+  gameStatus: IUser['gameStatus'];
   clearToast: typeof clearToast;
+  getGameStatus: typeof getGameStatus;
 }
 
 function getDefaultPath(side: IUser['side']) {
@@ -42,12 +46,33 @@ function getDefaultPath(side: IUser['side']) {
 }
 
 export default class LayoutView extends React.Component<IProps> {
+  private intervalID = -1;
+
+  public componentDidMount() {
+    window.clearInterval(this.intervalID);
+    this.intervalID = window.setInterval(() => {
+      this.props.getGameStatus();
+    }, 3000);
+  }
+
+  public componentWillUnmount() {
+    window.clearInterval(this.intervalID);
+  }
+
   // 避免react-localize-redux初始化操作
   public shouldComponentUpdate(nextProps: Readonly<IProps>) {
     // 全局信息提示
     if (nextProps.toast !== '' || nextProps.toast.length > 0) {
       toast(nextProps.toast);
       this.props.clearToast();
+    }
+
+    if (nextProps.gameStatus <= 0) {
+      window.clearInterval(this.intervalID);
+    }
+
+    if (nextProps.gameStatus !== this.props.gameStatus) {
+      toast('game_status', { num: nextProps.gameStatus });
     }
 
     return (

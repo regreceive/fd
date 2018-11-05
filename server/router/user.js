@@ -36,4 +36,6 @@ router.get('producer/exchangeFrom', api.exchangeForm);
 //储能电站仪表显示
 router.get('api/storage/info', api.dashBoardData);
 
+router.get('config/game-status', api.gameStatus);
+
 module.exports = router;

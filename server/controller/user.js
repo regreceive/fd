@@ -356,3 +356,13 @@ exports.dashBoardData = async ctx => {
     },
   };
 };
+
+exports.gameStatus = async ctx => {
+  await sleep();
+  ctx.body = {
+    status: 'ok',
+    token: '123',
+    toast: '',
+    data: 0,
+  };
+};

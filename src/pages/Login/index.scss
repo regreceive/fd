@@ -15,6 +15,11 @@
   flex: 1;
   display: flex;
   align-items: center;
+  padding-top: 20px;
+
+  img {
+    max-width: 4rem;
+  }
 }
 
 .form-container {

@@ -28,6 +28,8 @@ import {
   ICheckResponse,
   dashBoardComplete,
   IDashBoardResponse,
+  IGameStatus,
+  gameStatusComplete,
 } from '../actions/userActions';
 import { realTimeImmutableData, realTimeMutableData } from '../pages/data';
 
@@ -357,6 +359,17 @@ function* getDashBoardData() {
   }
 }
 
+function* getGameStatus() {
+  try {
+    const response = yield call(request, '/config/game-status');
+
+    const json: IGameStatus = yield call([response, 'json']);
+    yield put(gameStatusComplete(json));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export function* watchUser() {
   yield takeEvery('LOGIN', login);
   yield takeEvery('LOGOUT', logout);
@@ -374,4 +387,5 @@ export function* watchUser() {
   yield takeEvery('GET_EXCAHNGE_FORM', getExchangeForm);
   yield takeEvery('GET_CHECK', getCheck);
   yield takeEvery('GET_DASHBOARD_DATA', getDashBoardData);
+  yield takeEvery('GET_GAME_STATUS', getGameStatus);
 }

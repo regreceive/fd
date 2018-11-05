@@ -19,18 +19,21 @@ import LayoutView from './LayoutView';
 import { IUser } from '../../reducers/userReducer';
 import { IGlobal } from '../../reducers/globalReducer';
 import { clearToast } from '../../actions/globalActions';
+import { getGameStatus } from '../../actions/userActions';
 
 interface IStateProps {
   isLogin: boolean;
   lang: string;
   side: IUser['side'];
   role: IUser['role'];
+  gameStatus: IUser['gameStatus'];
   toast: IGlobal['toast'];
 }
 
 interface IDispatchProps {
   replace: typeof replace;
   clearToast: typeof clearToast;
+  getGameStatus: typeof getGameStatus;
 }
 
 const basePath = process.env.REACT_APP_BASE_PATH;
@@ -41,12 +44,14 @@ const mapStateToProps = (state: IStoreState) => ({
   lang: state.user.config.lang,
   side: state.user.side,
   role: state.user.role,
+  gameStatus: state.user.gameStatus,
   toast: state.global.toast,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   replace: (path: string) => dispatch(replace(path)),
   clearToast: () => dispatch(clearToast()),
+  getGameStatus: () => dispatch(getGameStatus()),
 });
 
 @(withLocalize as any)
@@ -85,7 +90,8 @@ export default class Layout extends React.Component {
       nextProps.role !== this.injected.role ||
       nextProps.isLogin !== this.injected.isLogin ||
       nextProps.toast !== this.injected.toast ||
-      nextProps.lang !== this.injected.lang
+      nextProps.lang !== this.injected.lang ||
+      nextProps.gameStatus !== this.injected.gameStatus
     );
   }
 
@@ -107,7 +113,9 @@ export default class Layout extends React.Component {
           role={this.injected.role}
           toast={this.injected.toast}
           lang={this.injected.lang}
+          gameStatus={this.injected.gameStatus}
           clearToast={this.injected.clearToast}
+          getGameStatus={this.injected.getGameStatus}
         />
       </LocaleProvider>
     );

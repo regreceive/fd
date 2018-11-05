@@ -312,3 +312,20 @@ export function dashBoardComplete(data: IDashBoardResponse) {
     payload: data,
   };
 }
+
+export interface IGameStatus extends IResponseSchema {
+  data: number;
+}
+
+export function getGameStatus() {
+  return {
+    type: 'GET_GAME_STATUS',
+  };
+}
+
+export function gameStatusComplete(data: IGameStatus) {
+  return {
+    type: 'GAME_STATUS_COMPLETE',
+    payload: data,
+  };
+}
