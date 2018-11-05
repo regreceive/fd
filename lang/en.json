@@ -178,6 +178,7 @@
         "status": "status",
         "pending": "pending",
         "fail": "fail",
+        "pass": "success",
         "time": "power generation time"
       }
     },

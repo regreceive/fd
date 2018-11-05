@@ -72,16 +72,9 @@ export default class extends Component {
                   <span>
                     <Translate id="producer.home.quote.status" />
                   </span>
-                  {item.status === 0 && (
-                    <span styleName="blue">
-                      <Translate id="producer.home.quote.pending" />
-                    </span>
-                  )}
-                  {item.status === 1 && (
-                    <span styleName="lose">
-                      <Translate id="producer.home.quote.fail" />
-                    </span>
-                  )}
+                  <span styleName="blue">
+                    <Translate id="producer.home.quote.pass" />
+                  </span>
                 </li>
               </ul>
             </div>
