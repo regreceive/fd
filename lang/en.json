@@ -3,7 +3,7 @@
   "pack_label": "English",
   "pack_active": true,
 
-  "home": "home",
+  "home": "Home",
   "exchange": "Electricity Trading",
   "gains": "Income Statement",
   "personal": "My Account",
@@ -17,8 +17,8 @@
   "exit": "Exit",
   "select": "Choose",
   "more": "More",
-  "kw": "${kw}kwh",
-  "edf-per-kw": "${edf} EDF/kwh",
+  "kw": "${kw}kWh",
+  "edf-per-kw": "${edf} EDF/kWh",
   "tc": "${tc} EDF",
   "check": "My Bill",
   "electricity-transaction": "Electricity Trading",
@@ -28,8 +28,8 @@
   "battery": "Battery Storage Power Plant Status",
   "bill-detail": "Details",
   "totalCoast":"Total Power",
-  "degree": "kwh",
-  "per-degree": "EDF/kwh",
+  "degree": "kWh",
+  "per-degree": "EDF/kWh",
 
   "login": {
     "button": "Login",
@@ -81,10 +81,10 @@
       "adjust": "电力调整成功"
     },
     "fail": {
-      "account_not_found": "账户不存在",
-      "password_incorrect": "密码错误",
-      "none_of_available_roles": "没有可用的角色",
-      "login_again": "重新登录",
+      "account_not_found": "请输入正确的邮箱",
+      "password_incorrect": "邮箱密码不正确",
+      "none_of_available_roles": "用户角色不存在",
+      "login_again": "登录失败,用户已登录",
       "role_in_used": "角色已占用，请重新选择",
       "role_has_no_permission": "角色没有权限",
       "can_not_quote_price": "当前时段无法报价",
@@ -191,7 +191,7 @@
     },
     "gains": {
       "title": "Income Statement",
-      "totalProfit": "income in total",
+      "totalProfit": "Income in total",
       "header": {
         "output": "power generation（kWh）",
         "userProfit": "user profit",
@@ -249,13 +249,13 @@
     "role": {
       "title": "Select Roles",
       "photovoltaic": "Are you sure to select photovoltaic power plant according to the power generation situation?",
-      "wind": "Are you sure to select photovoltaic power plant according to the weather condition?",
-      "battery": "Charging at night and selling during the day，are you sure to select battery storage power plant？",
-      "gas": "A variety of energy output combinations，are you sure to select CCHP storage gas turbine power station？",
-      "school": "Category I Load，stable load，are you sure to select school role？",
-      "factory": "The main load of the park，are you sure to select factory role？",
-      "mall": "Electricity peaks appear on Saturday and Sunday，are you sure to select mall role？",
-      "community": "Electricity peaks appear on morning and evening，are you sure to select community role？"
+      "wind": "Are you sure to select wind power plant according to the weather condition?",
+      "battery": "Charging at night and selling during the day,are you sure to select battery storage power plant？",
+      "gas": "A variety of energy output combinations,are you sure to select CCHP storage gas turbine power station？",
+      "school": "Category I Load,stable load,are you sure to select school role？",
+      "factory": "The main load of the park,are you sure to select factory role？",
+      "mall": "Electricity peaks appear on Saturday and Sunday,are you sure to select mall role？",
+      "community": "Electricity peaks appear on morning and evening,are you sure to select community role？"
     },
 
     "button": {
