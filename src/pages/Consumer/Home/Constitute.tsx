@@ -59,7 +59,6 @@ export default class extends Component {
     const { Html } = Guide;
     const { priceConstitute } = this.injected;
     const translate = convert(this.injected.translate);
-    console.log(priceConstitute);
     return (
       <div styleName="container">
         <NavBar

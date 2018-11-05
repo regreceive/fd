@@ -1,6 +1,6 @@
 {
-  "pack": "en",
-  "pack_label": "English",
+  "pack": "cn",
+  "pack_label": "中文",
   "pack_active": true,
 
   "home": "首页",
@@ -12,10 +12,10 @@
   "hello": "您好！",
   "ok": "确定",
   "cancel": "取消",
-  "edit":"编辑",
-  "save":"保存",
+  "edit": "编辑",
+  "save": "保存",
   "exit": "退出",
-  "select": "Choose",
+  "select": "选择",
   "more": "更多",
   "kw": "${kw} 度",
   "edf-per-kw": "${edf} EDF/度",
@@ -27,6 +27,7 @@
   "sun": "光伏电站状态",
   "battery": "储能电站状态",
   "bill-detail": "详情",
+  "totalCoast": "总用电量",
 
   "login": {
     "button": "登录",
@@ -57,7 +58,7 @@
     "userId": "用户ID",
     "help": "帮助中心",
     "wallet": "EDF电力钱包",
-    "language": "Language",
+    "language": "语言",
     "exit": "退出登录",
     "exitConfirm": "确定要退出吗？"
   },
@@ -159,12 +160,12 @@
         }
       },
       "quote": {
-        "output":"发电量",
-        "profit":"用户收益",
-        "status":"状态",
-        "pending":"待审核",
-        "fail":"审核失败",
-        "time":"发电时间"
+        "output": "发电量",
+        "profit": "用户收益",
+        "status": "状态",
+        "pending": "待审核",
+        "fail": "审核失败",
+        "time": "发电时间"
       }
     },
     "exchange": {
@@ -172,7 +173,7 @@
       "report": "报表",
       "chart": "电价/用电量",
       "form": {
-        "output":"发电量",
+        "output": "发电量",
         "price": "电价(元/度)",
         "time": "用电时间段"
       }
@@ -203,16 +204,16 @@
       "title2": "我的账单",
       "used": "当前已用电量",
       "coast": "用电花费",
-      "save":"已省",
+      "save": "已省",
       "chart": {
         "title": "当前电价组成",
         "use": "当前用电价",
-        "comprise":"电力组成"
+        "comprise": "电力组成"
       },
       "check": {
         "output": "用电量/KW",
         "total": "总费用/EDF",
-        "time":"用电时间段",
+        "time": "用电时间段",
         "bill": {
           "detail": "账单详情",
           "output": "用电量/KW",
@@ -228,8 +229,8 @@
         "after": "调整后用电花费"
       },
       "title": "电力模拟",
-      "from":"把",
-      "to":"调整到"
+      "from": "把",
+      "to": "调整到"
     }
   },
 
@@ -253,9 +254,15 @@
   },
 
   "param": {
-    "Output": "发电量",
-    "Direct": "太阳直射辐射强度",
-    "Diffuse": "太阳散射辐射强度",
-    "Temperature": "温度"
+    "Output": "发电量(kW)",
+    "Direct": "太阳直射辐射强度(kW/m2)",
+    "Diffuse": "太阳散射辐射强度(kW/m2)",
+    "Temperature": "温度(ºC)",
+    "ColdLoad": "冷负荷(kW)",
+    "ThermalLoad": "热负荷(kW)",
+    "Speed": "风速(m/min)",
+    "price": "价格",
+    "eletric": "电价",
+    "actual": "实际"
   }
 }

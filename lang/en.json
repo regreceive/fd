@@ -3,264 +3,264 @@
   "pack_label": "English",
   "pack_active": true,
 
-  "home": "首页",
-  "exchange": "电力交易",
-  "gains": "收益明细",
-  "personal": "我的",
-  "historical-quote": "历史报价",
-  "help-center": "帮助中心",
-  "hello": "您好！",
-  "ok": "确定",
-  "cancel": "取消",
-  "edit":"编辑",
-  "save":"保存",
-  "exit": "退出",
+  "home": "home",
+  "exchange": "Electricity Trading",
+  "gains": "Income Statement",
+  "personal": "My Account",
+  "historical-quote": "Historical Quotation",
+  "help-center": "Help Center",
+  "hello": "Hello！",
+  "ok": "OK",
+  "cancel": "Cancel",
+  "edit":"Edit",
+  "save":"Save",
+  "exit": "Exit",
   "select": "Choose",
-  "more": "更多",
-  "kw": "${kw} 度",
-  "edf-per-kw": "${edf} EDF/度",
+  "more": "More",
+  "kw": "${kw}kwh",
+  "edf-per-kw": "${edf} EDF/kwh",
   "tc": "${tc} EDF",
-  "check": "我的账单",
-  "electricity-transaction": "电力交易",
-  "internal-combustion-engine": "内燃机状态",
-  "wind": "风能电站状态",
-  "sun": "光伏电站状态",
-  "battery": "储能电站状态",
-  "bill-detail": "详情",
-  "totalCoast":"总用电量",
+  "check": "My Bill",
+  "electricity-transaction": "Electricity Trading",
+  "internal-combustion-engine": "Internal Combustion Engine Status",
+  "wind": "Wind Power Plant Status",
+  "sun": "Photovoltaic Power Plant Status",
+  "battery": "Battery Storage Power Plant Status",
+  "bill-detail": "Details",
+  "totalCoast":"Total Power",
 
   "login": {
-    "button": "登录",
+    "button": "Login",
     "email": {
-      "placeholder": "邮箱"
+      "placeholder": "Email"
     },
     "password": {
-      "placeholder": "密码"
+      "placeholder": "Password"
     },
-    "agree": "同意",
-    "next": "下一步",
-    "agreement": "用户协议"
+    "agree": "Agree",
+    "next": "Next",
+    "agreement": "Agreement"
   },
 
   "role": {
-    "title": "选择角色",
-    "school": "学校",
-    "factory": "工厂",
-    "mall": "商场",
-    "community": "住宅小区",
-    "photovoltaic": "光伏发电",
-    "wind": "风能发电",
-    "battery": "储能电池",
-    "gas": "燃气轮机"
+    "title": "Select Roles",
+    "school": "School",
+    "factory": "Factory",
+    "mall": "Mall",
+    "community": "Community",
+    "photovoltaic": "Photovoltaic",
+    "wind": "Wind",
+    "battery": "Battery",
+    "gas": "Gas"
   },
 
   "mine": {
-    "userId": "用户ID",
-    "help": "帮助中心",
-    "wallet": "EDF电力钱包",
+    "userId": "User ID",
+    "help": "Help Center",
+    "wallet": "EDF Electricity Wallet",
     "language": "Language",
-    "exit": "退出登录",
-    "exitConfirm": "确定要退出吗？"
+    "exit": "Exit",
+    "exitConfirm": "Are you sure you want to exit？"
   },
 
   "toast": {
     "loading": {
-      "login": "登录中"
+      "login": "Logging in"
     },
     "success": {
-      "login": "登录成功",
-      "logout": "已退出登录",
-      "quote": "报价单已通过审核",
-      "adjust": "电力调整成功"
+      "login": "Login Successful",
+      "logout": "You have been logged out",
+      "quote": "Quotation Approval",
+      "adjust": "Electricity Adjustment Success"
     },
     "fail": {
-      "account_not_found": "账户不存在",
-      "password_incorrect": "密码错误",
-      "none_of_available_roles": "没有可用的角色",
-      "login_again": "重新登录",
-      "role_in_used": "角色已占用，请重新选择"
+      "account_not_found": "The account does not exist.",
+      "password_incorrect": "assword Incorrect",
+      "none_of_available_roles": "No Role Available",
+      "login_again": "Login Again",
+      "role_in_used": "The role is used，please select again."
     }
   },
 
   "producer": {
     "home": {
       "currentState": {
-        "state": "当前状态",
-        "power": "当前天气状况的发电量",
-        "cost": "发电综合成本(单位:*/kwh)"
+        "state": "Current State",
+        "power": "Power generation in current weather conditions",
+        "cost": "General power generation cost（*/kWh）"
       },
       "earns": {
-        "title": "我的收益",
-        "sales": "共售卖",
-        "price": "电价均值",
-        "totalCount": "总费用"
+        "title": "My Income",
+        "sales": "Sold in total",
+        "price": "Electricity Average Price",
+        "totalCount": "Total Cost"
       },
       "offer": {
-        "info": "报价信息",
-        "historyPrice": "历史报价",
-        "realTime": "大电网实时电价",
-        "nextOffer": "距离下次提交报价",
-        "output": "请输入发电量",
-        "price": "请输入电价",
-        "quotedPrice": "报价须知(含惩罚措施)",
-        "button": "确定"
+        "info": "Quotation Information",
+        "historyPrice": "Historical Quotation",
+        "realTime": "Grid real-time electricity price",
+        "nextOffer": "Submit quotations next time",
+        "output": "Please input power generation",
+        "price": "Please input electricity price",
+        "quotedPrice": "Quotation notice（including penalty measures）",
+        "button": "Confirm"
       },
       "detail": {
         "wind": {
-          "title1": "风能电站相关参数",
-          "output": "发电量",
-          "speed": "风速",
-          "title2": "风能电站固定属性",
-          "generation": "发电容量(固定值)",
-          "coast": "投资成本",
-          "title3": "当前风能情况",
-          "power": "当前发电出力(变化植)",
-          "genetateCoast": "发电综合成本(变化值)"
+          "title1": "Wind power plant related parameters",
+          "output": "power generation ",
+          "speed": "wind speed",
+          "title2": "Wind power plant fixed attributes",
+          "generation": "power generation capacity（fixed value）",
+          "coast": "investment cost",
+          "title3": "current wind power condition",
+          "power": "current power generation（variation value）",
+          "genetateCoast": "General power generation cost（variation value）"
         },
         "pv": {
-          "title1": "光伏电站相关参数",
-          "output": "发电量",
-          "beat": "太阳直射辐射强度",
-          "scatter": "太阳散射辐射强度",
-          "temperature": "温度",
-          "title2": "光伏电站固定属性",
-          "generation": "发电容量(固定值)",
-          "coast": "投资成本",
-          "title3": "当前光伏情情况",
-          "power": "当前发电出力(变化植)",
-          "genetateCoast": "发电综合成本(变化值)"
+          "title1": "photovoltaic power plant related parameters",
+          "output": "power generation",
+          "beat": "Direct solar radiation intensity",
+          "scatter": "Scattering solar radiation intensity",
+          "temperature": "Temperature",
+          "title2": "Photovoltaic power plant fixed attributes",
+          "generation": "power generation capacity（fixed value）",
+          "coast": "investment cost",
+          "title3": "current photovoltaic power condition",
+          "power": "current power generation（variation value）",
+          "genetateCoast": "General power generation cost（variation value）"
         },
         "gas": {
-          "title1": "内燃机电站相关参数",
-          "output": "发电量",
-          "runPower": "电制冷机消耗电量",
-          "cold": "冷负荷",
-          "hot": "热负荷",
-          "price": "燃料价格",
-          "title2": "内燃机电站固定属性",
-          "generation": "发电容量(固定值)",
-          "coast": "投资成本",
-          "fuel": "燃料成本",
-          "title3": "当前内燃机情况",
-          "power": "当前发电出力(变化植)",
-          "genetateCoast": "发电综合成本(变化值)"
+          "title1": "Internal combustion engine plant related parameters",
+          "output": "power generation",
+          "runPower": "Electric refrigerator consumes electricity",
+          "cold": "cold load",
+          "hot": "heat load",
+          "price": "Fuel price",
+          "title2": "Internal combustion engine plant fixed attributes",
+          "generation": "power generation capacity（fixed value）",
+          "coast": "investment cost",
+          "fuel": "Fuel cost",
+          "title3": "current internal combustion engine status",
+          "power": "current power generation（variation value）",
+          "genetateCoast": "General power generation cost（variation value）"
         },
         "battery": {
-          "title1": "储能电站相关参数",
-          "output": "发电量",
-          "rest": "剩余电量",
-          "charge": "充电量",
-          "title2": "储能电站固定属性",
-          "generation": "发电容量(固定值)",
-          "coast": "投资成本",
-          "time": "分时电价",
-          "title3": "当前储能情况",
-          "power": "当前发电出力(变化植)",
-          "genetateCoast": "发电综合成本(变化值)"
+          "title1": "Battery storage power plant related parameters",
+          "output": "power generation",
+          "rest": "remaining power",
+          "charge": "charging amount",
+          "title2": "Battery storage power plant fixed attributes",
+          "generation": "power generation capacity（fixed value）",
+          "coast": "investment cost",
+          "time": "time-of-use price",
+          "title3": "current battery storage status",
+          "power": "current power generation（variation value）",
+          "genetateCoast": "General power generation cost（variation value）"
         }
       },
       "quote": {
-        "output":"发电量",
-        "profit":"用户收益",
-        "status":"状态",
-        "pending":"待审核",
-        "fail":"审核失败",
-        "time":"发电时间"
+        "output": "power generation",
+        "profit": "user profit",
+        "status": "status",
+        "pending": "pending",
+        "fail": "fail",
+        "time": "power generation time"
       }
     },
     "exchange": {
-      "title": "电力交易",
-      "report": "报表",
-      "chart": "电价/用电量",
+      "title": "Electricity Trading",
+      "report": "report",
+      "chart": "electricity price/used electricity",
       "form": {
-        "output":"发电量",
-        "price": "电价(元/度)",
-        "time": "用电时间段"
+        "output": "power generation",
+        "price": "electricity price（RMB/kWh）",
+        "time": "power consumption period"
       }
     },
     "gains": {
-      "title": "收益明细",
-      "totalProfit": "总收益",
+      "title": "Income Statement",
+      "totalProfit": "income in total",
       "header": {
-        "output": "发电量(度)",
-        "userProfit": "用户收益",
-        "largeProfit": "大电网收益"
+        "output": "power generation（kWh）",
+        "userProfit": "user profit",
+        "largeProfit": "grid profit"
       },
       "card": {
-        "output": "发电量(度)",
-        "userProfit": "用户收益",
-        "largeProfit": "大电网收益",
-        "time": "发电时间"
+        "output": "power generation（kWh）",
+        "userProfit": "user profit",
+        "largeProfit": "grid profit",
+        "time": "power generation time"
       }
     }
   },
 
   "consumer": {
     "home": {
-      "title1": "当前电价组成",
-      "total": "今日用电总量",
-      "current": "当前用电价",
-      "large": "当前大电网电价",
-      "title2": "我的账单",
-      "used": "当前已用电量",
-      "coast": "用电花费",
-      "save":"已省",
+      "title1": "current electricity price composition",
+      "total": "today’s total electricity consumption ",
+      "current": "current electricity price",
+      "large": "current grid electricity price",
+      "title2": "My Bill",
+      "used": "current used electricity",
+      "coast": "electricity cost",
+      "save": "save",
       "chart": {
-        "title": "当前电价组成",
-        "use": "当前用电价",
-        "comprise":"电力组成"
+        "title": "current electricity price composition",
+        "use": "current electricity price",
+        "comprise": "power composition"
       },
       "check": {
-        "output": "用电量/KW",
-        "total": "总费用/EDF",
-        "time":"用电时间段",
+        "output": "used electricity/KW",
+        "total": "total cost/EDF",
+        "time": "power consumption period",
         "bill": {
-          "detail": "账单详情",
-          "output": "用电量/KW",
-          "total": "总费用/EDF",
-          "time": "用电时间段"
+          "detail": "Billing Details",
+          "output": "used electricity/KW",
+          "total": "total cost/EDF",
+          "time": "power consumption period"
         }
       }
     },
     "exchange": {
       "detail": {
-        "current": "截止到当前时刻",
-        "before": "调整前用电花费",
-        "after": "调整后用电花费"
+        "current": "till current",
+        "before": "electricity consumption before adjustment",
+        "after": "electricity consumption after adjustment"
       },
-      "title": "电力模拟",
-      "from":"把",
-      "to":"调整到"
+      "title": "power simulation",
+      "from": "from",
+      "to": "adjust to"
     }
   },
 
   "modal": {
     "role": {
-      "title": "选择角色",
-      "photovoltaic": "根据情况发电，确定选择光伏电站吗？",
-      "wind": "根据天气情况发电，确定选择光伏电站吗？",
-      "battery": "夜间充电，白天售电，确定选择储能电池电站吗？",
-      "gas": "多样的能源出力组合，确定选择储CCHP燃气机组电站吗？",
-      "school": "一类负荷，负荷稳定，确定选择学校角色吗？",
-      "factory": "园区的主要负荷，确定选择工厂角色吗？",
-      "mall": "周六日出现用电高峰，确定选择商场角色吗？",
-      "community": "早晚是其用电高峰，确定选择住宅小区角色吗？"
+      "title": "Select Roles",
+      "photovoltaic": "Are you sure to select photovoltaic power plant according to the power generation situation?",
+      "wind": "Are you sure to select photovoltaic power plant according to the weather condition?",
+      "battery": "Charging at night and selling during the day，are you sure to select battery storage power plant？",
+      "gas": "A variety of energy output combinations，are you sure to select CCHP storage gas turbine power station？",
+      "school": "Category I Load，stable load，are you sure to select school role？",
+      "factory": "The main load of the park，are you sure to select factory role？",
+      "mall": "Electricity peaks appear on Saturday and Sunday，are you sure to select mall role？",
+      "community": "Electricity peaks appear on morning and evening，are you sure to select community role？"
     },
 
     "button": {
-      "ok": "确定",
-      "cancel": "取消"
+      "ok": "OK",
+      "cancel": "Cancel"
     }
   },
 
   "param": {
-    "Output": "Output",
-    "Direct": "Direct",
-    "Diffuse": "Diffuse",
-    "Temperature": "Temperature",
-    "ColdLoad": "ColdLoad",
-    "ThermalLoad": "ThermalLoad",
-    "Speed": "Speed",
+    "Output": "Output(kW)",
+    "Direct": "Direct(kW/m2)",
+    "Diffuse": "Diffuse(kW/m2)",
+    "Temperature": "Temperature(ºC)",
+    "ColdLoad": "ColdLoad(kW)",
+    "ThermalLoad": "ThermalLoad(kW)",
+    "Speed": "Speed(m/min)",
     "price": "price",
     "eletric": "eletric",
     "actual": "actual"
