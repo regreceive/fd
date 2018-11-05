@@ -89,7 +89,9 @@
       "role_has_no_permission": "角色没有权限",
       "can_not_quote_price": "当前时段无法报价",
       "time_out": "当前时段无法调整",
-      "eletric_out_index_of_number": "储能发电报电量溢出"
+      "eletric_out_index_of_number": "储能发电报电量溢出",
+      "unit-price-less-than-grid": "报价不能少于大电网实时电价",
+      "fill-valid-data": "请输入有效数据"
     }
   },
 

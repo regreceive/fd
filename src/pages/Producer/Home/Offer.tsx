@@ -5,8 +5,8 @@ import { Button, InputItem } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import {
   LocalizeContextProps,
-  withLocalize,
   Translate,
+  withLocalize,
 } from 'react-localize-redux';
 
 import { timeFormat } from '../../../utils/timeFormat';
@@ -14,6 +14,7 @@ import { IUser } from '../../../reducers/userReducer';
 import { postOffer } from '../../../actions/userActions';
 import { IStoreState } from '../../../types';
 import { realTimePrice } from '../../data';
+import { show } from '../../../utils/toast';
 
 import css from './index.css';
 
@@ -43,6 +44,7 @@ const mapDispatchToProps = (dispatch: Dispatch): IDispatchToState => ({
   postOffer: (power: number, price: number) =>
     dispatch(postOffer(power, price)),
 });
+
 @(withLocalize as any)
 @(connect(
   mapStateToProps,
@@ -153,7 +155,21 @@ export default class extends React.Component<{}, IState> {
   }
 
   private clickHandle = () => {
-    this.injected.postOffer(this.power, this.price);
+    if (this.power > 0 && this.price > 0) {
+      if (this.price < realTimePrice()) {
+        const content = this.injected.translate(
+          'toast.fail.unit-price-less-than-grid',
+        ) as string;
+        show('fail', content);
+        return;
+      }
+      this.injected.postOffer(this.power, this.price);
+    } else {
+      const content = this.injected.translate(
+        'toast.fail.fill-valid-data',
+      ) as string;
+      show('fail', content);
+    }
   };
 
   private powerChangeHandle = (value: string) => {

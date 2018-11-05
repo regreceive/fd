@@ -19,7 +19,7 @@ export default async function toast(id: string[] | string) {
   }
 }
 
-function show(type: string, content: string): Promise<any> {
+export function show(type: string, content: string): Promise<any> {
   return new Promise(resolve => {
     switch (type) {
       case 'info':
