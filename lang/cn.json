@@ -28,6 +28,8 @@
   "battery": "储能电站状态",
   "bill-detail": "详情",
   "totalCoast": "总用电量",
+  "degree": "度",
+  "per-degree": "EDF/度",
 
   "login": {
     "button": "登录",
@@ -261,8 +263,8 @@
     "ColdLoad": "冷负荷(kW)",
     "ThermalLoad": "热负荷(kW)",
     "Speed": "风速(m/min)",
-    "price": "价格",
-    "eletric": "电价",
+    "price": "电价",
+    "eletric": "电量",
     "actual": "实际"
   }
 }

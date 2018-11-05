@@ -157,7 +157,10 @@ export default class extends Component<{}, IState> {
                 <Translate id="consumer.exchange.from" />
               </List.Item>
             </DatePicker>
-            <InputItem extra="度" onChange={this.changePower} />
+            <InputItem
+              extra={this.injected.translate('degree')}
+              onChange={this.changePower}
+            />
             <DatePicker
               mode="time"
               value={this.state.to}

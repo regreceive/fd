@@ -3,7 +3,11 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Button, InputItem } from 'antd-mobile';
 import { Link } from 'react-router-dom';
-import { Translate } from 'react-localize-redux';
+import {
+  LocalizeContextProps,
+  withLocalize,
+  Translate,
+} from 'react-localize-redux';
 
 import { timeFormat } from '../../../utils/timeFormat';
 import { IUser } from '../../../reducers/userReducer';
@@ -39,14 +43,14 @@ const mapDispatchToProps = (dispatch: Dispatch): IDispatchToState => ({
   postOffer: (power: number, price: number) =>
     dispatch(postOffer(power, price)),
 });
-
+@(withLocalize as any)
 @(connect(
   mapStateToProps,
   mapDispatchToProps,
 ) as any)
 export default class extends React.Component<{}, IState> {
   get injected() {
-    return this.props as IStateProps & IDispatchToState;
+    return this.props as IStateProps & IDispatchToState & LocalizeContextProps;
   }
   public state = {
     countdown: 0,
@@ -102,7 +106,7 @@ export default class extends React.Component<{}, IState> {
               <Translate id="producer.home.offer.output" />
             </dt>
             <InputItem
-              extra="度"
+              extra={this.injected.translate('degree')}
               type="digit"
               onChange={this.powerChangeHandle}
             />
@@ -112,7 +116,7 @@ export default class extends React.Component<{}, IState> {
               <Translate id="producer.home.offer.price" />
             </dt>
             <InputItem
-              extra="EDF/度"
+              extra={this.injected.translate('per-degree')}
               type="digit"
               onChange={this.priceChangeHandle}
             />

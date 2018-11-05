@@ -78,14 +78,26 @@ export default class extends Component {
               <dt>
                 <Translate id="consumer.home.total" />
               </dt>
-              <dd>{this.injected.priceConstitute.statistics.eletric} 度</dd>
+              <dd>
+                <Translate
+                  id="kw"
+                  data={{
+                    kw: this.injected.priceConstitute.statistics.eletric,
+                  }}
+                />
+              </dd>
             </dl>
             <dl>
               <dt>
                 <Translate id="consumer.home.current" />
               </dt>
               <dd>
-                {this.injected.priceConstitute.statistics.unitPrice} EDF/度
+                <Translate
+                  id="edf-per-kw"
+                  data={{
+                    edf: this.injected.priceConstitute.statistics.unitPrice,
+                  }}
+                />
               </dd>
             </dl>
             <dl>
@@ -113,7 +125,9 @@ export default class extends Component {
               <dt>
                 <Translate id="consumer.home.used" />
               </dt>
-              <dd>{this.injected.eletric} 度</dd>
+              <dd>
+                <Translate id="kw" data={{ kw: this.injected.eletric }} />
+              </dd>
             </dl>
             <dl>
               <dt>

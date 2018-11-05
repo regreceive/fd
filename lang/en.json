@@ -28,6 +28,8 @@
   "battery": "Battery Storage Power Plant Status",
   "bill-detail": "Details",
   "totalCoast":"Total Power",
+  "degree": "kwh",
+  "per-degree": "EDF/kwh",
 
   "login": {
     "button": "Login",
