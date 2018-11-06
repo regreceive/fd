@@ -16,7 +16,7 @@ import toast from '../../utils/toast';
 import { IUser } from '../../reducers/userReducer';
 import { IGlobal } from '../../reducers/globalReducer';
 import { clearToast } from '../../actions/globalActions';
-import { getGameStatus } from '../../actions/userActions';
+import { getGameStatus, gameStatusReset } from '../../actions/userActions';
 
 import './LayoutView.css';
 
@@ -32,6 +32,7 @@ interface IProps {
   gameStatus: IUser['gameStatus'];
   clearToast: typeof clearToast;
   getGameStatus: typeof getGameStatus;
+  gameStatusReset: typeof gameStatusReset;
 }
 
 function getDefaultPath(side: IUser['side']) {
@@ -49,6 +50,7 @@ export default class LayoutView extends React.Component<IProps> {
   private intervalID = -1;
 
   public componentDidMount() {
+    this.props.gameStatusReset();
     window.clearInterval(this.intervalID);
     this.intervalID = window.setInterval(() => {
       this.props.getGameStatus();

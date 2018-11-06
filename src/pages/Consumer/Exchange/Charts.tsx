@@ -71,13 +71,13 @@ export default class DoubleChart extends Component<IProps> {
           <Geom
             type="interval"
             position="index*actual"
-            color="#0057FF"
-            size={3}
+            color={'#0f00ff'}
+            size={7}
           />
           <Geom
             type="line"
             position="index*price"
-            size={3}
+            size={5}
             color="#FE5816"
             shape="smooth"
             style={{

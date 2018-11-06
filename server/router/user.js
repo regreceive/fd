@@ -38,4 +38,6 @@ router.get('api/storage/info', api.dashBoardData);
 
 router.get('config/game-status', api.gameStatus);
 
+router.get('config/game-index', api.gameIndex);
+
 module.exports = router;

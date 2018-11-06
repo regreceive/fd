@@ -19,7 +19,7 @@ import LayoutView from './LayoutView';
 import { IUser } from '../../reducers/userReducer';
 import { IGlobal } from '../../reducers/globalReducer';
 import { clearToast } from '../../actions/globalActions';
-import { getGameStatus } from '../../actions/userActions';
+import { getGameStatus, gameStatusReset } from '../../actions/userActions';
 
 interface IStateProps {
   isLogin: boolean;
@@ -34,6 +34,7 @@ interface IDispatchProps {
   replace: typeof replace;
   clearToast: typeof clearToast;
   getGameStatus: typeof getGameStatus;
+  gameStatusReset: typeof gameStatusReset;
 }
 
 const basePath = process.env.REACT_APP_BASE_PATH;
@@ -52,6 +53,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   replace: (path: string) => dispatch(replace(path)),
   clearToast: () => dispatch(clearToast()),
   getGameStatus: () => dispatch(getGameStatus()),
+  gameStatusReset: () => dispatch(gameStatusReset()),
 });
 
 @(withLocalize as any)
@@ -116,6 +118,7 @@ export default class Layout extends React.Component {
           gameStatus={this.injected.gameStatus}
           clearToast={this.injected.clearToast}
           getGameStatus={this.injected.getGameStatus}
+          gameStatusReset={this.injected.gameStatusReset}
         />
       </LocaleProvider>
     );

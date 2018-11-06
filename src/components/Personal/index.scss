@@ -13,6 +13,7 @@
 }
 
 .banner {
+  @extend %round-top;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -366,3 +366,12 @@ exports.gameStatus = async ctx => {
     data: 0,
   };
 };
+
+exports.gameIndex = async ctx => {
+  await sleep();
+  ctx.body = {
+    status: 'ok',
+    toast: '',
+    data: 6,
+  };
+};

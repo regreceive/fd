@@ -155,8 +155,10 @@ const mutableData = {
 };
 
 // 可变参数
-export function realTimeMutableData(genre: string) {
-  return mutableData[genre][new Date().getHours()];
+export function realTimeMutableData(genre: string, index?: number) {
+  return mutableData[genre][
+    typeof index === 'number' ? index : new Date().getHours()
+  ];
 }
 
 // 固定参数
@@ -180,48 +182,6 @@ export function realTimeImmutableData(genre: string) {
 // 首页图表数据
 const charts = {
   PHOTOVOLTAIC: [
-    {
-      time: '0:00',
-      Output: 0,
-      Direct: 0,
-      Diffuse: 0,
-      Temperature: 35.21,
-    },
-    {
-      time: '1:00',
-      Output: 0,
-      Direct: 0,
-      Diffuse: 0,
-      Temperature: 37.68,
-    },
-    {
-      time: '2:00',
-      Output: 0,
-      Direct: 0,
-      Diffuse: 0,
-      Temperature: 38.82,
-    },
-    {
-      time: '3:00',
-      Output: 0,
-      Direct: 0,
-      Diffuse: 0,
-      Temperature: 38.84,
-    },
-    {
-      time: '4:00',
-      Output: 0,
-      Direct: 0,
-      Diffuse: 0,
-      Temperature: 38.23,
-    },
-    {
-      time: '5:00',
-      Output: 182.66,
-      Direct: 0,
-      Diffuse: 35,
-      Temperature: 37.98,
-    },
     {
       time: '6:00',
       Output: 557.6,
@@ -347,6 +307,48 @@ const charts = {
       Direct: 0,
       Diffuse: 0,
       Temperature: 31.69,
+    },
+    {
+      time: '0:00',
+      Output: 0,
+      Direct: 0,
+      Diffuse: 0,
+      Temperature: 35.21,
+    },
+    {
+      time: '1:00',
+      Output: 0,
+      Direct: 0,
+      Diffuse: 0,
+      Temperature: 37.68,
+    },
+    {
+      time: '2:00',
+      Output: 0,
+      Direct: 0,
+      Diffuse: 0,
+      Temperature: 38.82,
+    },
+    {
+      time: '3:00',
+      Output: 0,
+      Direct: 0,
+      Diffuse: 0,
+      Temperature: 38.84,
+    },
+    {
+      time: '4:00',
+      Output: 0,
+      Direct: 0,
+      Diffuse: 0,
+      Temperature: 38.23,
+    },
+    {
+      time: '5:00',
+      Output: 182.66,
+      Direct: 0,
+      Diffuse: 35,
+      Temperature: 37.98,
     },
   ],
   WIND: [
@@ -635,12 +637,11 @@ const charts = {
 // }
 
 export function getChartsData(role: string) {
-  const hour = new Date().getHours();
   let data;
   try {
-    data = charts[role].slice(0, hour + 1);
+    data = charts[role];
   } catch (e) {
-    data = charts.PHOTOVOLTAIC.slice(0, hour + 1);
+    data = charts.PHOTOVOLTAIC;
   }
   return data;
 }

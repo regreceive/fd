@@ -18,6 +18,11 @@
   }
 }
 
+%round-top {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
 %container {
   @extend %scroll;
   background: #f6f6f6;

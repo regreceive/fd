@@ -329,3 +329,26 @@ export function gameStatusComplete(data: IGameStatus) {
     payload: data,
   };
 }
+
+export function gameStatusReset() {
+  return {
+    type: 'GAME_STATUS_RESET',
+  };
+}
+
+export interface IGameIndex extends IResponseSchema {
+  data: number;
+}
+
+export function getGameIndex() {
+  return {
+    type: 'GET_GAME_INDEX',
+  };
+}
+
+export function gameIndexComplete(data: IGameIndex) {
+  return {
+    type: 'GAME_INDEX_COMPLETE',
+    payload: data,
+  };
+}

@@ -12,15 +12,15 @@ const Curved = (props: IProps) => {
   const scale = {
     time: {
       ticks: [
-        '1:00',
-        '4:00',
         '7:00',
         '10:00',
         '13:00',
         '16:00',
         '19:00',
         '22:00',
-      ].slice(0, Math.ceil(new Date().getHours() / 3)),
+        '1:00',
+        '4:00',
+      ],
       tickCount: 8,
     },
     Output: {

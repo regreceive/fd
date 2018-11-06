@@ -86,8 +86,8 @@ export default class extends Component {
         </div>
         <AsyncChart data={data} />
         <CurrentState role={role} data={currentState} />
-        <Earns role={role} data={earns} />
         <Offer />
+        <Earns role={role} data={earns} />
       </div>
     );
   }

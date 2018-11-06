@@ -16,6 +16,7 @@ import {
   IPostOfferComplete,
   IDashBoardResponse,
   IGameStatus,
+  IGameIndex,
 } from '../actions/userActions';
 
 export interface IUser {
@@ -130,6 +131,7 @@ export interface IUser {
     max: string;
   };
   gameStatus: number;
+  gameIndex: number;
 }
 
 const DEFAULT_LANGUAGE = process.env.REACT_APP_DEFAULT_LANGUAGE || 'en';
@@ -206,6 +208,7 @@ const initState: IUser = {
     max: '',
   },
   gameStatus: 8,
+  gameIndex: 0,
 };
 
 const user = (state = initState, action: IAction): IUser => {
@@ -287,6 +290,13 @@ const user = (state = initState, action: IAction): IUser => {
     case 'GAME_STATUS_COMPLETE': {
       const { data } = action.payload as IGameStatus;
       return { ...state, gameStatus: data };
+    }
+    case 'GAME_STATUS_RESET': {
+      return { ...state, gameStatus: 8 };
+    }
+    case 'GAME_INDEX_COMPLETE': {
+      const { data } = action.payload as IGameIndex;
+      return { ...state, gameIndex: data };
     }
     default:
       return state;

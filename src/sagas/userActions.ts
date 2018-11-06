@@ -30,6 +30,8 @@ import {
   IDashBoardResponse,
   IGameStatus,
   gameStatusComplete,
+  IGameIndex,
+  gameIndexComplete,
 } from '../actions/userActions';
 import { realTimeImmutableData, realTimeMutableData } from '../pages/data';
 
@@ -68,11 +70,15 @@ function mockResponse(json: object) {
 }
 
 function* mockCurrentState() {
+  const response = yield call(request, '/config/game-index');
+  const json: IGameStatus = yield call([response, 'json']);
+  const index = json.data;
+
   const {
     user: { role },
     global: { token },
   } = yield select();
-  const [power] = realTimeMutableData(role);
+  const [power] = realTimeMutableData(role, index);
   const [, , cost] = realTimeImmutableData(role);
 
   return mockResponse({
@@ -370,6 +376,17 @@ function* getGameStatus() {
   }
 }
 
+function* getGameIndex() {
+  try {
+    const response = yield call(request, '/config/game-index');
+
+    const json: IGameIndex = yield call([response, 'json']);
+    yield put(gameIndexComplete(json));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export function* watchUser() {
   yield takeEvery('LOGIN', login);
   yield takeEvery('LOGOUT', logout);
@@ -388,4 +405,5 @@ export function* watchUser() {
   yield takeEvery('GET_CHECK', getCheck);
   yield takeEvery('GET_DASHBOARD_DATA', getDashBoardData);
   yield takeEvery('GET_GAME_STATUS', getGameStatus);
+  yield takeEvery('GET_GAME_INDEX', getGameIndex);
 }
