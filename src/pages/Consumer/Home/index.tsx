@@ -6,12 +6,17 @@ import { Link } from 'react-router-dom';
 import { push } from 'connected-react-router';
 import { LocationState, Path } from 'history';
 
-import { basePath } from '../../../services/constants';
+// import { basePath } from '../../../services/constants';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
 import { realTimePrice } from '../../data';
 import { getCheck, getPriceConstitute } from '../../../actions/userActions';
 
+import Constitute from './Constitute';
+import mall from './assets/mall.jpg';
+import school from './assets/school.jpg';
+import factory from './assets/factory.jpg';
+import community from './assets/community.jpg';
 import './index.css';
 
 interface IStateProps {
@@ -56,13 +61,13 @@ export default class extends Component {
 
   public render() {
     const { role } = this.injected;
-
     return (
       <div styleName="container">
         <div styleName="banner">
-          <h2>
-            <Translate id={'role.' + role.toLocaleLowerCase()} />
-          </h2>
+          {role === 'SCHOOL' && <img src={school} />}
+          {role === 'MALL' && <img src={mall} />}
+          {role === 'FACTORY' && <img src={factory} />}
+          {role === 'COMMUNITY' && <img src={community} />}
         </div>
         <div styleName="section">
           <div>
@@ -70,10 +75,11 @@ export default class extends Component {
               <h2>
                 <Translate id="consumer.home.title1" />
               </h2>
-              <a onClick={this.linkHandle}>
-                <Translate id="more" />
-              </a>
+              {/* <a onClick={this.linkHandle}>
+              <Translate id="more" />
+            </a> */}
             </div>
+            <Constitute />
             <dl>
               <dt>
                 <Translate id="consumer.home.total" />
@@ -141,10 +147,10 @@ export default class extends Component {
     );
   }
 
-  private linkHandle = () => {
-    this.injected.push(
-      basePath + '/consumer/constitute',
-      this.injected.priceConstitute,
-    );
-  };
+  // private linkHandle = () => {
+  //   this.injected.push(
+  //     basePath + '/consumer/constitute',
+  //     this.injected.priceConstitute,
+  //   );
+  // };
 }
