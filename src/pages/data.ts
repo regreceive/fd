@@ -353,36 +353,6 @@ const charts = {
   ],
   WIND: [
     {
-      time: '0:00',
-      Output: 2750.86,
-      Speed: 341.4,
-    },
-    {
-      time: '1:00',
-      Output: 1353.6,
-      Speed: 273.6,
-    },
-    {
-      time: '2:00',
-      Output: 553.08,
-      Speed: 214.8,
-    },
-    {
-      time: '3:00',
-      Output: 261.99,
-      Speed: 181.8,
-    },
-    {
-      time: '4:00',
-      Output: 160.1,
-      Speed: 165.6,
-    },
-    {
-      time: '5:00',
-      Output: 203.77,
-      Speed: 172.2,
-    },
-    {
       time: '6:00',
       Output: 203.77,
       Speed: 171.6,
@@ -472,44 +442,38 @@ const charts = {
       Output: 1644.69,
       Speed: 289.8,
     },
-  ],
-  GAS: [
     {
       time: '0:00',
-      Output: 2789,
-      ColdLoad: 7948.65,
-      ThermalLoad: 996.07,
+      Output: 2750.86,
+      Speed: 341.4,
     },
     {
       time: '1:00',
-      Output: 2769,
-      ColdLoad: 7891.65,
-      ThermalLoad: 988.93,
+      Output: 1353.6,
+      Speed: 273.6,
     },
     {
       time: '2:00',
-      Output: 2679,
-      ColdLoad: 7635.15,
-      ThermalLoad: 956.79,
+      Output: 553.08,
+      Speed: 214.8,
     },
     {
       time: '3:00',
-      Output: 2719,
-      ColdLoad: 7749.15,
-      ThermalLoad: 971.07,
+      Output: 261.99,
+      Speed: 181.8,
     },
     {
       time: '4:00',
-      Output: 2703,
-      ColdLoad: 7703.55,
-      ThermalLoad: 965.36,
+      Output: 160.1,
+      Speed: 165.6,
     },
     {
       time: '5:00',
-      Output: 2646,
-      ColdLoad: 7541.1,
-      ThermalLoad: 945.0,
+      Output: 203.77,
+      Speed: 172.2,
     },
+  ],
+  GAS: [
     {
       time: '6:00',
       Output: 2681,
@@ -619,6 +583,42 @@ const charts = {
       ColdLoad: 7752.0,
       ThermalLoad: 971.43,
     },
+    {
+      time: '0:00',
+      Output: 2789,
+      ColdLoad: 7948.65,
+      ThermalLoad: 996.07,
+    },
+    {
+      time: '1:00',
+      Output: 2769,
+      ColdLoad: 7891.65,
+      ThermalLoad: 988.93,
+    },
+    {
+      time: '2:00',
+      Output: 2679,
+      ColdLoad: 7635.15,
+      ThermalLoad: 956.79,
+    },
+    {
+      time: '3:00',
+      Output: 2719,
+      ColdLoad: 7749.15,
+      ThermalLoad: 971.07,
+    },
+    {
+      time: '4:00',
+      Output: 2703,
+      ColdLoad: 7703.55,
+      ThermalLoad: 965.36,
+    },
+    {
+      time: '5:00',
+      Output: 2646,
+      ColdLoad: 7541.1,
+      ThermalLoad: 945.0,
+    },
   ],
 };
 
@@ -641,7 +641,7 @@ export function getChartsData(role: string) {
   try {
     data = charts[role];
   } catch (e) {
-    data = charts.PHOTOVOLTAIC;
+    data = {};
   }
   return data;
 }
