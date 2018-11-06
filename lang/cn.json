@@ -71,6 +71,7 @@
     "game_not_start":"游戏尚未开始",
     "user_no_role":"用户未绑定角色",
     "bind_error":"用户角色绑定失败",
+    "game_status": "还差${num}人没选角色",
     "loading": {
       "login": "登录中"
     },
