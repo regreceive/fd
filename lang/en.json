@@ -66,33 +66,33 @@
   },
 
   "toast": {
-    "token_error": "参数异常",
-    "service_busy": "服务器正在忙",
-    "game_not_start": "游戏尚未开始",
-    "user_no_role": "用户未绑定角色",
-    "bind_error": "用户角色绑定失败",
-    "game_status": "还差${num}人没选角色",
+    "token_error": "error",
+    "service_busy": "service busy",
+    "game_not_start": "game not start",
+    "user_no_role": "please choose a role",
+    "bind_error": "bound roles failure",
+    "game_status": "${num}people were not selected.",
     "loading": {
-      "login": "登录中"
+      "login": "logging in"
     },
     "success": {
-      "login": "登录成功",
-      "logout": "已退出登录",
-      "quote": "报价单已通过审核",
-      "adjust": "电力调整成功"
+      "login": "success",
+      "logout": "log out",
+      "quote": "quotation approved",
+      "adjust": "power adjustment success"
     },
     "fail": {
-      "account_not_found": "请输入正确的邮箱",
-      "password_incorrect": "邮箱密码不正确",
-      "none_of_available_roles": "用户角色不存在",
-      "login_again": "登录失败,用户已登录",
-      "role_in_used": "角色已占用，请重新选择",
-      "role_has_no_permission": "角色没有权限",
-      "can_not_quote_price": "当前时段无法报价",
-      "time_out": "当前时段无法调整",
-      "eletric_out_index_of_number": "储能发电报电量溢出",
-      "unit-price-less-than-grid": "报价不能少于大电网实时电价",
-      "fill-valid-data": "请输入有效数据"
+      "account_not_found": "Please enter the right Email address",
+      "password_incorrect": "password incorrect",
+      "none_of_available_roles": "roles unavailable",
+      "login_again": "The account has already logged in",
+      "role_in_used": "The role is used, please choose again.",
+      "role_has_no_permission": "The role has no permission.",
+      "can_not_quote_price": "Unable to quote at current",
+      "time_out": "Unable to adjust at current",
+      "eletric_out_index_of_number": "Energy storage, reporting battery overflow.",
+      "unit-price-less-than-grid": "Quotations should not be less than the real-time price of large power grids.",
+      "fill-valid-data": "Please enter valid data."
     }
   },
 
