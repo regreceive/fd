@@ -14,12 +14,13 @@ import './index.css';
 
 interface IStateProps {
   role: IUser['role'];
+  gameIndex: IUser['gameIndex'];
   goBack: () => void;
 }
 
 const Photovoltaic = (prop: IStateProps) => {
-  const { role, goBack } = prop;
-  const mutableData = realTimeMutableData(role);
+  const { role, gameIndex, goBack } = prop;
+  const mutableData = realTimeMutableData(role, gameIndex);
   const immutableData = realTimeImmutableData(role);
   const data = getChartsData(role);
 

@@ -11,7 +11,7 @@ import {
 
 import { timeFormat } from '../../../utils/timeFormat';
 import { IUser } from '../../../reducers/userReducer';
-import { postOffer } from '../../../actions/userActions';
+import { getGameIndex, postOffer } from '../../../actions/userActions';
 import { IStoreState } from '../../../types';
 import { realTimePrice } from '../../data';
 import { show } from '../../../utils/toast';
@@ -20,16 +20,19 @@ import css from './index.css';
 
 interface IState {
   countdown: number;
+  timestamp: number;
 }
 
 interface IStateProps {
   price: IUser['offer']['price'];
   timestamp: IUser['offer']['timestamp'];
+  gameIndex: IUser['gameIndex'];
   waiting: boolean;
 }
 
 interface IDispatchToState {
   postOffer: typeof postOffer;
+  getGameIndex: typeof getGameIndex;
 }
 
 const interval = Number(process.env.REACT_APP_OFFER_INTERVAL);
@@ -38,11 +41,13 @@ const mapStateToProps = (state: IStoreState): IStateProps => ({
   price: state.user.offer.price,
   timestamp: state.user.offer.timestamp,
   waiting: state.ui.freeze.postOffer === 1,
+  gameIndex: state.user.gameIndex,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchToState => ({
   postOffer: (power: number, price: number) =>
     dispatch(postOffer(power, price)),
+  getGameIndex: () => dispatch(getGameIndex()),
 });
 
 @(withLocalize as any)
@@ -56,19 +61,27 @@ export default class extends React.Component<{}, IState> {
   }
   public state = {
     countdown: 0,
+    timestamp: 0,
   };
 
   private power = 0;
   private price = 0;
   private interval = 0;
 
+  public componentWillMount() {
+    this.injected.getGameIndex();
+  }
+
   public componentWillReceiveProps(nextProps: IStateProps) {
     const countdown = nextProps.timestamp + interval * 60 * 1000 - Date.now();
     if (countdown > 0) {
-      this.setState({ countdown }, () => {
-        window.clearInterval(this.interval);
-        this.countdown();
-      });
+      this.setState(
+        { countdown, timestamp: nextProps.timestamp + countdown },
+        () => {
+          window.clearInterval(this.interval);
+          this.countdown();
+        },
+      );
     }
   }
 
@@ -77,7 +90,7 @@ export default class extends React.Component<{}, IState> {
   }
 
   public render() {
-    const { waiting } = this.injected;
+    const { gameIndex, waiting } = this.injected;
     return (
       <div styleName="section">
         <div>
@@ -94,7 +107,10 @@ export default class extends React.Component<{}, IState> {
               <Translate id="producer.home.offer.realTime" />
             </dt>
             <dd>
-              <Translate id="edf-per-kw" data={{ edf: realTimePrice() }} />
+              <Translate
+                id="edf-per-kw"
+                data={{ edf: realTimePrice(gameIndex) }}
+              />
             </dd>
           </dl>
           <dl>
@@ -145,7 +161,7 @@ export default class extends React.Component<{}, IState> {
 
   private countdown() {
     this.interval = window.setInterval(() => {
-      const countdown = this.state.countdown - 1000;
+      const countdown = this.state.timestamp - Date.now();
       this.setState({ countdown });
       if (countdown <= 0) {
         this.setState({ countdown: 0 });

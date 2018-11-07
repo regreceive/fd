@@ -10,7 +10,11 @@ import { LocationState, Path } from 'history';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
 import { realTimePrice } from '../../data';
-import { getCheck, getPriceConstitute } from '../../../actions/userActions';
+import {
+  getCheck,
+  getGameIndex,
+  getPriceConstitute,
+} from '../../../actions/userActions';
 
 import Constitute from './Constitute';
 import mall from './assets/mall.jpg';
@@ -24,12 +28,14 @@ interface IStateProps {
   priceConstitute: IUser['priceConstitute'];
   price: number;
   eletric: number;
+  gameIndex: IUser['gameIndex'];
 }
 
 interface IDispatchProps {
   getPriceConstitute: typeof getPriceConstitute;
   getCheck: typeof getCheck;
   push: (path: Path, state?: LocationState) => void;
+  getGameIndex: typeof getGameIndex;
 }
 
 const mapStateToProps = (state: IStoreState): IStateProps => ({
@@ -37,12 +43,14 @@ const mapStateToProps = (state: IStoreState): IStateProps => ({
   priceConstitute: state.user.priceConstitute,
   price: state.user.checkDetail.total.price,
   eletric: state.user.checkDetail.total.eletric,
+  gameIndex: state.user.gameIndex,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   getPriceConstitute: () => dispatch(getPriceConstitute()),
   push: (path: Path, state?: LocationState) => dispatch(push(path, state)),
   getCheck: () => dispatch(getCheck()),
+  getGameIndex: () => dispatch(getGameIndex()),
 });
 
 @(connect(
@@ -54,13 +62,14 @@ export default class extends Component {
     return this.props as IStateProps & IDispatchProps;
   }
 
-  public componentDidMount() {
+  public componentWillMount() {
     this.injected.getPriceConstitute();
     this.injected.getCheck();
+    this.injected.getGameIndex();
   }
 
   public render() {
-    const { role } = this.injected;
+    const { role, gameIndex } = this.injected;
     return (
       <div styleName="container">
         <div styleName="banner">
@@ -111,7 +120,10 @@ export default class extends Component {
                 <Translate id="consumer.home.large" />
               </dt>
               <dd>
-                <Translate id="edf-per-kw" data={{ edf: realTimePrice() }} />
+                <Translate
+                  id="edf-per-kw"
+                  data={{ edf: realTimePrice(gameIndex) }}
+                />
               </dd>
             </dl>
           </div>

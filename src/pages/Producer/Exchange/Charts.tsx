@@ -48,37 +48,41 @@ export default class DoubleChart extends Component<IProps> {
         <h2>
           <Translate id="producer.exchange.chart" />
         </h2>
-        <Chart
-          height={300}
-          data={exChart}
-          scale={scale}
-          forceFit
-          padding="auto"
-        >
-          <Axis name="index" />
-          <Axis name="price" visible={false} />
-          <Axis name="eletric" visible={false} />
-          <Tooltip />
-          <Geom
-            type="interval"
-            position="index*eletric"
-            color="#0057FF"
-            size={5}
-          />
-          <Geom
-            type="line"
-            position="index*price"
-            size={3}
-            color="#FE5816"
-            shape="smooth"
-            style={{
-              shadowColor: 'lightgray',
-              shadowBlur: 5,
-              shadowOffsetX: 0,
-              shadowOffsetY: 3,
-            }}
-          />
-        </Chart>
+        <div style={{ minWidth: '100%', overflow: 'auto' }}>
+          <div style={{ width: '700px' }}>
+            <Chart
+              height={300}
+              data={exChart}
+              scale={scale}
+              forceFit
+              padding="auto"
+            >
+              <Axis name="index" />
+              <Axis name="price" visible={false} />
+              <Axis name="eletric" visible={false} />
+              <Tooltip />
+              <Geom
+                type="interval"
+                position="index*eletric"
+                color="#0057FF"
+                size={5}
+              />
+              <Geom
+                type="line"
+                position="index*price"
+                size={3}
+                color="#FE5816"
+                shape="smooth"
+                style={{
+                  shadowColor: 'lightgray',
+                  shadowBlur: 5,
+                  shadowOffsetX: 0,
+                  shadowOffsetY: 3,
+                }}
+              />
+            </Chart>
+          </div>
+        </div>
       </div>
     );
   }

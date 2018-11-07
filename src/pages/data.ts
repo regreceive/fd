@@ -26,8 +26,10 @@ const pricePerHour = [
 ];
 
 // 实时电价
-export function realTimePrice() {
-  return pricePerHour[new Date().getHours()];
+export function realTimePrice(index?: number) {
+  return pricePerHour[
+    typeof index === 'number' ? index : new Date().getHours()
+  ];
 }
 
 const mutableData = {
