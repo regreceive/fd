@@ -42,5 +42,6 @@
 }
 
 .chart {
+  @extend %touchable;
   border-bottom: 20px solid #f6f6f6;
 }

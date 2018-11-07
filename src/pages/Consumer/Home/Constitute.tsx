@@ -79,7 +79,12 @@ export default class extends Component {
           <Translate id="consumer.home.chart.comprise" />
         </h2> */}
 
-        <Chart height={400} data={priceConstitute.list} padding="auto" forceFit>
+        <Chart
+          height={300}
+          data={priceConstitute.list}
+          padding={[-30, 20, 30, 20]}
+          forceFit
+        >
           <Coord type="theta" radius={0.75} innerRadius={0.6} />
           <Axis name="percent" />
           <Legend itemFormatter={translate} />

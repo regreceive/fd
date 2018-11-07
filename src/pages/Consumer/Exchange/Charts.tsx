@@ -45,7 +45,7 @@ export default class DoubleChart extends Component<IProps> {
         alias: translate('actual'),
       },
     };
-    // const color1 = 'l (270) 0:#A6CCEA 1:#0057FF';
+    const color1 = 'l (270) 0:#A6CCEA 1:#0057FF';
     return (
       <div styleName="chart">
         <Chart
@@ -71,8 +71,17 @@ export default class DoubleChart extends Component<IProps> {
           <Geom
             type="interval"
             position="index*actual"
-            color={'rgba(15,0,255,.5)'}
-            size={7}
+            color={['index', [color1]]}
+            size={15}
+            tooltip={[
+              'index*actual',
+              (index, actual) => {
+                return {
+                  name: translate('actual'),
+                  value: actual,
+                };
+              },
+            ]}
           />
           <Geom type="point" position="index*price" size={2} color="#FE5816" />
           <Geom

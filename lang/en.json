@@ -30,6 +30,7 @@
   "totalCoast":"Total Power",
   "degree": "kWh",
   "per-degree": "EDF/kWh",
+  "adjust":"adjust",
 
   "login": {
     "button": "Login",

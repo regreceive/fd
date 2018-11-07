@@ -77,8 +77,17 @@
 
   :global {
     .am-input-item {
-      background: #ebedf2;
+      background-color: #ebedf2;
       border-radius: 4px;
     }
+  }
+}
+
+%touchable {
+  minwidth: 100%;
+  overflow-x: auto;
+
+  > div {
+    width: 700px;
   }
 }

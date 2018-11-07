@@ -162,6 +162,7 @@ export default class extends Component<{}, IState> {
           <InputItem
             extra={this.injected.translate('degree')}
             onChange={this.changePower}
+            type="digit"
           />
           <DatePicker
             mode="time"
@@ -176,7 +177,7 @@ export default class extends Component<{}, IState> {
           </DatePicker>
         </List>
         <Button type="primary" onClick={this.edit}>
-          <Translate id="save" />
+          <Translate id="adjust" />
         </Button>
         <DetailInfo currentCoast={currentCoast} />
       </div>

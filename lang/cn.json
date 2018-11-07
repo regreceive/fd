@@ -30,6 +30,7 @@
   "totalCoast": "总用电量",
   "degree": "度",
   "per-degree": "EDF/度",
+  "adjust":"调整",
 
   "login": {
     "button": "登录",
