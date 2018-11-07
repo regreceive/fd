@@ -47,7 +47,7 @@ export default class DoubleChart extends Component<IProps> {
     };
     // const color1 = 'l (270) 0:#A6CCEA 1:#0057FF';
     return (
-      <div>
+      <div styleName="chart">
         <Chart
           height={300}
           data={currentCoast.list}

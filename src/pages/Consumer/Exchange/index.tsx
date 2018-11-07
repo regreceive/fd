@@ -6,7 +6,7 @@ import {
   withLocalize,
   Translate,
 } from 'react-localize-redux';
-import { List, DatePicker, InputItem, NavBar } from 'antd-mobile';
+import { List, DatePicker, InputItem, NavBar, Button } from 'antd-mobile';
 import { getCurrentCoast, postTime } from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
@@ -98,17 +98,17 @@ export default class extends Component<{}, IState> {
   };
 
   public edit = () => {
-    this.setState({
-      isEdit: !this.state.isEdit,
-    });
+    // this.setState({
+    //   isEdit: !this.state.isEdit,
+    // });
 
-    if (this.state.isEdit) {
-      this.injected.postTime(
-        this.state.begin.getHours(),
-        this.state.to.getHours(),
-        this.power,
-      );
-    }
+    // if (this.state.isEdit) {
+    this.injected.postTime(
+      this.state.begin.getHours(),
+      this.state.to.getHours(),
+      this.power,
+    );
+    // }
   };
   public cancel = () => {
     this.setState({
@@ -116,7 +116,7 @@ export default class extends Component<{}, IState> {
     });
   };
   public render() {
-    const { isEdit } = this.state;
+    // const { isEdit } = this.state;
     const { currentCoast } = this.injected;
 
     const fromDateMin = new Date(
@@ -128,52 +128,56 @@ export default class extends Component<{}, IState> {
       <div styleName="container">
         <NavBar
           mode="light"
-          leftContent={
-            <p onClick={this.cancel}>
-              {isEdit === true && this.injected.translate('cancel')}
-            </p>
-          }
-          rightContent={
-            <p onClick={this.edit}>
-              {isEdit
-                ? this.injected.translate('save')
-                : this.injected.translate('edit')}
-            </p>
-          }
+          // leftContent={
+          //   <p onClick={this.cancel}>
+          //     {isEdit === true && this.injected.translate('cancel')}
+          //   </p>
+          // }
+          // rightContent={
+          //   <p onClick={this.edit}>
+          //     {isEdit
+          //       ? this.injected.translate('save')
+          //       : this.injected.translate('edit')}
+          //   </p>
+          // }
         >
           <Translate id="consumer.exchange.title" />
         </NavBar>
         <DoubleChart currentCoast={currentCoast} />
-        {isEdit === true && (
-          <List>
-            <DatePicker
-              mode="time"
-              value={this.state.begin}
-              onChange={this.fromTimeChangeHandle}
-              minDate={fromDateMin}
-              maxDate={dateMax}
-            >
-              <List.Item arrow="horizontal">
-                <Translate id="consumer.exchange.from" />
-              </List.Item>
-            </DatePicker>
-            <InputItem
-              extra={this.injected.translate('degree')}
-              onChange={this.changePower}
-            />
-            <DatePicker
-              mode="time"
-              value={this.state.to}
-              onChange={this.toTimeChangeHandle}
-              minDate={toDateMin}
-              maxDate={dateMax}
-            >
-              <List.Item arrow="horizontal">
-                <Translate id="consumer.exchange.to" />
-              </List.Item>
-            </DatePicker>
-          </List>
-        )}
+        <h2>
+          <Translate id="consumer.exchange.adjust" />
+        </h2>
+        <List>
+          <DatePicker
+            mode="time"
+            value={this.state.begin}
+            onChange={this.fromTimeChangeHandle}
+            minDate={fromDateMin}
+            maxDate={dateMax}
+          >
+            <List.Item arrow="horizontal">
+              <Translate id="consumer.exchange.from" />
+            </List.Item>
+          </DatePicker>
+          <InputItem
+            extra={this.injected.translate('degree')}
+            onChange={this.changePower}
+          />
+          <DatePicker
+            mode="time"
+            value={this.state.to}
+            onChange={this.toTimeChangeHandle}
+            minDate={toDateMin}
+            maxDate={dateMax}
+          >
+            <List.Item arrow="horizontal">
+              <Translate id="consumer.exchange.to" />
+            </List.Item>
+          </DatePicker>
+        </List>
+        <Button type="primary" onClick={this.edit}>
+          <Translate id="save" />
+        </Button>
         <DetailInfo currentCoast={currentCoast} />
       </div>
     );

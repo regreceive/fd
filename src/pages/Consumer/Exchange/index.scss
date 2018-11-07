@@ -5,7 +5,11 @@
   @extend %scroll;
   overflow-x: hidden;
   background: #fff;
-
+  h2 {
+    font-size: 18px;
+    color: #4a4a4a;
+    padding-left: 20px;
+  }
   .title {
     display: flex;
     justify-content: space-between;
@@ -21,6 +25,9 @@
         font-size: 14px;
       }
     }
+    .am-button-primary {
+      margin: 15px;
+    }
   }
 }
 
@@ -32,4 +39,8 @@
       border-bottom: 1px solid #f4f6f8;
     }
   }
+}
+
+.chart {
+  border-bottom: 20px solid #f6f6f6;
 }

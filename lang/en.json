@@ -243,9 +243,10 @@
         "before": "electricity consumption before adjustment",
         "after": "electricity consumption after adjustment"
       },
-      "title": "power simulation",
+      "title": "Power simulation",
       "from": "from",
-      "to": "adjust to"
+      "to": "adjust to",
+      "adjust":"Electric power adjustment"
     }
   },
 
