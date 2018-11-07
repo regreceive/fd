@@ -20,7 +20,6 @@ import css from './index.css';
 
 interface IState {
   countdown: number;
-  timestamp: number;
 }
 
 interface IStateProps {
@@ -67,6 +66,7 @@ export default class extends React.Component<{}, IState> {
   private power = 0;
   private price = 0;
   private interval = 0;
+  private deadline = 0;
 
   public componentWillMount() {
     this.injected.getGameIndex();
@@ -75,13 +75,11 @@ export default class extends React.Component<{}, IState> {
   public componentWillReceiveProps(nextProps: IStateProps) {
     const countdown = nextProps.timestamp + interval * 60 * 1000 - Date.now();
     if (countdown > 0) {
-      this.setState(
-        { countdown, timestamp: nextProps.timestamp + countdown },
-        () => {
-          window.clearInterval(this.interval);
-          this.countdown();
-        },
-      );
+      this.deadline = nextProps.timestamp + countdown;
+      this.setState({ countdown }, () => {
+        window.clearInterval(this.interval);
+        this.countdown();
+      });
     }
   }
 
@@ -161,8 +159,15 @@ export default class extends React.Component<{}, IState> {
 
   private countdown() {
     this.interval = window.setInterval(() => {
-      const countdown = this.state.timestamp - Date.now();
+      const countdown = this.deadline - Date.now();
       this.setState({ countdown });
+      if (countdown <= 50000 && countdown > 49000) {
+        const content = this.injected.translate(
+          'toast.quote_will_be_finished',
+        ) as string;
+        show('fail', content);
+      }
+
       if (countdown <= 0) {
         this.setState({ countdown: 0 });
         window.clearInterval(this.interval);
@@ -172,9 +177,9 @@ export default class extends React.Component<{}, IState> {
 
   private clickHandle = () => {
     if (this.power > 0 && this.price > 0) {
-      if (this.price < realTimePrice()) {
+      if (this.price > realTimePrice(this.injected.gameIndex)) {
         const content = this.injected.translate(
-          'toast.fail.unit-price-less-than-grid',
+          'toast.fail.unit-price-great-than-grid',
         ) as string;
         show('fail', content);
         return;

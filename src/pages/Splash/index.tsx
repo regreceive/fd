@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
-import { Translate } from 'react-localize-redux';
+import { RouteComponentProps } from 'react-router';
+import ReactSVG from 'react-svg';
+
+import logo from './assets/logo.svg';
+
+import './style.css';
 
 export default class extends Component {
+  get injected() {
+    return this.props as RouteComponentProps;
+  }
+
+  public componentDidMount() {
+    setTimeout(() => this.injected.history.replace('/login'), 3000);
+  }
+
   public render() {
-    console.log('aaa');
     return (
-      <div>
-        <Translate id="pack">hello world</Translate>
+      <div styleName="container">
+        <ReactSVG src={logo} />
       </div>
     );
   }

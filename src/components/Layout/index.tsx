@@ -21,6 +21,10 @@ import { IGlobal } from '../../reducers/globalReducer';
 import { clearToast } from '../../actions/globalActions';
 import { getGameStatus, gameStatusReset } from '../../actions/userActions';
 
+interface IState {
+  splash: boolean;
+}
+
 interface IStateProps {
   isLogin: boolean;
   lang: string;
@@ -61,7 +65,11 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   mapStateToProps,
   mapDispatchToProps,
 ) as any)
-export default class Layout extends React.Component {
+export default class Layout extends React.Component<{}, IState> {
+  public state = {
+    splash: true,
+  };
+
   constructor(props: {}) {
     super(props);
 
@@ -95,6 +103,10 @@ export default class Layout extends React.Component {
       nextProps.lang !== this.injected.lang ||
       nextProps.gameStatus !== this.injected.gameStatus
     );
+  }
+
+  public componentDidMount() {
+    setTimeout(() => this.setState({ splash: false }), 2000);
   }
 
   @autobind

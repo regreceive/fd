@@ -72,7 +72,9 @@
     "game_not_start": "game not start",
     "user_no_role": "please choose a role",
     "bind_error": "bound roles failure",
-    "game_status": "${num}people were not selected.",
+    "game_status": "${num} people were not selected.",
+    "game_begin": "Game Start",
+    "quote_will_be_finished": "距离报价结束还有10秒",
     "loading": {
       "login": "logging in"
     },
@@ -92,7 +94,7 @@
       "can_not_quote_price": "Unable to quote at current",
       "time_out": "Unable to adjust at current",
       "eletric_out_index_of_number": "Energy storage, reporting battery overflow.",
-      "unit-price-less-than-grid": "Quotations should not be less than the real-time price of large power grids.",
+      "unit-price-less-than-grid": "Quotations should not be great than the real-time price of large power grids.",
       "fill-valid-data": "Please enter valid data."
     }
   },

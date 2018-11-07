@@ -74,7 +74,11 @@ export default class LayoutView extends React.Component<IProps> {
     }
 
     if (nextProps.gameStatus !== this.props.gameStatus) {
-      toast('game_status', { num: nextProps.gameStatus });
+      if (nextProps.gameStatus === 0) {
+        toast('game_begin');
+      } else {
+        toast('game_status', { num: nextProps.gameStatus });
+      }
     }
 
     return (

@@ -72,7 +72,9 @@
     "game_not_start":"游戏尚未开始",
     "user_no_role":"用户未绑定角色",
     "bind_error":"用户角色绑定失败",
-    "game_status": "还差${num}人没选角色",
+    "game_status": "还差 ${num} 人没选角色",
+    "game_begin": "游戏开始",
+    "quote_will_be_finished": "距离报价结束还有10秒",
     "loading": {
       "login": "登录中"
     },
@@ -92,7 +94,7 @@
       "can_not_quote_price": "当前时段无法报价",
       "time_out":"当前时段无法调整",
       "eletric_out_index_of_number":"储能发电报电量溢出",
-      "unit-price-less-than-grid": "报价不能少于大电网实时电价",
+      "unit-price-less-than-grid": "报价不能高于大电网实时电价",
       "fill-valid-data": "请输入有效数据"
     }
   },

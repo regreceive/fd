@@ -1,0 +1,13 @@
+@import '../common.scss';
+
+.container {
+  @extend %container;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  background-color: #fe5816;
+
+  > div {
+    margin: -80px auto 0;
+  }
+}
