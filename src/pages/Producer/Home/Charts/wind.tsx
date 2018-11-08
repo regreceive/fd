@@ -55,7 +55,7 @@ const Curved = (props: IProps) => {
         position="time*Output"
         color="#ff0000"
         shape="smooth"
-        size={3}
+        size={2}
         style={{
           shadowColor: 'lightgray',
           shadowBlur: 5,
@@ -68,9 +68,9 @@ const Curved = (props: IProps) => {
         position="time*Speed"
         shape="smooth"
         color="#c1aeaa"
-        size={3}
+        size={2}
         style={{
-          lineDash: [4, 4],
+          lineDash: [5, 2],
         }}
       />
     </Chart>
