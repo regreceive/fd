@@ -74,7 +74,7 @@
     "bind_error": "bound roles failure",
     "game_status": "${num} people were not selected.",
     "game_begin": "Game Start",
-    "quote_will_be_finished": "距离报价结束还有10秒",
+    "quote_will_be_finished": "There is 10 seconds left before the quotation ends",
     "loading": {
       "login": "logging in"
     },
@@ -94,7 +94,7 @@
       "can_not_quote_price": "Unable to quote at current",
       "time_out": "Unable to adjust at current",
       "eletric_out_index_of_number": "Energy storage, reporting battery overflow.",
-      "unit-price-less-than-grid": "Quotations should not be great than the real-time price of large power grids.",
+      "unit-price-great-than-grid": "Quotations should not be more than the real-time price of large power grids.",
       "fill-valid-data": "Please enter valid data."
     }
   },
@@ -124,54 +124,54 @@
       },
       "detail": {
         "wind": {
-          "title1": "Wind power plant related parameters",
+          "title1": "Wind Power Plant Related Parameters",
           "output": "power generation ",
           "speed": "wind speed",
-          "title2": "Wind power plant fixed attributes",
+          "title2": "Wind Power Plant Fixed Attributes",
           "generation": "power generation capacity（fixed value）",
           "coast": "investment cost",
-          "title3": "current wind power condition",
+          "title3": "Current Wind Power Condition",
           "power": "current power generation（variation value）",
           "genetateCoast": "General power generation cost（variation value）"
         },
         "pv": {
-          "title1": "photovoltaic power plant related parameters",
+          "title1": "PV Power Plant Related Parameters",
           "output": "power generation",
           "beat": "Direct solar radiation intensity",
           "scatter": "Scattering solar radiation intensity",
           "temperature": "Temperature",
-          "title2": "Photovoltaic power plant fixed attributes",
+          "title2": "PV Power Plant Fixed Attributes",
           "generation": "power generation capacity（fixed value）",
           "coast": "investment cost",
-          "title3": "current photovoltaic power condition",
+          "title3": "Current Photovoltaic Power Condition",
           "power": "current power generation（variation value）",
           "genetateCoast": "General power generation cost（variation value）"
         },
         "gas": {
-          "title1": "Internal combustion engine plant related parameters",
+          "title1": "Internal Combustion Engine Plant Related Parameters",
           "output": "power generation",
           "runPower": "Electric refrigerator consumes electricity",
           "cold": "cold load",
           "hot": "heat load",
           "price": "Fuel price",
-          "title2": "Internal combustion engine plant fixed attributes",
+          "title2": "Internal Combustion Engine Plant Fixed Attributes",
           "generation": "power generation capacity（fixed value）",
           "coast": "investment cost",
           "fuel": "Fuel cost",
-          "title3": "current internal combustion engine status",
+          "title3": "Current Internal Combustion Engine Status",
           "power": "current power generation（variation value）",
           "genetateCoast": "General power generation cost（variation value）"
         },
         "battery": {
-          "title1": "Battery storage power plant related parameters",
+          "title1": "Battery Storage Power Plant Related Parameters",
           "output": "power generation",
           "rest": "remaining power",
           "charge": "charging amount",
-          "title2": "Battery storage power plant fixed attributes",
+          "title2": "Battery Storage Power Plant Fixed Attributes",
           "generation": "power generation capacity（fixed value）",
           "coast": "investment cost",
           "time": "time-of-use price",
-          "title3": "current battery storage status",
+          "title3": "Current Battery Storage Status",
           "power": "current power generation（variation value）",
           "genetateCoast": "General power generation cost（variation value）"
         }
@@ -189,7 +189,7 @@
     "exchange": {
       "title": "Electricity Trading",
       "report": "report",
-      "chart": "electricity price/used electricity",
+      "chart": "Electricity Price/Used Electricity",
       "form": {
         "output": "power generation",
         "price": "electricity price（RMB/kWh）",
@@ -200,7 +200,7 @@
       "title": "Income Statement",
       "totalProfit": "Income in total",
       "header": {
-        "output": "power generation（kWh）",
+        "output": "power",
         "userProfit": "user profit",
         "largeProfit": "grid profit"
       },
@@ -215,7 +215,7 @@
 
   "consumer": {
     "home": {
-      "title1": "current electricity price composition",
+      "title1": "Current Electricity Price Composition",
       "total": "today’s total electricity consumption ",
       "current": "current electricity price",
       "large": "current grid electricity price",
@@ -246,10 +246,10 @@
         "before": "electricity consumption before adjustment",
         "after": "electricity consumption after adjustment"
       },
-      "title": "Power simulation",
+      "title": "Power Simulation",
       "from": "from",
       "to": "adjust to",
-      "adjust":"Electric power adjustment"
+      "adjust":"Electric Power Adjustment"
     }
   },
 
