@@ -279,8 +279,8 @@ exports.exChart = async ctx => {
     status: 'ok',
     toast: '',
     data: [
-      { uid: 123, index: 0, eletric: 90, price: 80 },
-      { uid: 123, index: 1, eletric: 70, price: 100 },
+      { uid: 123, index: 0, eletric: 90, price: 80, past: 1 },
+      { uid: 123, index: 1, eletric: 70, price: 100, past: 1 },
       { uid: 123, index: 2, eletric: 60, price: 100 },
       { uid: 123, index: 3, eletric: 50, price: 100 },
       { uid: 123, index: 4, eletric: 40, price: 100 },
@@ -316,11 +316,11 @@ exports.getChartData = async ctx => {
     data: {
       total: { pre: 100, after: 200, eletric: 100 },
       list: [
-        { actual: 10, price: 1, index: 0 },
-        { actual: 20, price: 2, index: 1 },
-        { actual: 30, price: 3, index: 2 },
-        { actual: 40, price: 4, index: 3 },
-        { actual: 50, price: 1, index: 4 },
+        { actual: 10, price: 1, index: 0, past: 1 },
+        { actual: 20, price: 2, index: 1, past: 1 },
+        { actual: 30, price: 3, index: 2, past: 1 },
+        { actual: 40, price: 4, index: 3, past: 1 },
+        { actual: 50, price: 1, index: 4, past: 1 },
         { actual: 60, price: 2, index: 5 },
         { actual: 70, price: 3, index: 6 },
         { actual: 80, price: 4, index: 7 },

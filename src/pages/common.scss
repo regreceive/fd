@@ -84,8 +84,8 @@
 }
 
 %touchable {
-  minwidth: 100%;
-  overflow-x: auto;
+  min-width: 100%;
+  overflow: auto hidden;
 
   > div {
     width: 700px;

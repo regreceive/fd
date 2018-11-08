@@ -17,13 +17,7 @@ export default class DoubleChart extends Component<IProps> {
   public render() {
     const { currentCoast } = this.props;
     const translate = convert(this.injected.translate);
-    const grid = {
-      lineStyle: {
-        stroke: '#E5E5E5',
-        lineDash: [4, 4],
-        lineWidth: 1,
-      },
-    };
+
     const scale = {
       // index: {
       //   ticks: [
@@ -45,7 +39,7 @@ export default class DoubleChart extends Component<IProps> {
         alias: translate('actual'),
       },
     };
-    const color1 = 'l (270) 0:#A6CCEA 1:#0057FF';
+
     return (
       <div styleName="chart">
         <Chart
@@ -57,21 +51,25 @@ export default class DoubleChart extends Component<IProps> {
         >
           <Axis
             name="index"
-            tickLine="null"
-            line={{
-              stroke: '#E5E5E5',
-              lineDash: [4, 4],
-              lineWidth: 1,
+            grid={{
+              lineStyle: {
+                stroke: '#E5E5E5',
+                lineDash: [3],
+                lineWidth: 1,
+              },
+              hideFirstLine: true,
+              hideLastLine: true,
             }}
-            grid={grid}
           />
           <Axis name="price" visible={false} />
           <Axis name="actual" visible={false} />
+          <Axis name="past" visible={false} />
           <Tooltip />
+          <Geom type="area" position="index*past" />
           <Geom
             type="interval"
             position="index*actual"
-            color={['index', [color1]]}
+            color={'#00bdff'}
             size={15}
             tooltip={[
               'index*actual',
@@ -82,13 +80,16 @@ export default class DoubleChart extends Component<IProps> {
                 };
               },
             ]}
+            style={{
+              stroke: '#4d91e9',
+              lineWidth: 1,
+            }}
           />
-          <Geom type="point" position="index*price" size={2} color="#FE5816" />
           <Geom
             type="line"
             position="index*price"
             size={2}
-            color="#FE5816"
+            color="#fdae6b"
             shape="smooth"
             style={{
               shadowColor: 'lightgray',
@@ -97,6 +98,7 @@ export default class DoubleChart extends Component<IProps> {
               shadowOffsetY: 3,
             }}
           />
+          <Geom type="point" position="index*price" size={2} color="#FE5816" />
         </Chart>
       </div>
     );
