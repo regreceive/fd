@@ -76,18 +76,18 @@ const Curved = (props: IProps) => {
         position="time*Direct"
         shape="smooth"
         color="#c1aeaa"
-        size={3}
+        size={2}
         style={{
-          lineDash: [4, 4],
+          lineDash: [5, 2],
         }}
       />
       <Geom
         type="line"
         position="time*Diffuse"
         shape="smooth"
-        size={3}
+        size={2}
         style={{
-          lineDash: [4, 4],
+          lineDash: [5, 2],
         }}
       />
       <Geom
@@ -95,9 +95,9 @@ const Curved = (props: IProps) => {
         position="time*Temperature"
         shape="smooth"
         color="#e0e066"
-        size={3}
+        size={2}
         style={{
-          lineDash: [4, 4],
+          lineDash: [5, 2],
         }}
       />
     </Chart>
