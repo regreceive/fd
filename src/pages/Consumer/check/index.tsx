@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { RouteComponentProps } from 'react-router';
 import { Translate } from 'react-localize-redux';
 import { Icon, NavBar } from 'antd-mobile';
 
@@ -42,7 +41,7 @@ function dateTimeScope() {
 ) as any)
 export default class extends Component {
   get injected() {
-    return this.props as IStateProps & IDispatchProps & RouteComponentProps;
+    return this.props as IStateProps & IDispatchProps;
   }
 
   public componentDidMount() {
@@ -55,7 +54,7 @@ export default class extends Component {
         <NavBar
           mode="light"
           icon={<Icon type="left" />}
-          onLeftClick={this.injected.history.goBack}
+          // onLeftClick={this.injected.history.goBack}
         >
           <Translate id="check" />
         </NavBar>

@@ -10,6 +10,7 @@ import { IStoreState } from '../../types';
 import { IUi } from '../../reducers/uiReducer';
 import Home from './Home';
 import Exchange from './Exchange';
+import Bill from './check';
 import Personal from '../../components/Personal';
 import homeIcon from '../../components/assets/home.svg';
 import exchangeIcon from '../../components/assets/exchange.svg';
@@ -35,6 +36,7 @@ const dispatchToProps = (dispatch: Dispatch): IDispatchToProps => ({
 
 const items = [
   { id: 'home', component: Home, svg: homeIcon },
+  { id: 'bill', component: Bill, svg: homeIcon },
   { id: 'exchange', component: Exchange, svg: exchangeIcon },
   { id: 'personal', component: Personal, svg: personalIcon },
 ];
