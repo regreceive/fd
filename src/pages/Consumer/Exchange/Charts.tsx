@@ -65,7 +65,7 @@ export default class DoubleChart extends Component<IProps> {
           <Axis name="actual" visible={false} />
           <Axis name="past" visible={false} />
           <Tooltip />
-          <Geom type="area" position="index*past" />
+          <Geom type="area" position="index*past" tooltip={false} />
           <Geom
             type="interval"
             position="index*actual"
