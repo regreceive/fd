@@ -16,7 +16,11 @@ import toast from '../../utils/toast';
 import { IUser } from '../../reducers/userReducer';
 import { IGlobal } from '../../reducers/globalReducer';
 import { clearToast } from '../../actions/globalActions';
-import { getGameStatus, gameStatusReset } from '../../actions/userActions';
+import {
+  getGameStatus,
+  gameStatusReset,
+  getGameIndex,
+} from '../../actions/userActions';
 
 import './LayoutView.css';
 
@@ -30,9 +34,11 @@ interface IProps {
   lang: IUser['config']['lang'];
   toast: IGlobal['toast'];
   gameStatus: IUser['gameStatus'];
+  gameIndex: IUser['gameIndex'];
   clearToast: typeof clearToast;
   getGameStatus: typeof getGameStatus;
   gameStatusReset: typeof gameStatusReset;
+  getGameIndex: typeof getGameIndex;
 }
 
 function getDefaultPath(side: IUser['side']) {
@@ -48,6 +54,7 @@ function getDefaultPath(side: IUser['side']) {
 
 export default class LayoutView extends React.Component<IProps> {
   private intervalID = -1;
+  private indexIntervalID = -1;
 
   public componentDidMount() {
     this.props.gameStatusReset();
@@ -55,10 +62,14 @@ export default class LayoutView extends React.Component<IProps> {
     this.intervalID = window.setInterval(() => {
       this.props.getGameStatus();
     }, 3000);
+    this.indexIntervalID = window.setInterval(() => {
+      this.props.getGameIndex();
+    }, 10000);
   }
 
   public componentWillUnmount() {
     window.clearInterval(this.intervalID);
+    window.clearInterval(this.indexIntervalID);
   }
 
   // 避免react-localize-redux初始化操作
@@ -85,6 +96,7 @@ export default class LayoutView extends React.Component<IProps> {
       nextProps.side !== this.props.side ||
       nextProps.role !== this.props.role ||
       nextProps.isLogin !== this.props.isLogin ||
+      nextProps.gameIndex !== this.props.gameIndex ||
       nextProps.lang !== this.props.lang
     );
   }
@@ -95,6 +107,10 @@ export default class LayoutView extends React.Component<IProps> {
 
     return (
       <div className="full-screen">
+        <div styleName="game-index">
+          当前轮数：
+          {this.props.gameIndex}
+        </div>
         <ConnectedRouter history={history}>
           <Switch>
             {splashEnable && (

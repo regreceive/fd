@@ -19,7 +19,11 @@ import LayoutView from './LayoutView';
 import { IUser } from '../../reducers/userReducer';
 import { IGlobal } from '../../reducers/globalReducer';
 import { clearToast } from '../../actions/globalActions';
-import { getGameStatus, gameStatusReset } from '../../actions/userActions';
+import {
+  getGameStatus,
+  gameStatusReset,
+  getGameIndex,
+} from '../../actions/userActions';
 
 interface IState {
   splash: boolean;
@@ -31,6 +35,7 @@ interface IStateProps {
   side: IUser['side'];
   role: IUser['role'];
   gameStatus: IUser['gameStatus'];
+  gameIndex: IUser['gameIndex'];
   toast: IGlobal['toast'];
 }
 
@@ -38,6 +43,7 @@ interface IDispatchProps {
   replace: typeof replace;
   clearToast: typeof clearToast;
   getGameStatus: typeof getGameStatus;
+  getGameIndex: typeof getGameIndex;
   gameStatusReset: typeof gameStatusReset;
 }
 
@@ -50,6 +56,7 @@ const mapStateToProps = (state: IStoreState) => ({
   side: state.user.side,
   role: state.user.role,
   gameStatus: state.user.gameStatus,
+  gameIndex: state.user.gameIndex,
   toast: state.global.toast,
 });
 
@@ -57,6 +64,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   replace: (path: string) => dispatch(replace(path)),
   clearToast: () => dispatch(clearToast()),
   getGameStatus: () => dispatch(getGameStatus()),
+  getGameIndex: () => dispatch(getGameIndex()),
   gameStatusReset: () => dispatch(gameStatusReset()),
 });
 
@@ -101,7 +109,8 @@ export default class Layout extends React.Component<{}, IState> {
       nextProps.isLogin !== this.injected.isLogin ||
       nextProps.toast !== this.injected.toast ||
       nextProps.lang !== this.injected.lang ||
-      nextProps.gameStatus !== this.injected.gameStatus
+      nextProps.gameStatus !== this.injected.gameStatus ||
+      nextProps.gameIndex !== this.injected.gameIndex
     );
   }
 
@@ -131,6 +140,8 @@ export default class Layout extends React.Component<{}, IState> {
           clearToast={this.injected.clearToast}
           getGameStatus={this.injected.getGameStatus}
           gameStatusReset={this.injected.gameStatusReset}
+          gameIndex={this.injected.gameIndex}
+          getGameIndex={this.injected.getGameIndex}
         />
       </LocaleProvider>
     );
