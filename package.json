@@ -69,7 +69,7 @@
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "node scripts/build.js",
     "build": "npm-run-all build-css build-js",
-    "build:release": "cross-env yarn build-css && GENERATE_SOURCEMAP=false node scripts/build.js --release",
+    "build:release": "yarn build-css && cross-env GENERATE_SOURCEMAP=false node scripts/build.js --release",
     "test": "node scripts/test.js --env=jsdom",
     "fix": "prettier --write \"src/**/*.{ts,tsx}\"",
     "fake-server": "node server"
