@@ -65,6 +65,7 @@ export default class extends Component<IProps, {}> {
         <Axis
           name="value"
           line={{ strokeOpacity: 0 }}
+          label={{ formatter: () => '' }}
           tickLine={{
             length: -24,
             stroke: 'rgba(0, 0, 0, 0.09)',
