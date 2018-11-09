@@ -71,18 +71,18 @@ const Curved = (props: IProps) => {
         position="time*ColdLoad"
         shape="smooth"
         color="#c1aeaa"
-        size={3}
+        size={2}
         style={{
-          lineDash: [4, 4],
+          lineDash: [5, 2],
         }}
       />
       <Geom
         type="line"
         position="time*ThermalLoad"
         shape="smooth"
-        size={3}
+        size={2}
         style={{
-          lineDash: [4, 4],
+          lineDash: [5, 2],
         }}
       />
     </Chart>
