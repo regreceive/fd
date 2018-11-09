@@ -51,7 +51,7 @@ export default class extends Component<IProps, {}> {
   public render() {
     const cols = { type: { range: [0, 1] }, value: { sync: true } };
     const { dashBoard } = this.injected;
-    console.log(dashBoard);
+
     return (
       <div styleName="chart">
         <Chart height={300} scale={cols} padding="auto" forceFit>

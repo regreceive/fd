@@ -2,21 +2,19 @@ import React, { Component } from 'react';
 import { Chart, Axis, Coord, Geom, Guide } from 'bizcharts';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-const { Html, Arc } = Guide;
 import { getDashBoardData } from '../../../../actions/userActions';
 import { IUser } from '../../../../reducers/userReducer';
 import { IStoreState } from '../../../../types';
 
-const color = ['#0086FA', '#FFBF00', '#F5222D'];
+const { Html, Arc } = Guide;
 const cols = {
   value: {
     min: 0,
-    max: 10,
+    max: 1,
     tickInterval: 1,
     nice: false,
   },
 };
-const data = [{ value: 0.8 }];
 
 interface IProps {
   data: object[];
@@ -50,15 +48,15 @@ export default class extends Component<IProps, {}> {
   public componentDidMount() {
     this.injected.getDashBoardData();
   }
+
   public render() {
-    const val = data[0].value;
-    console.log(data);
+    const { percent } = this.injected.dashBoard;
     return (
       <Chart
-        height={window.innerHeight}
-        data={data}
+        height={300}
+        data={{ value: percent }}
         scale={cols}
-        padding={[0, 0, 200, 0]}
+        padding="auto"
         forceFit
       >
         <Coord type="polar" radius={0.6} />
@@ -66,11 +64,6 @@ export default class extends Component<IProps, {}> {
           name="value"
           line={{ strokeOpacity: 0 }}
           label={{ formatter: () => '' }}
-          tickLine={{
-            length: -24,
-            stroke: 'rgba(0, 0, 0, 0.09)',
-            strokeOpacity: 0,
-          }}
         />
         <Axis name="1" visible={false} />
         <Guide>
@@ -83,69 +76,22 @@ export default class extends Component<IProps, {}> {
               lineWidth: 25,
             }}
           />
-          {val >= 3 && (
-            <Arc
-              start={[0, 0.965]}
-              end={[val, 0.965]}
-              style={{
-                // 底灰色
-                stroke: color[0],
-                lineWidth: 25,
-              }}
-            />
-          )}
-          {val >= 6 && (
-            <Arc
-              start={[2, 0.965]}
-              end={[4, 0.965]}
-              style={{
-                // 底灰色
-                stroke: color[1],
-                lineWidth: 25,
-              }}
-            />
-          )}
-          {val >= 6 &&
-            val < 10 && (
-              <Arc
-                start={[4, 0.965]}
-                end={[val, 0.965]}
-                style={{
-                  // 底灰色
-                  stroke: color[2],
-                  lineWidth: 25,
-                }}
-              />
-            )}
-          {val >= 3 &&
-            val < 6 && (
-              <Arc
-                start={[2, 0.965]}
-                end={[val, 0.965]}
-                style={{
-                  // 底灰色
-                  stroke: color[1],
-                  lineWidth: 25,
-                }}
-              />
-            )}
-          {val < 3 && (
-            <Arc
-              start={[0, 0.965]}
-              end={[val, 0.965]}
-              style={{
-                // 底灰色
-                stroke: color[0],
-                lineWidth: 25,
-              }}
-            />
-          )}
+          <Arc
+            start={[0, 0.965]}
+            end={[percent, 0.965]}
+            style={{
+              stroke: 'l(0) 0:#FFBF00 1:#F5222D',
+              lineWidth: 25,
+            }}
+          />
           <Html
             position={['50%', '50%']}
             html={`<div style="width: 300px;text-align: center;font-size: 12px!important;">
-              <p style="font-size: 1.75em; color: rgba(0,0,0,0.43);margin: 0;">合格率</p>
               <p style="font-size: 3em;color: rgba(0,0,0,0.85);margin: 0;">
-              ${val * 10}%</p>
+              ${percent * 100}%</p>
+              <p style="font-size: 2em; margin: 0">${
+                this.injected.dashBoard.max
+              }</p>
               </div>`}
           />
         </Guide>
