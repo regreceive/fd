@@ -49,7 +49,7 @@ const asyncChart = (role: string) =>
         case 'GAS':
           return import('./Charts/cchp');
         case 'BATTERY':
-          return import('./Charts/DashBoard');
+          return import('./Charts/Dash');
         default:
           return import('./Charts/pv');
       }
