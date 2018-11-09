@@ -60,14 +60,14 @@ export default class extends Component {
                     <Translate id="producer.exchange.form.output" />
                   </span>
                   <br />
-                  <span>{item.amount}</span>
+                  <span>{item.earning}</span>
                 </li>
                 <li>
                   <span>
                     <Translate id="producer.exchange.form.price" />
                   </span>
                   <br />
-                  <span>{item.earning}</span>
+                  <span>{item.amount}</span>
                 </li>
               </ul>
             </div>

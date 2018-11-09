@@ -127,7 +127,7 @@ export interface IUser {
     }>;
   };
   dashBoard: {
-    percent: string;
+    percent: number;
     max: string;
   };
   gameStatus: number;
@@ -204,7 +204,7 @@ const initState: IUser = {
     list: [],
   },
   dashBoard: {
-    percent: '',
+    percent: 1,
     max: '',
   },
   gameStatus: 8,

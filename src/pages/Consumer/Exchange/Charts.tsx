@@ -61,8 +61,8 @@ export default class DoubleChart extends Component<IProps> {
               hideLastLine: true,
             }}
           />
+          <Axis name="actual" position="left" visible={true} />
           <Axis name="price" visible={false} />
-          <Axis name="actual" visible={false} />
           <Axis name="past" visible={false} />
           <Tooltip />
           <Geom type="area" position="index*past" tooltip={false} />

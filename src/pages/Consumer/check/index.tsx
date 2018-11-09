@@ -99,7 +99,9 @@ export default class extends Component {
             <div styleName="list" key={item.uid}>
               <span>{item.eletric}</span>
               <span>{item.price}</span>
-              <span styleName="fixed">{segmentTime(item.index)}</span>
+              <span styleName="fixed">
+                {segmentTime((item.index + 6) % 24)}
+              </span>
             </div>
           ))}
         </div>

@@ -373,7 +373,7 @@ exports.dashBoardData = async ctx => {
     token: '123',
     toast: '',
     data: {
-      percent: '33%',
+      percent: 0.8,
       max: 56776,
     },
   };

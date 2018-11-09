@@ -78,7 +78,7 @@ export default class extends Component<IProps, {}> {
             <Guide>
               <Text
                 position={['50%', '50%']}
-                content={dashBoard.percent + '%'}
+                content={dashBoard.percent * 100 + '%'}
                 style={{
                   fill: '#F6F6F6',
                   fontSize: 50,
