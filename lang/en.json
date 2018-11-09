@@ -72,17 +72,17 @@
     "game_not_start": "game not start",
     "user_no_role": "please choose a role",
     "bind_error": "bound roles failure",
-    "game_status": "${num} people were not selected.",
-    "game_begin": "Game Start",
     "quote_will_be_finished": "There is 10 seconds left before the quotation ends",
     "loading": {
-      "login": "logging in"
+      "login": "logging in",
+      "game_status": "${num} people were not selected."
     },
     "success": {
       "login": "success",
       "logout": "log out",
       "quote": "quotation approved",
-      "adjust": "power adjustment success"
+      "adjust": "power adjustment success",
+      "game_begin": "Game Start"
     },
     "fail": {
       "account_not_found": "Please enter the right Email address",

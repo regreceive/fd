@@ -37,7 +37,7 @@ export function show(type: string, content: string): Promise<any> {
         Toast.offline(content, undefined, resolve);
         break;
       case 'loading':
-        Toast.loading(content, undefined, resolve);
+        Toast.loading(content, undefined, resolve, false);
         break;
       default:
         Toast.info(content, undefined, resolve, false);

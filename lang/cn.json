@@ -72,17 +72,17 @@
     "game_not_start":"游戏尚未开始",
     "user_no_role":"用户未绑定角色",
     "bind_error":"用户角色绑定失败",
-    "game_status": "还差 ${num} 人没选角色",
-    "game_begin": "游戏开始",
     "quote_will_be_finished": "距离报价结束还有10秒",
     "loading": {
-      "login": "登录中"
+      "login": "登录中",
+      "game_status": "还差 ${num} 人没选角色"
     },
     "success": {
       "login": "登录成功",
       "logout": "已退出登录",
       "quote": "报价单已通过审核",
-      "adjust": "电力调整成功"
+      "adjust": "电力调整成功",
+      "game_begin": "游戏开始"
     },
     "fail": {
       "account_not_found": "账户不存在",

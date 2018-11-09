@@ -19,7 +19,7 @@ const Curved = (props: IProps) => {
         '16:00',
         '19:00',
         '22:00',
-      ].slice(0, Math.ceil(new Date().getHours() / 3)),
+      ],
       tickCount: 8,
     },
     Output: {
