@@ -174,7 +174,9 @@ export default class extends Component<{}, IState> {
             extra={this.injected.translate('degree')}
             onChange={this.changePower}
             type="digit"
-            placeholder="调整电量"
+            placeholder={
+              this.injected.translate('consumer.exchange.placeholder') as string
+            }
           />
         </List>
         <Button type="primary" onClick={this.edit}>

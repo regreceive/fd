@@ -21,7 +21,7 @@ const Curved = (props: IProps) => {
         '22:00',
       ],
       tickCount: 8,
-      alias: '时间/小时',
+      alias: translate('unit'),
     },
     Output: {
       alias: translate('Output'),

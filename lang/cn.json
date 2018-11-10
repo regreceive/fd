@@ -34,6 +34,7 @@
   "adjust":"调整",
   "currentCoast":"当前电价",
 
+
   "login": {
     "button": "登录",
     "email": {
@@ -252,7 +253,8 @@
       "title": "用电负荷",
       "from": "预调整时间段",
       "to": "调整至时间段",
-      "adjust":"负荷调整"
+      "adjust":"负荷调整",
+      "placeholder":"调整电量"
     }
   },
 
@@ -285,6 +287,7 @@
     "Speed": "风速(m/min)",
     "price": "电价",
     "eletric": "电量",
-    "actual": "电量/kWh"
+    "actual": "电量/kWh",
+    "unit": "时间/小时"
   }
 }

@@ -34,6 +34,7 @@
   "adjust":"adjust",
   "currentCoast": "当前电价",
 
+
   "login": {
     "button": "Login",
     "email": {
@@ -249,10 +250,11 @@
         "before": "electricity consumption before adjustment",
         "after": "electricity consumption after adjustment"
       },
-      "title": "Power Simulation",
-      "from": "from",
-      "to": "adjust to",
-      "adjust":"Electric Power Adjustment"
+      "title": "Load Curve",
+      "from": "Period from",
+      "to": "Period to",
+      "adjust":"Demand Management",
+      "placeholder":"Changing consumption"
     }
   },
 
@@ -276,15 +278,16 @@
   },
 
   "param": {
-    "Output": "Output(kW)",
-    "Direct": "Direct(kW/m2)",
-    "Diffuse": "Diffuse(kW/m2)",
+    "Output": "Output(kW)          ",
+    "Direct": "Direct(kW/㎡)                                ",
+    "Diffuse": "Diffuse(kW/㎡)     ",
     "Temperature": "Temperature(ºC)",
     "ColdLoad": "ColdLoad(kW)",
     "ThermalLoad": "ThermalLoad(kW)",
     "Speed": "Speed(m/min)",
     "price": "price",
     "eletric": "eletric",
-    "actual": "actual"
+    "actual": "actual",
+    "unit": "time/hour"
   }
 }

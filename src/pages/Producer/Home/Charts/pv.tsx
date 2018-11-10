@@ -22,7 +22,7 @@ const Curved = (props: IProps) => {
         '4:00',
       ],
       tickCount: 8,
-      alias: '时间/小时',
+      alias: translate('unit'),
     },
     Output: {
       alias: translate('Output'),
@@ -62,11 +62,19 @@ const Curved = (props: IProps) => {
       data={props.data}
       scale={scale}
       forceFit
-      height={300}
+      height={400}
       background={bg}
-      padding={[40, 30, 90, 60]}
+      padding={[40, 30, 130, 60]}
     >
-      <Legend itemFormatter={translate} />
+      <Legend
+        useHtml={true}
+        g2-legend-list-item={{
+          marginRight: 0,
+          width: '50%',
+          paddingLeft: '25px',
+        }}
+        itemFormatter={translate}
+      />
       <Axis name="time" title={title} />
       <Axis name="Output" title={output} />
       <Axis name="Direct" visible={false} />

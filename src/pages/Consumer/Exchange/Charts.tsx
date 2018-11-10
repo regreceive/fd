@@ -39,7 +39,7 @@ export default class DoubleChart extends Component<IProps> {
         alias: translate('actual'),
       },
       index: {
-        alias: '时间/小时',
+        alias: translate('unit'),
       },
     };
     const title = {
