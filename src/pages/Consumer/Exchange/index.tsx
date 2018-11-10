@@ -7,7 +7,11 @@ import {
   Translate,
 } from 'react-localize-redux';
 import { List, DatePicker, InputItem, NavBar, Button } from 'antd-mobile';
-import { getCurrentCoast, postTime } from '../../../actions/userActions';
+import {
+  getCurrentCoast,
+  getGameTime,
+  postTime,
+} from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
 import DoubleChart from './Charts';
@@ -23,21 +27,25 @@ interface IState {
 
 interface IStateProps {
   currentCoast: IUser['currentCoast'];
+  gameTime: IUser['gameTime'];
 }
 
 interface IDispatchProps {
   getCurrentCoast: typeof getCurrentCoast;
   postTime: typeof postTime;
+  getGameTime: typeof getGameTime;
 }
 
 const mapStateToProps = (state: IStoreState): IStateProps => ({
   currentCoast: state.user.currentCoast,
+  gameTime: state.user.gameTime,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   getCurrentCoast: () => dispatch(getCurrentCoast()),
   postTime: (fromIndex: number, toIndex: number, adjustElectric: number) =>
     dispatch(postTime(fromIndex, toIndex, adjustElectric)),
+  getGameTime: () => dispatch(getGameTime()),
 });
 
 const dateMax = new Date(new Date().setHours(23, 0, 0, 0));
@@ -78,6 +86,17 @@ export default class extends Component<{}, IState> {
 
   public componentDidMount() {
     this.injected.getCurrentCoast();
+    this.injected.getGameTime();
+  }
+
+  public componentWillReceiveProps(nextProps: IStateProps) {
+    const begin = new Date();
+    begin.setHours(nextProps.gameTime, 0, 0, 0);
+    const to = calculateTo(begin);
+    this.setState({
+      begin,
+      to,
+    });
   }
 
   public fromTimeChangeHandle = (date: Date) => {
@@ -120,7 +139,7 @@ export default class extends Component<{}, IState> {
     const { currentCoast } = this.injected;
 
     const fromDateMin = new Date(
-      new Date().setHours(new Date().getHours() + 1, 0, 0, 0),
+      new Date().setHours(this.injected.gameTime, 0, 0, 0),
     );
     const toDateMin = calculateTo(this.state.begin);
 

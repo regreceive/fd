@@ -11,9 +11,9 @@ import {
 
 import { timeFormat } from '../../../utils/timeFormat';
 import { IUser } from '../../../reducers/userReducer';
-import { getGameIndex, postOffer } from '../../../actions/userActions';
+import { getGameTime, postOffer } from '../../../actions/userActions';
 import { IStoreState } from '../../../types';
-import { realTimePrice } from '../../data';
+import { getChartsData, realTimePrice } from '../../data';
 import { show } from '../../../utils/toast';
 
 import css from './index.css';
@@ -23,30 +23,32 @@ interface IState {
 }
 
 interface IStateProps {
+  role: IUser['role'];
   price: IUser['offer']['price'];
   timestamp: IUser['offer']['timestamp'];
-  gameIndex: IUser['gameIndex'];
+  gameTime: IUser['gameTime'];
   waiting: boolean;
 }
 
 interface IDispatchToState {
   postOffer: typeof postOffer;
-  getGameIndex: typeof getGameIndex;
+  getGameTime: typeof getGameTime;
 }
 
 const interval = Number(process.env.REACT_APP_OFFER_INTERVAL);
 
 const mapStateToProps = (state: IStoreState): IStateProps => ({
+  role: state.user.role,
   price: state.user.offer.price,
   timestamp: state.user.offer.timestamp,
   waiting: state.ui.freeze.postOffer === 1,
-  gameIndex: state.user.gameIndex,
+  gameTime: state.user.gameTime,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchToState => ({
   postOffer: (power: number, price: number) =>
     dispatch(postOffer(power, price)),
-  getGameIndex: () => dispatch(getGameIndex()),
+  getGameTime: () => dispatch(getGameTime()),
 });
 
 @(withLocalize as any)
@@ -67,9 +69,10 @@ export default class extends React.Component<{}, IState> {
   private price = 0;
   private interval = 0;
   private deadline = 0;
+  private data = [];
 
   public componentWillMount() {
-    this.injected.getGameIndex();
+    this.injected.getGameTime();
   }
 
   public componentWillReceiveProps(nextProps: IStateProps) {
@@ -88,7 +91,9 @@ export default class extends React.Component<{}, IState> {
   }
 
   public render() {
-    const { gameIndex, waiting } = this.injected;
+    const { gameTime, waiting, role } = this.injected;
+    this.data = getChartsData(role);
+
     return (
       <div styleName="section">
         <div>
@@ -107,7 +112,7 @@ export default class extends React.Component<{}, IState> {
             <dd>
               <Translate
                 id="edf-per-kw"
-                data={{ edf: realTimePrice(gameIndex) }}
+                data={{ edf: realTimePrice(gameTime) }}
               />
             </dd>
           </dl>
@@ -177,9 +182,16 @@ export default class extends React.Component<{}, IState> {
 
   private clickHandle = () => {
     if (this.power > 0 && this.price > 0) {
-      if (this.price > realTimePrice(this.injected.gameIndex)) {
+      if (this.price > realTimePrice(this.injected.gameTime)) {
         const content = this.injected.translate(
           'toast.fail.unit-price-great-than-grid',
+        ) as string;
+        show('fail', content);
+        return;
+      }
+      if (this.power > this.data[(18 + this.injected.gameTime) % 24]) {
+        const content = this.injected.translate(
+          'toast.fail.power_exceed',
         ) as string;
         show('fail', content);
         return;

@@ -99,6 +99,7 @@
       "time_out": "Unable to adjust at current",
       "eletric_out_index_of_number": "Energy storage, reporting battery overflow.",
       "unit-price-great-than-grid": "Quotations should not be more than the real-time price of large power grids.",
+      "power_exceed": "电量不能超过当前最大值",
       "fill-valid-data": "Please enter valid data."
     }
   },

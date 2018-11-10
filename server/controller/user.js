@@ -397,3 +397,13 @@ exports.gameIndex = async ctx => {
     data: 6,
   };
 };
+
+exports.gameTime = async ctx => {
+  await sleep();
+  ctx.body = {
+    status: 'ok',
+    toast: '',
+    data: 10,
+  };
+};
+

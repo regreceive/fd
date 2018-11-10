@@ -99,6 +99,7 @@
       "time_out":"当前时段无法调整",
       "eletric_out_index_of_number":"储能发电报电量溢出",
       "unit-price-great-than-grid": "报价不能高于大电网实时电价",
+      "power_exceed": "电量不能超过当前最大值",
       "fill-valid-data": "请输入有效数据"
     }
   },

@@ -1,11 +1,25 @@
 import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 import { IAction } from '../types';
 import {
+  checkComplete,
   currentCoastComplete,
+  dashBoardComplete,
   electricChartComplete,
+  exchangeFormComplete,
   gainsDetailComplete,
+  gameIndexComplete,
+  gameStatusComplete,
+  gameTimeComplete,
   getAvailableRolesComplete,
   IAvailableRolesComplete,
+  ICheckResponse,
+  ICurrentResponse,
+  IDashBoardResponse,
+  IElectricEXChartResponse,
+  IExchangeFormResponse,
+  IGainsDetailResponse,
+  IGameIndex,
+  IGameStatus,
   ILoginComplete,
   IQuotePriceResponse,
   IResponseSchema,
@@ -13,25 +27,12 @@ import {
   loginComplete,
   logoutComplete,
   postOfferComplete,
+  postTimeComplete,
   priceConstituteComplete,
   producerSummaryComplete,
   quotePriceComplete,
   updateRoleComplete,
   walletBalanceComplete,
-  exchangeFormComplete,
-  IExchangeFormResponse,
-  checkComplete,
-  IElectricEXChartResponse,
-  ICurrentResponse,
-  postTimeComplete,
-  IGainsDetailResponse,
-  ICheckResponse,
-  dashBoardComplete,
-  IDashBoardResponse,
-  IGameStatus,
-  gameStatusComplete,
-  IGameIndex,
-  gameIndexComplete,
 } from '../actions/userActions';
 import { realTimeImmutableData, realTimeMutableData } from '../pages/data';
 
@@ -388,6 +389,17 @@ function* getGameIndex() {
   }
 }
 
+function* getGameTime() {
+  try {
+    const response = yield call(request, '/config/game-time');
+
+    const json: IGameIndex = yield call([response, 'json']);
+    yield put(gameTimeComplete(json));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export function* watchUser() {
   yield takeEvery('LOGIN', login);
   yield takeEvery('LOGOUT', logout);
@@ -407,4 +419,5 @@ export function* watchUser() {
   yield takeEvery('GET_DASHBOARD_DATA', getDashBoardData);
   yield takeEvery('GET_GAME_STATUS', getGameStatus);
   yield takeEvery('GET_GAME_INDEX', getGameIndex);
+  yield takeEvery('GET_GAME_TIME', getGameTime);
 }

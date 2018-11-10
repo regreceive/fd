@@ -352,3 +352,20 @@ export function gameIndexComplete(data: IGameIndex) {
     payload: data,
   };
 }
+
+export interface IGameTime extends IResponseSchema {
+  data: number;
+}
+
+export function getGameTime() {
+  return {
+    type: 'GET_GAME_TIME',
+  };
+}
+
+export function gameTimeComplete(data: IGameIndex) {
+  return {
+    type: 'GAME_TIME_COMPLETE',
+    payload: data,
+  };
+}

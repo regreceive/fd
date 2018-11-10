@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { Dispatch } from 'redux';
+
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
-import { getGameIndex } from '../../../actions/userActions';
+import { getGameTime } from '../../../actions/userActions';
 import Photovoltaic from './pv';
 import Wind from './Wind';
 import Gas from './Gas';
@@ -14,20 +15,20 @@ import './index.css';
 
 interface IStateProps {
   role: IUser['role'];
-  gameIndex: IUser['gameIndex'];
+  gameTime: IUser['gameIndex'];
 }
 
 interface IDispatchProps {
-  getGameIndex: typeof getGameIndex;
+  getGameTime: typeof getGameTime;
 }
 
 const mapStateToProps = (state: IStoreState): IStateProps => ({
   role: state.user.role,
-  gameIndex: state.user.gameIndex,
+  gameTime: state.user.gameTime,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
-  getGameIndex: () => dispatch(getGameIndex()),
+  getGameTime: () => dispatch(getGameTime()),
 });
 
 @(connect(
@@ -40,11 +41,11 @@ export default class extends Component {
   }
 
   public componentWillMount() {
-    this.injected.getGameIndex();
+    this.injected.getGameTime();
   }
 
   public render() {
-    const { role, gameIndex } = this.injected;
+    const { role, gameTime } = this.injected;
     const goBack = this.injected.history.goBack;
     return (
       <React.Fragment>
@@ -52,28 +53,24 @@ export default class extends Component {
           <Photovoltaic
             role={this.injected.role}
             goBack={goBack}
-            gameIndex={gameIndex}
+            gameIndex={gameTime}
           />
         )}
         {role === 'WIND' && (
           <Wind
             role={this.injected.role}
             goBack={goBack}
-            gameIndex={gameIndex}
+            gameIndex={gameTime}
           />
         )}
         {role === 'GAS' && (
-          <Gas
-            role={this.injected.role}
-            goBack={goBack}
-            gameIndex={gameIndex}
-          />
+          <Gas role={this.injected.role} goBack={goBack} gameIndex={gameTime} />
         )}
         {role === 'BATTERY' && (
           <Battery
             role={this.injected.role}
             goBack={goBack}
-            gameIndex={gameIndex}
+            gameIndex={gameTime}
           />
         )}
       </React.Fragment>

@@ -17,6 +17,7 @@ import {
   IDashBoardResponse,
   IGameStatus,
   IGameIndex,
+  IGameTime,
 } from '../actions/userActions';
 
 export interface IUser {
@@ -133,6 +134,7 @@ export interface IUser {
   };
   gameStatus: number;
   gameIndex: number;
+  gameTime: number;
 }
 
 const DEFAULT_LANGUAGE = process.env.REACT_APP_DEFAULT_LANGUAGE || 'en';
@@ -210,6 +212,7 @@ const initState: IUser = {
   },
   gameStatus: 8,
   gameIndex: 0,
+  gameTime: 0,
 };
 
 const user = (state = initState, action: IAction): IUser => {
@@ -298,6 +301,10 @@ const user = (state = initState, action: IAction): IUser => {
     case 'GAME_INDEX_COMPLETE': {
       const { data } = action.payload as IGameIndex;
       return { ...state, gameIndex: data };
+    }
+    case 'GAME_TIME_COMPLETE': {
+      const { data } = action.payload as IGameTime;
+      return { ...state, gameTime: data };
     }
     default:
       return state;

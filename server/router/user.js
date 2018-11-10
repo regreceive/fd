@@ -40,4 +40,6 @@ router.get('config/game-status', api.gameStatus);
 
 router.get('config/game-index', api.gameIndex);
 
+router.get('config/game-time', api.gameTime);
+
 module.exports = router;
