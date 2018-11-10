@@ -6,10 +6,10 @@ import {
   withLocalize,
   Translate,
 } from 'react-localize-redux';
-import { List, DatePicker, InputItem, NavBar, Button } from 'antd-mobile';
+import { List, Picker, InputItem, NavBar, Button } from 'antd-mobile';
 import {
   getCurrentCoast,
-  getGameTime,
+  getGameIndex,
   postTime,
 } from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
@@ -21,40 +21,60 @@ import './index.css';
 
 interface IState {
   isEdit: boolean;
-  begin: Date;
-  to: Date;
+  scope: Array<{ label: string; value: number }>;
+  from: number;
+  to: number;
 }
 
 interface IStateProps {
   currentCoast: IUser['currentCoast'];
-  gameTime: IUser['gameTime'];
+  gameIndex: IUser['gameIndex'];
 }
 
 interface IDispatchProps {
   getCurrentCoast: typeof getCurrentCoast;
   postTime: typeof postTime;
-  getGameTime: typeof getGameTime;
+  getGameIndex: typeof getGameIndex;
 }
 
 const mapStateToProps = (state: IStoreState): IStateProps => ({
   currentCoast: state.user.currentCoast,
-  gameTime: state.user.gameTime,
+  gameIndex: state.user.gameIndex,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   getCurrentCoast: () => dispatch(getCurrentCoast()),
   postTime: (fromIndex: number, toIndex: number, adjustElectric: number) =>
     dispatch(postTime(fromIndex, toIndex, adjustElectric)),
-  getGameTime: () => dispatch(getGameTime()),
+  getGameIndex: () => dispatch(getGameIndex()),
 });
 
-const dateMax = new Date(new Date().setHours(23, 0, 0, 0));
-
-function calculateTo(begin: Date) {
-  const date = new Date();
-  date.setHours(Math.min(23, begin.getHours() + 1), 0, 0, 0);
-  return date;
-}
+const scope = [
+  { label: '6', value: 6 },
+  { label: '7', value: 7 },
+  { label: '8', value: 8 },
+  { label: '9', value: 9 },
+  { label: '10', value: 10 },
+  { label: '11', value: 11 },
+  { label: '12', value: 12 },
+  { label: '13', value: 13 },
+  { label: '14', value: 14 },
+  { label: '15', value: 15 },
+  { label: '16', value: 16 },
+  { label: '17', value: 17 },
+  { label: '18', value: 18 },
+  { label: '19', value: 19 },
+  { label: '20', value: 20 },
+  { label: '21', value: 21 },
+  { label: '22', value: 22 },
+  { label: '23', value: 23 },
+  { label: '0', value: 0 },
+  { label: '1', value: 1 },
+  { label: '2', value: 2 },
+  { label: '3', value: 3 },
+  { label: '4', value: 4 },
+  { label: '5', value: 5 },
+];
 
 @(withLocalize as any)
 @(connect(
@@ -62,21 +82,6 @@ function calculateTo(begin: Date) {
   mapDispatchToProps,
 ) as any)
 export default class extends Component<{}, IState> {
-  private power = 0;
-
-  public constructor(props: object) {
-    super(props);
-
-    const begin = new Date();
-    begin.setHours(begin.getHours() + 1, 0, 0, 0);
-    const to = calculateTo(begin);
-
-    this.state = {
-      begin,
-      to,
-      isEdit: false,
-    };
-  }
   get injected() {
     return this.props as IStateProps &
       IDispatchProps &
@@ -84,37 +89,31 @@ export default class extends Component<{}, IState> {
       LocalizeContextProps;
   }
 
+  public state = {
+    scope,
+    from: 0,
+    to: 0,
+    isEdit: false,
+  };
+
+  private power = 0;
+
   public componentDidMount() {
     this.injected.getCurrentCoast();
-    this.injected.getGameTime();
+    this.injected.getGameIndex();
   }
 
   public componentWillReceiveProps(nextProps: IStateProps) {
-    const begin = new Date();
-    begin.setHours(nextProps.gameTime, 0, 0, 0);
-    const to = calculateTo(begin);
+    let slicedScope = scope.slice(nextProps.gameIndex);
+    slicedScope =
+      slicedScope.length > 0 ? slicedScope : [{ label: '0', value: 0 }];
+
     this.setState({
-      begin,
-      to,
+      from: slicedScope[0].value,
+      to: slicedScope[0].value,
+      scope: slicedScope,
     });
   }
-
-  public fromTimeChangeHandle = (date: Date) => {
-    this.setState({
-      begin: date,
-      to: calculateTo(date),
-    });
-  };
-
-  public toTimeChangeHandle = (date: Date) => {
-    this.setState({
-      to: date,
-    });
-  };
-
-  public changePower = (value: string) => {
-    this.power = Number(value);
-  };
 
   public edit = () => {
     // this.setState({
@@ -122,26 +121,20 @@ export default class extends Component<{}, IState> {
     // });
 
     // if (this.state.isEdit) {
-    this.injected.postTime(
-      this.state.begin.getHours(),
-      this.state.to.getHours(),
-      this.power,
-    );
+    const { from, to } = this.state;
+    this.injected.postTime(from, to, this.power);
     // }
   };
+
   public cancel = () => {
     this.setState({
       isEdit: !this.state.isEdit,
     });
   };
+
   public render() {
     // const { isEdit } = this.state;
     const { currentCoast } = this.injected;
-
-    const fromDateMin = new Date(
-      new Date().setHours(this.injected.gameTime, 0, 0, 0),
-    );
-    const toDateMin = calculateTo(this.state.begin);
 
     return (
       <div styleName="container">
@@ -167,28 +160,28 @@ export default class extends Component<{}, IState> {
           <Translate id="consumer.exchange.adjust" />
         </h2>
         <List>
-          <DatePicker
-            mode="time"
-            value={this.state.begin}
-            onChange={this.fromTimeChangeHandle}
-            minDate={fromDateMin}
-            maxDate={dateMax}
+          <Picker
+            data={this.state.scope}
+            onOk={this.fromChangeHandle}
+            cols={1}
+            value={[this.state.from]}
           >
             <List.Item arrow="horizontal">
               <Translate id="consumer.exchange.from" />
             </List.Item>
-          </DatePicker>
-          <DatePicker
-            mode="time"
-            value={this.state.to}
-            onChange={this.toTimeChangeHandle}
-            minDate={toDateMin}
-            maxDate={dateMax}
+          </Picker>
+
+          <Picker
+            data={this.state.scope}
+            onOk={this.toChangeHandle}
+            cols={1}
+            value={[this.state.to]}
           >
             <List.Item arrow="horizontal">
               <Translate id="consumer.exchange.to" />
             </List.Item>
-          </DatePicker>
+          </Picker>
+
           <InputItem
             extra={this.injected.translate('degree')}
             onChange={this.changePower}
@@ -205,4 +198,16 @@ export default class extends Component<{}, IState> {
       </div>
     );
   }
+
+  private fromChangeHandle = (from: number[]) => {
+    this.setState({ from: from[0] });
+  };
+
+  private toChangeHandle = (to: number) => {
+    this.setState({ to: to[0] });
+  };
+
+  private changePower = (value: string) => {
+    this.power = Number(value);
+  };
 }

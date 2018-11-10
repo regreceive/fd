@@ -518,3 +518,30 @@ response = {
 | toast | 说明 |
 | ----- | ---- |
 
+### 游戏轮数
+
+GET /config/game-index
+
+响应
+
+```js
+response = {
+  status: 'ok',
+  toast: '',
+  data: 0,
+};
+```
+
+### 游戏小时数
+
+GET /config/game-time
+
+响应
+
+```js
+response = {
+  status: 'ok',
+  toast: '',
+  data: 0,
+};
+```
