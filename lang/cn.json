@@ -32,6 +32,7 @@
   "degree": "度",
   "per-degree": "EDF/度",
   "adjust":"调整",
+  "currentCoast":"当前电价",
 
   "login": {
     "button": "登录",
@@ -283,6 +284,6 @@
     "Speed": "风速(m/min)",
     "price": "电价",
     "eletric": "电量",
-    "actual": "实际"
+    "actual": "电量/kWh"
   }
 }

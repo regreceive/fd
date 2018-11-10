@@ -93,9 +93,10 @@ export default class extends Component {
               position={['50%', '50%']}
               html={
                 '<div style=color:#8c8c8c;font-size:1.16em;text-align:center;width:10em;>' +
-                this.injected.translate('totalCoast') +
-                '<br><span style=color:#262626;font-size:2.5em>' +
-                this.injected.priceConstitute.statistics.settle +
+                this.injected.translate('currentCoast') +
+                '<br><span style=color:#262626;font-size:1.5em>' +
+                this.injected.priceConstitute.statistics.unitPrice +
+                this.injected.translate('per-degree') +
                 '</span ></div>'
               }
               alignX="middle"

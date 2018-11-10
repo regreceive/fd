@@ -8,8 +8,12 @@ import { getGainsDetail } from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
 import { startedDateTime } from '../../../utils/timeFormat';
+
+import Earns from '../Home/Earns';
 interface IStateProps {
   gainsDetail: IUser['gainsDetail'];
+  earns: IUser['earns'];
+  role: IUser['role'];
 }
 
 interface IDispatchProps {
@@ -18,6 +22,8 @@ interface IDispatchProps {
 
 const mapStateToProps = (state: IStoreState): IStateProps => ({
   gainsDetail: state.user.gainsDetail,
+  earns: state.user.earns,
+  role: state.user.role,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
@@ -38,7 +44,7 @@ export default class extends Component {
   }
 
   public render() {
-    const { gainsDetail } = this.injected;
+    const { gainsDetail, role, earns } = this.injected;
     return (
       <div styleName="container">
         <div styleName="earnings">
@@ -74,7 +80,6 @@ export default class extends Component {
             </ul>
           </div>
         </div>
-
         {gainsDetail.list.map((item, index) => (
           <div styleName="card" key={index}>
             <div styleName="card-top">
@@ -111,6 +116,7 @@ export default class extends Component {
             </p>
           </div>
         ))}
+        <Earns role={role} data={earns} />
       </div>
     );
   }
