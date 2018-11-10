@@ -7,7 +7,6 @@ import {
   withLocalize,
   TranslateFunction,
 } from 'react-localize-redux';
-// import { Icon, NavBar } from 'antd-mobile';
 
 import { IUser } from '../../../reducers/userReducer';
 import { getPriceConstitute } from '../../../actions/userActions';
@@ -60,24 +59,6 @@ export default class extends Component {
     const translate = convert(this.injected.translate);
     return (
       <div styleName="chart">
-        {/* <NavBar
-          mode="light"
-          icon={<Icon type="left" />}
-          onLeftClick={this.injected.history.goBack}
-        >
-          <Translate id="consumer.home.chart.title" />
-        </NavBar> */}
-        {/* <div styleName="electricity">
-          <Translate id="consumer.home.chart.use" />:
-          <Translate
-            id="edf-per-kw"
-            data={{ edf: priceConstitute.statistics.unitPrice }}
-          />
-        </div> */}
-        {/* <h2 styleName="title">
-          <Translate id="consumer.home.chart.comprise" />
-        </h2> */}
-
         <Chart
           height={300}
           data={priceConstitute.list}

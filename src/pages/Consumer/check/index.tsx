@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Translate } from 'react-localize-redux';
-import { Icon, NavBar } from 'antd-mobile';
+import { NavBar } from 'antd-mobile';
 
 import { getCheck } from '../../../actions/userActions';
 import { IUser } from '../../../reducers/userReducer';
@@ -53,7 +53,6 @@ export default class extends Component {
       <div styleName="container">
         <NavBar
           mode="light"
-          icon={<Icon type="left" />}
           // onLeftClick={this.injected.history.goBack}
         >
           <Translate id="check" />

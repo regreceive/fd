@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Translate } from 'react-localize-redux';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { push } from 'connected-react-router';
 import { LocationState, Path } from 'history';
 
@@ -17,10 +17,6 @@ import {
 } from '../../../actions/userActions';
 
 import Constitute from './Constitute';
-import mall from './assets/mall.jpg';
-import school from './assets/school.jpg';
-import factory from './assets/factory.jpg';
-import community from './assets/community.jpg';
 import './index.css';
 
 interface IStateProps {
@@ -73,14 +69,13 @@ export default class extends Component {
     return (
       <div styleName="container">
         <div styleName="banner">
-          {role === 'SCHOOL' && <img src={school} />}
-          {role === 'MALL' && <img src={mall} />}
-          {role === 'FACTORY' && <img src={factory} />}
-          {role === 'COMMUNITY' && <img src={community} />}
+          <h2>
+            <Translate id={'role.' + role.toLocaleLowerCase()} />
+          </h2>
         </div>
         <div styleName="section">
           <div>
-            <div styleName="head-area">
+            <div styleName="head-title">
               <h2>
                 <Translate id="consumer.home.title1" />
               </h2>
@@ -102,7 +97,7 @@ export default class extends Component {
                 />
               </dd>
             </dl>
-            <dl>
+            {/* <dl>
               <dt>
                 <Translate id="consumer.home.current" />
               </dt>
@@ -114,7 +109,7 @@ export default class extends Component {
                   }}
                 />
               </dd>
-            </dl>
+            </dl> */}
             <dl>
               <dt>
                 <Translate id="consumer.home.large" />
@@ -131,14 +126,14 @@ export default class extends Component {
 
         <div styleName="section spacer">
           <div>
-            <div styleName="head-area">
+            {/* <div styleName="head-area">
               <h2 styleName="spacer">
                 <Translate id="consumer.home.title2" />
               </h2>
               <Link to="/consumer/check">
                 <Translate id="bill-detail" />
               </Link>
-            </div>
+            </div> */}
             <dl>
               <dt>
                 <Translate id="consumer.home.used" />

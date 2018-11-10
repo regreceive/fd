@@ -13,14 +13,14 @@ const DetailInfo = (props: IProps) => {
   return (
     <div styleName="section">
       <div>
-        <dl>
+        {/* <dl>
           <dt>
             <Translate id="consumer.exchange.detail.current" />
           </dt>
           <dd>
             <Translate id="kw" data={{ kw: total.eletric }} />
           </dd>
-        </dl>
+        </dl> */}
         <dl>
           <dt>
             <Translate id="consumer.exchange.detail.before" />
