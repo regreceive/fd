@@ -38,8 +38,25 @@ export default class DoubleChart extends Component<IProps> {
       actual: {
         alias: translate('actual'),
       },
+      index: {
+        alias: '时间/小时',
+      },
     };
-
+    const title = {
+      textStyle: {
+        fontSize: '12',
+        textAlign: 'right',
+        fill: '#999',
+      },
+      position: 'end',
+    };
+    const title1 = {
+      textStyle: {
+        fontSize: '12',
+        fill: '#999',
+      },
+      position: 'end',
+    };
     return (
       <div styleName="chart">
         <Chart
@@ -60,8 +77,9 @@ export default class DoubleChart extends Component<IProps> {
               hideFirstLine: true,
               hideLastLine: true,
             }}
+            title={title}
           />
-          <Axis name="actual" position="left" visible={true} />
+          <Axis name="actual" position="left" visible={true} title={title1} />
           <Axis name="price" visible={false} />
           <Axis name="past" visible={false} />
           <Tooltip />

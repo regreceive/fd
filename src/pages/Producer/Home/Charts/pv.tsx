@@ -22,6 +22,7 @@ const Curved = (props: IProps) => {
         '4:00',
       ],
       tickCount: 8,
+      alias: '时间/小时',
     },
     Output: {
       alias: translate('Output'),
@@ -39,6 +40,23 @@ const Curved = (props: IProps) => {
   const bg = {
     fill: '#fff',
   };
+  const title = {
+    textStyle: {
+      fontSize: '12',
+      textAlign: 'right',
+      fill: '#999',
+    },
+    position: 'end',
+  };
+
+  const output = {
+    textStyle: {
+      fontSize: '12',
+      fill: '#999',
+      rotate: -90,
+    },
+    position: 'end',
+  };
   return (
     <Chart
       data={props.data}
@@ -46,11 +64,11 @@ const Curved = (props: IProps) => {
       forceFit
       height={300}
       background={bg}
-      padding={[40, 20, 90, 50]}
+      padding={[40, 30, 90, 60]}
     >
       <Legend itemFormatter={translate} />
-      <Axis name="time" />
-      <Axis name="Output" />
+      <Axis name="time" title={title} />
+      <Axis name="Output" title={output} />
       <Axis name="Direct" visible={false} />
       <Axis name="Diffuse" visible={false} />
       <Axis name="Temperature" visible={false} />

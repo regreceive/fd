@@ -28,6 +28,11 @@
     .am-button-primary {
       margin: 15px;
     }
+    .am-input-control {
+      > input::-webkit-input-placeholder {
+        color: #737b91;
+      }
+    }
   }
 }
 

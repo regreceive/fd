@@ -9,7 +9,7 @@ import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
 import { getProducerSummary } from '../../../actions/userActions';
 import CurrentState from './CurrentState';
-import Earns from './Earns';
+// import Earns from './Earns';
 import Offer from './Offer';
 
 import './index.css';
@@ -17,7 +17,6 @@ import './index.css';
 interface IStateProps {
   role: IUser['role'];
   currentState: IUser['currentState'];
-  earns: IUser['earns'];
 }
 
 interface IDispatchToState {
@@ -27,7 +26,6 @@ interface IDispatchToState {
 const mapStateToProps = (state: IStoreState): IStateProps => ({
   role: state.user.role,
   currentState: state.user.currentState,
-  earns: state.user.earns,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
@@ -77,7 +75,7 @@ export default class extends Component {
 
   public render() {
     const AsyncChart = this.chart;
-    const { role, currentState, earns } = this.injected;
+    const { role, currentState } = this.injected;
     const data = getChartsData(role);
     return (
       <div styleName="container">
@@ -87,7 +85,7 @@ export default class extends Component {
         <AsyncChart data={data} />
         <CurrentState role={role} data={currentState} />
         <Offer />
-        <Earns role={role} data={earns} />
+        {/* <Earns role={role} data={earns} /> */}
       </div>
     );
   }
