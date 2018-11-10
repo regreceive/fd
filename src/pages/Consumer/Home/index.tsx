@@ -101,7 +101,9 @@ export default class extends Component {
               </dd>
             </dl> */}
             <dl>
-              <dt>各发电方报价</dt>
+              <dt>
+                <Translate id="quto" />
+              </dt>
               <dd>
                 <Link to={basePath + '/consumer/quoted-price'}>
                   <Translate id="bill-detail" />

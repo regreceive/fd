@@ -33,7 +33,8 @@
   "per-degree": "EDF/度",
   "adjust":"调整",
   "currentCoast":"当前电价",
-
+  "rounds": "当前轮数",
+  "quto":"各发电方报价",
 
   "login": {
     "button": "登录",
@@ -280,8 +281,8 @@
 
   "param": {
     "Output": "发电量(kW)",
-    "Direct": "太阳直射辐射强度(kW/m2)",
-    "Diffuse": "太阳散射辐射强度(kW/m2)",
+    "Direct": "直射辐射强度(kW/㎡)",
+    "Diffuse": "散射辐射强度(kW/㎡)",
     "Temperature": "温度(ºC)",
     "ColdLoad": "冷负荷(kW)",
     "ThermalLoad": "热负荷(kW)",

@@ -49,7 +49,7 @@ export default class extends Component {
           icon={<Icon type="left" />}
           onLeftClick={this.injected.history.goBack}
         >
-          各发电用户报价
+          <Translate id="quto" />
         </NavBar>
 
         <div>
