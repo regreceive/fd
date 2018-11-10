@@ -76,6 +76,7 @@ export interface IUser {
     list: Array<{
       item: string;
       percent: number;
+      quote: number;
     }>;
   };
   config: {

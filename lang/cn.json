@@ -55,7 +55,8 @@
     "photovoltaic": "光伏发电",
     "wind": "风能发电",
     "battery": "储能电池",
-    "gas": "燃气轮机"
+    "gas": "燃气轮机",
+    "grid": "大电网"
   },
 
   "mine": {

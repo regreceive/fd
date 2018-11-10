@@ -5,6 +5,7 @@ import { basePath } from '../../services/constants';
 import TabBarView from './TabBarView';
 import Constitute from './Home/Constitute';
 import Check from './check';
+import QuotedPrice from './QuotedPrice';
 
 export default class extends Component {
   public render() {
@@ -12,6 +13,10 @@ export default class extends Component {
       <Switch>
         <Route exact path={basePath + '/consumer'} component={TabBarView} />
         <Route path={basePath + '/consumer/check'} component={Check} />
+        <Route
+          path={basePath + '/consumer/quoted-price'}
+          component={QuotedPrice}
+        />
         <Route
           exact
           path={basePath + '/consumer/constitute'}

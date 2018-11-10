@@ -1,0 +1,12 @@
+@import '../../common.scss';
+
+.container {
+  @extend %scroll;
+
+  :global {
+    .am-navbar-light {
+      background-color: #fff;
+      padding-top: 10px;
+    }
+  }
+}

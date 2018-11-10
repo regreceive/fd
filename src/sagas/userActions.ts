@@ -329,6 +329,7 @@ function* getPriceConstitute() {
       item: value,
       percent:
         Math.floor((json.data[value].eletric / sum.eletric) * 100) / 100 || 0,
+      quote: json.data[value].price,
     }));
 
     const unitPrice = sum.settle / sum.eletric || 0;

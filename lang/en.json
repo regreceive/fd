@@ -55,7 +55,8 @@
     "photovoltaic": "Photovoltaic",
     "wind": "Wind",
     "battery": "Battery",
-    "gas": "CCHP"
+    "gas": "CCHP",
+    "grid": "Grid"
   },
 
   "mine": {

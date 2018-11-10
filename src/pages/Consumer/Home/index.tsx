@@ -2,19 +2,14 @@ import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Translate } from 'react-localize-redux';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { push } from 'connected-react-router';
 import { LocationState, Path } from 'history';
 
-// import { basePath } from '../../../services/constants';
+import { basePath } from '../../../services/constants';
 import { IUser } from '../../../reducers/userReducer';
 import { IStoreState } from '../../../types';
-import { realTimePrice } from '../../data';
-import {
-  getCheck,
-  getGameIndex,
-  getPriceConstitute,
-} from '../../../actions/userActions';
+import { getCheck, getPriceConstitute } from '../../../actions/userActions';
 
 import Constitute from './Constitute';
 import './index.css';
@@ -24,14 +19,12 @@ interface IStateProps {
   priceConstitute: IUser['priceConstitute'];
   price: number;
   eletric: number;
-  gameIndex: IUser['gameIndex'];
 }
 
 interface IDispatchProps {
   getPriceConstitute: typeof getPriceConstitute;
   getCheck: typeof getCheck;
   push: (path: Path, state?: LocationState) => void;
-  getGameIndex: typeof getGameIndex;
 }
 
 const mapStateToProps = (state: IStoreState): IStateProps => ({
@@ -39,14 +32,12 @@ const mapStateToProps = (state: IStoreState): IStateProps => ({
   priceConstitute: state.user.priceConstitute,
   price: state.user.checkDetail.total.price,
   eletric: state.user.checkDetail.total.eletric,
-  gameIndex: state.user.gameIndex,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   getPriceConstitute: () => dispatch(getPriceConstitute()),
   push: (path: Path, state?: LocationState) => dispatch(push(path, state)),
   getCheck: () => dispatch(getCheck()),
-  getGameIndex: () => dispatch(getGameIndex()),
 });
 
 @(connect(
@@ -61,11 +52,10 @@ export default class extends Component {
   public componentWillMount() {
     this.injected.getPriceConstitute();
     this.injected.getCheck();
-    this.injected.getGameIndex();
   }
 
   public render() {
-    const { role, gameIndex } = this.injected;
+    const { role } = this.injected;
     return (
       <div styleName="container">
         <div styleName="banner">
@@ -111,14 +101,9 @@ export default class extends Component {
               </dd>
             </dl> */}
             <dl>
-              <dt>
-                <Translate id="consumer.home.large" />
-              </dt>
+              <dt>各发电方报价</dt>
               <dd>
-                <Translate
-                  id="edf-per-kw"
-                  data={{ edf: realTimePrice(gameIndex) }}
-                />
+                <Link to={basePath + '/consumer/quoted-price'}>详情</Link>
               </dd>
             </dl>
           </div>
