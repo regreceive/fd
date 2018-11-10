@@ -23,6 +23,7 @@ import {
 } from '../../actions/userActions';
 
 import './LayoutView.css';
+import { Translate } from 'react-localize-redux';
 
 const basePath = process.env.REACT_APP_BASE_PATH;
 const splashEnable = process.env.REACT_APP_SPLASH === 'on';
@@ -108,7 +109,9 @@ export default class LayoutView extends React.Component<IProps> {
     return (
       <div className="full-screen">
         <div styleName="game-index">
-          当前轮数：
+          <span>
+            <Translate id="rounds" />:
+          </span>
           {this.props.gameIndex}
         </div>
         <ConnectedRouter history={history}>

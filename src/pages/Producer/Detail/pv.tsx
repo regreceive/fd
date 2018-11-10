@@ -45,13 +45,13 @@ const Photovoltaic = (prop: IStateProps) => {
             <dt>
               <Translate id="producer.home.detail.pv.beat" />
             </dt>
-            <dd>{mutableData[1]} kW/m2</dd>
+            <dd>{mutableData[1]} kW/㎡</dd>
           </dl>
           <dl>
             <dt>
               <Translate id="producer.home.detail.pv.scatter" />
             </dt>
-            <dd>{mutableData[2]} kW/m2</dd>
+            <dd>{mutableData[2]} kW/㎡</dd>
           </dl>
           <dl>
             <dt>

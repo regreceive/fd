@@ -67,13 +67,15 @@ const Curved = (props: IProps) => {
       padding={[40, 30, 130, 60]}
     >
       <Legend
-        useHtml={true}
-        g2-legend-list-item={{
-          marginRight: 0,
-          width: '50%',
-          paddingLeft: '25px',
-        }}
+        // useHtml={true}
+        // g2-legend-list-item={{
+        //   marginRight: 0,
+        //   width: '50%',
+        //   paddingLeft: '25px'
+        // }}
         itemFormatter={translate}
+        itemWidth={150}
+        itemGap={10}
       />
       <Axis name="time" title={title} />
       <Axis name="Output" title={output} />

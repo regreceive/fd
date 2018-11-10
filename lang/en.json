@@ -32,8 +32,9 @@
   "degree": "kWh",
   "per-degree": "EDF/kWh",
   "adjust":"adjust",
-  "currentCoast": "当前电价",
-
+  "currentCoast": "current coast",
+  "rounds": "current rounds",
+  "quto": "quotation",
 
   "login": {
     "button": "Login",
@@ -273,14 +274,14 @@
 
     "button": {
       "ok": "OK",
-      "cancel": "Cancel"
+      "cancel": "Cancel          "
     }
   },
 
   "param": {
-    "Output": "Output(kW)          ",
-    "Direct": "Direct(kW/㎡)                                ",
-    "Diffuse": "Diffuse(kW/㎡)     ",
+    "Output": "Output(kW)",
+    "Direct": "Direct(kW/㎡)",
+    "Diffuse": "Diffuse(kW/㎡)",
     "Temperature": "Temperature(ºC)",
     "ColdLoad": "ColdLoad(kW)",
     "ThermalLoad": "ThermalLoad(kW)",
