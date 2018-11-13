@@ -25,7 +25,7 @@ interface IState {
 interface IStateProps {
   role: IUser['role'];
   price: IUser['offer']['price'];
-  timestamp: IUser['offer']['timestamp'];
+  endtime: IUser['offer']['endtime'];
   gameTime: IUser['gameTime'];
   waiting: boolean;
 }
@@ -35,12 +35,10 @@ interface IDispatchToState {
   getGameTime: typeof getGameTime;
 }
 
-const interval = Number(process.env.REACT_APP_OFFER_INTERVAL);
-
 const mapStateToProps = (state: IStoreState): IStateProps => ({
   role: state.user.role,
   price: state.user.offer.price,
-  timestamp: state.user.offer.timestamp,
+  endtime: state.user.offer.endtime,
   waiting: state.ui.freeze.postOffer === 1,
   gameTime: state.user.gameTime,
 });
@@ -76,9 +74,9 @@ export default class extends React.Component<{}, IState> {
   }
 
   public componentWillReceiveProps(nextProps: IStateProps) {
-    const countdown = nextProps.timestamp + interval * 60 * 1000 - Date.now();
+    const countdown = nextProps.endtime - Date.now();
     if (countdown > 0) {
-      this.deadline = nextProps.timestamp + countdown;
+      this.deadline = nextProps.endtime;
       this.setState({ countdown }, () => {
         window.clearInterval(this.interval);
         this.countdown();

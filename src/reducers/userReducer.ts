@@ -35,7 +35,7 @@ export interface IUser {
   };
   offer: {
     price: number;
-    timestamp: number;
+    endtime: number;
   };
   wallet: {
     balance: number;
@@ -154,7 +154,7 @@ const initState: IUser = {
   },
   offer: {
     price: 0,
-    timestamp: 0,
+    endtime: 0,
   },
   wallet: {
     balance: 0,

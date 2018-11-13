@@ -234,7 +234,7 @@ module.exports = {
                   },
                   use: [
                     {
-                      loader: require.resolve('css-loader'),
+                      loader: require.resolve('typings-for-css-modules-loader'),
                       options: {
                         importLoaders: 1,
                         minimize: true,
@@ -244,6 +244,7 @@ module.exports = {
                           ? '[name]-[local]-[hash:base64:5]'
                           : '[hash:base64:5]',
                         camelCase: true,
+                        namedExport: true,
                       },
                     },
                     {

@@ -108,7 +108,7 @@ exports.offer = async ctx => {
     toast: '',
     data: {
       price: 0.23,
-      timestamp: Date.now(),
+      endtime: Date.now() + 60 * 1000,
     },
   };
 };
@@ -121,7 +121,7 @@ exports.postOffer = async ctx => {
     toast: 'success.offer',
     data: {
       price: 1,
-      timestamp: Date.now(),
+      endtime: Date.now() + 60 * 1000,
     },
   };
 };

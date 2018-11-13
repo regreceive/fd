@@ -66,6 +66,7 @@ export default class LayoutView extends React.Component<IProps> {
     this.indexIntervalID = window.setInterval(() => {
       this.props.getGameIndex();
     }, 10000);
+    this.props.getGameIndex();
   }
 
   public componentWillUnmount() {
